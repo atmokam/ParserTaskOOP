@@ -1,7 +1,10 @@
 #ifndef PROGRAMEXECUTER_HPP
 #define PROGRAMEXECUTER_HPP
-#include <vector>
-#include <string>
+
+#include "InputHandler.hpp"
+#include "Tokenizer.hpp"
+#include "Parser.hpp"
+
 
 class ProgramExecuter {
 public:

@@ -1,6 +1,3 @@
-#include <iostream>
-#include <sstream>
-#include "ExitSignalException.hpp"
 #include "InputHandler.hpp"
 
 
@@ -21,7 +18,7 @@ std::vector<std::string> InputHandler::getArgs() const noexcept {
 }
 
 bool InputHandler::exitCalled() const {
-    if(args.size() == 1 && args[0] == "exit") {
+    if(args.size() == 1 && args[0] == "EXIT") {
         return true;
     }
     return false;

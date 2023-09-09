@@ -1,9 +1,5 @@
 #include "ProgramExecuter.hpp"
-#include "InputHandler.hpp"
-#include "Tokenizer.hpp"
-#include "Parser.hpp"
 
-#include <iostream>
 
 ProgramExecuter::ProgramExecuter(const std::vector<std::string>& args) { // for argument list
     InputHandler inputHandler(args);

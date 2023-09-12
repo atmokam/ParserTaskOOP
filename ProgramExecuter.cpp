@@ -6,10 +6,16 @@ ProgramExecuter::ProgramExecuter(const std::vector<std::string>& args) { // for 
     if (inputHandler.exitCalled()) {
         inputHandler.exit();
     }
+    Validator validator(inputHandler.getArgs());
+    if (!validator.isValid()) {
+       throw std::invalid_argument("Invalid input");
+    }
     
-    Tokenizer tokenizer(args);
-    //Parser parser(tokenizer.getTokens());
-    //OutputHandler outputHandler(parser.getResult());
+    Tokenizer tokenizer(inputHandler.getArgs()); 
+    Parser parser(tokenizer.getTokens());
+    OutputHandler outputHandler;
+    outputHandler.printResult(parser.getResult());
+    
 }
 
 ProgramExecuter::ProgramExecuter() { // for runtime input
@@ -17,11 +23,14 @@ ProgramExecuter::ProgramExecuter() { // for runtime input
     if (inputHandler.exitCalled()) {
         inputHandler.exit();
     }
-    
+    Validator validator(inputHandler.getArgs());
+    if (!validator.isValid()) {
+       throw std::invalid_argument("Invalid input");
+    }
+
     Tokenizer tokenizer(inputHandler.getArgs()); 
-    std::cout << tokenizer.getTokens().first << std::endl; // tester
-    std::cout << tokenizer.getTokens().second[0] << std::endl;
-    std::cout << tokenizer.getTokens().second[1] << std::endl; // tester
-    //Parser parser(tokenizer.getTokens());
-    //OutputHandler outputHandler(parser.getResult());
+    Parser parser(tokenizer.getTokens());
+    OutputHandler outputHandler;
+    outputHandler.printResult(parser.getResult());
+    
 }

@@ -4,6 +4,8 @@
 #include "InputHandler.hpp"
 #include "Tokenizer.hpp"
 #include "Parser.hpp"
+#include "Validator.hpp"
+#include "OutputHandler.hpp"
 
 
 class ProgramExecuter {

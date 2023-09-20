@@ -1,36 +1,29 @@
 #include "ProgramExecuter.hpp"
 
 
-ProgramExecuter::ProgramExecuter(const std::vector<std::string>& args) { // for argument list
-    InputHandler inputHandler(args);
-    if (inputHandler.exitCalled()) {
-        inputHandler.exit();
-    }
-    Validator validator(inputHandler.getArgs());
-    if (!validator.isValid()) {
-       throw std::invalid_argument("Invalid input");
-    }
-    
-    Tokenizer tokenizer(inputHandler.getArgs()); 
-    Parser parser(tokenizer.getTokens());
-    OutputHandler outputHandler;
-    outputHandler.printResult(parser.getResult());
-    
-}
 
-ProgramExecuter::ProgramExecuter() { // for runtime input
-    InputHandler inputHandler;
-    if (inputHandler.exitCalled()) {
-        inputHandler.exit();
-    }
-    Validator validator(inputHandler.getArgs());
-    if (!validator.isValid()) {
-       throw std::invalid_argument("Invalid input");
-    }
+ProgramExecuter::ProgramExecuter(const std::vector<std::string>& args) : args(args) { }
 
-    Tokenizer tokenizer(inputHandler.getArgs()); 
-    Parser parser(tokenizer.getTokens());
-    OutputHandler outputHandler;
-    outputHandler.printResult(parser.getResult());
-    
+
+void ProgramExecuter::execute() {
+    InputReader inputReader(args[0]);
+    inputReader.readInput();
+    std::vector<std::string> commands = inputReader.getCommands();
+
+    for(auto& command : commands) {
+        Accumulator accumulator(command);
+        accumulator.accumulate();
+       
+        Parser parser(accumulator.getTokens());
+        parser.parse();
+
+        // SemanticValidator semanticValidator(parser.getCommandAST());
+        // semanticValidator.validate();
+        // if(semanticValidator.isValid() && !semanticValidator.isQueued()) {
+        //     Evaluator evaluator(parser.getCommandAST());
+        //     evaluator.evaluate();
+        //     OutputWriter outputWriter(evaluator.getResult());
+        //     outputWriter.printResult();
+        // }
+    }
 }

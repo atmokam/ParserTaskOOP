@@ -1,18 +1,24 @@
 #ifndef PROGRAMEXECUTER_HPP
 #define PROGRAMEXECUTER_HPP
 
-#include "InputHandler.hpp"
-#include "Tokenizer.hpp"
+#include <vector>
+#include <string>
+#include <iostream>
+
+#include "InputReader.hpp"
+#include "Accumulator.hpp"
 #include "Parser.hpp"
-#include "Validator.hpp"
-#include "OutputHandler.hpp"
+
 
 
 class ProgramExecuter {
+    const std::vector<std::string>& args;
 public:
     ProgramExecuter(const std::vector<std::string>& args);
-    ProgramExecuter();
     ~ProgramExecuter() = default;
+    void execute();
+
 };
+    
 
 #endif

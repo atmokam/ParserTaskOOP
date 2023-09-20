@@ -3,28 +3,16 @@
 
 #include <string>
 #include <vector>
-#include <variant>
-#include <cmath>
 #include <stdexcept>
+#include "SyntaxValidator.hpp"
 
 class Parser {
-public:
-    Parser(const std::pair<std::string, std::vector<std::variant<int, bool>>>& input);
-
-    double getResult() const noexcept;
-
 private:
-    double result = 0.0;
-
-    void add(const std::vector<std::variant<int, bool>>& operands) noexcept;
-    void subtract(const std::vector<std::variant<int, bool>>& operands) noexcept;
-    void multiply(const std::vector<std::variant<int, bool>>& operands) noexcept;
-    void divide(const std::vector<std::variant<int, bool>>& operands);
-    void power(const std::vector<std::variant<int, bool>>& operands);
-    void modulus(const std::vector<std::variant<int, bool>>& operands);
-    void booleanAnd(const std::vector<std::variant<int, bool>>& operands) noexcept;
-    void booleanNot(const std::vector<std::variant<int, bool>>& operands) noexcept;
-    void booleanOr(const std::vector<std::variant<int, bool>>& operands) noexcept;
+    std::vector<std::string> tokens;
+public:
+    Parser(std::vector<std::string> tokensGotten);
+    ~Parser() = default;
+    void parse(); // CommandAST
 };
 
 

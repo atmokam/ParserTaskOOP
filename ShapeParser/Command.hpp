@@ -5,25 +5,26 @@
 #include <unordered_map>
 #include <variant>
 #include <vector>
+#include <iostream>
 
-using ValueType = std::variant<double, std::string, std::vector<double>>; //Shape -> string, + Position
+#include "ItemAttributes.hpp"
+
+//using ValueType = std::variant<Position, Type, ID, BoundingRect, Color>;
 
 class Command {
 protected:
-    std::unordered_map<std::string, ValueType> operands;
+    std::unordered_map<std::string, std::vector<std::string>> operands;
 public:
 
-    
     virtual void execute() = 0;
     virtual void addOperandToOperands(std::string operand); 
-    virtual void addValueToOperands(std::string value, std::string operand);// converts and adds
-    
+    virtual void addValueToOperands(std::string value, std::string operand);// converts and adds    
 
+    std::unordered_map<std::string, std::vector<std::string>> getOperands() const { return operands; }
 };
 
 class AddCommand : public Command {
 public:
-
     
     void execute() override;
 };

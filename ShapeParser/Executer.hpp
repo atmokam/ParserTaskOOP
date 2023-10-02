@@ -8,6 +8,7 @@
 #include <sstream>
 
 #include "Parser.hpp"
+#include "Accumulator.hpp"
 
 class Executer
 {

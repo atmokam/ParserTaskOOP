@@ -18,11 +18,26 @@ void Executer::runProgram() {
     Parser parser;
    
     std::string line;
-    while(getline(input, line) && line != "exit") {
-        parser.parse(line);            
+    while(input >> line) {
+        
+        if(input.peek() != '\n')
+            parser.parse(line);
+         else {
+            parser.parse(line);
+            //parser.getCommand()->execute();
+            parser.reset();
+        }
     }
-    
-    
+///test
+    std::unordered_map<std::string, std::vector<std::string>> operands = parser.command->getOperands();
+    for(auto operand : operands) {
+        std::cout << operand.first << ": ";
+        for(auto value : operand.second) {
+            std::cout << value << " ";
+        }
+        std::cout << std::endl;
+    }
+//
     //parser.getCommand()->execute();
 
 }

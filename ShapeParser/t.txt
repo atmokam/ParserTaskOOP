@@ -1,1 +1,2 @@
-add -name Triangle -pos 4.2 7.3
+remove -id 0000000
+add -name triangle -pos 4.555 7.3

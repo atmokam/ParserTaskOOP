@@ -12,12 +12,14 @@
 
 
 class Parser {
-    std::unique_ptr<Command> command = nullptr;
 
     std::unique_ptr<Command> createCommand(std::string input);
+    std::string commandName = "", prevOperand = "", prevToken = "";
 public:
-    Parser() = default;
-    void parse(std::string input);
+    std::unique_ptr<Command> command = nullptr;
+    Parser();
+    void parse(std::string token);
+    void reset();
 };
 
 #endif

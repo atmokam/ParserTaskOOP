@@ -27,7 +27,7 @@ void Executer::runProgram() {
             if(!Validator::validateCommand(parser.command)) {
                 throw std::invalid_argument("Invalid command: " + parser.command->getName());
             }
-            //parser.getCommand()->execute();
+            parser.command->execute();
             parser.reset();
         }
     }

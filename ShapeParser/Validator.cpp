@@ -14,7 +14,7 @@ std::unordered_map<std::string, std::vector<std::string>> Validator::validOperan
         {"exit", {}},
         {"list", {}},
         {"save", {"-path"}},
-        {"load", {}}
+        {"load", {"-path"}}
     };
 
 std::unordered_set<std::string> Validator::shapes = {
@@ -96,11 +96,9 @@ bool Validator::validateCommand(std::shared_ptr<Command> commandToBeChecked) {
 
     } else if (commandName == "load") {
         return checkOperandQuantity(commandOperands, loadValidOperands) && checkMandatoryOperands(commandOperands, loadMandatoryOperands);
-
-    } else {
-        return false;
     }
 
+    return true;
 }
 
 bool Validator::checkOperandQuantity(std::unordered_map<std::string, std::vector<std::string>> commandOperands, std::unordered_map<std::string, size_t> validOperands) {

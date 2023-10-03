@@ -19,7 +19,7 @@ public:
 
     virtual void execute() = 0;
     virtual void addOperandToOperands(std::string operand); 
-    virtual void addValueToOperands(std::string value, std::string operand);// converts and adds    
+    virtual void addValueToOperands(std::string value, std::string operand); 
 
     std::string getName() const;
     void setName(std::string name);

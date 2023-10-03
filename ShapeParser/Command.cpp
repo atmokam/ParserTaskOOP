@@ -2,7 +2,7 @@
 
 
 void AddCommand::execute() {
-    std::cout << "AddCommand executed" << std::endl;
+    std::cout << "AddCommand executed"<< std::endl;
 }
 
 void RemoveCommand::execute() {
@@ -14,7 +14,7 @@ void DisplayCommand::execute() {
 }
 
 void ChangeCommand::execute() {
-    std::cout << "ChangeCommand executed" << std::endl;
+    std::cout << "ChangeCommand executed"<< std::endl;
 }
 
 void SaveCommand::execute() {
@@ -32,6 +32,8 @@ void ListCommand::execute() {
 void ExitCommand::execute() {
     std::cout << "ExitCommand executed" << std::endl;
 }
+
+
 
 void Command::addOperandToOperands(std::string operand) {
     operands[operand]; // in case of no value

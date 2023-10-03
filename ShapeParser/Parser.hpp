@@ -13,13 +13,13 @@
 
 class Parser {
 
-    std::unique_ptr<Command> createCommand(std::string input);
+    std::shared_ptr<Command> createCommand(std::string input);
     std::string commandName = "", prevOperand = "", prevToken = "";
 public:
-    std::unique_ptr<Command> command = nullptr;
+    std::shared_ptr<Command> command = nullptr;
     Parser();
     void parse(std::string token);
     void reset();
 };
-
+//////////
 #endif

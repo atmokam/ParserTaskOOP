@@ -40,3 +40,13 @@ void Command::addOperandToOperands(std::string operand) {
 void Command::addValueToOperands(std::string value, std::string operand) {
     operands[operand].push_back(value);
 }
+
+
+std::string Command::getName() const {
+    return name;
+}
+
+void Command::setName(std::string name) {
+    this->name = name;
+}
+

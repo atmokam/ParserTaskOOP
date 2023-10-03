@@ -17,27 +17,24 @@ std::ifstream Executer::buildStream(int count, char* args[]) {
 void Executer::runProgram() {
     Parser parser;
    
-    std::string line;
-    while(input >> line) {
+    std::string word;
+    while(input >> word && word != "exit") {
         
         if(input.peek() != '\n')
-            parser.parse(line);
+            parser.parse(word);
          else {
-            parser.parse(line);
+            parser.parse(word);
+            if(!Validator::validateCommand(parser.command)) {
+                throw std::invalid_argument("Invalid command: " + parser.command->getName());
+            }
             //parser.getCommand()->execute();
             parser.reset();
         }
     }
 ///test
-    std::unordered_map<std::string, std::vector<std::string>> operands = parser.command->getOperands();
-    for(auto operand : operands) {
-        std::cout << operand.first << ": ";
-        for(auto value : operand.second) {
-            std::cout << value << " ";
-        }
-        std::cout << std::endl;
-    }
+    
 //
     //parser.getCommand()->execute();
 
 }
+

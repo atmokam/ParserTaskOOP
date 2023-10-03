@@ -14,12 +14,15 @@
 class Command {
 protected:
     std::unordered_map<std::string, std::vector<std::string>> operands;
+    std::string name;
 public:
 
     virtual void execute() = 0;
     virtual void addOperandToOperands(std::string operand); 
     virtual void addValueToOperands(std::string value, std::string operand);// converts and adds    
 
+    std::string getName() const;
+    void setName(std::string name);
     std::unordered_map<std::string, std::vector<std::string>> getOperands() const { return operands; }
 };
 

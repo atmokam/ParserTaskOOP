@@ -17,6 +17,26 @@ class Validator {
     static std::unordered_map<std::string, std::vector<std::string>> validOperands;
     static std::unordered_set<std::string> shapes;
 
+    // quantity checking
+    static std::unordered_map<std::string, size_t> addValidOperands;
+    static std::unordered_map<std::string, size_t> removeValidOperands;
+    static std::unordered_map<std::string, size_t> changeValidOperands;
+    static std::unordered_map<std::string, size_t> displayValidOperands;    
+    static std::unordered_map<std::string, size_t> saveValidOperands;
+    static std::unordered_map<std::string, size_t> loadValidOperands;
+
+    static bool checkOperandQuantity(std::unordered_map<std::string, std::vector<std::string>> commandOperands, std::unordered_map<std::string, size_t> validOperands);
+    
+    static std::unordered_set<std::string> addMandatoryOperands;
+    static std::unordered_set<std::string> removeMandatoryOperands;
+    static std::unordered_set<std::string> changeMandatoryOperands;
+    static std::unordered_set<std::string> displayMandatoryOperands;
+    static std::unordered_set<std::string> saveMandatoryOperands;
+    static std::unordered_set<std::string> loadMandatoryOperands;
+    
+    static bool checkMandatoryOperands(std::unordered_map<std::string, std::vector<std::string>> commandOperands, std::unordered_set<std::string> validOperands);
+
+
     static bool isID(std::string inputToBeChecked);
     static bool isPosition(std::string inputToBeChecked);
     static bool isHex(std::string inputToBeChecked);
@@ -28,7 +48,7 @@ public:
     static bool isName(std::string inputToBeChecked);
     static bool isOperand(std::string inputToBeChecked, std::string commandName);
     static bool isValue(std::string inputToBeChecked, std::string operandName);
-    static bool validateCommand(std::unique_ptr<Command> commandToBeChecked);
+    static bool validateCommand(std::shared_ptr<Command> commandToBeChecked);
 };
 
 

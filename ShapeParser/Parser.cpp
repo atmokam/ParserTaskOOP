@@ -7,6 +7,7 @@ void Parser::parse(std::string token){
     
     if(commandName == "" && Validator::isName(token)){
         command = createCommand(token);
+        command->setName(token);
         commandName = token;
         prevToken = token;
     }
@@ -22,9 +23,6 @@ void Parser::parse(std::string token){
     else {
         throw std::invalid_argument("Invalid input: " + token);
     }
-        
-    //Validator::validateCommand(command); // checks against malformation, eg. missing operands
-
     
 }
 
@@ -36,32 +34,32 @@ void Parser::reset(){
 }
 
 
-std::unique_ptr<Command> Parser::createCommand(std::string input){
+std::shared_ptr<Command> Parser::createCommand(std::string input){
     if(input == "add"){
         std::cout << "Add command created" << std::endl;
-        return std::make_unique<AddCommand>();
+        return std::make_shared<AddCommand>();
 
     }
     else if(input == "remove"){
-        return std::make_unique<RemoveCommand>();
+        return std::make_shared<RemoveCommand>();
     }
     else if(input == "save"){
-        return std::make_unique<SaveCommand>();
+        return std::make_shared<SaveCommand>();
     }
     else if(input == "change"){
-        return std::make_unique<ChangeCommand>();
+        return std::make_shared<ChangeCommand>();
     }
     else if(input == "load"){
-        return std::make_unique<LoadCommand>();
+        return std::make_shared<LoadCommand>();
     }
     else if(input == "display"){
-        return std::make_unique<DisplayCommand>();
+        return std::make_shared<DisplayCommand>();
     }
     else if(input == "exit"){
-        return std::make_unique<ExitCommand>();
+        return std::make_shared<ExitCommand>();
     }
     else if(input == "list"){
-        return std::make_unique<ListCommand>();
+        return std::make_shared<ListCommand>();
     }
     else {
         throw std::invalid_argument("Invalid command: " + input);

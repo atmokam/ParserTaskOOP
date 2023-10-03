@@ -31,10 +31,6 @@ void Executer::runProgram() {
             parser.reset();
         }
     }
-///test
-    
-//
-    //parser.getCommand()->execute();
 
 }
 

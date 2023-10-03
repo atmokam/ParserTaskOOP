@@ -115,7 +115,7 @@ bool Validator::checkOperandQuantity(std::unordered_map<std::string, std::vector
 
 bool Validator::checkMandatoryOperands(std::unordered_map<std::string, std::vector<std::string>> commandOperands, std::unordered_set<std::string> validOperands) {
     for(const auto& key: validOperands){
-        if (validOperands.find(key) == validOperands.end()) {
+        if (commandOperands.find(key) == commandOperands.end()) {
             return false;
         }
     }

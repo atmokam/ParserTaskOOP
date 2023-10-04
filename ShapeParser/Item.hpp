@@ -13,19 +13,21 @@ class Item {
     ID id;
     Color color;
 
+    ID generateID();
+
 public:
-    Item(Position pos, Type type, BoundingRect boundingRect, ID id, Color color) : pos(pos), type(type), boundingRect(boundingRect), id(id), color(color) { }
+    Item(Type type, Position pos, BoundingRect boundingRect, Color color);
 
-    Position getPosition() const { return pos; }
-    Type getType() const { return type; }
-    BoundingRect getBoundingRect() const { return boundingRect; }
-    ID getID() const { return id; }
-    Color getColor() const { return color; }
+    Position getPosition() const;
+    Type getType() const;
+    BoundingRect getBoundingRect() const;
+    ID getID() const;
+    Color getColor() const;
 
-    void setPosition(Position pos) { this->pos = pos; }
-    void setType(Type type) { this->type = type; }
-    void setBoundingRect(BoundingRect boundingRect) { this->boundingRect = boundingRect; }
-    void setColor(Color color) { this->color = color; }
+    void setPosition(Position pos);
+    void setType(Type type);
+    void setBoundingRect(BoundingRect boundingRect);
+    void setColor(Color color);
 
 };
 

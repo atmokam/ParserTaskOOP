@@ -3,6 +3,11 @@
 
 void AddCommand::execute() {
     std::cout << "AddCommand executed"<< std::endl;
+    std::shared_ptr<Item> item = createItem();
+    std::cout << "Item created" << std::endl;
+    //std:: cout << "Item wh: " << item->getBoundingRect().height << item->getBoundingRect().width << std::endl;
+
+
 }
 
 void RemoveCommand::execute() {
@@ -50,5 +55,15 @@ std::string Command::getName() const {
 
 void Command::setName(std::string name) {
     this->name = name;
+}
+
+std::shared_ptr<Item> AddCommand::createItem() {
+    // return std::make_shared<Item>(
+        if(Converter::convertToType(operands["-name"]) == Type::Rectangle){
+            std::cout << "Circle created" << std::endl;
+        }
+        std::cout << Converter::convertToPosition(operands["-pos"]).getCoordinates()[0] << std::endl;
+        std::cout << Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0]).height << std::endl;
+        std::cout << Converter::convertToColor(operands["-lcolor"][0], operands["-fcolor"][0]).hexFillColor;
 }
 

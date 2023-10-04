@@ -6,8 +6,11 @@
 #include <variant>
 #include <vector>
 #include <iostream>
+#include <memory>
 
 #include "ItemAttributes.hpp"
+#include "Item.hpp"
+#include "Converter.hpp"
 
 //using ValueType = std::variant<Position, Type, ID, BoundingRect, Color>;
 
@@ -30,6 +33,7 @@ class AddCommand : public Command {
 public:
     
     void execute() override;
+    std::shared_ptr<Item> createItem();
 };
 
 class RemoveCommand : public Command {
@@ -72,7 +76,7 @@ public:
 class ExitCommand : public Command {
 public:
     
-    void execute() override;
+    void execute() override;  // should I have this?
 };
 
 

@@ -14,21 +14,23 @@ std::ifstream Executer::buildStream(int count, char* args[]) {
 
 }
 
+// TODO: add trim method for trailing whitespaces
+
 void Executer::runProgram() {
     Parser parser;
    
     std::string word;
     while(input >> word && word != "exit") {
         
-        if(input.peek() != '\n')
-            parser.parse(word);
-         else {
+        if(input.peek() == '\n' || input.peek() == EOF){
             parser.parse(word);
             if(!Validator::validateCommand(parser.command)) {
                 throw std::invalid_argument("Invalid command: " + parser.command->getName());
             }
             parser.command->execute();
             parser.reset();
+        } else {
+            parser.parse(word);
         }
     }
 

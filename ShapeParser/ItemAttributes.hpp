@@ -13,7 +13,7 @@ public:
 };
 
 enum class Type {
-    Rectangle, Square, Circle, Ellipse, Line, Triangle
+    Rectangle, Trapezoid, Ellipse, Line, Triangle
 };
 
 struct BoundingRect {

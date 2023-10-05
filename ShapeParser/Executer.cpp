@@ -1,6 +1,6 @@
 #include "Executer.hpp"
 
-Executer::Executer(int count, char* args[]) : stream(buildStream(count, args)), input(stream.is_open() ? stream : std::cin) { }
+Executer::Executer(int count, char* args[], std::shared_ptr<Slide> slide) : stream(buildStream(count, args)), input(stream.is_open() ? stream : std::cin), slide(slide) { }
 
 
 std::ifstream Executer::buildStream(int count, char* args[]) {
@@ -18,7 +18,7 @@ std::ifstream Executer::buildStream(int count, char* args[]) {
 
 void Executer::runProgram() {
     Parser parser;
-   
+    
     std::string word;
     while(input >> word && word != "exit") {
         
@@ -27,7 +27,7 @@ void Executer::runProgram() {
             if(!Validator::validateCommand(parser.command)) {
                 throw std::invalid_argument("Invalid command: " + parser.command->getName());
             }
-            parser.command->execute();
+            parser.command->execute(slide);
             parser.reset();
         } else {
             parser.parse(word);

@@ -7,6 +7,7 @@ class Position {
     std::vector<double> coordinates;
 public:
     Position(std::vector<double> coordinates) : coordinates(coordinates) { }
+    Position() = default;
 
     std::vector<double> getCoordinates() const { return coordinates; }
     void setCoordinates(std::vector<double> coordinates) { this->coordinates = coordinates; }
@@ -24,8 +25,8 @@ struct BoundingRect {
 using ID = int; // 8 digit number
 
 struct Color {
-    int hexLineColor;
-    int hexFillColor;
+    long hexLineColor = 0;
+    long hexFillColor = 0; // black by default
 };
 
 #endif

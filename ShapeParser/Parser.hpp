@@ -7,7 +7,6 @@
 #include <vector>
 
 #include "Command.hpp"
-#include "Accumulator.hpp"
 #include "Validator.hpp"
 
 
@@ -21,5 +20,5 @@ public:
     void parse(std::string token);
     void reset();
 };
-//////////
+
 #endif

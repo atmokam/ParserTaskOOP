@@ -36,9 +36,7 @@ void Parser::reset(){
 
 std::shared_ptr<Command> Parser::createCommand(std::string input){
     if(input == "add"){
-        std::cout << "Add command created" << std::endl;
         return std::make_shared<AddCommand>();
-
     }
     else if(input == "remove"){
         return std::make_shared<RemoveCommand>();

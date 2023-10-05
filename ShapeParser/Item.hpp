@@ -16,6 +16,7 @@ class Item {
     ID generateID();
 
 public:
+    Item() = default;   
     Item(Type type, Position pos, BoundingRect boundingRect, Color color);
 
     Position getPosition() const;

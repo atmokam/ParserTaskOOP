@@ -6,17 +6,20 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <memory>
+
 
 #include "Parser.hpp"
-#include "Accumulator.hpp"
+#include "Slide.hpp"
 
 class Executer
 {
     std::ifstream stream;
     std::istream& input;
+    std::shared_ptr<Slide> slide;
 public:
     Executer() = default;
-    Executer(int count, char* args[]);
+    Executer(int count, char* args[], std::shared_ptr<Slide> slide);
     void runProgram();
     static std::ifstream buildStream(int count, char* args[]);
 

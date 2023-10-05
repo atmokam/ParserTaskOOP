@@ -3,7 +3,6 @@
 
 #include <string>
 #include <unordered_map>
-#include <variant>
 #include <vector>
 #include <iostream>
 #include <memory>
@@ -11,16 +10,17 @@
 #include "ItemAttributes.hpp"
 #include "Item.hpp"
 #include "Converter.hpp"
+#include "Slide.hpp"
 
-//using ValueType = std::variant<Position, Type, ID, BoundingRect, Color>;
 
 class Command {
 protected:
     std::unordered_map<std::string, std::vector<std::string>> operands;
     std::string name;
+
 public:
 
-    virtual void execute() = 0;
+    virtual void execute(std::shared_ptr<Slide> slide) = 0;
     virtual void addOperandToOperands(std::string operand); 
     virtual void addValueToOperands(std::string value, std::string operand); 
 
@@ -32,7 +32,7 @@ public:
 class AddCommand : public Command {
 public:
     
-    void execute() override;
+    void execute(std::shared_ptr<Slide> slide) override;
     std::shared_ptr<Item> createItem();
 };
 
@@ -40,43 +40,44 @@ class RemoveCommand : public Command {
 
 public:
     
-    void execute() override;
+    void execute(std::shared_ptr<Slide> slide) override;
+    int getItemID();
 };
 
 class DisplayCommand : public Command {
 public:
     
-    void execute() override;
+    void execute(std::shared_ptr<Slide> slide) override;
 };
 
 class ChangeCommand : public Command {
 public:
     
-    void execute() override;
+    void execute(std::shared_ptr<Slide> slide) override;
 };
 
 class SaveCommand : public Command {
 public:
     
-    void execute() override;
+    void execute(std::shared_ptr<Slide> slide) override;
 };
 
 class LoadCommand : public Command {
 public:
     
-    void execute() override;
+    void execute(std::shared_ptr<Slide> slide) override;
 };
 
 class ListCommand : public Command {
 public:
     
-    void execute() override;
+    void execute(std::shared_ptr<Slide> slide) override;
 };
 
 class ExitCommand : public Command {
 public:
     
-    void execute() override;  // should I have this?
+    void execute(std::shared_ptr<Slide> slide) override;  // should I have this?
 };
 
 

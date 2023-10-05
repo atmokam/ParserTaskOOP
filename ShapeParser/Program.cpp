@@ -5,7 +5,8 @@
 int main(int count, char* args[])
 {
     try {
-        Executer executer(count, args);
+        std::shared_ptr<Slide> slide = std::make_shared<Slide>();
+        Executer executer(count, args, slide);
         executer.runProgram();
     }
     catch (const std::exception& e) {

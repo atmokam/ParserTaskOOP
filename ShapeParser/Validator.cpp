@@ -3,7 +3,7 @@
 
 // general checking
 std::unordered_set<std::string> Validator::commands = {
-        "add", "remove", "change", "display", "exit", "list", "save", "load"
+        "add", "remove", "change", "display", "list", "save", "load"
     };
 
 std::unordered_map<std::string, std::vector<std::string>> Validator::validOperands = {
@@ -38,7 +38,7 @@ std::unordered_map<std::string, size_t> Validator::changeValidOperands = {
     };
 
 std::unordered_map<std::string, size_t> Validator::displayValidOperands = {
-        {"-id", 0}
+        {"-id", 1} // used to be 0
     };
 
 std::unordered_map<std::string, size_t> Validator::saveValidOperands = {
@@ -107,7 +107,6 @@ bool Validator::checkOperandQuantity(std::unordered_map<std::string, std::vector
             return false;
         }
     }
-
     return true;
 }
 

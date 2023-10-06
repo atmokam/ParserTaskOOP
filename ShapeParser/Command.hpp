@@ -11,6 +11,7 @@
 #include "Item.hpp"
 #include "Converter.hpp"
 #include "Slide.hpp"
+#include "OutputPrinter.hpp"
 
 
 class Command {
@@ -41,13 +42,14 @@ class RemoveCommand : public Command {
 public:
     
     void execute(std::shared_ptr<Slide> slide) override;
-    int getItemID();
+    int getItemID() ;
 };
 
 class DisplayCommand : public Command {
 public:
     
     void execute(std::shared_ptr<Slide> slide) override;
+    void displayItem(std::shared_ptr<Item> item);
 };
 
 class ChangeCommand : public Command {

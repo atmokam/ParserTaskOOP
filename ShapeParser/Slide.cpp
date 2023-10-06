@@ -13,6 +13,9 @@ void Slide::removeItem(int id) {
     items.erase(id);
 }
 
+std::shared_ptr<Item> Slide::getItem(int id) const {
+    return items.at(id);
+}
 
 
 

@@ -16,6 +16,7 @@ public:
     Slide() = default;
 
     std::unordered_map<int, std::shared_ptr<Item>> getItems() const;
+    std::shared_ptr<Item> getItem(int id) const;
     
     void addItem(std::shared_ptr<Item> item);
     void removeItem(int id);

@@ -15,7 +15,16 @@ void RemoveCommand::execute(std::shared_ptr<Slide> slide) {
 
 void DisplayCommand::execute(std::shared_ptr<Slide> slide) {
     std::cout << "DisplayCommand executed" << std::endl;
-   // add conversion to string
+    if(operands.find("-id") != operands.end()){
+        std::shared_ptr<Item> item = slide->getItem(std::stoi(operands["-id"][0]));
+        displayItem(item);
+    }
+    else{
+        std::unordered_map<int, std::shared_ptr<Item>> items = slide->getItems();
+        for(auto item : items){
+            displayItem(item.second);
+        }
+    }
 }
 
 void ChangeCommand::execute(std::shared_ptr<Slide> slide) {
@@ -74,5 +83,14 @@ std::shared_ptr<Item> AddCommand::createItem() {
 
 int RemoveCommand::getItemID() {
     return std::stoi(operands["-id"][0]);
+}
+ 
+void DisplayCommand::displayItem(std::shared_ptr<Item> item) {
+    std::cout << "ID: " << item->getID() << std::endl;
+    std::cout << "Type: " << ShapeType{item->getType()} << std::endl;
+    std::cout << "Position: " << item->getPosition() << std::endl;
+    std::cout << "Bounding Rectangle: " << item->getBoundingRect() << std::endl;
+    std::cout << "Color: " << item->getColor() << std::endl;
+    std::cout << std::endl;
 }
 

@@ -58,6 +58,12 @@ void LoadCommand::execute(std::shared_ptr<Slide> slide) {
 
 void ListCommand::execute(std::shared_ptr<Slide> slide) {
     std::cout << "ListCommand executed" << std::endl;
+    
+    std::unordered_map<int, std::shared_ptr<Item>> items = slide->getItems();
+    for(auto item : items) {
+        displayItem(item.second);
+    }
+    
 }
 
 
@@ -109,4 +115,15 @@ void DisplayCommand::displayItem(std::shared_ptr<Item> item) {
     std::cout << "Color: " << item->getColor() << std::endl;
     std::cout << std::endl;
 }
+
+
+void ListCommand::displayItem(std::shared_ptr<Item> item) {
+    std::cout << "ID: " << item->getID() << std::endl;
+    std::cout << "Type: " << ShapeType{item->getType()} << std::endl;
+    std::cout << "Position: " << item->getPosition() << std::endl;
+    std::cout << "Bounding Rectangle: " << item->getBoundingRect() << std::endl;
+    std::cout << "Color: " << item->getColor() << std::endl;
+    std::cout << std::endl;
+}
+
 

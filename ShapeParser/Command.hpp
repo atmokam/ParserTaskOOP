@@ -75,6 +75,8 @@ class ListCommand : public Command {
 public:
     
     void execute(std::shared_ptr<Slide> slide) override;
+    void displayItem(std::shared_ptr<Item> item);
+
 };
 
 

@@ -6,12 +6,13 @@
 #include <vector>
 #include <iostream>
 #include <memory>
+#include <fstream>
 
 #include "ItemAttributes.hpp"
 #include "Item.hpp"
 #include "Converter.hpp"
 #include "Slide.hpp"
-#include "OutputPrinter.hpp"
+
 
 
 class Command {
@@ -76,11 +77,6 @@ public:
     void execute(std::shared_ptr<Slide> slide) override;
 };
 
-class ExitCommand : public Command {
-public:
-    
-    void execute(std::shared_ptr<Slide> slide) override;  // should I have this?
-};
 
 
 #endif

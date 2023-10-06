@@ -24,10 +24,10 @@ void Executer::runProgram() {
         
         if(input.peek() == '\n' || input.peek() == EOF){
             parser.parse(word);
-            if(!Validator::validateCommand(parser.command)) {
-                throw std::invalid_argument("Invalid command: " + parser.command->getName());
+            if(!Validator::validateCommand(parser.getCommand())) {
+                throw std::invalid_argument("Invalid command: " + parser.getCommand()->getName());
             }
-            parser.command->execute(slide);
+            parser.getCommand()->execute(slide);
             parser.reset();
         } else {
             parser.parse(word);

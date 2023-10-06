@@ -1,4 +1,5 @@
 add -name triangle -pos 4.555, 7.3 -w 45 -h 45
 change -id 00000000 -name triangle -pos 4.555 7.3 -w 45 -h 45
 add -name rectangle -pos 4.555, 7.3 -w 45 -h 45 -lcolor #ff0000 -fcolor #00ff00
-display
+display -id 00000002
+save -path /home/atmokam/Desktop/

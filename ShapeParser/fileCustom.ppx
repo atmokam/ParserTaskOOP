@@ -1,2 +1,3 @@
-remove -id 00000000
 add -name triangle -pos 4.555 7.3 65 -w 1.2 -h 2.3
+display
+save -path /home/atmokam/Desktop/ 

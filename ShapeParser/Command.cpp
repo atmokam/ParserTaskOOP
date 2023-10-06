@@ -2,19 +2,16 @@
 
 
 void AddCommand::execute(std::shared_ptr<Slide> slide) {
-    std::cout << "AddCommand executed"<< std::endl;
     std::shared_ptr<Item> item = createItem();
     slide->addItem(item);
 }
 
 void RemoveCommand::execute(std::shared_ptr<Slide> slide) {
-    std::cout << "RemoveCommand executed" << std::endl;
     slide->removeItem(getItemID());
 
 }
 
 void DisplayCommand::execute(std::shared_ptr<Slide> slide) {
-    std::cout << "DisplayCommand executed" << std::endl;
     if(operands.find("-id") != operands.end()){
         std::shared_ptr<Item> item = slide->getItem(std::stoi(operands["-id"][0]));
         displayItem(item);
@@ -33,6 +30,26 @@ void ChangeCommand::execute(std::shared_ptr<Slide> slide) {
 
 void SaveCommand::execute(std::shared_ptr<Slide> slide) {
     std::cout << "SaveCommand executed" << std::endl;
+
+    std::ofstream file;
+    if(operands.find("-path") != operands.end()){
+        file.open(operands["-path"][0] + "output.txt", std::ios_base::app);
+
+    }
+    
+    if(!file.is_open()){
+        throw std::invalid_argument("Invalid path");
+    }
+
+    std::unordered_map<int, std::shared_ptr<Item>> items = slide->getItems();
+    for(auto& [id, item] : items){ // add a function to separate this part
+        file << "ID: " << item->getID() << std::endl;
+        file << "Type: " << ShapeType{item->getType()} << std::endl;
+        file << "Position: " << item->getPosition() << std::endl;
+        file << "Bounding Rectangle: " << item->getBoundingRect() << std::endl;
+        file << "Color: " << item->getColor() << std::endl;
+        file << std::endl;
+    }
 }
 
 void LoadCommand::execute(std::shared_ptr<Slide> slide) {
@@ -41,10 +58,6 @@ void LoadCommand::execute(std::shared_ptr<Slide> slide) {
 
 void ListCommand::execute(std::shared_ptr<Slide> slide) {
     std::cout << "ListCommand executed" << std::endl;
-}
-
-void ExitCommand::execute(std::shared_ptr<Slide> slide) {
-    std::cout << "ExitCommand executed" << std::endl;
 }
 
 
@@ -70,14 +83,14 @@ void Command::setName(std::string name) {
 
 
 std::shared_ptr<Item> AddCommand::createItem() {
-        Type type = Type{Converter::convertToType(operands["-name"])};
-        Position pos = Position{Converter::convertToPosition(operands["-pos"]).getCoordinates()};
-        BoundingRect bounds = BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])};
-        Color color;
-        if(operands.find("-lcolor") != operands.end() && operands.find("-fcolor") != operands.end()){
-            color = Color{Converter::convertToColor(operands["-lcolor"][0], operands["-fcolor"][0])};
-        } // change so it can take one of these at a time as well
-        return std::make_shared<Item>(type, pos, bounds, color);
+    Type type = Type{Converter::convertToType(operands["-name"])};
+    Position pos = Position{Converter::convertToPosition(operands["-pos"]).getCoordinates()};
+    BoundingRect bounds = BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])};
+    Color color;
+    if(operands.find("-lcolor") != operands.end() && operands.find("-fcolor") != operands.end()){
+        color = Color{Converter::convertToColor(operands["-lcolor"][0], operands["-fcolor"][0])};
+    } // change so it can take one of these at a time as well
+    return std::make_shared<Item>(type, pos, bounds, color);
 
 }
 

@@ -53,9 +53,6 @@ std::shared_ptr<Command> Parser::createCommand(std::string input){
     else if(input == "display"){
         return std::make_shared<DisplayCommand>();
     }
-    else if(input == "exit"){
-        return std::make_shared<ExitCommand>();
-    }
     else if(input == "list"){
         return std::make_shared<ListCommand>();
     }
@@ -66,3 +63,5 @@ std::shared_ptr<Command> Parser::createCommand(std::string input){
 
 
 Parser::Parser() { reset(); }
+
+std::shared_ptr<Command> Parser::getCommand() const { return command; }

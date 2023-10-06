@@ -14,7 +14,7 @@ public:
     static Type convertToType(const std::vector<std::string>& values);
     static ID convertToID(const std::vector<std::string>& values);
     static BoundingRect convertToBoundingRect(const std::string& width, const std::string& height);
-    static Color convertToColor(const std::string& lColor, const std::string& fColor);
+    static long convertToColor(const std::string& color);
 };
 
 #endif

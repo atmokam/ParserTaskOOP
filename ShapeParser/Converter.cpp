@@ -31,10 +31,9 @@ BoundingRect Converter::convertToBoundingRect(const std::string& width, const st
     return BoundingRect{std::stod(width), std::stod(height)};
 }
 
-Color Converter::convertToColor(const std::string& lColor, const std::string& fColor) {
-    long line = std::stol(lColor.substr(1), nullptr, 16);
-    long fill = std::stol(fColor.substr(1), nullptr, 16);
-    return Color{line, fill};
+long Converter::convertToColor(const std::string& color) {
+    long converted = std::stol(color.substr(1), nullptr, 16);    
+    return converted;
 }
 
 

@@ -87,9 +87,12 @@ std::shared_ptr<Item> AddCommand::createItem() {
     Position pos = Position{Converter::convertToPosition(operands["-pos"]).getCoordinates()};
     BoundingRect bounds = BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])};
     Color color;
-    if(operands.find("-lcolor") != operands.end() && operands.find("-fcolor") != operands.end()){
-        color = Color{Converter::convertToColor(operands["-lcolor"][0], operands["-fcolor"][0])};
-    } // change so it can take one of these at a time as well
+    if(operands.find("-lcolor") != operands.end()){
+        color.hexLineColor = Converter::convertToColor(operands["-lcolor"][0]);
+    }
+    if (operands.find("-fcolor") != operands.end()){
+        color.hexFillColor = Converter::convertToColor(operands["-fcolor"][0]);
+    }
     return std::make_shared<Item>(type, pos, bounds, color);
 
 }

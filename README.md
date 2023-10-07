@@ -1,5 +1,4 @@
 ## OOP parser task
-Parser task
 [] - optionals indicated
 
 To run: 

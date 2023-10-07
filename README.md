@@ -19,6 +19,7 @@ display -id <id>
 
 list
 ```
-
+```
 TODO: add LoadCommand, figure out what it does
-      
+      add trim method for trailing whitespaces in file input lines
+```

@@ -5,7 +5,7 @@ Parser task
 To run: 
 1) with file, ./prog -filename <path>
 2) without file, ./prog
-
+```
 add -name <shape> -pos <position> -w <width> -h <height> [-lcolor <hex color> -fcolor <hex color>]
 
 remove -id <id>
@@ -19,7 +19,7 @@ display
 display -id <id>
 
 list
-
+```
 
 TODO: add LoadCommand, figure out what it does
       

@@ -28,7 +28,8 @@ public:
     void setPosition(Position pos);
     void setType(Type type);
     void setBoundingRect(BoundingRect boundingRect);
-    void setColor(Color color);
+    void setFillColor(long color);
+    void setLineColor(long color);
 
 };
 

@@ -38,8 +38,12 @@ void Item::setBoundingRect(BoundingRect boundingRect) {
     this->boundingRect = boundingRect;
 }
 
-void Item::setColor(Color color) {
-    this->color = color;
+void Item::setFillColor(long color) {
+    this->color.hexFillColor = color;
+}
+
+void Item::setLineColor(long color) {
+    this->color.hexLineColor = color;
 }
 
 

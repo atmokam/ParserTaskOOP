@@ -32,7 +32,7 @@ struct BoundingRect {
     double height;
 };
 
-using ID = int; // 8 digit number
+using ID = int;            // 8 digit number
 
 struct Color {
     long hexLineColor = 0;

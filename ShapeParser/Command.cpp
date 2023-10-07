@@ -25,12 +25,24 @@ void DisplayCommand::execute(std::shared_ptr<Slide> slide) {
 }
 
 void ChangeCommand::execute(std::shared_ptr<Slide> slide) {
-    std::cout << "ChangeCommand executed"<< std::endl;
+    if(operands.find("-pos") != operands.end()){
+        slide->getItem(std::stoi(operands["-id"][0]))->setPosition(Converter::convertToPosition(operands["-pos"]));
+    }
+    if(operands.find("-name") != operands.end()){
+        slide->getItem(std::stoi(operands["-id"][0]))->setType(Type{Converter::convertToType(operands["-name"])});
+    }
+    if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end()){
+        slide->getItem(std::stoi(operands["-id"][0]))->setBoundingRect(BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])});
+    }
+    if(operands.find("-lcolor") != operands.end()){
+        slide->getItem(std::stoi(operands["-id"][0]))->setLineColor(Converter::convertToColor(operands["-lcolor"][0]));
+    }
+    if(operands.find("-fcolor") != operands.end()){
+        slide->getItem(std::stoi(operands["-id"][0]))->setFillColor(Converter::convertToColor(operands["-fcolor"][0]));
+    }
 }
 
 void SaveCommand::execute(std::shared_ptr<Slide> slide) {
-    std::cout << "SaveCommand executed" << std::endl;
-
     std::ofstream file;
     if(operands.find("-path") != operands.end()){
         file.open(operands["-path"][0] + "output.txt", std::ios_base::app);
@@ -42,7 +54,7 @@ void SaveCommand::execute(std::shared_ptr<Slide> slide) {
     }
 
     std::unordered_map<int, std::shared_ptr<Item>> items = slide->getItems();
-    for(auto& [id, item] : items){ // add a function to separate this part
+    for(auto& [id, item] : items){                          // add a function to separate this part
         file << "ID: " << item->getID() << std::endl;
         file << "Type: " << ShapeType{item->getType()} << std::endl;
         file << "Position: " << item->getPosition() << std::endl;
@@ -52,12 +64,11 @@ void SaveCommand::execute(std::shared_ptr<Slide> slide) {
     }
 }
 
-void LoadCommand::execute(std::shared_ptr<Slide> slide) {
+void LoadCommand::execute(std::shared_ptr<Slide> slide) { // should this start everything over?
     std::cout << "LoadCommand executed" << std::endl;
 }
 
 void ListCommand::execute(std::shared_ptr<Slide> slide) {
-    std::cout << "ListCommand executed" << std::endl;
     
     std::unordered_map<int, std::shared_ptr<Item>> items = slide->getItems();
     for(auto item : items) {
@@ -69,7 +80,7 @@ void ListCommand::execute(std::shared_ptr<Slide> slide) {
 
 
 void Command::addOperandToOperands(std::string operand) {
-    operands[operand]; // in case of no value
+    operands[operand];                           // in case of no value
 }
 
 void Command::addValueToOperands(std::string value, std::string operand) {
@@ -89,9 +100,13 @@ void Command::setName(std::string name) {
 
 
 std::shared_ptr<Item> AddCommand::createItem() {
+
     Type type = Type{Converter::convertToType(operands["-name"])};
+
     Position pos = Position{Converter::convertToPosition(operands["-pos"]).getCoordinates()};
+
     BoundingRect bounds = BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])};
+    
     Color color;
     if(operands.find("-lcolor") != operands.end()){
         color.hexLineColor = Converter::convertToColor(operands["-lcolor"][0]);

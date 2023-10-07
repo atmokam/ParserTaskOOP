@@ -45,7 +45,7 @@ void ChangeCommand::execute(std::shared_ptr<Slide> slide) {
 void SaveCommand::execute(std::shared_ptr<Slide> slide) {
     std::ofstream file;
     if(operands.find("-path") != operands.end()){
-        file.open(operands["-path"][0] + "output.txt", std::ios_base::app);
+        file.open(operands["-path"][0] + "output.ppx", std::ios_base::app);
 
     }
     

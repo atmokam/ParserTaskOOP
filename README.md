@@ -1,9 +1,10 @@
 ## OOP parser task
-[] - optionals indicated
 
 To run: 
-1) with file, ./prog -filename <path>
-2) without file, ./prog
+1) with file, `./prog -filename <path>`
+2) without file, `./prog`
+
+[] - optionals indicated
 ```
 add -name <shape> -pos <position> -w <width> -h <height> [-lcolor <hex color> -fcolor <hex color>]
 

@@ -40,7 +40,7 @@ class Validator {
     static bool isID(std::string inputToBeChecked);
     static bool isPosition(std::string inputToBeChecked);
     static bool isHex(std::string inputToBeChecked);
-    static bool isRadius(std::string inputToBeChecked);
+    static bool isInteger(std::string inputToBeChecked);
     static bool isPath(std::string inputToBeChecked);
     static bool isFilename(std::string inputToBeChecked);
 

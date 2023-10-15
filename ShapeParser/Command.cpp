@@ -47,32 +47,32 @@ void SaveCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<Vi
     
     auto path = operands["-path"][0];
     auto filename = operands["-filename"][0];
-    file.open(path + filename);
+    file.open(path + filename + ".ppx");
 
     if(!file.is_open()){
         throw std::invalid_argument("Invalid path or filename");
     }
 
-    std::cout << "saved"<<std::endl;
+    file << "slide: " << view->currentSlideNumber << std::endl;
 
     std::unordered_map<int, std::shared_ptr<Item>> items = getSlide(document, view)->getItems();
     // save to file 
-    //saveToFile(file, items);
-    
+    saveToFile(file, document->getSlide(view->currentSlideNumber)->getItems());
+
 }
 
-// void SaveCommand::saveToFile(std::ofstream& file, std::unordered_map<int, std::shared_ptr<Item>> items) {
-//     for(auto item : items){
-//         file << item.second->getID() << std::endl;
-//         file << ShapeType{item.second->getType()} << std::endl;
-//         file << item.second->getPosition() << std::endl;
-//         file << item.second->getBoundingRect() << std::endl;
-//         file << item.second->getColor() << std::endl;
-//         file << std::endl;
-//     }
-// }
+void SaveCommand::saveToFile(std::ofstream& file, const std::unordered_map<int, std::shared_ptr<Item>>& items) {
+    for(auto item : items) {
+        file << item.second->getID() << std::endl;
+        file << ShapeType{item.second->getType()} << std::endl;
+        file << item.second->getPosition() << std::endl;
+        file << item.second->getBoundingRect() << std::endl;
+        file << item.second->getColor() << std::endl;
+        file << std::endl;
+    }
+}
 
-void LoadCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) { // should this start everything over?
+void LoadCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) { 
     std::cout << "LoadCommand executed" << std::endl;
 }
 

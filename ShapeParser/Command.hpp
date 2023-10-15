@@ -66,6 +66,7 @@ class SaveCommand : public Command {
 public:
     
     void execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) override;
+    void saveToFile(std::ofstream& file, const std::unordered_map<int, std::shared_ptr<Item>>& items);
 };
 
 class LoadCommand : public Command {

@@ -1,13 +1,17 @@
 slide: 0
-2
-Rectangle
- at indices ( 4.555, 7.3 )
-Width: 45, Height: 45
-Line color: #0, Fill color: #ff0000
+id:2
+type: Rectangle
+indices: 4.555, 7.3
+width: 45
+height: 45
+line color: #0
+fill color: #fff000
 
-1
-Rectangle
- at indices ( 45, 7.3 )
-Width: 100, Height: 45
-Line color: #ff0000, Fill color: #0
+id:1
+type: Rectangle
+indices: 45, 7.3
+width: 100
+height: 45
+line color: #ff0000
+fill color: #0
 

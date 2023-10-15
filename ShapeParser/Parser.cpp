@@ -62,6 +62,4 @@ std::shared_ptr<Command> Parser::createCommand(std::string input){
 }
 
 
-Parser::Parser() { reset(); }
-
 std::shared_ptr<Command> Parser::getCommand() const { return command; }

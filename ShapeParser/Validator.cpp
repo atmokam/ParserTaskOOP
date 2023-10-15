@@ -13,7 +13,7 @@ std::unordered_map<std::string, std::vector<std::string>> Validator::validOperan
         {"display", {"-id"}},
         {"exit", {}},
         {"list", {}},
-        {"save", {"-path"}},
+        {"save", {"-path", "-filename"}},
         {"load", {"-path"}}
     };
 
@@ -38,11 +38,12 @@ std::unordered_map<std::string, size_t> Validator::changeValidOperands = {
     };
 
 std::unordered_map<std::string, size_t> Validator::displayValidOperands = {
-        {"-id", 1} // used to be 0
+        {"-id", 1} 
     };
 
 std::unordered_map<std::string, size_t> Validator::saveValidOperands = {
-        {"-path", 1}
+        {"-path", 1},
+        {"-filename", 1}
     };
 
 std::unordered_map<std::string, size_t> Validator::loadValidOperands = {
@@ -65,7 +66,7 @@ std::unordered_set<std::string> Validator::changeMandatoryOperands = {
     };
 
 std::unordered_set<std::string> Validator::saveMandatoryOperands = {
-        "-path"
+        "-path", "-filename"
     };
 
 std::unordered_set<std::string> Validator::loadMandatoryOperands = {
@@ -159,6 +160,10 @@ bool Validator::isPath(std::string inputToBeChecked) {
     return file.good();
 }
 
+bool Validator::isFilename(std::string inputToBeChecked) {
+    return std::all_of(inputToBeChecked.begin(), inputToBeChecked.end(), isalnum);
+}
+
 
 
 bool Validator::isValue(std::string inputToBeChecked, std::string operandName) {
@@ -187,7 +192,10 @@ bool Validator::isValue(std::string inputToBeChecked, std::string operandName) {
     } else if (operandName == "-w" || operandName == "-h") {
         return isPosition(inputToBeChecked);
 
-    } else {
+    } else if (operandName == "-filename") {
+        return isFilename(inputToBeChecked);
+    }
+    else {
         return false;
     }
 }

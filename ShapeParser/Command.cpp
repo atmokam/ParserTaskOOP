@@ -63,7 +63,7 @@ void SaveCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<Vi
 
 void SaveCommand::saveToFile(std::ofstream& file, const std::unordered_map<int, std::shared_ptr<Item>>& items) {
     for(auto item : items) {
-        file << item.second->getID() << std::endl;
+        file << "id:" << item.second->getID() << std::endl;
         file << ShapeType{item.second->getType()} << std::endl;
         file << item.second->getPosition() << std::endl;
         file << item.second->getBoundingRect() << std::endl;

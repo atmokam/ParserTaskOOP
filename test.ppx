@@ -1,0 +1,13 @@
+slide: 0
+2
+Rectangle
+ at indices ( 4.555, 7.3 )
+Width: 45, Height: 45
+Line color: #0, Fill color: #ff0000
+
+1
+Rectangle
+ at indices ( 45, 7.3 )
+Width: 100, Height: 45
+Line color: #ff0000, Fill color: #0
+

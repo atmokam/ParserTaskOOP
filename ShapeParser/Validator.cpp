@@ -9,7 +9,7 @@ std::unordered_set<std::string> Validator::commands = {
 std::unordered_map<std::string, std::vector<std::string>> Validator::validOperands = {
         {"add", {"-name", "-pos", "-lcolor", "-fcolor", "-radius", "-w", "-h"}},
         {"remove", {"-id"}},
-        {"change", {"-id", "-name", "-pos", "-lcolor", "-fcolor", "-radius", "-w", "-h"}},
+        {"change", {"-id", "-slide", "-name", "-pos", "-lcolor", "-fcolor", "-radius", "-w", "-h"}},
         {"display", {"-id"}},
         {"exit", {}},
         {"list", {}},
@@ -34,7 +34,7 @@ std::unordered_map<std::string, size_t> Validator::removeValidOperands = {
     };
 
 std::unordered_map<std::string, size_t> Validator::changeValidOperands = {
-        {"-id", 1}, {"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-radius", 1}, {"-w", 1}, {"-h", 1}
+        {"-id", 1}, {"-slide", 1}, {"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-radius", 1}, {"-w", 1}, {"-h", 1}
     };
 
 std::unordered_map<std::string, size_t> Validator::displayValidOperands = {
@@ -62,7 +62,7 @@ std::unordered_set<std::string> Validator::removeMandatoryOperands = {
     };
 
 std::unordered_set<std::string> Validator::changeMandatoryOperands = {
-        "-id"
+        
     };
 
 std::unordered_set<std::string> Validator::saveMandatoryOperands = {
@@ -151,7 +151,7 @@ bool Validator::isHex(std::string inputToBeChecked) {
     return inputToBeChecked.size() == 7 && inputToBeChecked[0] == '#' && std::all_of(inputToBeChecked.begin() + 1, inputToBeChecked.end(), isxdigit);
 }
 
-bool Validator::isRadius(std::string inputToBeChecked) {
+bool Validator::isInteger(std::string inputToBeChecked) {
     return std::all_of(inputToBeChecked.begin(), inputToBeChecked.end(), isdigit);
 }
 
@@ -184,7 +184,7 @@ bool Validator::isValue(std::string inputToBeChecked, std::string operandName) {
         return isHex(inputToBeChecked);
 
     } else if (operandName == "-radius") {
-        return isRadius(inputToBeChecked);
+        return isInteger(inputToBeChecked);
 
     } else if (operandName == "-path") {
         return isPath(inputToBeChecked);
@@ -194,6 +194,9 @@ bool Validator::isValue(std::string inputToBeChecked, std::string operandName) {
 
     } else if (operandName == "-filename") {
         return isFilename(inputToBeChecked);
+        
+    } else if (operandName == "-slide") {
+        return isInteger(inputToBeChecked);
     }
     else {
         return false;

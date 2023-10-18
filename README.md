@@ -12,7 +12,7 @@ remove -id <id>
 
 change -id <id> <any operands to be changed>
 
-save -path <path>, this will save to output.ppx
+save -path <path> -filename <name>
 
 display
 

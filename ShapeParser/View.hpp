@@ -12,15 +12,17 @@
 
 class View {
 public:
+    View(std::shared_ptr<Document> document);
     View() = default;
 
     size_t currentSlideNumber = 0;
+    std::shared_ptr<Slide> currentSlide;
 
     void displayItem(std::shared_ptr<Item> item);
     void displaySlide(std::shared_ptr<Slide> slide);
     void displayDocument(std::shared_ptr<Document> document);
 
-    void changeSlide(size_t slideNumber);
+    
 };
 
 

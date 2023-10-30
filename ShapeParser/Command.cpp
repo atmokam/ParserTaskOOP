@@ -2,22 +2,29 @@
 
 
 void AddCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) {
-    std::shared_ptr<Item> item = createItem();
-    getSlide(document, view)->addItem(item);
-} // this is because (imo) the slide shouldn't know its number, but the view should
+
+    if(operands.find("-name") != operands.end()){
+        std::shared_ptr<Item> item = createItem(getCurrentSlide(document, view));
+        getCurrentSlide(document, view)->addItem(item);
+    }
+    else if(operands.find("-slide") != operands.end()){
+        document->addSlide(std::make_shared<Slide>());
+        view->currentSlideNumber++;
+    }
+}
 
 void RemoveCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) {
-    getSlide(document, view)->removeItem(getItemID());
+    getCurrentSlide(document, view)->removeItem(getItemID());
 
 }
 
 void DisplayCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) {
     if(operands.find("-id") != operands.end()){
-        std::shared_ptr<Item> item = getSlide(document, view)->getItem(std::stoi(operands["-id"][0]));
+        std::shared_ptr<Item> item = getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]));
         displayItem(item);
     }
     else{
-        std::unordered_map<int, std::shared_ptr<Item>> items = getSlide(document, view)->getItems();
+        std::unordered_map<int, std::shared_ptr<Item>> items = getCurrentSlide(document, view)->getItems();
         for(auto item : items){
             displayItem(item.second);
         }
@@ -26,21 +33,22 @@ void DisplayCommand::execute(std::shared_ptr<Document> document, std::shared_ptr
 
 void ChangeCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) {
     if(operands.find("-pos") != operands.end()){
-        getSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setPosition(Converter::convertToPosition(operands["-pos"]));
+        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setPosition(Converter::convertToPosition(operands["-pos"]));
     }
     if(operands.find("-name") != operands.end()){
-        getSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setType(Type{Converter::convertToType(operands["-name"])});
+        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setType(Type{Converter::convertToType(operands["-name"])});
     }
     if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end()){
-        getSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setBoundingRect(BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])});
+        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setBoundingRect(BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])});
     }
     if(operands.find("-lcolor") != operands.end()){
-        getSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setLineColor(Converter::convertToColor(operands["-lcolor"][0]));
+        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setLineColor(Converter::convertToColor(operands["-lcolor"][0]));
     }
     if(operands.find("-fcolor") != operands.end()){
-        getSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setFillColor(Converter::convertToColor(operands["-fcolor"][0]));
+        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setFillColor(Converter::convertToColor(operands["-fcolor"][0]));
     }
 }
+
 
 void SaveCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) {
     std::ofstream file;
@@ -53,11 +61,13 @@ void SaveCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<Vi
         throw std::invalid_argument("Invalid path or filename");
     }
 
-    file << "slide: " << view->currentSlideNumber << std::endl;
+    size_t size = std::distance(document->cbegin(), document->cend());
 
-    std::unordered_map<int, std::shared_ptr<Item>> items = getSlide(document, view)->getItems();
-    // save to file 
-    saveToFile(file, document->getSlide(view->currentSlideNumber)->getItems());
+    for(size_t i = 0; i < size; ++i){
+        file << "slide: " << i << std::endl;
+        file << "max id: "  << document->getSlide(i)->getMaximumID() << std::endl;
+        saveToFile(file, document->getSlide(i)->getItems());
+    }
 
 }
 
@@ -74,16 +84,67 @@ void SaveCommand::saveToFile(std::ofstream& file, const std::unordered_map<int, 
 
 void LoadCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) { 
     std::cout << "LoadCommand executed" << std::endl;
+
+    std::ifstream file;
+    auto path = operands["-path"][0];
+
+    file.open(path);
+    if(!file.is_open()){
+        throw std::invalid_argument("Invalid path or filename");
+    }
+
+    std::shared_ptr<Document> loadedDocument = std::make_shared<Document>();
+    std::string line;
+    while(std::getline(file, line)){
+        //setItemAttribute(line);
+    }
+
+
 }
+
+
+std::shared_ptr<Document> setItemAttribute(std::string_view string) {
+    
+
+    std::shared_ptr<Document> document = std::make_shared<Document>();
+    
+    // 
+}
+
+
+
 
 void ListCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) {
     
-    std::unordered_map<int, std::shared_ptr<Item>> items = getSlide(document, view)->getItems();
+    std::unordered_map<int, std::shared_ptr<Item>> items = getCurrentSlide(document, view)->getItems();
     for(auto item : items) {
         displayItem(item.second);
     }
     
 }
+
+void NextCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) {
+    // needs to update currentSlideNumber, currentSlide in view 
+    if(view->currentSlideNumber < std::distance(document->cbegin(), document->cend()) - 1){
+        view->currentSlideNumber++;
+        view->currentSlide = document->getSlide(view->currentSlideNumber);
+    }
+    else{
+        std::cout << "No next slide" << std::endl;
+    }
+}
+
+void PrevCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) {
+    // needs to update currentSlideNumber, currentSlide in view 
+    if(view->currentSlideNumber > 0){
+        view->currentSlideNumber--;
+        view->currentSlide = document->getSlide(view->currentSlideNumber);
+    }
+    else{
+        std::cout << "No previous slide" << std::endl;
+    }
+}
+
 
 
 
@@ -107,7 +168,8 @@ void Command::setName(std::string name) {
 
 
 
-std::shared_ptr<Item> AddCommand::createItem() {
+std::shared_ptr<Item> AddCommand::createItem(std::shared_ptr<Slide> slide) {
+
 
     Type type = Type{Converter::convertToType(operands["-name"])};
 
@@ -122,7 +184,10 @@ std::shared_ptr<Item> AddCommand::createItem() {
     if (operands.find("-fcolor") != operands.end()){
         color.hexFillColor = Converter::convertToColor(operands["-fcolor"][0]);
     }
-    return std::make_shared<Item>(type, pos, bounds, color);
+    auto item = std::make_shared<Item>(type, pos, bounds, color);
+    item->generateID(slide);
+
+    return item;
 
 }
 
@@ -142,7 +207,8 @@ void displayItem(std::shared_ptr<Item> item) {
 }
 
 
-std::shared_ptr<Slide> Command::getSlide(std::shared_ptr<Document> document, std::shared_ptr<View> view) const {
+std::shared_ptr<Slide> Command::getCurrentSlide(std::shared_ptr<Document> document, std::shared_ptr<View> view) const {
     return document->getSlide(view->currentSlideNumber); 
 }
+
 

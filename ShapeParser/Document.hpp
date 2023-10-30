@@ -15,8 +15,18 @@ public:
     std::vector<std::shared_ptr<Slide>> getAllSlides() const;
     void addSlide(std::shared_ptr<Slide> slide);
 
+    std::vector<std::shared_ptr<Slide>>::iterator begin() ;
+    std::vector<std::shared_ptr<Slide>>::const_iterator cbegin() const;
+    std::vector<std::shared_ptr<Slide>>::iterator end() ;
+    std::vector<std::shared_ptr<Slide>>::const_iterator cend() const;
 
-    std::shared_ptr<Slide> getSlide(size_t current) const;
+    std::vector<std::shared_ptr<Slide>>::reverse_iterator rbegin() ;
+    std::vector<std::shared_ptr<Slide>>::const_reverse_iterator crbegin() const;
+    std::vector<std::shared_ptr<Slide>>::reverse_iterator rend() ;
+    std::vector<std::shared_ptr<Slide>>::const_reverse_iterator crend() const;
+
+
+    std::shared_ptr<Slide> getSlide(size_t number) const;
 };
 
 #endif

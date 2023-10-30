@@ -3,18 +3,19 @@
 
 // general checking
 std::unordered_set<std::string> Validator::commands = {
-        "add", "remove", "change", "display", "list", "save", "load"
+        "add", "remove", "change", "display", "list", "save", "load", "next", "prev"
     };
 
 std::unordered_map<std::string, std::vector<std::string>> Validator::validOperands = {
-        {"add", {"-name", "-pos", "-lcolor", "-fcolor", "-radius", "-w", "-h"}},
+        {"add", {"-name", "-pos", "-lcolor", "-fcolor", "-radius", "-w", "-h", "-slide"}},
         {"remove", {"-id"}},
-        {"change", {"-id", "-slide", "-name", "-pos", "-lcolor", "-fcolor", "-radius", "-w", "-h"}},
+        {"change", {"-id", "-name", "-pos", "-lcolor", "-fcolor", "-radius", "-w", "-h"}},
         {"display", {"-id"}},
-        {"exit", {}},
         {"list", {}},
         {"save", {"-path", "-filename"}},
-        {"load", {"-path"}}
+        {"load", {"-path"}}, 
+        {"next", {}}, 
+        {"prev", {}} ////////////////////////////
     };
 
 std::unordered_set<std::string> Validator::shapes = {
@@ -26,7 +27,7 @@ std::unordered_set<std::string> Validator::shapes = {
 
 // operand quantity checking: 0 means no value, -1 means any number of values
 std::unordered_map<std::string, size_t> Validator::addValidOperands = {
-        {"-name", 1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-radius", 1}, {"-pos", -1}, {"-w", 1}, {"-h", 1}
+        {"-name", 1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-radius", 1}, {"-pos", -1}, {"-w", 1}, {"-h", 1}, {"-slide", 0}
     };
 
 std::unordered_map<std::string, size_t> Validator::removeValidOperands = {
@@ -34,7 +35,7 @@ std::unordered_map<std::string, size_t> Validator::removeValidOperands = {
     };
 
 std::unordered_map<std::string, size_t> Validator::changeValidOperands = {
-        {"-id", 1}, {"-slide", 1}, {"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-radius", 1}, {"-w", 1}, {"-h", 1}
+        {"-id", 1}, {"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-radius", 1}, {"-w", 1}, {"-h", 1}
     };
 
 std::unordered_map<std::string, size_t> Validator::displayValidOperands = {
@@ -53,8 +54,12 @@ std::unordered_map<std::string, size_t> Validator::loadValidOperands = {
 
 
 // mandatory operand checking
-std::unordered_set<std::string> Validator::addMandatoryOperands = {
+std::unordered_set<std::string> Validator::addShapeMandatoryOperands = {
         "-name", "-pos", "-w", "-h"
+    };
+
+std::unordered_set<std::string> Validator::addSlideMandatoryOperands = {
+        "-slide"
     };
 
 std::unordered_set<std::string> Validator::removeMandatoryOperands = {
@@ -62,7 +67,7 @@ std::unordered_set<std::string> Validator::removeMandatoryOperands = {
     };
 
 std::unordered_set<std::string> Validator::changeMandatoryOperands = {
-        
+        "-id"
     };
 
 std::unordered_set<std::string> Validator::saveMandatoryOperands = {
@@ -81,7 +86,7 @@ bool Validator::validateCommand(std::shared_ptr<Command> commandToBeChecked) {
     auto commandOperands = commandToBeChecked->getOperands();
 
     if (commandName == "add") {
-        return checkOperandQuantity(commandOperands, addValidOperands) && checkMandatoryOperands(commandOperands,  addMandatoryOperands);
+        return checkOperandQuantity(commandOperands, addValidOperands) && (checkMandatoryOperands(commandOperands,  addShapeMandatoryOperands) || checkMandatoryOperands(commandOperands, addSlideMandatoryOperands));
 
     } else if (commandName == "remove") {
         return checkOperandQuantity(commandOperands, removeValidOperands) && checkMandatoryOperands(commandOperands, removeMandatoryOperands);
@@ -90,7 +95,7 @@ bool Validator::validateCommand(std::shared_ptr<Command> commandToBeChecked) {
         return checkOperandQuantity(commandOperands, changeValidOperands) && checkMandatoryOperands(commandOperands, changeMandatoryOperands);
 
     } else if (commandName == "display") {
-        return checkOperandQuantity(commandOperands, displayValidOperands);
+        return checkOperandQuantity(commandOperands, displayValidOperands) ;
 
     } else if (commandName == "save") {
         return checkOperandQuantity(commandOperands, saveValidOperands) && checkMandatoryOperands(commandOperands, saveMandatoryOperands);

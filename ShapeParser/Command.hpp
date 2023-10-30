@@ -31,14 +31,14 @@ public:
     void setName(std::string name);
     std::unordered_map<std::string, std::vector<std::string>> getOperands() const { return operands; }
 
-    std::shared_ptr<Slide> getSlide(std::shared_ptr<Document> document, std::shared_ptr<View> view) const;
+    std::shared_ptr<Slide> getCurrentSlide(std::shared_ptr<Document> document, std::shared_ptr<View> view) const;
 };
 
 class AddCommand : public Command {
 public:
     
     void execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) override;
-    std::shared_ptr<Item> createItem();
+    std::shared_ptr<Item> createItem(std::shared_ptr<Slide> slide);
 };
 
 class RemoveCommand : public Command {
@@ -73,6 +73,7 @@ class LoadCommand : public Command {
 public:
     
     void execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) override;
+    std::shared_ptr<Item> setItemAttribute(std::string_view file);
 };
 
 class ListCommand : public Command {
@@ -82,6 +83,19 @@ public:
     
 
 };
+
+class NextCommand : public Command {
+public:
+    
+    void execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) override;
+};
+
+class PrevCommand : public Command {
+public:
+    
+    void execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) override;
+};
+
 
 void displayItem(std::shared_ptr<Item> item);
 

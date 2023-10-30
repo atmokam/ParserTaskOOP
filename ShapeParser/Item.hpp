@@ -3,8 +3,12 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 #include "ItemAttributes.hpp"
+#include "Slide.hpp"
+
+class Slide;
 
 class Item {
     Position pos;
@@ -13,9 +17,9 @@ class Item {
     ID id;
     Color color;
 
-    ID generateID();
 
 public:
+    ID generateID(std::shared_ptr<Slide> slide);
     Item() = default;   
     Item(Type type, Position pos, BoundingRect boundingRect, Color color);
 

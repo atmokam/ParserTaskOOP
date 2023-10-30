@@ -17,5 +17,19 @@ std::shared_ptr<Item> Slide::getItem(int id) const {
     return items.at(id);
 }
 
+Slide::Slide(std::shared_ptr<Slide> slide) { 
+    items = slide->getItems();
+    maximumID = slide->getMaximumID();
+}
 
+void Slide::setMaximumID(size_t id) {
+    maximumID = id;
+}
 
+size_t Slide::getMaximumID() const {
+    return maximumID;
+}
+
+void Slide::incrementMaximumID() {
+    ++maximumID;
+}

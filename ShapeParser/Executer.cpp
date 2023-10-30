@@ -1,6 +1,6 @@
 #include "Executer.hpp"
 
-Executer::Executer(int count, char* args[]) : stream(buildStream(count, args)), input(stream.is_open() ? stream : std::cin), view(std::make_shared<View>()), document(std::make_shared<Document>()) { }
+Executer::Executer(int count, char* args[]) : stream(buildStream(count, args)), input(stream.is_open() ? stream : std::cin), document(std::make_shared<Document>()), view(std::make_shared<View>(document)) { }
 
 
 std::ifstream Executer::buildStream(int count, char* args[]) {
@@ -20,7 +20,7 @@ void Executer::runProgram() {
     Parser parser;
     
     std::string word;
-    while(input >> word && word != "exit") { //exit should be a command
+    while(input >> word && word != "exit") { 
         
         if(input.peek() == '\n' || input.peek() == EOF){
             parser.parse(word);

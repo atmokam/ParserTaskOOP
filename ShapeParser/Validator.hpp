@@ -27,7 +27,8 @@ class Validator {
 
     static bool checkOperandQuantity(std::unordered_map<std::string, std::vector<std::string>> commandOperands, std::unordered_map<std::string, size_t> validOperands);
     
-    static std::unordered_set<std::string> addMandatoryOperands;
+    static std::unordered_set<std::string> addShapeMandatoryOperands;
+    static std::unordered_set<std::string> addSlideMandatoryOperands;
     static std::unordered_set<std::string> removeMandatoryOperands;
     static std::unordered_set<std::string> changeMandatoryOperands;
     static std::unordered_set<std::string> displayMandatoryOperands;

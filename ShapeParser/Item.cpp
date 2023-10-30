@@ -1,9 +1,8 @@
 #include "Item.hpp"
 
-// TODO: implement
 
 Item::Item(Type type, Position pos, BoundingRect boundingRect, Color color) : type(type), pos(pos), boundingRect(boundingRect), color(color) {
-    id = generateID();
+    
 }
 
 Position Item::getPosition() const {
@@ -47,8 +46,9 @@ void Item::setLineColor(long color) {
 }
 
 
-ID Item::generateID() {
-    static ID id;
-    return ++id;
+ID Item::generateID(std::shared_ptr<Slide> slide) {
+    slide->incrementMaximumID();
+    id = slide->getMaximumID();
+    return slide->getMaximumID();
 }
 

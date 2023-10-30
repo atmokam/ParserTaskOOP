@@ -56,6 +56,12 @@ std::shared_ptr<Command> Parser::createCommand(std::string input){
     else if(input == "list"){
         return std::make_shared<ListCommand>();
     }
+    else if(input == "next"){
+        return std::make_shared<NextCommand>();
+    }
+    else if(input == "prev"){
+        return std::make_shared<PrevCommand>();
+    }
     else {
         throw std::invalid_argument("Invalid command: " + input);
     }

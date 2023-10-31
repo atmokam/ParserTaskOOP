@@ -6,9 +6,6 @@
 #include <memory>
 
 #include "ItemAttributes.hpp"
-#include "Slide.hpp"
-
-class Slide;
 
 class Item {
     Position pos;
@@ -17,11 +14,10 @@ class Item {
     ID id;
     Color color;
 
-
 public:
-    ID generateID(std::shared_ptr<Slide> slide);
+
     Item() = default;   
-    Item(Type type, Position pos, BoundingRect boundingRect, Color color);
+    Item(Type type, Position pos, BoundingRect boundingRect, Color color, ID id);
 
     Position getPosition() const;
     Type getType() const;
@@ -29,6 +25,7 @@ public:
     ID getID() const;
     Color getColor() const;
 
+    void setID(ID id);
     void setPosition(Position pos);
     void setType(Type type);
     void setBoundingRect(BoundingRect boundingRect);

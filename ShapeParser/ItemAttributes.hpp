@@ -77,8 +77,8 @@ inline std::ostream& operator<<(std::ostream& os, const BoundingRect& boundingRe
 }
 
 inline std::ostream& operator<<(std::ostream& os, const Color& color) {
-    os << "line color: #" << std::hex << color.hexLineColor << std::endl;
-    os << "fill color: #" << std::hex << color.hexFillColor;
+    os << "line_color: #" << std::hex << color.hexLineColor << std::endl;
+    os << "fill_color: #" << std::hex << color.hexFillColor;
     return os;
 }
 

@@ -16,7 +16,6 @@ class Parser {
     std::shared_ptr<Command> createCommand(std::string input);
     std::string commandName = "", prevOperand = "", prevToken = ""; 
     std::shared_ptr<Command> command = nullptr;
-    //std::shared_ptr<Document> document = nullptr;
     
 public:
     Parser() = default;

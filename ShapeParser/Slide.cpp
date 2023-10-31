@@ -33,3 +33,9 @@ size_t Slide::getMaximumID() const {
 void Slide::incrementMaximumID() {
     ++maximumID;
 }
+
+ID Slide::generateID() {
+    incrementMaximumID();
+    return getMaximumID();
+}
+

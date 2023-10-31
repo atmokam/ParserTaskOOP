@@ -11,7 +11,9 @@ class Converter {
 
 public:
     static Position convertToPosition(const std::vector<std::string>& values);
+    static Position convertToPosition(const std::string& str, const std::string& delimiter);
     static Type convertToType(const std::vector<std::string>& values);
+    static Type convertToType(const std::string& value);
     static ID convertToID(const std::vector<std::string>& values);
     static BoundingRect convertToBoundingRect(const std::string& width, const std::string& height);
     static long convertToColor(const std::string& color);

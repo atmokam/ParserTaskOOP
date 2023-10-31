@@ -1,7 +1,7 @@
 #include "Item.hpp"
 
 
-Item::Item(Type type, Position pos, BoundingRect boundingRect, Color color) : type(type), pos(pos), boundingRect(boundingRect), color(color) {
+Item::Item(Type type, Position pos, BoundingRect boundingRect, Color color, ID id) : type(type), pos(pos), boundingRect(boundingRect), color(color), id(id){
     
 }
 
@@ -45,10 +45,6 @@ void Item::setLineColor(long color) {
     this->color.hexLineColor = color;
 }
 
-
-ID Item::generateID(std::shared_ptr<Slide> slide) {
-    slide->incrementMaximumID();
-    id = slide->getMaximumID();
-    return slide->getMaximumID();
+void Item::setID(ID id) {
+    this->id = id;
 }
-

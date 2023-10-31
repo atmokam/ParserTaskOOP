@@ -1,16 +1,6 @@
 slide: 0
-max id: 1
-id:1
-type: Triangle
-indices: 4.555, 7.3
-width: 45
-height: 45
-line color: #0
-fill color: #0
-
-slide: 1
 max id: 2
-id:2
+id: 2
 type: Rectangle
 indices: 48885, 743
 width: 45
@@ -18,11 +8,21 @@ height: 45
 line color: #0
 fill color: #ff0800
 
-id:1
+id: 1
 type: Rectangle
 indices: 45, 7.3
 width: 100
 height: 45
 line color: #ff0000
+fill color: #0
+
+slide: 1
+max id: 1
+id: 1
+type: Rectangle
+indices: 4.555, 7.3
+width: 45
+height: 45
+line color: #0
 fill color: #ff0000
 

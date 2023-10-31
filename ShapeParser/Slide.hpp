@@ -10,14 +10,17 @@
 
 #include "Item.hpp"
 
-class Item;
 
 class Slide {
     std::unordered_map<int, std::shared_ptr<Item>> items;
     size_t maximumID = 0;
+
+
+
 public:
     Slide() = default;
 
+    ID generateID();
     std::unordered_map<int, std::shared_ptr<Item>> getItems() const;
     std::shared_ptr<Item> getItem(int id) const;
     size_t getMaximumID() const ;

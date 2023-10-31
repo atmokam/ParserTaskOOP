@@ -65,7 +65,7 @@ void SaveCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<Vi
 
     for(size_t i = 0; i < size; ++i){
         file << "slide: " << i << std::endl;
-        file << "max id: "  << document->getSlide(i)->getMaximumID() << std::endl;
+        file << "max_id: "  << document->getSlide(i)->getMaximumID() << std::endl;
         saveToFile(file, document->getSlide(i)->getItems());
     }
 
@@ -73,7 +73,7 @@ void SaveCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<Vi
 
 void SaveCommand::saveToFile(std::ofstream& file, const std::unordered_map<int, std::shared_ptr<Item>>& items) {
     for(auto item : items) {
-        file << "id:" << item.second->getID() << std::endl;
+        file << "id: " << item.second->getID() << std::endl;
         file << ShapeType{item.second->getType()} << std::endl;
         file << item.second->getPosition() << std::endl;
         file << item.second->getBoundingRect() << std::endl;
@@ -83,6 +83,7 @@ void SaveCommand::saveToFile(std::ofstream& file, const std::unordered_map<int, 
 }
 
 void LoadCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) { 
+    // load document and update view
     std::cout << "LoadCommand executed" << std::endl;
 
     std::ifstream file;
@@ -93,11 +94,65 @@ void LoadCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<Vi
         throw std::invalid_argument("Invalid path or filename");
     }
 
-    std::shared_ptr<Document> loadedDocument = std::make_shared<Document>();
-    std::string line;
-    while(std::getline(file, line)){
-        //setItemAttribute(line);
-    }
+
+// I dont like this code, add class DocumentLoader
+
+    // std::shared_ptr<Document> loadedDocument = std::make_shared<Document>();
+    // view = std::make_shared<View>();
+    // view->currentSlideNumber = 0;
+    // std::shared_ptr<Item> item = std::make_shared<Item>(); 
+    // std::string width, height;
+
+    // std::string line;
+    // while(file >> line){ // change to word by word
+    //     if(line == "slide:"){
+    //         loadedDocument->addSlide(std::make_shared<Slide>());
+    //         std::cout<< "slide added" << std::endl;
+    //         if(item->getID() != 0){ // if not empty object
+    //             item->setBoundingRect(Converter::convertToBoundingRect(width, height));
+    //             (*loadedDocument->end()--)->addItem(item);
+    //             std::cout << "item added" << std::endl;
+    //             width = "", height = "";
+    //         }
+    //     }
+    //     else if(line == "max_id:"){
+    //         std::cout << "max id set" << std::endl;
+    //         (*std::prev(loadedDocument->end()))->setMaximumID(std::stoi(line)); // change these
+    //     }
+    //     else if(line == "id:"){
+    //         std::cout<< "id set" << std::endl;   
+    //         item = std::make_shared<Item>();
+    //         item->setID(std::stoi(line.substr(4)));
+    //     }
+    //     else if(line == "type:"){
+    //         std::cout << "type set" << std::endl;
+    //         item->setType(Type{Converter::convertToType(line.substr(6))});
+    //     }
+    //     else if(line == "indices:"){
+    //         std::cout << "indices set" << std::endl;
+    //         item->setPosition(Converter::convertToPosition(line.substr(9), ", "));
+    //     }
+    //     else if(line == "width:"){
+    //         std::cout << "width set" << std::endl;
+    //         width = line.substr(7); // width and height could have set methods      <----------------
+    //     }
+    //     else if(line == "height:"){
+    //         std::cout << "height set" << std::endl;
+    //         height = line.substr(8);
+    //     }
+    //     else if(line == "line_color:"){
+    //         std::cout << "line color set" << std::endl;
+    //         item->setLineColor(Converter::convertToColor(line.substr(12))); // bad way to do this through numbers
+    //     }
+    //     else if(line == "fill_color:"){
+    //         std::cout << "fill color set" << std::endl;
+    //         item->setFillColor(Converter::convertToColor(line.substr(11)));
+    //     }
+
+    // }
+
+    
+    // view->currentSlide = document->getSlide(0); // view->currentSlideNumber
 
 
 }
@@ -106,7 +161,7 @@ void LoadCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<Vi
 std::shared_ptr<Document> setItemAttribute(std::string_view string) {
     
 
-    std::shared_ptr<Document> document = std::make_shared<Document>();
+    
     
     // 
 }
@@ -124,10 +179,9 @@ void ListCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<Vi
 }
 
 void NextCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) {
-    // needs to update currentSlideNumber, currentSlide in view 
     if(view->currentSlideNumber < std::distance(document->cbegin(), document->cend()) - 1){
         view->currentSlideNumber++;
-        view->currentSlide = document->getSlide(view->currentSlideNumber);
+        view->currentSlide = getCurrentSlide(document, view);
     }
     else{
         std::cout << "No next slide" << std::endl;
@@ -135,10 +189,9 @@ void NextCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<Vi
 }
 
 void PrevCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) {
-    // needs to update currentSlideNumber, currentSlide in view 
     if(view->currentSlideNumber > 0){
         view->currentSlideNumber--;
-        view->currentSlide = document->getSlide(view->currentSlideNumber);
+        view->currentSlide = getCurrentSlide(document, view);
     }
     else{
         std::cout << "No previous slide" << std::endl;
@@ -184,8 +237,7 @@ std::shared_ptr<Item> AddCommand::createItem(std::shared_ptr<Slide> slide) {
     if (operands.find("-fcolor") != operands.end()){
         color.hexFillColor = Converter::convertToColor(operands["-fcolor"][0]);
     }
-    auto item = std::make_shared<Item>(type, pos, bounds, color);
-    item->generateID(slide);
+    auto item = std::make_shared<Item>(type, pos, bounds, color, slide->generateID());
 
     return item;
 

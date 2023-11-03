@@ -23,5 +23,7 @@ save -path <path> -filename <name>
 display [-id <id>]
 
 list
+
+load -path <path>
 ```
 

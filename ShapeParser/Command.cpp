@@ -67,80 +67,33 @@ void LoadCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<Vi
         throw std::invalid_argument("Invalid path or filename");
     }
 
-    SaveLoadSerializer::load(path);
+    std::shared_ptr<Document> loadedDocument = SaveLoadSerializer::load(path);
 
+   // document->clear(); 
+    document = loadedDocument;
 
-// I dont like this code, add class DocumentLoader
+    view->currentSlideNumber = 0;
+    view->currentSlide = getCurrentSlide(document, view);
+                                                ////testing////
+    std::cout << "LoadCommand finished" ;
 
-    // std::shared_ptr<Document> loadedDocument = std::make_shared<Document>();
-    // view = std::make_shared<View>();
-    // view->currentSlideNumber = 0;
-    // std::shared_ptr<Item> item = std::make_shared<Item>(); 
-    // std::string width, height;
+    size_t size = std::distance(document->cbegin(), document->cend());
 
-    // std::string line;
-    // while(file >> line){ // change to word by word
-    //     if(line == "slide:"){
-    //         loadedDocument->addSlide(std::make_shared<Slide>());
-    //         std::cout<< "slide added" << std::endl;
-    //         if(item->getID() != 0){ // if not empty object
-    //             item->setBoundingRect(Converter::convertToBoundingRect(width, height));
-    //             (*loadedDocument->end()--)->addItem(item);
-    //             std::cout << "item added" << std::endl;
-    //             width = "", height = "";
-    //         }
-    //     }
-    //     else if(line == "max_id:"){
-    //         std::cout << "max id set" << std::endl;
-    //         (*std::prev(loadedDocument->end()))->setMaximumID(std::stoi(line)); // change these
-    //     }
-    //     else if(line == "id:"){
-    //         std::cout<< "id set" << std::endl;   
-    //         item = std::make_shared<Item>();
-    //         item->setID(std::stoi(line.substr(4)));
-    //     }
-    //     else if(line == "type:"){
-    //         std::cout << "type set" << std::endl;
-    //         item->setType(Type{Converter::convertToType(line.substr(6))});
-    //     }
-    //     else if(line == "indices:"){
-    //         std::cout << "indices set" << std::endl;
-    //         item->setPosition(Converter::convertToPosition(line.substr(9), ", "));
-    //     }
-    //     else if(line == "width:"){
-    //         std::cout << "width set" << std::endl;
-    //         width = line.substr(7); // width and height could have set methods      <----------------
-    //     }
-    //     else if(line == "height:"){
-    //         std::cout << "height set" << std::endl;
-    //         height = line.substr(8);
-    //     }
-    //     else if(line == "line_color:"){
-    //         std::cout << "line color set" << std::endl;
-    //         item->setLineColor(Converter::convertToColor(line.substr(12))); // bad way to do this through numbers
-    //     }
-    //     else if(line == "fill_color:"){
-    //         std::cout << "fill color set" << std::endl;
-    //         item->setFillColor(Converter::convertToColor(line.substr(11)));
-    //     }
-
-    // }
-
-    
-    // view->currentSlide = document->getSlide(0); // view->currentSlideNumber
-
+    for(size_t i = 0; i < size; ++i){
+        std::cout << "slide:" << i << std::endl;
+        std::cout << "max_id:"  << document->getSlide(i)->getMaximumID() << std::endl;
+        std::unordered_map<int, std::shared_ptr<Item>> items = document->getSlide(i)->getItems();
+        for(auto item : items) {
+            std::cout << "id:" << item.second->getID() << std::endl;
+            std::cout << ShapeType{item.second->getType()} << std::endl;
+            std::cout << item.second->getPosition() << std::endl;
+            std::cout << item.second->getBoundingRect() << std::endl;
+            std::cout << item.second->getColor() << std::endl;
+            std::cout << std::endl;
+        }
+    }
 
 }
-
-
-std::shared_ptr<Document> setItemAttribute(std::string_view string) {
-    
-
-    
-    
-    // 
-}
-
 
 
 

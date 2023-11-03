@@ -18,7 +18,7 @@ Position Converter::convertToPosition(const std::vector<std::string>& values) {
     return Position{result};
 }
 
-Position Converter::convertToPosition(const std::string& str, const std::string& delimiter) {
+Position Converter::convertToPosition(const std::string& str, const char delimiter) {
     std::vector<double> result;
     auto it = std::find(str.begin(), str.end(), delimiter);
     decltype(it) prev = str.begin();     
@@ -44,6 +44,10 @@ Type Converter::convertToType(const std::string& value) {
 
 ID Converter::convertToID(const std::vector<std::string>& values) {
     return ID{std::stoi(values[0])};
+}
+
+ID Converter::convertToID(const std::string& value) {
+    return ID{std::stoi(value)};
 }
 
 BoundingRect Converter::convertToBoundingRect(const std::string& width, const std::string& height) { 

@@ -3,7 +3,6 @@
 
 void SaveLoadSerializer::save(std::shared_ptr<Document> document, const std::string& path) {
     std::ofstream file;
-
     
     file.open(path + ".ppx");
 
@@ -36,6 +35,7 @@ std::shared_ptr<Document> SaveLoadSerializer::load(const std::string& path) {
     // load document and update view
     std::cout << "LoadCommand executed" << std::endl;
 
+    std::shared_ptr<Document> document = std::make_shared<Document>();
     std::ifstream file;
 
     file.open(path);
@@ -43,8 +43,8 @@ std::shared_ptr<Document> SaveLoadSerializer::load(const std::string& path) {
         throw std::invalid_argument("Invalid path or filename");
     }
 
-    std::string line; // separate this create item function
-    Position pos; Type type; BoundingRect boundingRect; Color color; //int id; int max_id;
+    std::string line; // separate this into a function
+    Position pos; Type type; BoundingRect boundingRect; Color color; ID id = 0; 
     while (std::getline(file, line))
     {
         std::istringstream is_line(line);
@@ -54,11 +54,37 @@ std::shared_ptr<Document> SaveLoadSerializer::load(const std::string& path) {
             std::string value;
             if (std::getline(is_line, value))
             {
-                std::cout<< key << " " << value << std::endl;
-                // initialize all members, then construct a make_shared item
+                if(key == "id")               
+                    id = Converter::convertToID(value);
+                else if(key == "type")
+                    type = Converter::convertToType(value);
+                else if(key == "indices")
+                    pos = Converter::convertToPosition(value, ' '); 
+                else if(key == "width")
+                    boundingRect.width = std::stod(value);
+                else if(key == "height")
+                    boundingRect.height = std::stod(value);
+                else if(key == "line_color")
+                    color.hexLineColor = Converter::convertToColor(value);
+                else if(key == "fill_color"){
+                    color.hexFillColor = Converter::convertToColor(value);
+                    std::cout<< "created item" << std::endl;
+                    (*std::prev(document->end()))->addItem(std::make_shared<Item>(type, pos, boundingRect, color, id));
+                }
+                else if(key == "max_id")
+                    (*(std::prev(document->end())))->setMaximumID(std::stoi(value));
+                else if(key == "slide")
+                    document->addSlide(std::make_shared<Slide>());
+                else {
+                    throw std::invalid_argument("Invalid file contents");
+                }
+
             }
         }
+
     }
+
+    return document;
 
 
 } 

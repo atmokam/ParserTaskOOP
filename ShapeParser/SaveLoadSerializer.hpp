@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "Document.hpp"
+#include "Converter.hpp"
 
 class SaveLoadSerializer {
     static void saveToFile(std::ofstream& file, const std::unordered_map<int, std::shared_ptr<Item>>& items);

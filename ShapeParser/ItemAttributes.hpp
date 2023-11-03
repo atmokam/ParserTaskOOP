@@ -41,18 +41,18 @@ struct Color {
 
 
 inline std::ostream& operator<<(std::ostream& os, const ShapeType& shape) {
-        os << "type: ";
+        os << "type:";
     switch (shape.type) {
         case Type::Rectangle:
-            return os << "Rectangle";
+            return os << "rectangle";
         case Type::Trapezoid:
-            return os << "Trapezoid";
+            return os << "trapezoid";
         case Type::Ellipse:
-            return os << "Ellipse";
+            return os << "ellipse";
         case Type::Line:
-            return os << "Line";
+            return os << "line";
         case Type::Triangle:
-            return os << "Triangle";
+            return os << "triangle";
         default:
             return os;
     }
@@ -60,25 +60,25 @@ inline std::ostream& operator<<(std::ostream& os, const ShapeType& shape) {
 
 inline std::ostream& operator<<(std::ostream& os, const Position& position) {
     std::vector<double> coordinates = position.getCoordinates();
-    os << "indices: ";
+    os << "indices:";
     for (int i = 0; i < coordinates.size(); i++) {
         os << coordinates[i];
         if (i != coordinates.size() - 1) {
-            os << ", ";
+            os << " ";
         }
     }
     return os;
 }
 
 inline std::ostream& operator<<(std::ostream& os, const BoundingRect& boundingRect) {
-    os << "width: " << boundingRect.width << std::endl;
-    os << "height: " << boundingRect.height;
+    os << "width:" << boundingRect.width << std::endl;
+    os << "height:" << boundingRect.height;
     return os;
 }
 
 inline std::ostream& operator<<(std::ostream& os, const Color& color) {
-    os << "line_color: #" << std::hex << color.hexLineColor << std::endl;
-    os << "fill_color: #" << std::hex << color.hexFillColor;
+    os << "line_color:#" << std::hex << color.hexLineColor << std::endl;
+    os << "fill_color:#" << std::hex << color.hexFillColor;
     return os;
 }
 

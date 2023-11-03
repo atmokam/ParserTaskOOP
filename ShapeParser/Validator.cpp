@@ -15,7 +15,7 @@ std::unordered_map<std::string, std::vector<std::string>> Validator::validOperan
         {"save", {"-path", "-filename"}},
         {"load", {"-path"}}, 
         {"next", {}}, 
-        {"prev", {}} ////////////////////////////
+        {"prev", {}} 
     };
 
 std::unordered_set<std::string> Validator::shapes = {

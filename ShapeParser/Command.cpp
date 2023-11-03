@@ -51,35 +51,8 @@ void ChangeCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<
 
 
 void SaveCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) {
-    std::ofstream file;
-    
-    auto path = operands["-path"][0];
-    auto filename = operands["-filename"][0];
-    file.open(path + filename + ".ppx");
+    SaveLoadSerializer::save(document, operands["-path"][0] + operands["-filename"][0]);
 
-    if(!file.is_open()){
-        throw std::invalid_argument("Invalid path or filename");
-    }
-
-    size_t size = std::distance(document->cbegin(), document->cend());
-
-    for(size_t i = 0; i < size; ++i){
-        file << "slide: " << i << std::endl;
-        file << "max_id: "  << document->getSlide(i)->getMaximumID() << std::endl;
-        saveToFile(file, document->getSlide(i)->getItems());
-    }
-
-}
-
-void SaveCommand::saveToFile(std::ofstream& file, const std::unordered_map<int, std::shared_ptr<Item>>& items) {
-    for(auto item : items) {
-        file << "id: " << item.second->getID() << std::endl;
-        file << ShapeType{item.second->getType()} << std::endl;
-        file << item.second->getPosition() << std::endl;
-        file << item.second->getBoundingRect() << std::endl;
-        file << item.second->getColor() << std::endl;
-        file << std::endl;
-    }
 }
 
 void LoadCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<View> view) { 
@@ -93,6 +66,8 @@ void LoadCommand::execute(std::shared_ptr<Document> document, std::shared_ptr<Vi
     if(!file.is_open()){
         throw std::invalid_argument("Invalid path or filename");
     }
+
+    SaveLoadSerializer::load(path);
 
 
 // I dont like this code, add class DocumentLoader
@@ -226,7 +201,7 @@ std::shared_ptr<Item> AddCommand::createItem(std::shared_ptr<Slide> slide) {
 
     Type type = Type{Converter::convertToType(operands["-name"])};
 
-    Position pos = Position{Converter::convertToPosition(operands["-pos"]).getCoordinates()};
+    Position pos = Position{Converter::convertToPosition(operands["-pos"])};
 
     BoundingRect bounds = BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])};
     

@@ -1,11 +1,10 @@
 add -name triangle -pos 4.555, 7.3 -w 45 -h 45
 list
 add -slide
-
 add -name rectangle -pos 4.555, 7.3 -w 45 -h 45 -fcolor #ff0000
 next
 prev
-add -name rectangle -pos 48885, 743 -w 45 -h 45 -fcolor #ff0800
+add -name rectangle -pos 48885, 743 -w 45 -h 45 -fcolor #ff0880
 change -id 00000001 -name rectangle -pos 45 7.3 -w 100 -h 45 -lcolor #ff0000
 list
 save -path /home/atmokam/Desktop/OOP/ParserTaskOOP/ -filename test

@@ -8,7 +8,7 @@ std::unordered_set<std::string> Validator::commands = {
 
 std::unordered_map<std::string, std::vector<std::string>> Validator::validOperands = {
         {"add", {"-name", "-pos", "-lcolor", "-fcolor", "-radius", "-w", "-h", "-slide"}},
-        {"remove", {"-id"}},
+        {"remove", {"-id", "-slide"}},
         {"change", {"-id", "-name", "-pos", "-lcolor", "-fcolor", "-radius", "-w", "-h"}},
         {"display", {"-id"}},
         {"list", {}},
@@ -31,7 +31,7 @@ std::unordered_map<std::string, size_t> Validator::addValidOperands = {
     };
 
 std::unordered_map<std::string, size_t> Validator::removeValidOperands = {
-        {"-id", 1}
+        {"-id", 1}, {"-slide", 0}
     };
 
 std::unordered_map<std::string, size_t> Validator::changeValidOperands = {
@@ -62,8 +62,12 @@ std::unordered_set<std::string> Validator::addSlideMandatoryOperands = {
         "-slide"
     };
 
-std::unordered_set<std::string> Validator::removeMandatoryOperands = {
+std::unordered_set<std::string> Validator::removeIDMandatoryOperands = {
         "-id"
+    };
+
+std::unordered_set<std::string> Validator::removeSlideMandatoryOperands = {
+        "-slide"
     };
 
 std::unordered_set<std::string> Validator::changeMandatoryOperands = {
@@ -89,7 +93,7 @@ bool Validator::validateCommand(std::shared_ptr<Command> commandToBeChecked) {
         return checkOperandQuantity(commandOperands, addValidOperands) && (checkMandatoryOperands(commandOperands,  addShapeMandatoryOperands) || checkMandatoryOperands(commandOperands, addSlideMandatoryOperands));
 
     } else if (commandName == "remove") {
-        return checkOperandQuantity(commandOperands, removeValidOperands) && checkMandatoryOperands(commandOperands, removeMandatoryOperands);
+        return checkOperandQuantity(commandOperands, removeValidOperands) && (checkMandatoryOperands(commandOperands, removeIDMandatoryOperands) || checkMandatoryOperands(commandOperands, removeSlideMandatoryOperands));
 
     } else if (commandName == "change") {
         return checkOperandQuantity(commandOperands, changeValidOperands) && checkMandatoryOperands(commandOperands, changeMandatoryOperands);

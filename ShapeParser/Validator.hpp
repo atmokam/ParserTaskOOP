@@ -29,7 +29,8 @@ class Validator {
     
     static std::unordered_set<std::string> addShapeMandatoryOperands;
     static std::unordered_set<std::string> addSlideMandatoryOperands;
-    static std::unordered_set<std::string> removeMandatoryOperands;
+    static std::unordered_set<std::string> removeIDMandatoryOperands;
+    static std::unordered_set<std::string> removeSlideMandatoryOperands;
     static std::unordered_set<std::string> changeMandatoryOperands;
     static std::unordered_set<std::string> displayMandatoryOperands;
     static std::unordered_set<std::string> saveMandatoryOperands;

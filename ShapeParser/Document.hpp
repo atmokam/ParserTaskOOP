@@ -14,6 +14,7 @@ public:
     Document();
     std::vector<std::shared_ptr<Slide>> getAllSlides() const;
     void addSlide(std::shared_ptr<Slide> slide);
+    void removeSlide(size_t number);
 
     std::vector<std::shared_ptr<Slide>>::iterator begin() ;
     std::vector<std::shared_ptr<Slide>>::const_iterator cbegin() const;

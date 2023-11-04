@@ -8,6 +8,12 @@ void Document::addSlide(std::shared_ptr<Slide> slide) {
     slides.push_back(slide);
 }
 
+void Document::removeSlide(size_t number) {
+    auto it = slides.begin();
+    std::advance(it, number);
+    slides.erase(it);
+}
+
 std::shared_ptr<Slide> Document::getSlide(size_t number) const {
     return (!slides.empty()) ? slides.at(number) : nullptr;
 }

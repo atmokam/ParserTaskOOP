@@ -16,6 +16,8 @@ prev
 
 remove -id <id>
 
+remove -slide
+
 change -id <id> <any operands to be changed>
 
 save -path <path> -filename <name>

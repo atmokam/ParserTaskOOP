@@ -1,11 +1,11 @@
-add -name triangle -pos 4.555, 7.3 -w 45 -h 45
+load -path /home/atmokam/Desktop/OOP/ParserTaskOOP/test.ppx
+add -name ellipse -pos 48885, 743 -w 45 -h 45 -fcolor #ff0880
+add -name trapezoid -pos 48885, 743 -w 100 -h 45 -fcolor #ff0880
 list
 add -slide
-add -name rectangle -pos 4.555, 7.3 -w 45 -h 45 -fcolor #ff0000
-next
-prev
-add -name rectangle -pos 48885, 743 -w 45 -h 45 -fcolor #ff0880
-change -id 00000001 -name rectangle -pos 45 7.3 -w 100 -h 45 -lcolor #ff0000
+add -name ellipse -pos 48885, 743 -w 45 -h 45 -fcolor #ff0880
 list
-save -path /home/atmokam/Desktop/OOP/ParserTaskOOP/ -filename test
-load -path /home/atmokam/Desktop/OOP/ParserTaskOOP/test.ppx
+remove -slide
+list
+save -path /home/atmokam/Desktop/OOP/ParserTaskOOP/ -filename output
+

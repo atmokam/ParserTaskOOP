@@ -39,3 +39,18 @@ ID Slide::generateID() {
     return getMaximumID();
 }
 
+std::unordered_map<int, std::shared_ptr<Item>>::iterator Slide::begin() {
+    return items.begin();
+}
+
+std::unordered_map<int, std::shared_ptr<Item>>::const_iterator Slide::cbegin() const {
+    return items.cbegin();
+}
+
+std::unordered_map<int, std::shared_ptr<Item>>::iterator Slide::end() {
+    return items.end();
+}
+
+std::unordered_map<int, std::shared_ptr<Item>>::const_iterator Slide::cend() const {
+    return items.cend();
+}

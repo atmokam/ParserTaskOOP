@@ -15,6 +15,7 @@
 
 class SaveLoadSerializer {
     static void saveToFile(std::ofstream& file, const std::unordered_map<int, std::shared_ptr<Item>>& items);
+    static std::shared_ptr<Document> readFromFile(std::ifstream& file);
 public:
     static void save(std::shared_ptr<Document> document, const std::string& path);
     static std::shared_ptr<Document> load(const std::string& path);

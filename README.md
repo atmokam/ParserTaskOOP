@@ -10,9 +10,9 @@ add -name <shape> -pos <position> -w <width> -h <height> [-lcolor <hex color> -f
 
 add -slide
 
-next
+next      // goes to next slide
 
-prev
+prev      // goes to previous slide
 
 remove -id <id>
 

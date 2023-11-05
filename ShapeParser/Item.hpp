@@ -13,17 +13,19 @@ class Item {
     BoundingRect boundingRect;
     ID id;
     Color color;
+    LineDescriptor line;
 
 public:
 
     Item() = default;   
-    Item(Type type, Position pos, BoundingRect boundingRect, Color color, ID id);
+    Item(Type type, Position pos, BoundingRect boundingRect, Color color, ID id, LineDescriptor line);
 
     Position getPosition() const;
     Type getType() const;
     BoundingRect getBoundingRect() const;
     ID getID() const;
     Color getColor() const;
+    LineDescriptor getLineDescriptor() const;
 
     void setID(ID id);
     void setPosition(Position pos);
@@ -31,6 +33,8 @@ public:
     void setBoundingRect(BoundingRect boundingRect);
     void setFillColor(long color);
     void setLineColor(long color);
+    void setLineDescriptorWidth(double width);
+    void setLineDescriptorStyle(LineType type);
 
 };
 

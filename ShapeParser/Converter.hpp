@@ -19,6 +19,8 @@ public:
     static ID convertToID(const std::string& values);
     static BoundingRect convertToBoundingRect(const std::string& width, const std::string& height);
     static long convertToColor(const std::string& color);
+    static LineType convertToLineType(const std::string& lineType);
+    static LineDescriptor convertToLineDescriptor(const std::string& lineType, const std::string& lineWidth);
 };
 
 #endif

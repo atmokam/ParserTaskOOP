@@ -32,12 +32,38 @@ struct BoundingRect {
     double height;
 };
 
-using ID = int;            // 8 digit number
+using ID = int;           
 
 struct Color {
     long hexLineColor = 0;
     long hexFillColor = 0; // black by default
 };
+
+enum class LineType {
+    Solid, Dashed, Dotted
+};
+
+struct LineDescriptor { // by default
+    LineType type = LineType::Solid;
+    double width = 1;
+};
+
+inline std::ostream& operator<<(std::ostream& os, const LineDescriptor& line) {
+    os << "line_type:";
+    switch (line.type) {
+        case LineType::Solid:
+            os << "solid" << std::endl;
+            break;
+        case LineType::Dashed:
+            os << "dashed" << std::endl;
+            break;
+        case LineType::Dotted:
+            os << "dotted" << std::endl;
+            break;
+    }
+    os << "line_width:" << line.width;
+    return os;
+}
 
 
 inline std::ostream& operator<<(std::ostream& os, const ShapeType& shape) {

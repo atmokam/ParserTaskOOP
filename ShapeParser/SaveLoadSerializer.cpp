@@ -27,6 +27,7 @@ void SaveLoadSerializer::saveToFile(std::ofstream& file, const std::unordered_ma
         file << item.second->getPosition() << std::endl;
         file << item.second->getBoundingRect() << std::endl;
         file << item.second->getColor() << std::endl;
+        file << item.second->getLineDescriptor() << std::endl;
         file << std::endl;
     }
 }
@@ -48,7 +49,7 @@ std::shared_ptr<Document> SaveLoadSerializer::readFromFile(std::ifstream& file) 
     std::shared_ptr<Document> document = std::make_shared<Document>();
 
     std::string line; 
-    Position pos; Type type; BoundingRect boundingRect; Color color; ID id; 
+    Position pos; Type type; BoundingRect boundingRect; Color color; ID id; LineDescriptor lineDescriptor;
     while (std::getline(file, line))
     {
         std::istringstream is_line(line);
@@ -70,9 +71,13 @@ std::shared_ptr<Document> SaveLoadSerializer::readFromFile(std::ifstream& file) 
                     boundingRect.height = std::stod(value);
                 else if(key == "line_color")
                     color.hexLineColor = Converter::convertToColor(value);
-                else if(key == "fill_color"){
+                else if(key == "fill_color")
                     color.hexFillColor = Converter::convertToColor(value);
-                    (*std::prev(document->end()))->addItem(std::make_shared<Item>(type, pos, boundingRect, color, id));
+                else if(key == "line_width")
+                    lineDescriptor.width = std::stod(value);
+                else if(key == "line_style"){
+                    lineDescriptor.type = Converter::convertToLineType(value);
+                    (*std::prev(document->end()))->addItem(std::make_shared<Item>(type, pos, boundingRect, color, id, lineDescriptor));
                 }
                 else if(key == "max_id")
                     (*(std::prev(document->end())))->setMaximumID(std::stoi(value));

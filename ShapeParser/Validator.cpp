@@ -7,9 +7,9 @@ std::unordered_set<std::string> Validator::commands = {
     };
 
 std::unordered_map<std::string, std::vector<std::string>> Validator::validOperands = {
-        {"add", {"-name", "-pos", "-lcolor", "-fcolor", "-radius", "-w", "-h", "-slide"}},
+        {"add", {"-name", "-pos", "-lcolor", "-fcolor", "-w", "-h", "-slide", "-lwidth", "-lstyle"}},
         {"remove", {"-id", "-slide"}},
-        {"change", {"-id", "-name", "-pos", "-lcolor", "-fcolor", "-radius", "-w", "-h"}},
+        {"change", {"-id", "-name", "-pos", "-lcolor", "-fcolor", "-w", "-h", "-lwidth", "-lstyle"}},
         {"display", {"-id"}},
         {"list", {}},
         {"save", {"-path", "-filename"}},
@@ -31,7 +31,7 @@ std::unordered_set<std::string> Validator::styles = {
 
 // operand quantity checking: 0 means no value, -1 means any number of values
 std::unordered_map<std::string, size_t> Validator::addValidOperands = {
-        {"-name", 1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-radius", 1}, {"-pos", -1}, {"-w", 1}, {"-h", 1}, {"-slide", 0}, {"-lwidth", 1}, {"-lstyle", 1}
+        {"-name", 1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-pos", -1}, {"-w", 1}, {"-h", 1}, {"-slide", 0}, {"-lwidth", 1}, {"-lstyle", 1}
     };
 
 std::unordered_map<std::string, size_t> Validator::removeValidOperands = {
@@ -39,7 +39,7 @@ std::unordered_map<std::string, size_t> Validator::removeValidOperands = {
     };
 
 std::unordered_map<std::string, size_t> Validator::changeValidOperands = {
-        {"-id", 1}, {"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-radius", 1}, {"-w", 1}, {"-h", 1}
+        {"-id", 1}, {"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-w", 1}, {"-h", 1}
     };
 
 std::unordered_map<std::string, size_t> Validator::displayValidOperands = {
@@ -147,10 +147,6 @@ bool Validator::isOperand(const std::string& inputToBeChecked, const std::string
     return std::find(validOperandsForCommand.begin(), validOperandsForCommand.end(), inputToBeChecked) != validOperandsForCommand.end();
 }
 
-bool Validator::isID(const std::string& inputToBeChecked) {
-    return inputToBeChecked.size() == 8 && std::all_of(inputToBeChecked.begin(), inputToBeChecked.end(), isdigit);
-}
-
 bool Validator::isDouble(const std::string& inputToBeChecked) {
     try {
         double number = std::stod(inputToBeChecked);
@@ -189,7 +185,7 @@ bool Validator::isValue(const std::string& inputToBeChecked, const std::string& 
         return std::find(shapes.begin(), shapes.end(), inputToBeChecked) != shapes.end();
 
     } else if (operandName == "-id") {
-        return isID(inputToBeChecked);
+        return isInteger(inputToBeChecked);
 
     } else if (operandName == "-pos") {
         return isDouble(inputToBeChecked);
@@ -199,9 +195,6 @@ bool Validator::isValue(const std::string& inputToBeChecked, const std::string& 
 
     } else if (operandName == "-fcolor") {
         return isHex(inputToBeChecked);
-
-    } else if (operandName == "-radius") {
-        return isInteger(inputToBeChecked);
 
     } else if (operandName == "-path") {
         return isPath(inputToBeChecked);

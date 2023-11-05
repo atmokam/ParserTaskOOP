@@ -10,7 +10,6 @@ void AddCommand::execute(std::shared_ptr<Document>& document, const std::shared_
     else if(operands.find("-slide") != operands.end()){
         std::cout << "- - - - - - - - - - Added new slide - - - - - - - - - -" << std::endl;
         document->addSlide(std::make_shared<Slide>());
-        //view->currentSlideNumber++; // change
     }
 }
 
@@ -19,8 +18,8 @@ void RemoveCommand::execute(std::shared_ptr<Document>& document, const std::shar
         getCurrentSlide(document, view)->removeItem(getItemID());
     }
     else if(operands.find("-slide") != operands.end()){
-        if(view->currentSlideNumber == 0){
-            std::cout << "Cannot remove first slide" << std::endl;
+        if(std::distance(document->cbegin(), document->cend()) == 1){
+            std::cout << "Cannot remove slide, only 1 left" << std::endl;
             return;
         }
         document->removeSlide(view->currentSlideNumber);
@@ -57,6 +56,12 @@ void ChangeCommand::execute(std::shared_ptr<Document>& document, const std::shar
     }
     if(operands.find("-fcolor") != operands.end()){
         getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setFillColor(Converter::convertToColor(operands["-fcolor"][0]));
+    }
+    if(operands.find("-lwidth") != operands.end()){
+        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setLineDescriptorWidth(std::stod(operands["-lwidth"][0]));
+    }
+    if(operands.find("-lstyle") != operands.end()){
+        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0]));
     }
 }
 
@@ -150,14 +155,21 @@ std::shared_ptr<Item> AddCommand::createItem(std::shared_ptr<Slide> slide) {
 
     BoundingRect bounds = BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])};
     
-    Color color;
+    Color color; LineDescriptor lineDescriptor;
     if(operands.find("-lcolor") != operands.end()){
         color.hexLineColor = Converter::convertToColor(operands["-lcolor"][0]);
     }
     if (operands.find("-fcolor") != operands.end()){
         color.hexFillColor = Converter::convertToColor(operands["-fcolor"][0]);
     }
-    auto item = std::make_shared<Item>(type, pos, bounds, color, slide->generateID());
+    if (operands.find("-lwidth") != operands.end()){
+        lineDescriptor.width = std::stod(operands["-lwidth"][0]);
+    }
+    if (operands.find("-lstyle") != operands.end()){
+        lineDescriptor.type = Converter::convertToLineType(operands["-lstyle"][0]);
+    }
+
+    auto item = std::make_shared<Item>(type, pos, bounds, color, slide->generateID(), lineDescriptor);
 
     return item;
 
@@ -175,6 +187,7 @@ void displayItem(std::shared_ptr<Item> item) {
     std::cout << "Position: " << item->getPosition() << std::endl;
     std::cout << "Bounding Rectangle: " << item->getBoundingRect() << std::endl;
     std::cout << "Color: " << item->getColor() << std::endl;
+    std::cout << "Line Descriptor: " << item->getLineDescriptor() << std::endl;
     std::cout << std::endl;
 }
 

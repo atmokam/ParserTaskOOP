@@ -59,5 +59,19 @@ long Converter::convertToColor(const std::string& color) {
     return converted;
 }
 
+LineType Converter::convertToLineType(const std::string& lineType) {
+    if (lineType == "solid") {
+        return LineType::Solid;
+    } else if (lineType == "dashed") {
+        return LineType::Dashed;
+    } else if (lineType == "dotted") {
+        return LineType::Dotted;
+    } else {
+        throw std::invalid_argument("Invalid line type");
+    }
+}
 
+LineDescriptor Converter::convertToLineDescriptor(const std::string& lineType, const std::string& lineWidth) {
+    return LineDescriptor{convertToLineType(lineType), std::stod(lineWidth)};
+}
 

@@ -1,7 +1,7 @@
 #include "Item.hpp"
 
 
-Item::Item(Type type, Position pos, BoundingRect boundingRect, Color color, ID id) : type(type), pos(pos), boundingRect(boundingRect), color(color), id(id){
+Item::Item(Type type, Position pos, BoundingRect boundingRect, Color color, ID id, LineDescriptor line) : type(type), pos(pos), boundingRect(boundingRect), color(color), id(id), line(line){
     
 }
 
@@ -23,6 +23,10 @@ ID Item::getID() const {
 
 Color Item::getColor() const {
     return color;
+}
+
+LineDescriptor Item::getLineDescriptor() const {
+    return line;
 }
 
 void Item::setPosition(Position pos) {
@@ -47,4 +51,12 @@ void Item::setLineColor(long color) {
 
 void Item::setID(ID id) {
     this->id = id;
+}
+
+void Item::setLineDescriptorWidth(double width) {
+    this->line.width = width;
+}
+
+void Item::setLineDescriptorStyle(LineType type) {
+    this->line.type = type;
 }

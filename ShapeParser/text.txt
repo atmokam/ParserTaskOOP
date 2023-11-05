@@ -1,11 +1,13 @@
-load -path /home/atmokam/Desktop/OOP/ParserTaskOOP/test.ppx
 add -name ellipse -pos 48885, 743 -w 45 -h 45 -fcolor #ff0880
 add -name trapezoid -pos 48885, 743 -w 100 -h 45 -fcolor #ff0880
 list
 add -slide
-add -name ellipse -pos 48885, 743 -w 45 -h 45 -fcolor #ff0880
+add -name ellipse -pos 48885, 743 -w 45 -h 45 -fcolor #ff0880 -lstyle dashed -lcolor #ff0880 -lwidth 5
 list
+next
 remove -slide
 list
 save -path /home/atmokam/Desktop/OOP/ParserTaskOOP/ -filename output
+load -path /home/atmokam/Desktop/OOP/ParserTaskOOP/test.ppx
+
 

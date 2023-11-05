@@ -6,7 +6,7 @@ To run:
 
 [] - optionals indicated
 ```
-add -name <shape> -pos <position> -w <width> -h <height> [-lcolor <hex color> -fcolor <hex color>]
+add -name <shape> -pos <position> -w <width> -h <height> [-lcolor <hex color> -fcolor <hex color> -lstyle <style> -lwidth <width>]
 
 add -slide
 

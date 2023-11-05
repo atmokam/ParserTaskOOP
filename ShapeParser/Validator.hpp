@@ -16,6 +16,7 @@ class Validator {
     static std::unordered_set<std::string> commands ;
     static std::unordered_map<std::string, std::vector<std::string>> validOperands;
     static std::unordered_set<std::string> shapes;
+    static std::unordered_set<std::string> styles;
 
     // quantity checking
     static std::unordered_map<std::string, size_t> addValidOperands;
@@ -39,18 +40,19 @@ class Validator {
     static bool checkMandatoryOperands(std::unordered_map<std::string, std::vector<std::string>> commandOperands, std::unordered_set<std::string> validOperands);
 
 
-    static bool isID(std::string inputToBeChecked);
-    static bool isPosition(std::string inputToBeChecked);
-    static bool isHex(std::string inputToBeChecked);
-    static bool isInteger(std::string inputToBeChecked);
-    static bool isPath(std::string inputToBeChecked);
-    static bool isFilename(std::string inputToBeChecked);
+    static bool isID(const std::string& inputToBeChecked);
+    static bool isDouble(const std::string& inputToBeChecked);
+    static bool isHex(const std::string& inputToBeChecked);
+    static bool isInteger(const std::string& inputToBeChecked);
+    static bool isPath(const std::string& inputToBeChecked);
+    static bool isFilename(const std::string& inputToBeChecked);
+    static bool isStyle(const std::string& inputToBeChecked);
 
 
 public:
-    static bool isName(std::string inputToBeChecked);
-    static bool isOperand(std::string inputToBeChecked, std::string commandName);
-    static bool isValue(std::string inputToBeChecked, std::string operandName);
+    static bool isName(const std::string& inputToBeChecked);
+    static bool isOperand(const std::string& inputToBeChecked, const std::string& commandName);
+    static bool isValue(const std::string& inputToBeChecked, const std::string& operandName);
     static bool validateCommand(std::shared_ptr<Command> commandToBeChecked);
 };
 

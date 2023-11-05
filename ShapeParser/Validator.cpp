@@ -22,12 +22,16 @@ std::unordered_set<std::string> Validator::shapes = {
         "trapezoid", "rectangle", "line", "triangle", "ellipse"
     };
 
+std::unordered_set<std::string> Validator::styles = {
+    "solid", "dashed", "dotted"
+    };
+
 
 
 
 // operand quantity checking: 0 means no value, -1 means any number of values
 std::unordered_map<std::string, size_t> Validator::addValidOperands = {
-        {"-name", 1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-radius", 1}, {"-pos", -1}, {"-w", 1}, {"-h", 1}, {"-slide", 0}
+        {"-name", 1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-radius", 1}, {"-pos", -1}, {"-w", 1}, {"-h", 1}, {"-slide", 0}, {"-lwidth", 1}, {"-lstyle", 1}
     };
 
 std::unordered_map<std::string, size_t> Validator::removeValidOperands = {
@@ -134,20 +138,20 @@ bool Validator::checkMandatoryOperands(std::unordered_map<std::string, std::vect
 
 
 
-bool Validator::isName(std::string inputToBeChecked) {
+bool Validator::isName(const std::string& inputToBeChecked) {
     return std::find(commands.begin(), commands.end(), inputToBeChecked) != commands.end();
 }
 
-bool Validator::isOperand(std::string inputToBeChecked, std::string commandName) {
+bool Validator::isOperand(const std::string& inputToBeChecked, const std::string& commandName) {
     auto validOperandsForCommand = validOperands[commandName];
     return std::find(validOperandsForCommand.begin(), validOperandsForCommand.end(), inputToBeChecked) != validOperandsForCommand.end();
 }
 
-bool Validator::isID(std::string inputToBeChecked) {
+bool Validator::isID(const std::string& inputToBeChecked) {
     return inputToBeChecked.size() == 8 && std::all_of(inputToBeChecked.begin(), inputToBeChecked.end(), isdigit);
 }
 
-bool Validator::isPosition(std::string inputToBeChecked) {
+bool Validator::isDouble(const std::string& inputToBeChecked) {
     try {
         double number = std::stod(inputToBeChecked);
         return true;
@@ -156,26 +160,30 @@ bool Validator::isPosition(std::string inputToBeChecked) {
     }
 }
 
-bool Validator::isHex(std::string inputToBeChecked) {
+bool Validator::isHex(const std::string& inputToBeChecked) {
     return inputToBeChecked.size() == 7 && inputToBeChecked[0] == '#' && std::all_of(inputToBeChecked.begin() + 1, inputToBeChecked.end(), isxdigit);
 }
 
-bool Validator::isInteger(std::string inputToBeChecked) {
+bool Validator::isInteger(const std::string& inputToBeChecked) {
     return std::all_of(inputToBeChecked.begin(), inputToBeChecked.end(), isdigit);
 }
 
-bool Validator::isPath(std::string inputToBeChecked) { 
+bool Validator::isPath(const std::string& inputToBeChecked) { 
     std::ifstream file(inputToBeChecked);
     return file.good();
 }
 
-bool Validator::isFilename(std::string inputToBeChecked) {
+bool Validator::isFilename(const std::string& inputToBeChecked) {
     return std::all_of(inputToBeChecked.begin(), inputToBeChecked.end(), isalnum);
+}
+
+bool Validator::isStyle(const std::string& inputToBeChecked) {
+    return std::find(styles.begin(), styles.end(), inputToBeChecked) != styles.end();
 }
 
 
 
-bool Validator::isValue(std::string inputToBeChecked, std::string operandName) {
+bool Validator::isValue(const std::string& inputToBeChecked, const std::string& operandName) {
 
     if (operandName == "-name") {
         return std::find(shapes.begin(), shapes.end(), inputToBeChecked) != shapes.end();
@@ -184,7 +192,7 @@ bool Validator::isValue(std::string inputToBeChecked, std::string operandName) {
         return isID(inputToBeChecked);
 
     } else if (operandName == "-pos") {
-        return isPosition(inputToBeChecked);
+        return isDouble(inputToBeChecked);
 
     } else if (operandName == "-lcolor") {
         return isHex(inputToBeChecked);
@@ -199,13 +207,19 @@ bool Validator::isValue(std::string inputToBeChecked, std::string operandName) {
         return isPath(inputToBeChecked);
 
     } else if (operandName == "-w" || operandName == "-h") {
-        return isPosition(inputToBeChecked);
+        return isDouble(inputToBeChecked);
 
     } else if (operandName == "-filename") {
         return isFilename(inputToBeChecked);
         
     } else if (operandName == "-slide") {
         return isInteger(inputToBeChecked);
+
+    } else if (operandName == "-lwidth"){
+        return isDouble(inputToBeChecked);
+
+    } else if (operandName == "-lstyle"){
+        return isStyle(inputToBeChecked);
     }
     else {
         return false;

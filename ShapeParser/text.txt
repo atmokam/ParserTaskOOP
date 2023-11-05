@@ -8,6 +8,3 @@ next
 remove -slide
 list
 save -path /home/atmokam/Desktop/OOP/ParserTaskOOP/ -filename output
-load -path /home/atmokam/Desktop/OOP/ParserTaskOOP/test.ppx
-
-

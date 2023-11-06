@@ -1,4 +1,4 @@
-#ifndef VIEW_HPP
+#ifndef VIEW_HPP // imo this should be named ViewStateKeeper
 #define VIEW_HPP
 
 #include <string>

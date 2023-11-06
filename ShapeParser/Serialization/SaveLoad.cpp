@@ -15,13 +15,13 @@ void SaveLoadSerializer::save(std::shared_ptr<Document> document, const std::str
     for(size_t i = 0; i < size; ++i){
         file << "slide:" << i << std::endl;
         file << "max_id:"  << document->getSlide(i)->getMaximumID() << std::endl;
-        serialize(file, document->getSlide(i)->getItems());
+        serialize(file, document->getSlide(i));
     }
 
 }
 
-void SaveLoadSerializer::serialize(std::ofstream& file, const std::unordered_map<int, std::shared_ptr<Item>>& items) {
-    for(auto item : items) {
+void SaveLoadSerializer::serialize(std::ofstream& file, const std::shared_ptr<Slide>& slide) {
+    for(auto item : *slide) {
         file << "id:" << item.second->getID() << std::endl;
         file << ShapeType{item.second->getType()} << std::endl;
         file << item.second->getPosition() << std::endl;
@@ -87,6 +87,7 @@ std::shared_ptr<Document> SaveLoadSerializer::deserialize(std::ifstream& file) {
                     document->addSlide(std::make_shared<Slide>());
                 }
                 else {
+                    std::cout << key << " " << value << std::endl;
                     throw std::invalid_argument("Invalid file contents");
                 }
 

@@ -14,12 +14,12 @@
 class Slide {
     std::unordered_map<int, std::shared_ptr<Item>> items;
     size_t maximumID = 0;
+    std::unordered_map<int, std::shared_ptr<Item>> getItems() const;  // for internal use only
 
 public:
     Slide() = default;
 
     ID generateID();
-    std::unordered_map<int, std::shared_ptr<Item>> getItems() const; //
     std::shared_ptr<Item> getItem(int id) const;
     size_t getMaximumID() const ;
     void setMaximumID(size_t id);

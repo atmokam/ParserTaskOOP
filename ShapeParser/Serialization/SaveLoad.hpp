@@ -14,7 +14,7 @@
 #include "Converter.hpp"
 
 class SaveLoadSerializer {
-    static void serialize(std::ofstream& file, const std::unordered_map<int, std::shared_ptr<Item>>& items);
+    static void serialize(std::ofstream& file, const std::shared_ptr<Slide>& items);
     static std::shared_ptr<Document> deserialize(std::ifstream& file);
 public:
     static void save(std::shared_ptr<Document> document, const std::string& path);

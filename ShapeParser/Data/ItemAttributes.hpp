@@ -49,7 +49,7 @@ struct LineDescriptor { // by default
 };
 
 inline std::ostream& operator<<(std::ostream& os, const LineDescriptor& line) {
-    os << "line_type:";
+    os << "line_style:";
     switch (line.type) {
         case LineType::Solid:
             os << "solid" << std::endl;

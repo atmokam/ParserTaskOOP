@@ -28,4 +28,9 @@ list
 
 load -path <path>
 ```
+```
+Don't know whether I should put View (a data object used to track the current slide and maintain a pointer to it) inside Data?
 
+Also should it have the display commands? I think those are redundant.
+
+```

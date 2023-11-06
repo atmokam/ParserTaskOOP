@@ -53,7 +53,7 @@ public:
     static bool isName(const std::string& inputToBeChecked);
     static bool isOperand(const std::string& inputToBeChecked, const std::string& commandName);
     static bool isValue(const std::string& inputToBeChecked, const std::string& operandName);
-    static bool validateCommand(std::shared_ptr<Command> commandToBeChecked);
+    static bool validateCommand(const std::shared_ptr<Command>& commandToBeChecked);
 };
 
 

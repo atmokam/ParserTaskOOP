@@ -89,7 +89,7 @@ std::unordered_set<std::string> Validator::loadMandatoryOperands = {
 
 
 
-bool Validator::validateCommand(std::shared_ptr<Command> commandToBeChecked) { 
+bool Validator::validateCommand(const std::shared_ptr<Command>& commandToBeChecked) { 
     auto commandName = commandToBeChecked->getName();
     auto commandOperands = commandToBeChecked->getOperands();
 

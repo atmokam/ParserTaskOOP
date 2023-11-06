@@ -9,9 +9,9 @@
 #include <memory>
 
 
-#include "Document.hpp"
+#include "Data/Document.hpp"
 #include "Parser.hpp"
-#include "View.hpp" 
+#include "Data/View.hpp" 
 
 class Executer
 {

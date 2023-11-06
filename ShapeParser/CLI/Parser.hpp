@@ -8,7 +8,7 @@
 
 #include "Command.hpp"
 #include "Validator.hpp"
-#include "Document.hpp"
+#include "Data/Document.hpp"
 
 
 class Parser {

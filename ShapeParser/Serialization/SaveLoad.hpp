@@ -10,7 +10,7 @@
 #include <memory>
 #include <vector>
 
-#include "Document.hpp"
+#include "Data/Document.hpp"
 #include "Converter.hpp"
 
 class SaveLoadSerializer {

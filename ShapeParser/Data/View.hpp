@@ -6,9 +6,9 @@
 #include <vector>
 #include <iostream>
 
-#include "Document.hpp"
-#include "Item.hpp"
-#include "Slide.hpp"
+#include "Data/Document.hpp"
+#include "Data/Item.hpp"
+#include "Data/Slide.hpp"
 
 class View {
 public:

@@ -8,11 +8,11 @@
 #include <memory>
 #include <fstream>
 
-#include "Item.hpp"
-#include "Converter.hpp"
-#include "Document.hpp"
-#include "View.hpp"
-#include "SaveLoad.hpp"
+#include "Data/Item.hpp"
+#include "Serialization/Converter.hpp"
+#include "Data/Document.hpp"
+#include "Data/View.hpp"
+#include "Serialization/SaveLoad.hpp"
 
 
 

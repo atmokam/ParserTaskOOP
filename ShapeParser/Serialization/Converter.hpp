@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include <algorithm>
 
-#include "ItemAttributes.hpp"
+#include "Data/ItemAttributes.hpp"
 
 class Converter {
     static std::unordered_map<std::string, Type> typeMap;

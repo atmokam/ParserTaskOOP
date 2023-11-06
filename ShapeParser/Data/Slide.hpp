@@ -15,8 +15,6 @@ class Slide {
     std::unordered_map<int, std::shared_ptr<Item>> items;
     size_t maximumID = 0;
 
-
-
 public:
     Slide() = default;
 

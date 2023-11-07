@@ -27,6 +27,8 @@ display [-id <id>]
 list
 
 load -path <path>
+
+exit
 ```
 ```
 Don't know whether I should put View (a data object used to track the current slide and maintain a pointer to it) inside Data?

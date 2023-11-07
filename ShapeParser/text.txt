@@ -1,3 +1,8 @@
+load -path /home/atmokam/Desktop/OOP/ParserTaskOOP/output3.ppx
+list
+next
+next
+next
 add -name ellipse -pos 48885, 743 -w 45 -h 45 -fcolor #ff0880
 add -name trapezoid -pos 48885, 743 -w 100 -h 45 -fcolor #ff0880 -lstyle solid -lcolor #afbbb0 -lwidth 8
 list
@@ -11,4 +16,4 @@ next
 display
 remove -slide
 list
-save -path /home/atmokam/Desktop/OOP/ParserTaskOOP/ -filename output
+save -path /home/atmokam/Desktop/OOP/ParserTaskOOP/ -filename output3

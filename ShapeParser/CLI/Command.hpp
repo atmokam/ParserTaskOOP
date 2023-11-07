@@ -13,6 +13,7 @@
 #include "Data/Document.hpp"
 #include "Data/View.hpp"
 #include "Serialization/SaveLoad.hpp"
+#include "Director/Actions.hpp"  
 
 
 
@@ -38,7 +39,7 @@ class AddCommand : public Command {
 public:
     
     void execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) override;
-    std::shared_ptr<Item> createItem(std::shared_ptr<Slide> slide);
+    std::shared_ptr<Item> createItem(const std::shared_ptr<Slide>& slide);
 };
 
 class RemoveCommand : public Command {
@@ -97,7 +98,7 @@ public:
 };
 
 
-void displayItem(std::shared_ptr<Item> item);
+void displayItem(const std::shared_ptr<Item>& item);
 
 
 #endif

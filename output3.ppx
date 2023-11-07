@@ -1,0 +1,130 @@
+slide:0
+max_id:6
+id:4
+type:trapezoid
+indices:48885 743
+width:100
+height:45
+line_color:#afbbb0
+fill_color:#ff0880
+line_style:solid
+line_width:8
+
+id:3
+type:ellipse
+indices:48885 743
+width:45
+height:45
+line_color:#0
+fill_color:#ff0880
+line_style:solid
+line_width:1
+
+id:1
+type:ellipse
+indices:48885 743
+width:45
+height:45
+line_color:#0
+fill_color:#ff0880
+line_style:solid
+line_width:8
+
+id:2
+type:trapezoid
+indices:48885 743
+width:100
+height:45
+line_color:#afbbb0
+fill_color:#ff0880
+line_style:solid
+line_width:1
+
+id:5
+type:ellipse
+indices:48885 743
+width:45
+height:45
+line_color:#0
+fill_color:#ff0880
+line_style:solid
+line_width:8
+
+id:6
+type:trapezoid
+indices:48885 743
+width:100
+height:45
+line_color:#afbbb0
+fill_color:#ff0880
+line_style:solid
+line_width:1
+
+slide:1
+max_id:3
+id:2
+type:ellipse
+indices:48885 743
+width:47
+height:105
+line_color:#ff0880
+fill_color:#ff0880
+line_style:dashed
+line_width:5
+
+id:1
+type:ellipse
+indices:48885 743
+width:47
+height:105
+line_color:#ff0880
+fill_color:#ff0880
+line_style:dashed
+line_width:5
+
+id:3
+type:ellipse
+indices:48885 743
+width:47
+height:105
+line_color:#ff0880
+fill_color:#ff0880
+line_style:dashed
+line_width:1
+
+slide:2
+max_id:0
+slide:3
+max_id:2
+id:2
+type:trapezoid
+indices:48885 743
+width:100
+height:45
+line_color:#afbbb0
+fill_color:#ff0880
+line_style:solid
+line_width:8
+
+id:1
+type:ellipse
+indices:48885 743
+width:45
+height:45
+line_color:#0
+fill_color:#ff0880
+line_style:solid
+line_width:1
+
+slide:4
+max_id:1
+id:1
+type:ellipse
+indices:48885 743
+width:47
+height:105
+line_color:#ff0880
+fill_color:#ff0880
+line_style:dashed
+line_width:5
+

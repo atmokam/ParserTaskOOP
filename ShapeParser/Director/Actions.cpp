@@ -2,23 +2,34 @@
 
 Action::Action(std::unordered_map<std::string, std::vector<std::string>>& operands) : operands(operands) {}
 
+std::unordered_map<std::string, std::vector<std::string>> createOperands(const std::string& actionType, const std::vector<std::string>& operands){
+    return {{actionType, operands}};
+}
+
+std::shared_ptr<Slide> Action::getCurrentSlide(std::shared_ptr<Document>& document, size_t& currentSlideIndex) const {
+    return document->getSlide(currentSlideIndex);
+}
+
+
+
+
+
 AddAction::AddAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
 
-void AddAction::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
+
+std::shared_ptr<Action> AddAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
 
     if(operands.find("-name") != operands.end()){
-        std::shared_ptr<Item> item = createItem(getCurrentSlide(document, view));
-        getCurrentSlide(document, view)->addItem(item);
+        std::shared_ptr<Item> item = createItem(getCurrentSlide(document, currentSlideIndex));
+        getCurrentSlide(document, currentSlideIndex)->addItem(item);
+        return std::make_shared<RemoveAction>(createOperands("-id", {std::to_string(item->getID())}));
     }
     else if(operands.find("-slide") != operands.end()){
         std::cout << "- - - - - - - - - - Added new slide - - - - - - - - - -" << std::endl;
         document->addSlide(std::make_shared<Slide>());
+        return std::make_shared<RemoveAction>(createOperands("-slide", {std::to_string(std::distance(document->cbegin(), document->cend()) - 1)}));
     }
     
-}
-
-std::shared_ptr<Slide> Action::getCurrentSlide(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) const {
-    return document->getSlide(view->currentSlideNumber);
 }
 
 std::shared_ptr<Item> AddAction::createItem(const std::shared_ptr<Slide>& slide) {
@@ -51,29 +62,29 @@ std::shared_ptr<Item> AddAction::createItem(const std::shared_ptr<Slide>& slide)
 
 RemoveAction::RemoveAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
 
-void RemoveAction::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view){
+std::shared_ptr<Action> RemoveAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex){
   if(operands.find("-id") != operands.end()){
-        getCurrentSlide(document, view)->removeItem(std::stoi(operands["-id"][0]));
+        getCurrentSlide(document, currentSlideIndex)->removeItem(std::stoi(operands["-id"][0]));
     }
     else if(operands.find("-slide") != operands.end()){
         if(std::distance(document->cbegin(), document->cend()) == 1){
             std::cout << "Cannot remove slide, only 1 left" << std::endl;
             return;
         }
-        document->removeSlide(view->currentSlideNumber);
-        view->currentSlideNumber--;
+        document->removeSlide(currentSlideIndex);
+        --currentSlideIndex;
     }
 }
 
 DisplayAction::DisplayAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
 
-void DisplayAction::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
+std::shared_ptr<Action> DisplayAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
     if(operands.find("-id") != operands.end()){
-        displayItem(getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0])));
+        displayItem(getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0])));
     }
     else{
-        std::cout << "---------Current slide (" << view->currentSlideNumber << ")---------" << std::endl; 
-        std::shared_ptr<Slide> slide = getCurrentSlide(document, view);
+        std::cout << "---------Current slide (" << currentSlideIndex << ")---------" << std::endl; 
+        std::shared_ptr<Slide> slide = getCurrentSlide(document, currentSlideIndex);
         for(auto item : *slide){
             displayItem(item.second);
         }
@@ -93,33 +104,33 @@ void DisplayAction::displayItem(const std::shared_ptr<Item>& item) {
 
 ChangeAction::ChangeAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
 
-void ChangeAction::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
+std::shared_ptr<Action> ChangeAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
     if(operands.find("-pos") != operands.end()){
-        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setPosition(Converter::convertToPosition(operands["-pos"]));
+        getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0]))->setPosition(Converter::convertToPosition(operands["-pos"]));
     }
     if(operands.find("-name") != operands.end()){
-        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setType(Type{Converter::convertToType(operands["-name"])});
+        getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0]))->setType(Type{Converter::convertToType(operands["-name"])});
     }
     if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end()){
-        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setBoundingRect(BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])});
+        getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0]))->setBoundingRect(BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])});
     }
     if(operands.find("-lcolor") != operands.end()){
-        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setLineColor(Converter::convertToColor(operands["-lcolor"][0]));
+        getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0]))->setLineColor(Converter::convertToColor(operands["-lcolor"][0]));
     }
     if(operands.find("-fcolor") != operands.end()){
-        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setFillColor(Converter::convertToColor(operands["-fcolor"][0]));
+        getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0]))->setFillColor(Converter::convertToColor(operands["-fcolor"][0]));
     }
     if(operands.find("-lwidth") != operands.end()){
-        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setLineDescriptorWidth(std::stod(operands["-lwidth"][0]));
+        getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0]))->setLineDescriptorWidth(std::stod(operands["-lwidth"][0]));
     }
     if(operands.find("-lstyle") != operands.end()){
-        getCurrentSlide(document, view)->getItem(std::stoi(operands["-id"][0]))->setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0]));
+        getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0]))->setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0]));
     }
 }
 
 ListAction::ListAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
 
-void ListAction::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
+std::shared_ptr<Action> ListAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
     
     std::cout << "-------------------------------List of slides---------------------------------" << std::endl;
 
@@ -145,10 +156,10 @@ void ListAction::displayItem(const std::shared_ptr<Item>& item) {
 
 NextAction::NextAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
 
-void NextAction::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
-    if(view->currentSlideNumber < std::distance(document->cbegin(), document->cend()) - 1){
-        view->currentSlideNumber++;
-        view->currentSlide = getCurrentSlide(document, view);
+std::shared_ptr<Action> NextAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
+    if(currentSlideIndex < std::distance(document->cbegin(), document->cend()) - 1){
+        currentSlideIndex++;
+        //view->currentSlide = getCurrentSlide(document, currentSlideIndex);
     }
     else{
         std::cout << "No next slide" << std::endl;
@@ -157,10 +168,10 @@ void NextAction::execute(std::shared_ptr<Document>& document, const std::shared_
 
 PrevAction::PrevAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
 
-void PrevAction::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
-    if(view->currentSlideNumber > 0){
-        view->currentSlideNumber--;
-        view->currentSlide = getCurrentSlide(document, view);
+std::shared_ptr<Action> PrevAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
+    if(currentSlideIndex > 0){
+        currentSlideIndex--;
+        //view->currentSlide = getCurrentSlide(document, currentSlideIndex);
     }
     else{
         std::cout << "No previous slide" << std::endl;
@@ -169,14 +180,14 @@ void PrevAction::execute(std::shared_ptr<Document>& document, const std::shared_
 
 SaveAction::SaveAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
 
-void SaveAction::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
+std::shared_ptr<Action> SaveAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
     SaveLoadSerializer::save(document, operands["-path"][0] + operands["-filename"][0]);
 
 }
 
 LoadAction::LoadAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
 
-void LoadAction::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) { 
+std::shared_ptr<Action> LoadAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) { 
     std::ifstream file;
     auto path = operands["-path"][0];
 
@@ -187,8 +198,8 @@ void LoadAction::execute(std::shared_ptr<Document>& document, const std::shared_
 
     document = SaveLoadSerializer::load(path);
 
-    view->currentSlideNumber = 0;
-    view->currentSlide = getCurrentSlide(document, view);
+    currentSlideIndex = 0;
+    //view->currentSlide = getCurrentSlide(document, currentSlideIndex);
 
 }
 

@@ -1,9 +1,8 @@
-#include "Executer.hpp"
+#include "CLI/Controller.hpp"
 
-Executer::Executer(int count, char* args[]) : stream(buildStream(count, args)), input(stream.is_open() ? stream : std::cin), document(std::make_shared<Document>()), view(std::make_shared<View>(document)) { }
+CLIController::CLIController(int count, char* args[]) : stream(buildStream(count, args)), input(stream.is_open() ? stream : std::cin) {}
 
-
-std::ifstream Executer::buildStream(int count, char* args[]) {
+std::ifstream CLIController::buildStream(int count, char* args[]) {
     
     std::ifstream stream;
     if(args[1] == nullptr)
@@ -16,7 +15,7 @@ std::ifstream Executer::buildStream(int count, char* args[]) {
 
 // TODO: add trim method for trailing whitespaces
 
-void Executer::runProgram() {
+void CLIController::runProgram() {
     Parser parser;
     
     std::string word;
@@ -27,7 +26,7 @@ void Executer::runProgram() {
             if(!Validator::validateCommand(parser.getCommand())) {
                 throw std::invalid_argument("Invalid command: " + parser.getCommand()->getName());
             }
-            parser.getCommand()->execute(document, view);
+            parser.getCommand()->execute();
             parser.reset();
         } else {
             parser.parse(word);

@@ -14,6 +14,7 @@
 #include "Data/View.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Director/Actions.hpp"  
+#include "Director/Director.hpp"
 
 
 

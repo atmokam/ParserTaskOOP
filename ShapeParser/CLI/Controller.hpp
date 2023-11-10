@@ -1,5 +1,5 @@
-#ifndef EXECUTER_HPP
-#define EXECUTER_HPP
+#ifndef CLIController_HPP
+#define CLIController_HPP
 
 #include <iostream>
 #include <string>
@@ -12,20 +12,19 @@
 #include "Data/Document.hpp"
 #include "Parser.hpp"
 #include "Data/View.hpp" 
+#include "Interfaces/IController.hpp"
 
-class Executer
-{
+
+class CLIController : public IController {
     std::ifstream stream;
     std::istream& input;
-    std::shared_ptr<Document> document;
-    std::shared_ptr<View> view;
+    
 public:
-    Executer() = default;
-    Executer(int count, char* args[]); 
-    void runProgram();
+    CLIController() = default;
+    CLIController(int count, char* args[]); 
+    void runProgram() override;
     static std::ifstream buildStream(int count, char* args[]);
-
-
+    void buildController() override;
     
 };
 

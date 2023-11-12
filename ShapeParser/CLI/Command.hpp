@@ -13,7 +13,6 @@
 #include "Data/Document.hpp"
 #include "Data/View.hpp"
 #include "Serialization/SaveLoad.hpp"
-#include "Director/Actions.hpp"  
 #include "Director/Director.hpp"
 
 
@@ -25,63 +24,59 @@ protected:
 
 public:
 
-    virtual void execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) = 0;
+    virtual void execute(std::shared_ptr<Director>& director) = 0;
     virtual void addOperandToOperands(std::string operand); 
     virtual void addValueToOperands(std::string value, std::string operand); 
 
     std::string getName() const;
     void setName(std::string name);
-    std::unordered_map<std::string, std::vector<std::string>> getOperands() const { return operands; }
+    std::unordered_map<std::string, std::vector<std::string>> getOperands() const;
 
-    std::shared_ptr<Slide> getCurrentSlide(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) const;
+
 };
 
 class AddCommand : public Command {
 public:
     
-    void execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) override;
-    std::shared_ptr<Item> createItem(const std::shared_ptr<Slide>& slide);
+    void execute(std::shared_ptr<Director>& director) override;
 };
 
 class RemoveCommand : public Command {
 
 public:
     
-    void execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) override;
-    int getItemID() ;
+    void execute(std::shared_ptr<Director>& director) override;
 };
 
 class DisplayCommand : public Command {
 public:
     
-    void execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) override;
+    void execute(std::shared_ptr<Director>& director) override;
     
 };
 
 class ChangeCommand : public Command {
 public:
     
-    void execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) override;
+    void execute(std::shared_ptr<Director>& director) override;
 };
 
 class SaveCommand : public Command {
 public:
     
-    void execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) override;
-    void saveToFile(std::ofstream& file, const std::unordered_map<int, std::shared_ptr<Item>>& items);
+    void execute(std::shared_ptr<Director>& director) override;
 };
 
 class LoadCommand : public Command {
 public:
     
-    void execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) override;
-    std::shared_ptr<Item> setItemAttribute(std::string_view file);
+    void execute(std::shared_ptr<Director>& director) override;
 };
 
 class ListCommand : public Command {
 public:
     
-    void execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) override;
+    void execute(std::shared_ptr<Director>& director) override;
     
 
 };
@@ -89,17 +84,28 @@ public:
 class NextCommand : public Command {
 public:
     
-    void execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) override;
+    void execute(std::shared_ptr<Director>& director) override;
 };
 
 class PrevCommand : public Command {
 public:
     
-    void execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) override;
+    void execute(std::shared_ptr<Director>& director) override;
+};
+
+class UndoCommand : public Command {
+public:
+    
+    void execute(std::shared_ptr<Director>& director) override;
+};
+
+class RedoCommand : public Command {
+public:
+    
+    void execute(std::shared_ptr<Director>& director) override;
 };
 
 
-void displayItem(const std::shared_ptr<Item>& item);
 
 
 #endif

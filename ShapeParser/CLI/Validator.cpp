@@ -1,9 +1,9 @@
-#include "Validator.hpp"
+#include "CLI/Validator.hpp"
 
 
 // general checking
 std::unordered_set<std::string> Validator::commands = {
-        "add", "remove", "change", "display", "list", "save", "load", "next", "prev"
+        "add", "remove", "change", "display", "list", "save", "load", "next", "prev", "undo", "redo"
     };
 
 std::unordered_map<std::string, std::vector<std::string>> Validator::validOperands = {
@@ -15,7 +15,9 @@ std::unordered_map<std::string, std::vector<std::string>> Validator::validOperan
         {"save", {"-path", "-filename"}},
         {"load", {"-path"}}, 
         {"next", {}}, 
-        {"prev", {}} 
+        {"prev", {}},
+        {"undo", {}},
+        {"redo", {}}
     };
 
 std::unordered_set<std::string> Validator::shapes = {

@@ -18,6 +18,7 @@
 class CLIController : public IController {
     std::ifstream stream;
     std::istream& input;
+    std::shared_ptr<Director> director; // i might need to pass this to guicontroller(that's why a sharedptr), still a thing to think about
     
 public:
     CLIController() = default;

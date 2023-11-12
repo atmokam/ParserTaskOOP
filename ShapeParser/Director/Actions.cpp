@@ -1,8 +1,7 @@
 #include "Director/Actions.hpp"
 
-Action::Action(std::unordered_map<std::string, std::vector<std::string>>& operands) : operands(operands) {}
 
-std::unordered_map<std::string, std::vector<std::string>> createOperands(const std::string& actionType, const std::vector<std::string>& operands){
+std::unordered_map<std::string, std::vector<std::string>> Action::createOperands(std::string actionType, std::vector<std::string> operands){
     return {{actionType, operands}};
 }
 
@@ -14,21 +13,22 @@ std::shared_ptr<Slide> Action::getCurrentSlide(std::shared_ptr<Document>& docume
 
 
 
-AddAction::AddAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
+AddAction::AddAction(std::unordered_map<std::string, std::vector<std::string>> operands) : operands(operands) {}
 
 
 std::shared_ptr<Action> AddAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
-
+    
     if(operands.find("-name") != operands.end()){
         std::shared_ptr<Item> item = createItem(getCurrentSlide(document, currentSlideIndex));
         getCurrentSlide(document, currentSlideIndex)->addItem(item);
-        return std::make_shared<RemoveAction>(createOperands("-id", {std::to_string(item->getID())}));
+        return std::make_shared<RemoveAction>(RemoveAction(createOperands("-id", {std::to_string(item->getID())})));
     }
     else if(operands.find("-slide") != operands.end()){
         std::cout << "- - - - - - - - - - Added new slide - - - - - - - - - -" << std::endl;
         document->addSlide(std::make_shared<Slide>());
-        return std::make_shared<RemoveAction>(createOperands("-slide", {std::to_string(std::distance(document->cbegin(), document->cend()) - 1)}));
+        return std::make_shared<RemoveAction>(RemoveAction(createOperands("-slide", {std::to_string(std::distance(document->cbegin(), document->cend()) - 1)})));
     }
+    return nullptr;
     
 }
 
@@ -60,23 +60,28 @@ std::shared_ptr<Item> AddAction::createItem(const std::shared_ptr<Slide>& slide)
     return item;
 }
 
-RemoveAction::RemoveAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
+RemoveAction::RemoveAction(std::unordered_map<std::string, std::vector<std::string>> operands) : operands(operands) {}
 
 std::shared_ptr<Action> RemoveAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex){
   if(operands.find("-id") != operands.end()){
+        std::shared_ptr<Item> undoItem = getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0]));
         getCurrentSlide(document, currentSlideIndex)->removeItem(std::stoi(operands["-id"][0]));
+        return std::make_shared<AddAction>(AddAction()); //////////////
     }
     else if(operands.find("-slide") != operands.end()){
         if(std::distance(document->cbegin(), document->cend()) == 1){
             std::cout << "Cannot remove slide, only 1 left" << std::endl;
-            return;
+            
+        } else {
+            document->removeSlide(currentSlideIndex);
+            --currentSlideIndex;
         }
-        document->removeSlide(currentSlideIndex);
-        --currentSlideIndex;
+        
     }
+    return nullptr;
 }
 
-DisplayAction::DisplayAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
+DisplayAction::DisplayAction(const std::unordered_map<std::string, std::vector<std::string>>& operands) : operands(operands) {}
 
 std::shared_ptr<Action> DisplayAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
     if(operands.find("-id") != operands.end()){
@@ -102,7 +107,7 @@ void DisplayAction::displayItem(const std::shared_ptr<Item>& item) {
 }
 
 
-ChangeAction::ChangeAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
+ChangeAction::ChangeAction(const std::unordered_map<std::string, std::vector<std::string>>& operands) : operands(operands) {}
 
 std::shared_ptr<Action> ChangeAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
     if(operands.find("-pos") != operands.end()){
@@ -128,7 +133,7 @@ std::shared_ptr<Action> ChangeAction::execute(std::shared_ptr<Document>& documen
     }
 }
 
-ListAction::ListAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
+ListAction::ListAction(const std::unordered_map<std::string, std::vector<std::string>>& operands) : operands(operands) {}
 
 std::shared_ptr<Action> ListAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
     
@@ -154,38 +159,36 @@ void ListAction::displayItem(const std::shared_ptr<Item>& item) {
     std::cout << std::endl;
 }
 
-NextAction::NextAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
+NextAction::NextAction(const std::unordered_map<std::string, std::vector<std::string>>& operands) : operands(operands) {}
 
 std::shared_ptr<Action> NextAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
     if(currentSlideIndex < std::distance(document->cbegin(), document->cend()) - 1){
         currentSlideIndex++;
-        //view->currentSlide = getCurrentSlide(document, currentSlideIndex);
     }
     else{
         std::cout << "No next slide" << std::endl;
     }
 }
 
-PrevAction::PrevAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
+PrevAction::PrevAction(const std::unordered_map<std::string, std::vector<std::string>>& operands) : operands(operands) {}
 
 std::shared_ptr<Action> PrevAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
     if(currentSlideIndex > 0){
         currentSlideIndex--;
-        //view->currentSlide = getCurrentSlide(document, currentSlideIndex);
     }
     else{
         std::cout << "No previous slide" << std::endl;
     }
 }
 
-SaveAction::SaveAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
+SaveAction::SaveAction(const std::unordered_map<std::string, std::vector<std::string>>& operands) : operands(operands) {}
 
 std::shared_ptr<Action> SaveAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
     SaveLoadSerializer::save(document, operands["-path"][0] + operands["-filename"][0]);
 
 }
 
-LoadAction::LoadAction(std::unordered_map<std::string, std::vector<std::string>>& operands) : Action(operands) {}
+LoadAction::LoadAction(const std::unordered_map<std::string, std::vector<std::string>>& operands) : operands(operands) {}
 
 std::shared_ptr<Action> LoadAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) { 
     std::ifstream file;
@@ -199,7 +202,6 @@ std::shared_ptr<Action> LoadAction::execute(std::shared_ptr<Document>& document,
     document = SaveLoadSerializer::load(path);
 
     currentSlideIndex = 0;
-    //view->currentSlide = getCurrentSlide(document, currentSlideIndex);
 
 }
 

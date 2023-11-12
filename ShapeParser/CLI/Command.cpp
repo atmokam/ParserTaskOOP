@@ -1,63 +1,63 @@
 #include "Command.hpp"
 
 
-void AddCommand::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
+void AddCommand::execute(std::shared_ptr<Director>& director) {
 
-    AddAction action(operands);
-    action.execute(document, view);
-}
-
-void RemoveCommand::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
-    RemoveAction action(operands);
-    action.execute(document, view);
+    director->setOperands(operands);
+    director->addActionToHistory(director->executeAction("add"));
 
 }
 
-void DisplayCommand::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
-    DisplayAction action(operands);
-    action.execute(document, view);
+void RemoveCommand::execute(std::shared_ptr<Director>& director) {
+    director->setOperands(operands);
+    director->addActionToHistory(director->executeAction("remove"));
+
 }
 
-void ChangeCommand::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
-    ChangeAction action(operands);
-    action.execute(document, view);
+void DisplayCommand::execute(std::shared_ptr<Director>& director) {
+    director->setOperands(operands);
+    director->executeAction("display"); // should this be added to history?
+}
+
+void ChangeCommand::execute(std::shared_ptr<Director>& director) {
+    director->setOperands(operands);
+    director->addActionToHistory(director->executeAction("change"));
 }
 
 
-void SaveCommand::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
+void SaveCommand::execute(std::shared_ptr<Director>& director) {
         
-    SaveAction action(operands);
-    action.execute(document, view); // these are for the sake of consistency
+    director->setOperands(operands);
+    director->executeAction("save");
 
 }
 
-void LoadCommand::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) { 
+void LoadCommand::execute(std::shared_ptr<Director>& director) { 
     
-    LoadAction action(operands);
-    action.execute(document, view);
+    director->setOperands(operands);
+    director->executeAction("load");
 
 }
 
 
-
-void ListCommand::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
+void ListCommand::execute(std::shared_ptr<Director>& director) {
     
-    ListAction action(operands);
-    action.execute(document, view);
+    director->setOperands(operands);
+    director->executeAction("list");
     
 }
 
-void NextCommand::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
+void NextCommand::execute(std::shared_ptr<Director>& director) {
     
-    NextAction action(operands);
-    action.execute(document, view);
+    director->setOperands(operands);
+    director->addActionToHistory(director->executeAction("next"));
 
 }
 
-void PrevCommand::execute(std::shared_ptr<Document>& document, const std::shared_ptr<View>& view) {
+void PrevCommand::execute(std::shared_ptr<Director>& director) {
     
-    PrevAction action(operands);
-    action.execute(document, view);
+    director->setOperands(operands);
+    director->addActionToHistory(director->executeAction("prev"));
 }
 
 
@@ -80,4 +80,6 @@ void Command::setName(std::string name) {
     this->name = name;
 }
 
-
+std::unordered_map<std::string, std::vector<std::string>> Command::getOperands() const {
+    return operands;
+}

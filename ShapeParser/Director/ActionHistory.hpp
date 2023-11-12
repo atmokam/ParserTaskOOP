@@ -4,7 +4,6 @@
 #include <stack>
 
 #include "Actions.hpp"
-#include "Director/Director.hpp"
 
 class ActionHistory {
     std::shared_ptr<Document> document;

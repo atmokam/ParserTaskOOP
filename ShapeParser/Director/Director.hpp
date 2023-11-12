@@ -13,11 +13,12 @@ class Director : public IDirector {
     std::shared_ptr<Document> document;
     size_t currentSlideIndex = 0;
     std::unordered_map<std::string, std::vector<std::string>> operands;
-    ActionHistory history;
+    std::unique_ptr<ActionHistory> history;
 
 public:
     
-    Director(std::unordered_map<std::string, std::vector<std::string>>& operands);
+    Director();
+    void setOperands(std::unordered_map<std::string, std::vector<std::string>>& operands);
     std::shared_ptr<Action> executeAction(const std::string& actionType) override;
     void addActionToHistory(std::shared_ptr<Action> action) override;
     void undo() override;

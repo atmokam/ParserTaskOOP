@@ -15,71 +15,83 @@
 #include "Serialization/SaveLoad.hpp"
 
 class Action {
-protected:
-    std::unordered_map<std::string, std::vector<std::string>> operands;
 public:
-    Action() = default;
-    Action(std::unordered_map<std::string, std::vector<std::string>>& operands);
     virtual std::shared_ptr<Action> execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) = 0;
     std::shared_ptr<Slide> getCurrentSlide(std::shared_ptr<Document>& document, size_t& currentSlideIndex) const;
-    std::unordered_map<std::string, std::vector<std::string>> createOperands(const std::string& actionType, const std::vector<std::string>& operands);
+    std::unordered_map<std::string, std::vector<std::string>> createOperands(std::string actionType,  std::vector<std::string> operands);
 };
 
 class AddAction : public Action {
+
+    std::unordered_map<std::string, std::vector<std::string>> operands;
     std::shared_ptr<Item> createItem(const std::shared_ptr<Slide>& slide);
 public:
-    AddAction(std::unordered_map<std::string, std::vector<std::string>>& operands);
+    AddAction(std::unordered_map<std::string, std::vector<std::string>> operands);
     std::shared_ptr<Action> execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) override;
 };
 
 class RemoveAction : public Action {
+    std::unordered_map<std::string, std::vector<std::string>> operands;
 public:
-    RemoveAction(std::unordered_map<std::string, std::vector<std::string>>& operands);
+    RemoveAction(std::unordered_map<std::string, std::vector<std::string>> operands);
     std::shared_ptr<Action> execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) override;
 };
 
 class DisplayAction : public Action {
+    std::unordered_map<std::string, std::vector<std::string>> operands;
     void displayItem(const std::shared_ptr<Item>& item);
 public:
-    DisplayAction(std::unordered_map<std::string, std::vector<std::string>>& operands);
+    DisplayAction(const std::unordered_map<std::string, std::vector<std::string>>& operands);
     std::shared_ptr<Action> execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) override;
 };
 
 class ChangeAction : public Action {
+    std::unordered_map<std::string, std::vector<std::string>> operands;
+
 public:
-    ChangeAction(std::unordered_map<std::string, std::vector<std::string>>& operands);
+    ChangeAction(const std::unordered_map<std::string, std::vector<std::string>>& operands);
     std::shared_ptr<Action> execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) override;
 };
 
 class ListAction : public Action {
+    std::unordered_map<std::string, std::vector<std::string>> operands;
+
     void displayItem(const std::shared_ptr<Item>& item);
 public:
-    ListAction(std::unordered_map<std::string, std::vector<std::string>>& operands);
+    ListAction(const std::unordered_map<std::string, std::vector<std::string>>& operands);
     std::shared_ptr<Action> execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) override;
 };
 
 class NextAction : public Action {
+    std::unordered_map<std::string, std::vector<std::string>> operands;
+
 public:
-    NextAction(std::unordered_map<std::string, std::vector<std::string>>& operands);
+    NextAction(const std::unordered_map<std::string, std::vector<std::string>>& operands);
     std::shared_ptr<Action> execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) override;
 };
 
 class PrevAction : public Action {
+    std::unordered_map<std::string, std::vector<std::string>> operands;
+
 public:
-    PrevAction(std::unordered_map<std::string, std::vector<std::string>>& operands);
+    PrevAction(const std::unordered_map<std::string, std::vector<std::string>>& operands);
     std::shared_ptr<Action> execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) override;
 };
 
 class SaveAction : public Action {
+    std::unordered_map<std::string, std::vector<std::string>> operands;
+
 public:
-    SaveAction(std::unordered_map<std::string, std::vector<std::string>>& operands);
+    SaveAction(const std::unordered_map<std::string, std::vector<std::string>>& operands);
     std::shared_ptr<Action> execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) override;
 };
 
 class LoadAction : public Action {
+    std::unordered_map<std::string, std::vector<std::string>> operands;
+
     std::shared_ptr<Item> setItemAttribute(std::string_view file);
 public:
-    LoadAction(std::unordered_map<std::string, std::vector<std::string>>& operands);
+    LoadAction(const std::unordered_map<std::string, std::vector<std::string>>& operands);
     std::shared_ptr<Action> execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) override;
 };
 

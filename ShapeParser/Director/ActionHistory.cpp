@@ -4,6 +4,8 @@ ActionHistory::ActionHistory(const std::shared_ptr<Document>& document, const si
 
 void ActionHistory::addAction(std::shared_ptr<Action> action) {
     undoStack.push(action);
+    std::cout << "Action added to history" << std::endl;
+    undo();
 }
 
 void ActionHistory::undo() {
@@ -12,9 +14,10 @@ void ActionHistory::undo() {
         return;
     }
     std::shared_ptr<Action> action = undoStack.top();
+    std::cout << "Undoing action" << std::endl;
     action->execute(document, currentSlideIndex);
     undoStack.pop();
-    redoStack.push(std::make_shared<Action>(action)); // for optimization purposes
+    redoStack.push(action);
 }
 
 
@@ -26,5 +29,5 @@ void ActionHistory::redo() {
     std::shared_ptr<Action> action = redoStack.top();
     action->execute(document, currentSlideIndex);
     redoStack.pop();
-    undoStack.push(std::make_shared<Action>(action));
+    undoStack.push(action);
 }

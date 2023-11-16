@@ -1,5 +1,8 @@
 ## OOP parser task
 
+I've added things in the new commit and it's still unfinished, so please check out this commit for the working version of the project. Thank you.
+https://github.com/atmokam/ParserTaskOOP/commit/a52e5b9da49ad2bf861eabaa111f5761d73caaca
+
 To run: 
 1) with file, `./prog -filename <path>`
 2) without file, `./prog`
@@ -29,10 +32,4 @@ list
 load -path <path>
 
 exit
-```
-```
-Don't know whether I should put View (a data object used to track the current slide and maintain a pointer to it) inside Data?
-
-Also should it have the display commands? I think those are redundant.
-
 ```

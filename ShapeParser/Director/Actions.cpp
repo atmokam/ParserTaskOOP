@@ -66,7 +66,7 @@ std::shared_ptr<Action> RemoveAction::execute(std::shared_ptr<Document>& documen
   if(operands.find("-id") != operands.end()){
         std::shared_ptr<Item> undoItem = getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0]));
         getCurrentSlide(document, currentSlideIndex)->removeItem(std::stoi(operands["-id"][0]));
-        return std::make_shared<AddAction>(AddAction()); //////////////
+        return std::make_shared<AddAction>(AddAction()); 
     }
     else if(operands.find("-slide") != operands.end()){
         if(std::distance(document->cbegin(), document->cend()) == 1){

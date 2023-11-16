@@ -1,0 +1,24 @@
+Personal notes to remember what things have been added or changed in the code
+
+in addcommand:
+   there are references to methods in the class Director that arent defined. 
+   +add to Director class:
+     getCurrentSlide() -> Slide*
+     getCurrentSlideIndex() -> size_t
+
+in removecommand:
+    if(director->getDocument()->size() == 1) in this line
+    +add size() method to Document class
+
+in command.cpp in some classes:
+    +add IAction 
+
+in item.hpp:
+    added slideNumber
+    +add initialization for slideNumber for Item class
+
+
+
+// Q: maybe its better to keep a state inside each action 
+//  so that all actions dont have to return a pointer to the opposing?
+// but does it really matter? i could just return a nullptr if there is no opposing action

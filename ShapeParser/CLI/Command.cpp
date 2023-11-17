@@ -66,32 +66,57 @@ void RemoveCommand::execute(std::shared_ptr<Director>& director) {
 
 void DisplayCommand::execute(std::shared_ptr<Director>& director) {
     if(operands.find("-id") != operands.end()){
-        displayItem(getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0])));
-    }//// --------------------------------------------------------- //////
+        std::shared_ptr<Item> item = director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+        std::shared_ptr<IAction> action = director->createAction(ActionType::DisplayItem, item);
+        action->execute(director->getDocument());
+    }
     else{
-        std::cout << "---------Current slide (" << currentSlideIndex << ")---------" << std::endl; 
-        std::shared_ptr<Slide> slide = getCurrentSlide(document, currentSlideIndex);
-        for(auto item : *slide){
-            displayItem(item.second);
-        }
+        //std::cout << "---------Current slide (" << currentSlideIndex << ")---------" << std::endl; 
+        std::shared_ptr<IAction> action = director->createAction(ActionType::DisplaySlide, director->getCurrentSlide());
+        action->execute(director->getDocument());
     }
 }
 
 void ChangeCommand::execute(std::shared_ptr<Director>& director) {
-    director->setOperands(operands);
-    director->addActionToHistory(director->executeAction("change"));
+    std::shared_ptr<Item> item;
+    if(operands.find("-pos") != operands.end()){ // should there be the swap thing here?
+        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setPosition(Converter::convertToPosition(operands["-pos"])));
+    }
+    // if(operands.find("-name") != operands.end()){
+    //     director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setType(Type{Converter::convertToType(operands["-name"])});
+    // }
+    if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end()){
+        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setBoundingRect(BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])})); 
+    }
+    if(operands.find("-lcolor") != operands.end()){
+        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setLineColor(Converter::convertToColor(operands["-lcolor"][0])));
+    }
+    if(operands.find("-fcolor") != operands.end()){
+        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setFillColor(Converter::convertToColor(operands["-fcolor"][0])));
+    }
+    if(operands.find("-lwidth") != operands.end()){
+        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setLineDescriptorWidth(std::stod(operands["-lwidth"][0])));
+    }
+    if(operands.find("-lstyle") != operands.end()){
+        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0])));
+    }
+
+    std::shared_ptr<IAction> action = director->createAction(ActionType::ChangeItem, item);
+    director->addActionToHistory(action->execute(director->getDocument()));
 }
 
 
 void SaveCommand::execute(std::shared_ptr<Director>& director) {
-        
+// this must be changed to not have an action at all, as now the director is being passed as an argument
     director->setOperands(operands);
     director->executeAction("save");
 
 }
 
 void LoadCommand::execute(std::shared_ptr<Director>& director) { 
-    
+// this as well
+// these also have to take into account the possibility of the format of the document changing
+// but how? should document itself take care of it, what about the renderer?
     director->setOperands(operands);
     director->executeAction("load");
 
@@ -99,7 +124,7 @@ void LoadCommand::execute(std::shared_ptr<Director>& director) {
 
 
 void ListCommand::execute(std::shared_ptr<Director>& director) {
-    
+
     director->setOperands(operands);
     director->executeAction("list");
     

@@ -17,6 +17,9 @@ in item.hpp:
     added slideNumber
     +add initialization for slideNumber for Item class
 
+in actions:
+    +add createAction(ActionType type, std::shared_ptr<Item>& item)
+    -remove save load actions
 
 
 // Q: maybe its better to keep a state inside each action 

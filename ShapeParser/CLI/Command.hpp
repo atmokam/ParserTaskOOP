@@ -11,9 +11,9 @@
 #include "Data/Item.hpp"
 #include "Serialization/Converter.hpp"
 #include "Data/Document.hpp"
-#include "Data/View.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Director/Director.hpp"
+
 
 
 
@@ -36,7 +36,7 @@ public:
 };
 
 class AddCommand : public Command {
-    std::shared_ptr<Item> createItem(const std::shared_ptr<Slide>& slide);
+    std::shared_ptr<Item> createItem(const std::shared_ptr<Slide>& slide, const size_t currentSlideIndex);
 public:
     
     void execute(std::shared_ptr<Director>& director) override;

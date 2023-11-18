@@ -4,20 +4,19 @@
 void AddCommand::execute(std::shared_ptr<Director>& director) {
 
    if(operands.find("-name") != operands.end()){
-        std::shared_ptr<Item> item = createItem(director->getCurrentSlideNumber());
-        std::shared_ptr<IAction> action = director->createAction(ActionType::AddItem, item);
-        director->addActionToHistory(action->execute(director->getDocument())); // command has to handle the history adding part
+        std::shared_ptr<Item> item = createItem(director->getCurrentSlide(), director->getCurrentSlideNumber());
+        director->doAction(std::make_shared<AddItem>(item));
         std::cout << "Added new item" << std::endl;
     }
     else if(operands.find("-slide") != operands.end()){
-        std::shared_ptr<IAction> action = director->createAction(ActionType::AddSlide, std::make_shared<Slide>());
-        director->addActionToHistory(action->execute(director->getDocument()));
+        director->doAction(std::make_shared<AddSlide>(std::make_shared<Slide>()));
+        director->nextSlide();
         std::cout << "Added new slide" << std::endl;
     }
 
 }
 
-std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide) {
+std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide, const size_t currentSlideIndex) {
 
 
     Type type = Type{Converter::convertToType(operands["-name"])};
@@ -40,24 +39,23 @@ std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide
         lineDescriptor.type = Converter::convertToLineType(operands["-lstyle"][0]);
     }
 
-    auto item = std::make_shared<Item>(type, pos, bounds, color, slide->generateID(), lineDescriptor);
 
-    return item;
+    return std::make_shared<Item>(type, pos, bounds, color, slide->generateID(), lineDescriptor, currentSlideIndex);
+;
 }
 
 void RemoveCommand::execute(std::shared_ptr<Director>& director) {
     if(operands.find("-id") != operands.end()){
-        std::shared_ptr<Item> undoItem = director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
-        std::shared_ptr<IAction> action = director->createAction(ActionType::RemoveItem, undoItem);
-        director->addActionToHistory(action->execute(director->getDocument()));
+        std::shared_ptr<Item> item = director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+        director->doAction(std::make_shared<RemoveItem>(item));
     }
     else if(operands.find("-slide") != operands.end()){
         if(director->getDocument()->size() == 1){
             std::cout << "Cannot remove slide, only 1 left" << std::endl;
             
         } else {
-            std::shared_ptr<IAction> action = director->createAction(ActionType::RemoveSlide, director->getCurrentSlide());
-            director->addActionToHistory(action->execute(director->getDocument())); // director has the slide it needs to remove
+            director->doAction(std::make_shared<RemoveSlide>(director->getCurrentSlide())); // director has the slide it needs to remove
+            director->previousSlide();
         }
         
     }
@@ -67,80 +65,60 @@ void RemoveCommand::execute(std::shared_ptr<Director>& director) {
 void DisplayCommand::execute(std::shared_ptr<Director>& director) {
     if(operands.find("-id") != operands.end()){
         std::shared_ptr<Item> item = director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
-        std::shared_ptr<IAction> action = director->createAction(ActionType::DisplayItem, item);
-        action->execute(director->getDocument());
+        director->doAction(std::make_shared<DisplayItem>(item)); 
     }
     else{
-        //std::cout << "---------Current slide (" << currentSlideIndex << ")---------" << std::endl; 
-        std::shared_ptr<IAction> action = director->createAction(ActionType::DisplaySlide, director->getCurrentSlide());
-        action->execute(director->getDocument());
+        director->doAction(std::make_shared<DisplaySlide>(director->getCurrentSlide()));
     }
 }
 
 void ChangeCommand::execute(std::shared_ptr<Director>& director) {
-    std::shared_ptr<Item> item;
-    if(operands.find("-pos") != operands.end()){ // should there be the swap thing here?
-        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setPosition(Converter::convertToPosition(operands["-pos"])));
+    std::shared_ptr<Item> item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0])));
+
+    if(operands.find("-pos") != operands.end()){ 
+        item->setPosition(Converter::convertToPosition(operands["-pos"]));
     }
-    // if(operands.find("-name") != operands.end()){
-    //     director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setType(Type{Converter::convertToType(operands["-name"])});
-    // }
+    // if(operands.find("-name") != operands.end())
     if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end()){
-        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setBoundingRect(BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])})); 
+        item->setBoundingRect(BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])}); 
     }
     if(operands.find("-lcolor") != operands.end()){
-        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setLineColor(Converter::convertToColor(operands["-lcolor"][0])));
+        item->setLineColor(Converter::convertToColor(operands["-lcolor"][0]));
     }
     if(operands.find("-fcolor") != operands.end()){
-        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setFillColor(Converter::convertToColor(operands["-fcolor"][0])));
+        item->setFillColor(Converter::convertToColor(operands["-fcolor"][0]));
     }
     if(operands.find("-lwidth") != operands.end()){
-        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setLineDescriptorWidth(std::stod(operands["-lwidth"][0])));
+        item->setLineDescriptorWidth(std::stod(operands["-lwidth"][0]));
     }
     if(operands.find("-lstyle") != operands.end()){
-        item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]))->setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0])));
+        item->setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0]));
     }
 
-    std::shared_ptr<IAction> action = director->createAction(ActionType::ChangeItem, item);
-    director->addActionToHistory(action->execute(director->getDocument()));
+    director->doAction(std::make_shared<ChangeItem>(item));
 }
 
 
-void SaveCommand::execute(std::shared_ptr<Director>& director) {
-// this must be changed to not have an action at all, as now the director is being passed as an argument
-    director->setOperands(operands);
-    director->executeAction("save");
+void SaveCommand::execute(std::shared_ptr<Director>& director) {  // review document versioning
+    SaveLoadSerializer::save(director->getDocument(), operands["-path"][0] + operands["-name"][0]);
 
 }
 
 void LoadCommand::execute(std::shared_ptr<Director>& director) { 
-// this as well
-// these also have to take into account the possibility of the format of the document changing
-// but how? should document itself take care of it, what about the renderer?
-    director->setOperands(operands);
-    director->executeAction("load");
-
+    SaveLoadSerializer::load(operands["-path"][0]);
 }
 
 
 void ListCommand::execute(std::shared_ptr<Director>& director) {
-
-    director->setOperands(operands);
-    director->executeAction("list");
-    
+    director->doAction(std::make_shared<List>(director->getDocument()));
 }
 
 void NextCommand::execute(std::shared_ptr<Director>& director) {
-    
-    director->setOperands(operands);
-    director->addActionToHistory(director->executeAction("next"));
-
+    director->nextSlide();
 }
 
 void PrevCommand::execute(std::shared_ptr<Director>& director) {
-    
-    director->setOperands(operands);
-    director->addActionToHistory(director->executeAction("prev"));
+    director->previousSlide();
 }
 
 

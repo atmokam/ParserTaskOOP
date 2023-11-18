@@ -25,3 +25,6 @@ in actions:
 // Q: maybe its better to keep a state inside each action 
 //  so that all actions dont have to return a pointer to the opposing?
 // but does it really matter? i could just return a nullptr if there is no opposing action
+
+// the save load also have to take into account the possibility of the format of the document changing
+// but how? should document itself take care of it, what about the renderer? 

@@ -27,6 +27,7 @@ public:
     
     void addItem(std::shared_ptr<Item> item);
     void removeItem(int id);
+    void swapItems(int idOfInitialItem, std::shared_ptr<Item>& newItem);
 
     std::unordered_map<int, std::shared_ptr<Item>>::iterator begin();
     std::unordered_map<int, std::shared_ptr<Item>>::const_iterator cbegin() const;

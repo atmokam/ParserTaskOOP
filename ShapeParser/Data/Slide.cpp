@@ -39,6 +39,10 @@ ID Slide::generateID() {
     return getMaximumID();
 }
 
+void Slide::swapItems(int idOfInitialItem, std::shared_ptr<Item>& newItem) {
+    std::swap(items[idOfInitialItem], newItem);
+}
+
 std::unordered_map<int, std::shared_ptr<Item>>::iterator Slide::begin() {
     return items.begin();
 }

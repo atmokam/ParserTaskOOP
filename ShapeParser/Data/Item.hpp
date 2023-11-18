@@ -27,6 +27,7 @@ public:
     ID getID() const;
     Color getColor() const;
     LineDescriptor getLineDescriptor() const;
+    size_t getSlideNumber() const;
 
     void setID(ID id);
     void setPosition(Position pos);
@@ -36,6 +37,7 @@ public:
     void setLineColor(long color);
     void setLineDescriptorWidth(double width);
     void setLineDescriptorStyle(LineType type);
+    void setSlideNumber(size_t slideNumber);
 
 };
 

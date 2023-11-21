@@ -3,16 +3,16 @@
 
 #include <stack>
 
-#include "Actions.hpp"
+#include "Interfaces/IModifierAction.hpp"
 
 class ActionHistory {
     std::shared_ptr<Document> document;
     size_t currentSlideIndex;
-    std::stack<std::shared_ptr<Action>> undoStack;
-    std::stack<std::shared_ptr<Action>> redoStack;
+    std::stack<std::shared_ptr<IModifierAction>> undoStack;
+    std::stack<std::shared_ptr<IModifierAction>> redoStack;
 public:
     ActionHistory(const std::shared_ptr<Document>& document, const size_t current);
-    void addAction(std::shared_ptr<Action> action); // adds to undo stack
+    void addAction(std::shared_ptr<IModifierAction> action); // adds to undo stack
     void undo();
     void redo();
 };

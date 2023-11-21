@@ -14,7 +14,7 @@ class Item {
     ID id;
     Color color;
     LineDescriptor line;
-    size_t slideNumber;                // modify later
+    //size_t slideNumber;                // modify later
 
 public:
 
@@ -27,7 +27,7 @@ public:
     ID getID() const;
     Color getColor() const;
     LineDescriptor getLineDescriptor() const;
-    size_t getSlideNumber() const;
+    //size_t getSlideNumber() const;
 
     void setID(ID id);
     void setPosition(Position pos);
@@ -37,7 +37,7 @@ public:
     void setLineColor(long color);
     void setLineDescriptorWidth(double width);
     void setLineDescriptorStyle(LineType type);
-    void setSlideNumber(size_t slideNumber);
+    //void setSlideNumber(size_t slideNumber);
 
 };
 

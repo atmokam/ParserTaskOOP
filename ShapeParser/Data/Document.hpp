@@ -15,6 +15,7 @@ public:
     std::vector<std::shared_ptr<Slide>> getAllSlides() const;
     void addSlide(std::shared_ptr<Slide> slide);
     void addSlide(std::shared_ptr<Slide> slide, size_t number);
+    void removeSlide(std::shared_ptr<Slide> slide);
     void removeSlide(size_t number);
     size_t size() const;
 

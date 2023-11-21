@@ -61,10 +61,10 @@ void Item::setLineDescriptorStyle(LineType type) {
     this->line.type = type;
 }
 
-size_t Item::getSlideNumber() const{
-    return slideNumber;
-}
+// size_t Item::getSlideNumber() const{
+//     return slideNumber;
+// }
 
-void Item::setSlideNumber(size_t slideNumber){
-    this->slideNumber = slideNumber;
-}
+// void Item::setSlideNumber(size_t slideNumber){
+//     this->slideNumber = slideNumber;
+// }

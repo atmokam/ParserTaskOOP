@@ -5,11 +5,11 @@ void AddCommand::execute(std::shared_ptr<Director>& director) {
 
    if(operands.find("-name") != operands.end()){
         std::shared_ptr<Item> item = createItem(director->getCurrentSlide(), director->getCurrentSlideNumber());
-        director->doAction(std::make_shared<AddItem>(item));
+        director->doAction(std::make_shared<AddItem>(item, director->getCurrentSlideNumber()));
         std::cout << "Added new item" << std::endl;
     }
     else if(operands.find("-slide") != operands.end()){
-        director->doAction(std::make_shared<AddSlide>(std::make_shared<Slide>()));
+        director->doAction(std::make_shared<AddSlide>(std::make_shared<Slide>(), director->getCurrentSlideNumber() + 1));
         director->nextSlide();
         std::cout << "Added new slide" << std::endl;
     }
@@ -47,17 +47,17 @@ std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide
 void RemoveCommand::execute(std::shared_ptr<Director>& director) {
     if(operands.find("-id") != operands.end()){
         std::shared_ptr<Item> item = director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
-        director->doAction(std::make_shared<RemoveItem>(item));
+        director->doAction(std::make_shared<RemoveItem>(item, director->getCurrentSlideNumber()));
     }
     else if(operands.find("-slide") != operands.end()){
         if(director->getDocument()->size() == 1){
             std::cout << "Cannot remove slide, only 1 left" << std::endl;
             
         } else {
-            director->doAction(std::make_shared<RemoveSlide>(director->getCurrentSlide())); // director has the slide it needs to remove
+            director->doAction(std::make_shared<RemoveSlide>(director->getCurrentSlide(), director->getCurrentSlideNumber())); // director has the slide it needs to remove
             director->previousSlide();
         }
-        
+        ////////////
     }
 
 }

@@ -2,7 +2,7 @@
 
 ActionHistory::ActionHistory(const std::shared_ptr<Document>& document, const size_t current) : document(document), currentSlideIndex(current){}
 
-void ActionHistory::addAction(std::shared_ptr<Action> action) {
+void ActionHistory::addAction(std::shared_ptr<IModifierAction> action) {
     undoStack.push(action);
     std::cout << "Action added to history" << std::endl;
     undo();
@@ -13,9 +13,9 @@ void ActionHistory::undo() {
         std::cout << "Nothing to undo" << std::endl;
         return;
     }
-    std::shared_ptr<Action> action = undoStack.top();
+    std::shared_ptr<IModifierAction> action = undoStack.top();
     std::cout << "Undoing action" << std::endl;
-    action->execute(document, currentSlideIndex);
+    action->execute(document);
     undoStack.pop();
     redoStack.push(action);
 }
@@ -26,8 +26,8 @@ void ActionHistory::redo() {
         std::cout << "Nothing to redo" << std::endl;
         return;
     }
-    std::shared_ptr<Action> action = redoStack.top();
-    action->execute(document, currentSlideIndex);
+    std::shared_ptr<IModifierAction> action = redoStack.top();
+    action->execute(document);
     redoStack.pop();
     undoStack.push(action);
 }

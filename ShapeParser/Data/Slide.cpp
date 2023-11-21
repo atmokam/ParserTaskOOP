@@ -30,6 +30,14 @@ size_t Slide::getMaximumID() const {
     return maximumID;
 }
 
+// size_t Slide::getSlideNumber() const {
+//     return slideNumber;
+// }
+
+// void Slide::setSlideNumber(size_t number) {
+//     slideNumber = number;
+// }
+
 void Slide::incrementMaximumID() {
     ++maximumID;
 }

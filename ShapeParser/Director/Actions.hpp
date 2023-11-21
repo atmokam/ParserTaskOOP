@@ -10,40 +10,41 @@
 #include "Data/Document.hpp"
 #include "Data/Item.hpp"
 #include "Data/Slide.hpp"
-#include "Data/View.hpp"
 #include "Serialization/Converter.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Interfaces/IModifierAction.hpp"
-
-// RemoveItem, RemoveSlide, DisplayItem, DisplaySlide, ChangeItem, List, Next, Prev
-
+#include "Interfaces/IRendererAction.hpp"
 
 
 class AddItem : public IModifierAction {
     std::shared_ptr<Item> item;
+    size_t slideNumber;
 public:
-    AddItem(const std::shared_ptr<Item>& item);
+    AddItem(const std::shared_ptr<Item>& item, size_t slideNumber);
     std::shared_ptr<IModifierAction> execute(std::shared_ptr<Document>& document) override; // current slide index is in item
 };
 
 class AddSlide : public IModifierAction {
     std::shared_ptr<Slide> slide;
+    size_t slideNumber;
 public:
-    AddSlide(const std::shared_ptr<Slide>& slide);
+    AddSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber);
     std::shared_ptr<IModifierAction> execute(std::shared_ptr<Document>& document) override; 
 };
 
 class RemoveItem : public IModifierAction {
     std::shared_ptr<Item> item;
+    size_t slideNumber;
 public:
-    RemoveItem(const std::shared_ptr<Item>& item);
+    RemoveItem(const std::shared_ptr<Item>& item, size_t slideNumber);
     std::shared_ptr<IModifierAction> execute(std::shared_ptr<Document>& document) override; 
 };
 
 class RemoveSlide : public IModifierAction {
+    std::shared_ptr<Slide> slide;
     size_t slideNumber;
 public:
-    RemoveSlide(const size_t slideNumber);
+    RemoveSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber);
     std::shared_ptr<IModifierAction> execute(std::shared_ptr<Document>& document) override; 
 };
 
@@ -54,25 +55,30 @@ public:
     std::shared_ptr<IModifierAction> execute(std::shared_ptr<Document>& document) override; 
 };
 
+
+
+
 class List : public IRendererAction {
     std::shared_ptr<Document> document;
 public:
     List(const std::shared_ptr<Document>& document);
-    void execute() override; 
+    void execute() override;  
 };
 
 class DisplayItem : public IRendererAction {
-    size_t itemIndex;
+    std::shared_ptr<Item> item;
+    void displayItem(const std::shared_ptr<Item>& item);
 public:
-    DisplayItem(const size_t& itemIndex);
-    void execute() override; 
+    DisplayItem(const std::shared_ptr<Item>& itemIndex);
+    void execute() override;  
 };
 
 class DisplaySlide : public IRendererAction {
     std::shared_ptr<Slide> slide;
+    void displaySlide(const std::shared_ptr<Slide>& slide);
 public:
     DisplaySlide(const std::shared_ptr<Slide>& slide);
-    void execute() override; 
+    void execute() override;  
 };
 
 

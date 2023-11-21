@@ -14,12 +14,21 @@ size_t Director::getCurrentSlideNumber() {
     return currentSlideIndex;
 }
 
+void Director::setCurrentSlideNumber(size_t currentSlideNumber) {
+    currentSlideIndex = currentSlideNumber;
+    currentSlide = document->getSlide(currentSlideIndex);
+}
+
 std::shared_ptr<ActionHistory> Director::getHistory() {
     return history;
 }
 
 void Director::doAction(std::shared_ptr<IModifierAction> action) {
     history->addAction(action->execute(document));
+}
+
+void Director::doAction(std::shared_ptr<IRendererAction> action) {
+    action->execute();
 }
 
 void Director::undo() {

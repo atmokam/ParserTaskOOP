@@ -2,35 +2,33 @@
 
 
 
-
-AddItem::AddItem(const std::shared_ptr<Item>& item) : item(item) {}
+AddItem::AddItem(const std::shared_ptr<Item>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}
 
 std::shared_ptr<IModifierAction> AddItem::execute(std::shared_ptr<Document>& document) {
-    
-    document->getSlide(item->getSlideNumber())->addItem(item);
+    document->getSlide(slideNumber)->addItem(item);
     return std::make_shared<RemoveItem>(item);
     
 }
 
-AddSlide::AddSlide(const std::shared_ptr<Slide>& slide) : slide(slide) {}
+AddSlide::AddSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber) : slide(slide), slideNumber(slideNumber) {}
 
 std::shared_ptr<IModifierAction> AddSlide::execute(std::shared_ptr<Document>& document) {
-    document->addSlide(slide, slide->begin()->second->getSlideNumber());  // probably wrong way, but let it stay for now
+    document->addSlide(slide, slideNumber);
     return std::make_shared<RemoveSlide>(slide);
 }
 
-RemoveItem::RemoveItem(const std::shared_ptr<Item>& item) : item(item) {}
+RemoveItem::RemoveItem(const std::shared_ptr<Item>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}
 
 std::shared_ptr<IModifierAction> RemoveItem::execute(std::shared_ptr<Document>& document) {
-    document->getSlide(item->getSlideNumber())->removeItem(item->getID());
+    document->getSlide(slideNumber)->removeItem(item->getID());
     return std::make_shared<AddItem>(item);
 }
 
-RemoveSlide::RemoveSlide(const size_t slideNumber ) : slideNumber(slideNumber){}
+RemoveSlide::RemoveSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber) : slide(slide), slideNumber(slideNumber) {}
 
 std::shared_ptr<IModifierAction> RemoveSlide::execute(std::shared_ptr<Document>& document) {
-    document->removeSlide(slideNumber);
-    return std::make_shared<AddSlide>(document->getSlide(slideNumber));
+    document->removeSlide(slide);
+    return std::make_shared<AddSlide>(slide, slideNumber);
 }
 
 ChangeItem::ChangeItem(const std::shared_ptr<Item>& item) : item(item) {}   
@@ -44,30 +42,52 @@ std::shared_ptr<IModifierAction> ChangeItem::execute(std::shared_ptr<Document>& 
 
 
 
-// DisplayAction::DisplayAction(const std::unordered_map<std::string, std::vector<std::string>>& operands) : operands(operands) {}
+DisplayItem::DisplayItem(const std::shared_ptr<Item>& item) : item(item) {}
 
-// std::shared_ptr<Action> DisplayAction::execute(std::shared_ptr<Document>& document, size_t& currentSlideIndex) {
-//     if(operands.find("-id") != operands.end()){
-//         displayItem(getCurrentSlide(document, currentSlideIndex)->getItem(std::stoi(operands["-id"][0])));
-//     }
-//     else{
-//         std::cout << "---------Current slide (" << currentSlideIndex << ")---------" << std::endl; 
-//         std::shared_ptr<Slide> slide = getCurrentSlide(document, currentSlideIndex);
-//         for(auto item : *slide){
-//             displayItem(item.second);
-//         }
-//     }
-// }
+void DisplayItem::execute() {
+    displayItem(item);
+}
 
-// void DisplayAction::displayItem(const std::shared_ptr<Item>& item) {
-//     std::cout << "ID: " << item->getID() << std::endl;
-//     std::cout << "Type: " << ShapeType{item->getType()} << std::endl;
-//     std::cout << "Position: " << item->getPosition() << std::endl;
-//     std::cout << "Bounding Rectangle: " << item->getBoundingRect() << std::endl;
-//     std::cout << "Color: " << item->getColor() << std::endl;
-//     std::cout << "Line Descriptor: " << item->getLineDescriptor() << std::endl;
-//     std::cout << std::endl;
-// }
+void DisplayItem::displayItem(const std::shared_ptr<Item>& item) {
+    std::cout << "ID: " << item->getID() << std::endl;
+    std::cout << "Type: " << ShapeType{item->getType()} << std::endl;
+    std::cout << "Position: " << item->getPosition() << std::endl;
+    std::cout << "Bounding Rectangle: " << item->getBoundingRect() << std::endl;
+    std::cout << "Color: " << item->getColor() << std::endl;
+    std::cout << "Line Descriptor: " << item->getLineDescriptor() << std::endl;
+    std::cout << std::endl;
+}
+
+DisplaySlide::DisplaySlide(const std::shared_ptr<Slide>& slide) : slide(slide) {}
+
+void DisplaySlide::execute() {
+    displaySlide(slide);
+}
+
+void DisplaySlide::displaySlide(const std::shared_ptr<Slide>& slide) {
+    std::cout << "---------Slide number " << slide->getSlideNumber() << "---------" << std::endl;
+    
+    for(auto item : *slide) {
+        DisplayItem displayItem(item.second);
+        displayItem.execute();
+    }
+}
+
+List::List(const std::shared_ptr<Document>& document) : document(document) {}
+
+void List::execute() {
+    std::cout << "-------------------------------List of slides---------------------------------" << std::endl;
+
+    int i = 0;
+    for(auto slide : *document){
+        std::cout << "---------Slide number " << i++ << "---------" << std::endl;
+        DisplaySlide displaySlide(slide);
+        displaySlide.execute();
+    }
+}
+
+
+
 
 
 // ChangeAction::ChangeAction(const std::unordered_map<std::string, std::vector<std::string>>& operands) : operands(operands) {}

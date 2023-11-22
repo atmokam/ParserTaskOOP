@@ -62,15 +62,6 @@ void RemoveCommand::execute(std::shared_ptr<Director>& director) {
 
 }
 
-void DisplayCommand::execute(std::shared_ptr<Director>& director) {
-    if(operands.find("-id") != operands.end()){
-        std::shared_ptr<Item> item = director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
-        director->doAction(std::make_shared<DisplayItem>(item)); 
-    }
-    else{
-        director->doAction(std::make_shared<DisplaySlide>(director->getCurrentSlide()));
-    }
-}
 
 void ChangeCommand::execute(std::shared_ptr<Director>& director) {
     std::shared_ptr<Item> item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0])));
@@ -108,9 +99,22 @@ void LoadCommand::execute(std::shared_ptr<Director>& director) {
     SaveLoadSerializer::load(operands["-path"][0]);
 }
 
+void DisplayCommand::execute(std::shared_ptr<Director>& director) {
+    if(operands.find("-id") != operands.end()){
+        std::shared_ptr<Item> item = director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+        Renderer renderer;
+        renderer.renderText(std::cout, item);
+    }
+    else{
+        Renderer renderer;
+        renderer.renderText(std::cout, director->getCurrentSlide());
+    }
+}
+
 
 void ListCommand::execute(std::shared_ptr<Director>& director) {
-    director->doAction(std::make_shared<List>(director->getDocument()));
+    Renderer renderer;
+    renderer.renderText(std::cout, director->getDocument());
 }
 
 void NextCommand::execute(std::shared_ptr<Director>& director) {

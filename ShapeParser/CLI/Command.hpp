@@ -13,7 +13,8 @@
 #include "Data/Document.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Director/Director.hpp"
-
+#include "Director/Renderer.hpp"
+#include "Director/Actions.hpp"
 
 
 

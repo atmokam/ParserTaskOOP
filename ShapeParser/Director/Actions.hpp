@@ -12,74 +12,75 @@
 #include "Data/Slide.hpp"
 #include "Serialization/Converter.hpp"
 #include "Serialization/SaveLoad.hpp"
-#include "Interfaces/IModifierAction.hpp"
-#include "Interfaces/IRendererAction.hpp"
+#include "Interfaces/IAction.hpp"
+#include "Interfaces/IRenderer.hpp"
 
 
-class AddItem : public IModifierAction {
+class AddItem : public IAction {
     std::shared_ptr<Item> item;
     size_t slideNumber;
 public:
     AddItem(const std::shared_ptr<Item>& item, size_t slideNumber);
-    std::shared_ptr<IModifierAction> execute(std::shared_ptr<Document>& document) override; // current slide index is in item
+    std::shared_ptr<IAction> execute(std::shared_ptr<Document>& document) override; // current slide index is in item
 };
 
-class AddSlide : public IModifierAction {
+class AddSlide : public IAction {
     std::shared_ptr<Slide> slide;
     size_t slideNumber;
 public:
     AddSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber);
-    std::shared_ptr<IModifierAction> execute(std::shared_ptr<Document>& document) override; 
+    std::shared_ptr<IAction> execute(std::shared_ptr<Document>& document) override; 
 };
 
-class RemoveItem : public IModifierAction {
+class RemoveItem : public IAction {
     std::shared_ptr<Item> item;
     size_t slideNumber;
 public:
     RemoveItem(const std::shared_ptr<Item>& item, size_t slideNumber);
-    std::shared_ptr<IModifierAction> execute(std::shared_ptr<Document>& document) override; 
+    std::shared_ptr<IAction> execute(std::shared_ptr<Document>& document) override; 
 };
 
-class RemoveSlide : public IModifierAction {
+class RemoveSlide : public IAction {
     std::shared_ptr<Slide> slide;
     size_t slideNumber;
 public:
     RemoveSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber);
-    std::shared_ptr<IModifierAction> execute(std::shared_ptr<Document>& document) override; 
+    std::shared_ptr<IAction> execute(std::shared_ptr<Document>& document) override; 
 };
 
-class ChangeItem : public IModifierAction {
+class ChangeItem : public IAction {
     std::shared_ptr<Item> item;
+    size_t slideNumber;
 public:
-    ChangeItem(const std::shared_ptr<Item>& item);
-    std::shared_ptr<IModifierAction> execute(std::shared_ptr<Document>& document) override; 
+    ChangeItem(const std::shared_ptr<Item>& item, size_t slideNumber);
+    std::shared_ptr<IAction> execute(std::shared_ptr<Document>& document) override; 
 };
 
 
 
 
-class List : public IRendererAction {
-    std::shared_ptr<Document> document;
-public:
-    List(const std::shared_ptr<Document>& document);
-    void execute() override;  
-};
+// class List : public IRenderer {
+//     std::shared_ptr<Document> document;
+// public:
+//     List(const std::shared_ptr<Document>& document);
+//     void execute(std::shared_ptr<Document> ) override;  
+// };
 
-class DisplayItem : public IRendererAction {
-    std::shared_ptr<Item> item;
-    void displayItem(const std::shared_ptr<Item>& item);
-public:
-    DisplayItem(const std::shared_ptr<Item>& itemIndex);
-    void execute() override;  
-};
+// class DisplayItem : public IRenderer {
+//     std::shared_ptr<Item> item;
+//     void displayItem(const std::shared_ptr<Item>& item);
+// public:
+//     DisplayItem(const std::shared_ptr<Item>& itemIndex);
+//     void execute() override;  
+// };
 
-class DisplaySlide : public IRendererAction {
-    std::shared_ptr<Slide> slide;
-    void displaySlide(const std::shared_ptr<Slide>& slide);
-public:
-    DisplaySlide(const std::shared_ptr<Slide>& slide);
-    void execute() override;  
-};
+// class DisplaySlide : public IRenderer {
+//     std::shared_ptr<Slide> slide;
+//     void displaySlide(const std::shared_ptr<Slide>& slide);
+// public:
+//     DisplaySlide(const std::shared_ptr<Slide>& slide);
+//     void execute() override;  
+// };
 
 
 

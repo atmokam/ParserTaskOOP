@@ -40,7 +40,7 @@ std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide
     }
 
 
-    return std::make_shared<Item>(type, pos, bounds, color, slide->generateID(), lineDescriptor, currentSlideIndex);
+    return std::make_shared<Item>(type, pos, bounds, color, slide->generateID(), lineDescriptor);
 ;
 }
 
@@ -64,7 +64,7 @@ void RemoveCommand::execute(std::shared_ptr<Director>& director) {
 
 
 void ChangeCommand::execute(std::shared_ptr<Director>& director) {
-    std::shared_ptr<Item> item = std::make_shared<Item>(director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0])));
+    std::shared_ptr<Item> item = std::make_shared<Item>(*director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0])));
 
     if(operands.find("-pos") != operands.end()){ 
         item->setPosition(Converter::convertToPosition(operands["-pos"]));
@@ -86,7 +86,7 @@ void ChangeCommand::execute(std::shared_ptr<Director>& director) {
         item->setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0]));
     }
 
-    director->doAction(std::make_shared<ChangeItem>(item));
+    director->doAction(std::make_shared<ChangeItem>(item, director->getCurrentSlideNumber()));
 }
 
 

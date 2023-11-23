@@ -18,18 +18,18 @@ void Renderer::renderImage(std::shared_ptr<Slide>& slide) {
 
 void Renderer::renderText(std::ostream &os, const std::shared_ptr<Item>& item) {
     os << item->getID() << std::endl;
-    os << ShapeType{item->getType()} << std::endl;
-    os << item->getPosition() << std::endl;
-    os << item->getBoundingRect() << std::endl;
-    os << item->getColor() << std::endl;
-    os << item->getLineDescriptor() << std::endl;
+    shapeToText(os, ShapeType{item->getType()}) ;
+    positionToText(os, item->getPosition());
+    boundingRectToText(os, item->getBoundingRect());
+    colorToText(os, item->getColor());
+    lineDescriptorToText(os, item->getLineDescriptor());
 }
 
 void Renderer::renderImage(std::shared_ptr<Item>& item) {
     std::cout << "Rendering item image" << std::endl;
 }
 
-inline std::ostream& operator<<(std::ostream& os, const LineDescriptor& line) {
+void Renderer::lineDescriptorToText(std::ostream& os, const LineDescriptor line) {
     os << "Line_style: ";
     switch (line.type) {
         case LineType::Solid:
@@ -43,30 +43,38 @@ inline std::ostream& operator<<(std::ostream& os, const LineDescriptor& line) {
             break;
     }
     os << "Line_width: " << line.width;
-    return os;
+    os << std::endl;
+
 }
 
-inline std::ostream& operator<<(std::ostream& os, const ShapeType& shape) {
+void Renderer::shapeToText(std::ostream& os, const ShapeType& shape) {
         os << "Type: ";
-    switch (shape.type) {
+    switch (shape.getType()) {
         case Type::Rectangle:
-            return os << "Rectangle";
+             os << "Rectangle";
+            break;
         case Type::Trapezoid:
-            return os << "Trapezoid";
+             os << "Trapezoid";
+             break;
         case Type::Ellipse:
-            return os << "Ellipse";
+             os << "Ellipse";
+             break;
         case Type::Line:
-            return os << "Line";
+             os << "Line";
+             break;
         case Type::Triangle:
-            return os << "Triangle";
+             os << "Triangle";
+             break;
         default:
-            return os;
+            os << std::endl;
+            
     }
+    os << std::endl;
 }
 
 
 
-inline std::ostream& operator<<(std::ostream& os, const Position& position) {
+void Renderer::positionToText(std::ostream& os, const Position& position) {
     std::vector<double> coordinates = position.getCoordinates();
     os << "Indices: ";
     for (int i = 0; i < coordinates.size(); i++) {
@@ -75,18 +83,18 @@ inline std::ostream& operator<<(std::ostream& os, const Position& position) {
             os << ", ";
         }
     }
-    return os;
+    os << std::endl;
 }
 
-inline std::ostream& operator<<(std::ostream& os, const BoundingRect& boundingRect) {
+void Renderer::boundingRectToText(std::ostream& os, const BoundingRect& boundingRect) {
     os << "Width: " << boundingRect.width << std::endl;
     os << "Height: " << boundingRect.height;
-    return os;
+    os << std::endl;
 }
 
-inline std::ostream& operator<<(std::ostream& os, const Color& color) {
+void Renderer::colorToText(std::ostream& os, const Color& color) {
     os << "Line_color: #" << std::hex << color.hexLineColor << std::endl;
     os << "Fill_color: #" << std::hex << color.hexFillColor;
-    return os;
+    os << std::endl;
 }
 

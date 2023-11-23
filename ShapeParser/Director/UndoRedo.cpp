@@ -4,8 +4,7 @@ UndoRedo::UndoRedo(const std::shared_ptr<Document>& document, const size_t curre
 
 void UndoRedo::addAction(std::shared_ptr<IAction> action) {
     undoStack.push(action);
-    std::cout << "Action added to history" << std::endl;
-    undo();
+    std::cout << "Action added to stack" << std::endl;
 }
 
 void UndoRedo::undo() {

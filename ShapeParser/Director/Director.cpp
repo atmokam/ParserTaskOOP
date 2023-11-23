@@ -1,6 +1,6 @@
 #include "Director.hpp"
 
-Director::Director() : document(std::make_shared<Document>()), currentSlide(*document->begin()), history(std::make_shared<ActionHistory>(document, currentSlideIndex)) {}
+Director::Director() : document(std::make_shared<Document>()), currentSlide(*document->begin()), undoRedo(std::make_shared<UndoRedo>(document, currentSlideIndex)) {}
                                                               // check if this works
 std::shared_ptr<Document> Director::getDocument() {
     return document;
@@ -19,24 +19,20 @@ void Director::setCurrentSlideNumber(size_t currentSlideNumber) {
     currentSlide = document->getSlide(currentSlideIndex);
 }
 
-std::shared_ptr<ActionHistory> Director::getHistory() {
-    return history;
+std::shared_ptr<UndoRedo> Director::getUndoRedo() {
+    return undoRedo;
 }
 
-void Director::doAction(std::shared_ptr<IModifierAction> action) {
-    history->addAction(action->execute(document));
-}
-
-void Director::doAction(std::shared_ptr<IRendererAction> action) {
-    action->execute();
+void Director::doAction(std::shared_ptr<IAction> action) {
+    undoRedo->addAction(action->execute(document));
 }
 
 void Director::undo() {
-    history->undo();
+    undoRedo->undo();
 }
 
 void Director::redo() {
-    history->redo();
+    undoRedo->redo();
 }
 
 void Director::nextSlide() {

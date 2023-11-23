@@ -24,6 +24,7 @@ class ShapeType{
 
 public:
     ShapeType(Type type) : type(type) { }
+    Type getType() const { return type; }
     friend std::ostream& operator<<(std::ostream& os, const ShapeType& shape);
 };
 
@@ -108,7 +109,22 @@ inline std::ostream& operator<<(std::ostream& os, const Color& color) {
     return os;
 }
 
-
+inline std::ostream& operator<<(std::ostream& os, const Type& type) {
+    switch (type) {
+        case Type::Rectangle:
+            return os << "rectangle";
+        case Type::Trapezoid:
+            return os << "trapezoid";
+        case Type::Ellipse:
+            return os << "ellipse";
+        case Type::Line:
+            return os << "line";
+        case Type::Triangle:
+            return os << "triangle";
+        default:
+            return os;
+    }
+}   
 
 
 

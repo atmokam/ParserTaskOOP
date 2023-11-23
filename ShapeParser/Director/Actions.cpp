@@ -6,7 +6,7 @@ AddItem::AddItem(const std::shared_ptr<Item>& item, size_t slideNumber) : item(i
 
 std::shared_ptr<IAction> AddItem::execute(std::shared_ptr<Document>& document) {
     document->getSlide(slideNumber)->addItem(item);
-    return std::make_shared<RemoveItem>(item);
+    return std::make_shared<RemoveItem>(item, slideNumber);
     
 }
 
@@ -14,14 +14,14 @@ AddSlide::AddSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber) : sl
 
 std::shared_ptr<IAction> AddSlide::execute(std::shared_ptr<Document>& document) {
     document->addSlide(slide, slideNumber);
-    return std::make_shared<RemoveSlide>(slide);
+    return std::make_shared<RemoveSlide>(slide, slideNumber);
 }
 
 RemoveItem::RemoveItem(const std::shared_ptr<Item>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}
 
 std::shared_ptr<IAction> RemoveItem::execute(std::shared_ptr<Document>& document) {
     document->getSlide(slideNumber)->removeItem(item->getID());
-    return std::make_shared<AddItem>(item);
+    return std::make_shared<AddItem>(item, slideNumber);
 }
 
 RemoveSlide::RemoveSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber) : slide(slide), slideNumber(slideNumber) {}
@@ -36,7 +36,7 @@ ChangeItem::ChangeItem(const std::shared_ptr<Item>& item, size_t slideNumber) : 
 std::shared_ptr<IAction> ChangeItem::execute(std::shared_ptr<Document>& document) {
     std::shared_ptr<Item> oldItem = document->getSlide(slideNumber)->getItem(item->getID()); // item has the same id number
     document->getSlide(slideNumber)->swapItems(item->getID(), item);
-    return std::make_shared<ChangeItem>(oldItem);
+    return std::make_shared<ChangeItem>(oldItem, slideNumber);
 }
 
 

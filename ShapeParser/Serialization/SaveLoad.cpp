@@ -13,7 +13,6 @@ void SaveLoadSerializer::save(std::shared_ptr<Document> document, const std::str
     size_t size = std::distance(document->cbegin(), document->cend());
 
     for(size_t i = 0; i < size; ++i){
-        file << "new_slide:" << std::endl;
         file << "max_id:"  << document->getSlide(i)->getMaximumID() << std::endl;
         serialize(file, document->getSlide(i));
     }
@@ -28,7 +27,6 @@ void SaveLoadSerializer::serialize(std::ofstream& file, const std::shared_ptr<Sl
         file << item.second->getBoundingRect() << std::endl;
         file << item.second->getColor() << std::endl;
         file << item.second->getLineDescriptor() << std::endl;
-        file << "slide:" << item.second->getSlideNumber() << std::endl;
         file << std::endl;
     }
 }
@@ -76,14 +74,15 @@ std::shared_ptr<Document> SaveLoadSerializer::deserialize(std::ifstream& file) {
                     color.hexFillColor = Converter::convertToColor(value);
                 else if(key == "line_width")
                     lineDescriptor.width = std::stod(value);
-                else if(key == "line_style")
+                else if(key == "line_style"){
                     lineDescriptor.type = Converter::convertToLineType(value);
-                else if(key == "slide"){
-                    (*std::prev(document->end()))->addItem(std::make_shared<Item>(type, pos, boundingRect, color, id, lineDescriptor, std::stoi(value)));
+                    (*std::prev(document->end()))->addItem(std::make_shared<Item>(type, pos, boundingRect, color, id, lineDescriptor));
                 }
                 else if(key == "max_id")
                     (*(std::prev(document->end())))->setMaximumID(std::stoi(value));
-                else if(key == "new_slide"){
+                else if(key == "slide"){
+                    if(value == "0")
+                        continue;
                     document->addSlide(std::make_shared<Slide>());
                 }
                 else {

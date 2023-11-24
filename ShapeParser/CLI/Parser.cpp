@@ -62,6 +62,12 @@ std::shared_ptr<Command> Parser::createCommand(std::string input){
     else if(input == "prev"){
         return std::make_shared<PrevCommand>();
     }
+    else if(input == "undo"){
+        return std::make_shared<UndoCommand>();
+    }
+    else if(input == "redo"){
+        return std::make_shared<RedoCommand>();
+    }
     else {
         throw std::invalid_argument("Invalid command: " + input);
     }

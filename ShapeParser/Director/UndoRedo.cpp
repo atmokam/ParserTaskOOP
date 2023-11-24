@@ -4,7 +4,6 @@ UndoRedo::UndoRedo(const std::shared_ptr<Document>& document, const size_t curre
 
 void UndoRedo::addAction(std::shared_ptr<IAction> action) {
     undoStack.push(action);
-    std::cout << "Action added to stack" << std::endl;
 }
 
 void UndoRedo::undo() {
@@ -14,9 +13,9 @@ void UndoRedo::undo() {
     }
     std::shared_ptr<IAction> action = undoStack.top();
     std::cout << "Undoing action" << std::endl;
-    action->execute(document);
+
     undoStack.pop();
-    redoStack.push(action);
+    redoStack.push(action->execute(document));
 }
 
 
@@ -26,7 +25,8 @@ void UndoRedo::redo() {
         return;
     }
     std::shared_ptr<IAction> action = redoStack.top();
-    action->execute(document);
+    std::cout << "Redoing action" << std::endl;
+    
     redoStack.pop();
-    undoStack.push(action);
+    undoStack.push(action->execute(document));
 }

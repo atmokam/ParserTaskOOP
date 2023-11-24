@@ -1,14 +1,16 @@
 #include "Renderer.hpp"
 
-void Renderer::renderText(std::ostream& os, const std::shared_ptr<Slide>& slide) {
+void Renderer::renderText(std::ostream& os, const std::shared_ptr<Slide>& slide, const size_t slideNumber) {
+    os << "Slide: " << slideNumber << std::endl;
     for(auto& item : *slide) {
         renderText(os, item.second);
     }
 }
 
 void Renderer::renderText(std::ostream& os, const std::shared_ptr<Document>& document) {
+    size_t slideNumber = 0;
     for(auto& slide : *document) {
-        renderText(os, slide);
+        renderText(os, slide, slideNumber++);
     }
 }
 

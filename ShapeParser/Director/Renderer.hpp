@@ -15,7 +15,7 @@ class Renderer : public IRenderer {
 
 
 public:
-    void renderText(std::ostream& os, const std::shared_ptr<Slide>& slide) override;
+    void renderText(std::ostream& os, const std::shared_ptr<Slide>& slide, const size_t slideNumber) override;
     void renderText(std::ostream& os, const std::shared_ptr<Document>& slide) override;
     void renderImage(std::shared_ptr<Slide>& slide) override;
     void renderText(std::ostream& os, const std::shared_ptr<Item>& item) override;

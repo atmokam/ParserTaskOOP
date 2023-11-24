@@ -14,7 +14,6 @@ class Item {
     ID id;
     Color color;
     LineDescriptor line;
-    //size_t slideNumber;                // modify later
 
 public:
 

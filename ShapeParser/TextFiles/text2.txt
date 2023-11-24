@@ -1,14 +1,10 @@
 display
 add -slide
-add -slide
-next
 add -name ellipse -pos 4.85, 743 -w 45 -h 45 -fcolor #ff0880 -lcolor #a00b0f
-next
 add -name trapezoid -pos 5.6, 13 -w 45 -h 45 -fcolor #ff0880 -lcolor #a00b0f
-next
-display
-remove -slide
-prev
-display
-prev
-display
+list
+undo
+undo
+list
+redo
+list

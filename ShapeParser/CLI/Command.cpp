@@ -6,12 +6,10 @@ void AddCommand::execute(std::shared_ptr<Director>& director) {
    if(operands.find("-name") != operands.end()){
         std::shared_ptr<Item> item = createItem(director->getCurrentSlide(), director->getCurrentSlideNumber());
         director->doAction(std::make_shared<AddItem>(item, director->getCurrentSlideNumber()));
-        std::cout << "Added new item" << std::endl;
     }
     else if(operands.find("-slide") != operands.end()){
         director->doAction(std::make_shared<AddSlide>(std::make_shared<Slide>(), director->getCurrentSlideNumber() + 1));
         director->nextSlide();
-        std::cout << "Added new slide" << std::endl;
     }
 
 }
@@ -41,7 +39,7 @@ std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide
 
 
     return std::make_shared<Item>(type, pos, bounds, color, slide->generateID(), lineDescriptor);
-;
+
 }
 
 void RemoveCommand::execute(std::shared_ptr<Director>& director) {
@@ -57,7 +55,6 @@ void RemoveCommand::execute(std::shared_ptr<Director>& director) {
             director->doAction(std::make_shared<RemoveSlide>(director->getCurrentSlide(), director->getCurrentSlideNumber())); // director has the slide it needs to remove
             director->previousSlide();
         }
-        ////////////
     }
 
 }
@@ -107,7 +104,7 @@ void DisplayCommand::execute(std::shared_ptr<Director>& director) {
     }
     else{
         Renderer renderer;
-        renderer.renderText(std::cout, director->getCurrentSlide());
+        renderer.renderText(std::cout, director->getCurrentSlide(), director->getCurrentSlideNumber());
     }
 }
 
@@ -123,6 +120,14 @@ void NextCommand::execute(std::shared_ptr<Director>& director) {
 
 void PrevCommand::execute(std::shared_ptr<Director>& director) {
     director->previousSlide();
+}
+
+void UndoCommand::execute(std::shared_ptr<Director>& director) {
+    director->undo();
+}
+
+void RedoCommand::execute(std::shared_ptr<Director>& director) {
+    director->redo();
 }
 
 

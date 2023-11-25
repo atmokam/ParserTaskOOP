@@ -23,11 +23,15 @@ change -id <id> <any operands to be changed>
 
 save -path <path> -filename <name>
 
+load -path <path>
+
 display [-id <id>]
 
 list
 
-load -path <path>
+undo
+
+redo
 
 exit
 ```

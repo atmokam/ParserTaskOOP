@@ -9,31 +9,32 @@
 
 
 #include "Item.hpp"
+#include "ISlide.hpp"
 
 
-class Slide {
-    std::unordered_map<int, std::shared_ptr<Item>> items;
+class Slide : public ISlide {
+    SlideContainer items;
     size_t maximumID = 0;
-    std::unordered_map<int, std::shared_ptr<Item>> getItems() const;  // for internal use only
+    SlideContainer getItems() const; 
 
 public:
     Slide() = default;
 
-    ID generateID();
-    std::shared_ptr<Item> getItem(int id) const;
-    size_t getMaximumID() const ;
-    void setMaximumID(size_t id);
-    void incrementMaximumID();
+    ID generateID() override;
+    std::shared_ptr<Item> getItem(int id) const override;
+    size_t getMaximumID() const  override;
+    void setMaximumID(size_t id) override;
+    void incrementMaximumID() override;
     
-    void addItem(std::shared_ptr<Item> item);
-    void removeItem(int id);
-    void swapItems(int idOfInitialItem, std::shared_ptr<Item>& newItem);
+    void addItem(std::shared_ptr<Item> item) override;
+    void removeItem(int id) override;
+    void swapItems(int idOfInitialItem, std::shared_ptr<Item>& newItem) override;
 
-    std::unordered_map<int, std::shared_ptr<Item>>::iterator begin();
-    std::unordered_map<int, std::shared_ptr<Item>>::const_iterator cbegin() const;
+    SlideContainer::iterator begin() override;
+    SlideContainer::const_iterator cbegin() const override;
 
-    std::unordered_map<int, std::shared_ptr<Item>>::iterator end();
-    std::unordered_map<int, std::shared_ptr<Item>>::const_iterator cend() const;
+    SlideContainer::iterator end() override;
+    SlideContainer::const_iterator cend() const override;
 
 
     Slide(std::shared_ptr<Slide> slide);

@@ -3,7 +3,7 @@
 
 #include <stack>
 
-#include "Interfaces/IAction.hpp"
+#include "IAction.hpp"
 
 class UndoRedo {
     std::shared_ptr<Document> document;

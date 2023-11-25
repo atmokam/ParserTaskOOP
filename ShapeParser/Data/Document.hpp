@@ -5,32 +5,34 @@
 #include <string>
 
 #include "Slide.hpp"
+#include "IDocument.hpp"
 
-class Document
-{
-    std::vector<std::shared_ptr<Slide>> slides;
+using DocumentContainer = std::vector<std::shared_ptr<Slide>>;
+
+class Document : public IDocument {
+    DocumentContainer slides;
 public:
 
     Document();
-    std::vector<std::shared_ptr<Slide>> getAllSlides() const;
-    void addSlide(std::shared_ptr<Slide> slide);
-    void addSlide(std::shared_ptr<Slide> slide, size_t number);
-    void removeSlide(std::shared_ptr<Slide> slide);
-    void removeSlide(size_t number);
-    size_t size() const;
+    DocumentContainer getAllSlides() const override;
+    void addSlide(std::shared_ptr<Slide> slide) override;
+    void addSlide(std::shared_ptr<Slide> slide, size_t number) override;
+    void removeSlide(std::shared_ptr<Slide> slide) override;
+    void removeSlide(size_t number) override;
+    size_t size() const override;
 
-    std::vector<std::shared_ptr<Slide>>::iterator begin() ;
-    std::vector<std::shared_ptr<Slide>>::const_iterator cbegin() const;
-    std::vector<std::shared_ptr<Slide>>::iterator end() ;
-    std::vector<std::shared_ptr<Slide>>::const_iterator cend() const;
+    DocumentContainer::iterator begin()  override;
+    DocumentContainer::const_iterator cbegin() const override;
+    DocumentContainer::iterator end()  override;
+    DocumentContainer::const_iterator cend() const override;
 
-    std::vector<std::shared_ptr<Slide>>::reverse_iterator rbegin() ;
-    std::vector<std::shared_ptr<Slide>>::const_reverse_iterator crbegin() const;
-    std::vector<std::shared_ptr<Slide>>::reverse_iterator rend() ;
-    std::vector<std::shared_ptr<Slide>>::const_reverse_iterator crend() const;
+    DocumentContainer::reverse_iterator rbegin()  override;
+    DocumentContainer::const_reverse_iterator crbegin() const override;
+    DocumentContainer::reverse_iterator rend()  override;
+    DocumentContainer::const_reverse_iterator crend() const override;
 
 
-    std::shared_ptr<Slide> getSlide(size_t number) const;
+    std::shared_ptr<Slide> getSlide(size_t number) const override;
 };
 
 #endif

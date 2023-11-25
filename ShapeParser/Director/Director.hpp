@@ -4,16 +4,16 @@
 #include <string>
 
 #include "Data/Document.hpp"
-#include "Interfaces/IDirector.hpp"
+#include "IDirector.hpp"
 #include "UndoRedo.hpp"
-#include "Interfaces/IAction.hpp"
+#include "IAction.hpp"
 
 
 class Director : public IDirector {
     std::shared_ptr<Document> document;
     size_t currentSlideIndex = 0;
-    std::shared_ptr<Slide> currentSlide;  // new
-    std::shared_ptr<UndoRedo> undoRedo; // shared so that i can later pass it to gui
+    std::shared_ptr<Slide> currentSlide;  
+    std::unique_ptr<UndoRedo> undoRedo; // stack
 
 public:
     
@@ -25,7 +25,7 @@ public:
     std::shared_ptr<Slide> getCurrentSlide() override;
     void setCurrentSlideNumber(size_t currentSlideNumber) override;
     size_t getCurrentSlideNumber() override;
-    std::shared_ptr<UndoRedo> getUndoRedo() override;
+    std::unique_ptr<UndoRedo> getUndoRedo() override;
     void undo() override;
     void redo() override;
     void nextSlide() override;

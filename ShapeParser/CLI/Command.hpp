@@ -16,11 +16,12 @@
 #include "Director/Renderer.hpp"
 #include "Director/Actions.hpp"
 
+using OperandsContainer = std::unordered_map<std::string, std::vector<std::string>>;
 
 
 class Command {
 protected:
-    std::unordered_map<std::string, std::vector<std::string>> operands;
+    OperandsContainer operands;
     std::string name;
 
 public:
@@ -31,7 +32,7 @@ public:
 
     std::string getName() const;
     void setName(std::string name);
-    std::unordered_map<std::string, std::vector<std::string>> getOperands() const;
+    OperandsContainer getOperands() const;
 
 
 };

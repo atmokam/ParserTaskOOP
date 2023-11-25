@@ -88,12 +88,14 @@ void ChangeCommand::execute(std::shared_ptr<Director>& director) {
 
 
 void SaveCommand::execute(std::shared_ptr<Director>& director) {  // review document versioning
-    SaveLoadSerializer::save(director->getDocument(), operands["-path"][0] + operands["-name"][0]);
+    SaveLoadSerializer serializer;
+    serializer.save(director->getDocument(), operands["-path"][0] + operands["-name"][0]);
 
 }
 
 void LoadCommand::execute(std::shared_ptr<Director>& director) { 
-    director->setDocument(SaveLoadSerializer::load(operands["-path"][0]));
+    SaveLoadSerializer serializer;
+    director->setDocument(serializer.load(operands["-path"][0]));
 }
 
 void DisplayCommand::execute(std::shared_ptr<Director>& director) {
@@ -150,6 +152,6 @@ void Command::setName(std::string name) {
     this->name = name;
 }
 
-std::unordered_map<std::string, std::vector<std::string>> Command::getOperands() const {
+OperandsContainer Command::getOperands() const {
     return operands;
 }

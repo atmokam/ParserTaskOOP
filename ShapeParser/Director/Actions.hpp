@@ -12,8 +12,8 @@
 #include "Data/Slide.hpp"
 #include "Serialization/Converter.hpp"
 #include "Serialization/SaveLoad.hpp"
-#include "Interfaces/IAction.hpp"
-#include "Interfaces/IRenderer.hpp"
+#include "IAction.hpp"
+#include "Renderer/IRenderer.hpp"
 
 
 class AddItem : public IAction {

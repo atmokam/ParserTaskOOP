@@ -49,7 +49,6 @@ Document SaveLoadSerializer::deserialize(std::ifstream& file) {
 
     std::string line; 
     Position pos; Type type; BoundingRect boundingRect; Color color; ID id; LineDescriptor lineDescriptor;
-    std::cout << "load" << std::endl;
     while (std::getline(file, line))
     {
         std::istringstream is_line(line);

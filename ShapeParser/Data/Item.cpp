@@ -1,9 +1,8 @@
 #include "Item.hpp"
 
 
-Item::Item(Type type, Position pos, BoundingRect boundingRect, Color color, ID id, LineDescriptor line) : type(type), pos(pos), boundingRect(boundingRect), color(color), id(id), line(line){
-    
-}
+Item::Item(Type type, Position pos, BoundingRect boundingRect, Color color, ID id, LineDescriptor line) 
+: type(type), pos(pos), boundingRect(boundingRect), color(color), id(id), line(line){}
 
 Position Item::getPosition() const {
     return pos;

@@ -16,7 +16,7 @@ public:
     virtual size_t getCurrentSlideNumber() = 0;
     virtual void setCurrentSlideNumber(size_t currentSlideNumber) = 0;
     virtual void doAction(std::shared_ptr<IAction> action) = 0;
-    virtual std::shared_ptr<UndoRedo> getUndoRedo() = 0;
+    virtual std::unique_ptr<UndoRedo> getUndoRedo() = 0;
     virtual void undo() = 0;
     virtual void redo() = 0;
     virtual void nextSlide() = 0;

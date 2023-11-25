@@ -11,7 +11,7 @@
 
 #include "Data/Document.hpp"
 #include "Parser.hpp"
-#include "Interfaces/IController.hpp"
+#include "IController.hpp"
 
 
 class CLIController : public IController {

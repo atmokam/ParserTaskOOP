@@ -14,11 +14,11 @@
 #include "Converter.hpp"
 
 class SaveLoadSerializer {
-    static void serialize(std::ofstream& file, const std::shared_ptr<Slide>& items);
-    static Document deserialize(std::ifstream& file);
+    void serialize(std::ofstream& file, const std::shared_ptr<Slide>& items);
+    Document deserialize(std::ifstream& file);
 public:
-    static void save(std::shared_ptr<Document> document, const std::string& path);
-    static std::shared_ptr<Document> load(const std::string& path);
+    void save(std::shared_ptr<Document> document, const std::string& path);
+    std::shared_ptr<Document> load(const std::string& path);
 };
 
 

@@ -6,8 +6,9 @@
 #include <memory>
 
 #include "ItemAttributes.hpp"
+#include "IItem.hpp"
 
-class Item {
+class Item : public IItem{
     Position pos;
     Type type;
     BoundingRect boundingRect;
@@ -20,23 +21,21 @@ public:
     Item() = default;   
     Item(Type type, Position pos, BoundingRect boundingRect, Color color, ID id, LineDescriptor line);
 
-    Position getPosition() const;
-    Type getType() const;
-    BoundingRect getBoundingRect() const;
-    ID getID() const;
-    Color getColor() const;
-    LineDescriptor getLineDescriptor() const;
-    //size_t getSlideNumber() const;
+    Position getPosition() const override;
+    Type getType() const override;
+    BoundingRect getBoundingRect() const override;
+    ID getID() const override;
+    Color getColor() const override;
+    LineDescriptor getLineDescriptor() const override;
 
-    void setID(ID id);
-    void setPosition(Position pos);
-    void setType(Type type);
-    void setBoundingRect(BoundingRect boundingRect);
-    void setFillColor(long color);
-    void setLineColor(long color);
-    void setLineDescriptorWidth(double width);
-    void setLineDescriptorStyle(LineType type);
-    //void setSlideNumber(size_t slideNumber);
+    void setID(ID id) override;
+    void setPosition(Position pos) override;
+    void setType(Type type) override;
+    void setBoundingRect(BoundingRect boundingRect) override;
+    void setFillColor(long color) override;
+    void setLineColor(long color) override;
+    void setLineDescriptorWidth(double width) override;
+    void setLineDescriptorStyle(LineType type) override;
 
 };
 

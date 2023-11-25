@@ -1,7 +1,7 @@
 #include "Slide.hpp"
 
 
-std::unordered_map<int, std::shared_ptr<Item>> Slide::getItems() const {
+SlideContainer Slide::getItems() const {
     return items;
 }
 
@@ -51,18 +51,18 @@ void Slide::swapItems(int idOfInitialItem, std::shared_ptr<Item>& newItem) {
     std::swap(items[idOfInitialItem], newItem);
 }
 
-std::unordered_map<int, std::shared_ptr<Item>>::iterator Slide::begin() {
+SlideContainer::iterator Slide::begin() {
     return items.begin();
 }
 
-std::unordered_map<int, std::shared_ptr<Item>>::const_iterator Slide::cbegin() const {
+SlideContainer::const_iterator Slide::cbegin() const {
     return items.cbegin();
 }
 
-std::unordered_map<int, std::shared_ptr<Item>>::iterator Slide::end() {
+SlideContainer::iterator Slide::end() {
     return items.end();
 }
 
-std::unordered_map<int, std::shared_ptr<Item>>::const_iterator Slide::cend() const {
+SlideContainer::const_iterator Slide::cend() const {
     return items.cend();
 }

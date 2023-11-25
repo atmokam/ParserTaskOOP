@@ -39,16 +39,17 @@ std::shared_ptr<Document> SaveLoadSerializer::load(const std::string& path) {
         throw std::invalid_argument("Invalid path or filename");
     }
 
-    return deserialize(file);
+    return std::make_shared<Document>(deserialize(file));
     
 } 
 
 
-std::shared_ptr<Document> SaveLoadSerializer::deserialize(std::ifstream& file) {
-    std::shared_ptr<Document> document = std::make_shared<Document>();
+Document SaveLoadSerializer::deserialize(std::ifstream& file) {
+    Document document = Document();
 
     std::string line; 
     Position pos; Type type; BoundingRect boundingRect; Color color; ID id; LineDescriptor lineDescriptor;
+    std::cout << "load" << std::endl;
     while (std::getline(file, line))
     {
         std::istringstream is_line(line);
@@ -72,18 +73,18 @@ std::shared_ptr<Document> SaveLoadSerializer::deserialize(std::ifstream& file) {
                     color.hexLineColor = Converter::convertToColor(value);
                 else if(key == "fill_color")
                     color.hexFillColor = Converter::convertToColor(value);
-                else if(key == "line_width")
-                    lineDescriptor.width = std::stod(value);
-                else if(key == "line_style"){
+                else if(key == "line_style")
                     lineDescriptor.type = Converter::convertToLineType(value);
-                    (*std::prev(document->end()))->addItem(std::make_shared<Item>(type, pos, boundingRect, color, id, lineDescriptor));
+                else if(key == "line_width"){
+                    lineDescriptor.width = std::stod(value);
+                    (*std::prev(document.end()))->addItem(std::make_shared<Item>(type, pos, boundingRect, color, id, lineDescriptor));
                 }
                 else if(key == "max_id")
-                    (*(std::prev(document->end())))->setMaximumID(std::stoi(value));
+                    (*(std::prev(document.end())))->setMaximumID(std::stoi(value));
                 else if(key == "slide"){
                     if(value == "0")
                         continue;
-                    document->addSlide(std::make_shared<Slide>());
+                    document.addSlide(std::make_shared<Slide>());
                 }
                 else {
                     std::cout << key << " " << value << std::endl;

@@ -21,6 +21,7 @@ public:
     void doAction(std::shared_ptr<IAction> action) override;
 
     std::shared_ptr<Document> getDocument() override;
+    void setDocument(std::shared_ptr<Document> document) override;
     std::shared_ptr<Slide> getCurrentSlide() override;
     void setCurrentSlideNumber(size_t currentSlideNumber) override;
     size_t getCurrentSlideNumber() override;

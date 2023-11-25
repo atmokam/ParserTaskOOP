@@ -11,6 +11,7 @@ class IDirector {
 public:
     
     virtual std::shared_ptr<Document> getDocument() = 0;
+    virtual void setDocument(std::shared_ptr<Document> document) = 0;
     virtual std::shared_ptr<Slide> getCurrentSlide() = 0;
     virtual size_t getCurrentSlideNumber() = 0;
     virtual void setCurrentSlideNumber(size_t currentSlideNumber) = 0;

@@ -15,7 +15,7 @@
 
 class SaveLoadSerializer {
     static void serialize(std::ofstream& file, const std::shared_ptr<Slide>& items);
-    static std::shared_ptr<Document> deserialize(std::ifstream& file);
+    static Document deserialize(std::ifstream& file);
 public:
     static void save(std::shared_ptr<Document> document, const std::string& path);
     static std::shared_ptr<Document> load(const std::string& path);

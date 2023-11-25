@@ -6,6 +6,10 @@ std::shared_ptr<Document> Director::getDocument() {
     return document;
 }
 
+void Director::setDocument(std::shared_ptr<Document> document){
+    this->document = document;
+}
+
 std::shared_ptr<Slide> Director::getCurrentSlide() {
     return currentSlide;
 }

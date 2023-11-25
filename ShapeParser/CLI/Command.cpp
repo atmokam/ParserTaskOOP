@@ -93,7 +93,7 @@ void SaveCommand::execute(std::shared_ptr<Director>& director) {  // review docu
 }
 
 void LoadCommand::execute(std::shared_ptr<Director>& director) { 
-    SaveLoadSerializer::load(operands["-path"][0]);
+    director->setDocument(SaveLoadSerializer::load(operands["-path"][0]));
 }
 
 void DisplayCommand::execute(std::shared_ptr<Director>& director) {

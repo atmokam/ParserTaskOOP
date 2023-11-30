@@ -2,9 +2,9 @@
 #define ICONTROLLER_HPP
 
 class IController {
-protected:
+public:
     virtual void runProgram() = 0;
-    virtual void buildController() = 0;
+    virtual ~IController() = default;
 };
 
 #endif

@@ -205,10 +205,10 @@ CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/Converter.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IAction.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/./Data/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/Converter.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IAction.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/IRenderer.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/UndoRedo.hpp \
  /usr/include/c++/11/stack /usr/include/c++/11/deque \

@@ -1,6 +1,6 @@
 #include "UndoRedo.hpp"
 
-UndoRedo::UndoRedo(IDocument& document, const size_t current) : document(document), currentSlideIndex(current){}
+UndoRedo::UndoRedo(std::shared_ptr<IDocument>& document, const size_t current) : document(document), currentSlideIndex(current){}
 
 void UndoRedo::addAction(std::shared_ptr<IAction> action) {
     undoStack.push(action);
@@ -29,4 +29,9 @@ void UndoRedo::redo() {
     
     redoStack.pop();
     undoStack.push(action->execute(document));
+}
+
+void UndoRedo::clearStack() {
+    undoStack = std::stack<std::shared_ptr<IAction>>();
+    redoStack = std::stack<std::shared_ptr<IAction>>();
 }

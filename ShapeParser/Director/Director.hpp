@@ -10,18 +10,18 @@
 
 
 class Director : public IDirector {
-    std::shared_ptr<Document> document;
+    std::shared_ptr<IDocument> document;
     size_t currentSlideIndex = 0;
     std::shared_ptr<Slide> currentSlide;  
-    std::unique_ptr<UndoRedo> undoRedo; // stack
+    std::unique_ptr<UndoRedo> undoRedo; // stacks
 
 public:
     
     Director();
     void doAction(std::shared_ptr<IAction> action) override;
-
-    std::shared_ptr<Document> getDocument() override;
-    void setDocument(std::shared_ptr<Document> document) override;
+    void clearUndoRedoStack() override;
+    std::shared_ptr<IDocument>& getDocument() override;
+    void setDocument(std::shared_ptr<IDocument>& document) override;
     std::shared_ptr<Slide> getCurrentSlide() override;
     void setCurrentSlideNumber(size_t currentSlideNumber) override;
     size_t getCurrentSlideNumber() override;

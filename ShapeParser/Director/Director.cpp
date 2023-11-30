@@ -1,13 +1,13 @@
 #include "Director.hpp"
 
 
-Director::Director() : document(std::make_shared<Document>()), currentSlide(*document->begin()), undoRedo(std::make_unique<UndoRedo>(*document, currentSlideIndex)) {}
+Director::Director() : document(std::make_shared<Document>()), currentSlide(*document->begin()), undoRedo(std::make_unique<UndoRedo>(document, currentSlideIndex)) {}
                                                               // check if this works
-std::shared_ptr<Document> Director::getDocument() {
+std::shared_ptr<IDocument>& Director::getDocument() {
     return document;
 }
 
-void Director::setDocument(std::shared_ptr<Document> document){
+void Director::setDocument(std::shared_ptr<IDocument>& document){
     this->document = document;
 }
 
@@ -28,8 +28,12 @@ std::unique_ptr<UndoRedo> Director::getUndoRedo() {
     return std::move(undoRedo);
 }
 
+void Director::clearUndoRedoStack() {
+    undoRedo->clearStack();
+}
+
 void Director::doAction(std::shared_ptr<IAction> action) {
-    undoRedo->addAction(action->execute(*document));
+    undoRedo->addAction(action->execute(document));
 }
 
 void Director::undo() {

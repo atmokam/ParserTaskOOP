@@ -1,7 +1,8 @@
 #include "SaveLoad.hpp"
+#include "Data/Document.hpp"
 
 
-void SaveLoadSerializer::save(std::shared_ptr<Document> document, const std::string& path) {
+void SaveLoadSerializer::save(std::shared_ptr<IDocument> document, const std::string& path) {
     std::ofstream file;
     
     file.open(path + ".ppx");
@@ -31,7 +32,7 @@ void SaveLoadSerializer::serialize(std::ofstream& file, const std::shared_ptr<Sl
     }
 }
 
-std::shared_ptr<Document> SaveLoadSerializer::load(const std::string& path) { 
+std::shared_ptr<IDocument> SaveLoadSerializer::load(const std::string& path) { 
     std::ifstream file;
 
     file.open(path);
@@ -39,12 +40,12 @@ std::shared_ptr<Document> SaveLoadSerializer::load(const std::string& path) {
         throw std::invalid_argument("Invalid path or filename");
     }
 
-    return std::make_shared<Document>(deserialize(file));
+    return std::static_pointer_cast<Document>(deserialize(file)); 
     
 } 
 
 
-Document SaveLoadSerializer::deserialize(std::ifstream& file) {
+std::shared_ptr<IDocument> SaveLoadSerializer::deserialize(std::ifstream& file) {
     Document document = Document();
 
     std::string line; 
@@ -95,6 +96,6 @@ Document SaveLoadSerializer::deserialize(std::ifstream& file) {
 
     }
 
-    return document;
+    return std::make_shared<Document>(document);
 }
 

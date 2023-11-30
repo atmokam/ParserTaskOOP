@@ -1,15 +1,18 @@
 #include "Command.hpp"
+#include "Application/Application.hpp"
 
 
-void AddCommand::execute(std::shared_ptr<Director>& director) {
+Command::Command() : application(Application::getInstance()) {}
 
-   if(operands.find("-name") != operands.end()){
-        std::shared_ptr<Item> item = createItem(director->getCurrentSlide(), director->getCurrentSlideNumber());
-        director->doAction(std::make_shared<AddItem>(item, director->getCurrentSlideNumber()));
+void AddCommand::execute() {  
+
+    if(operands.find("-name") != operands.end()){
+        std::shared_ptr<Item> item = createItem(application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideNumber());
+        application.getDirector()->doAction(std::make_shared<AddItem>(item, application.getDirector()->getCurrentSlideNumber()));
     }
     else if(operands.find("-slide") != operands.end()){
-        director->doAction(std::make_shared<AddSlide>(std::make_shared<Slide>(), director->getCurrentSlideNumber() + 1));
-        director->nextSlide();
+        application.getDirector()->doAction(std::make_shared<AddSlide>(std::make_shared<Slide>(), application.getDirector()->getCurrentSlideNumber() + 1));
+        application.getDirector()->nextSlide();
     }
 
 }
@@ -42,29 +45,29 @@ std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide
 
 }
 
-void RemoveCommand::execute(std::shared_ptr<Director>& director) {
+void RemoveCommand::execute() {
     if(operands.find("-id") != operands.end()){
-        std::shared_ptr<Item> item = director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+        std::shared_ptr<Item> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
         if (item == nullptr){
             return;
         }
-        director->doAction(std::make_shared<RemoveItem>(item, director->getCurrentSlideNumber()));
+        application.getDirector()->doAction(std::make_shared<RemoveItem>(item, application.getDirector()->getCurrentSlideNumber()));
     }
     else if(operands.find("-slide") != operands.end()){
-        if(director->getDocument()->size() == 1){
+        if(application.getDirector()->getDocument()->size() == 1){
             std::cout << "Cannot remove slide, only 1 left" << std::endl;
             
         } else {
-            director->doAction(std::make_shared<RemoveSlide>(director->getCurrentSlide(), director->getCurrentSlideNumber())); // director has the slide it needs to remove
-            director->previousSlide();
+            application.getDirector()->doAction(std::make_shared<RemoveSlide>(application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideNumber())); // director has the slide it needs to remove
+            application.getDirector()->previousSlide();
         }
     }
 
 }
 
 
-void ChangeCommand::execute(std::shared_ptr<Director>& director) {
-    std::shared_ptr<Item> item = std::make_shared<Item>(*director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0])));
+void ChangeCommand::execute() {
+    std::shared_ptr<Item> item = std::make_shared<Item>(*application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0])));
 
     if(operands.find("-pos") != operands.end()){ 
         item->setPosition(Converter::convertToPosition(operands["-pos"]));
@@ -86,24 +89,27 @@ void ChangeCommand::execute(std::shared_ptr<Director>& director) {
         item->setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0]));
     }
 
-    director->doAction(std::make_shared<ChangeItem>(item, director->getCurrentSlideNumber()));
+    application.getDirector()->doAction(std::make_shared<ChangeItem>(item, application.getDirector()->getCurrentSlideNumber()));
 }
 
 
-void SaveCommand::execute(std::shared_ptr<Director>& director) {  // review document versioning
+void SaveCommand::execute() {  // review document versioning
     SaveLoadSerializer serializer;
-    serializer.save(director->getDocument(), operands["-path"][0] + operands["-name"][0]);
+    serializer.save(application.getDirector()->getDocument(), operands["-path"][0] + operands["-name"][0]);
 
 }
 
-void LoadCommand::execute(std::shared_ptr<Director>& director) { 
+void LoadCommand::execute() { 
     SaveLoadSerializer serializer;
-    director->setDocument(serializer.load(operands["-path"][0]));
+    std::shared_ptr<IDocument> document = serializer.load(operands["-path"][0]);
+    application.getDirector()->setDocument(document);
+    application.getDirector()->setCurrentSlideNumber(0);
+    //application.getDirector()->clearUndoRedoStack();
 }
 
-void DisplayCommand::execute(std::shared_ptr<Director>& director) {
+void DisplayCommand::execute() {
     if(operands.find("-id") != operands.end()){
-        std::shared_ptr<Item> item = director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+        std::shared_ptr<Item> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
         if (item == nullptr){
             return;
         }
@@ -112,30 +118,34 @@ void DisplayCommand::execute(std::shared_ptr<Director>& director) {
     }
     else{
         Renderer renderer;
-        renderer.renderText(std::cout, director->getCurrentSlide(), director->getCurrentSlideNumber());
+        renderer.renderText(std::cout, application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideNumber());
     }
 }
 
 
-void ListCommand::execute(std::shared_ptr<Director>& director) {
+void ListCommand::execute() {
     Renderer renderer;
-    renderer.renderText(std::cout, director->getDocument());
+    auto document = application.getDirector()->getDocument();
+    size_t currentSlideIndex  = 0;
+    for(auto slide : *document){
+        renderer.renderText(std::cout, slide, currentSlideIndex++);
+    }
 }
 
-void NextCommand::execute(std::shared_ptr<Director>& director) {
-    director->nextSlide();
+void NextCommand::execute() {
+    application.getDirector()->nextSlide();
 }
 
-void PrevCommand::execute(std::shared_ptr<Director>& director) {
-    director->previousSlide();
+void PrevCommand::execute() {
+    application.getDirector()->previousSlide();
 }
 
-void UndoCommand::execute(std::shared_ptr<Director>& director) {
-    director->undo();
+void UndoCommand::execute() {
+    application.getDirector()->undo();
 }
 
-void RedoCommand::execute(std::shared_ptr<Director>& director) {
-    director->redo();
+void RedoCommand::execute() {
+    application.getDirector()->redo();
 }
 
 

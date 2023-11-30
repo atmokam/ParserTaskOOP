@@ -129,6 +129,30 @@ PowerPointProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/build
 .PHONY : PowerPointProject/fast
 
+Application/Application.o: Application/Application.cpp.o
+.PHONY : Application/Application.o
+
+# target to build an object file
+Application/Application.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o
+.PHONY : Application/Application.cpp.o
+
+Application/Application.i: Application/Application.cpp.i
+.PHONY : Application/Application.i
+
+# target to preprocess a source file
+Application/Application.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Application/Application.cpp.i
+.PHONY : Application/Application.cpp.i
+
+Application/Application.s: Application/Application.cpp.s
+.PHONY : Application/Application.s
+
+# target to generate assembly for a file
+Application/Application.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Application/Application.cpp.s
+.PHONY : Application/Application.cpp.s
+
 CLI/Command.o: CLI/Command.cpp.o
 .PHONY : CLI/Command.o
 
@@ -474,6 +498,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... PowerPointProject"
+	@echo "... Application/Application.o"
+	@echo "... Application/Application.i"
+	@echo "... Application/Application.s"
 	@echo "... CLI/Command.o"
 	@echo "... CLI/Command.i"
 	@echo "... CLI/Command.s"

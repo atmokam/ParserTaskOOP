@@ -8,13 +8,14 @@
 #include "Data/Document.hpp"
 
 class UndoRedo {
-    IDocument& document;
+    std::shared_ptr<IDocument> document;
     size_t currentSlideIndex;
     std::stack<std::shared_ptr<IAction>> undoStack;
     std::stack<std::shared_ptr<IAction>> redoStack;
 public:
-    UndoRedo(IDocument& document, const size_t current);
+    UndoRedo(std::shared_ptr<IDocument>& document, const size_t current);
     void addAction(std::shared_ptr<IAction> action); // adds to undo stack
+    void clearStack();
     void undo();
     void redo();
 };

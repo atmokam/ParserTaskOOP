@@ -7,7 +7,7 @@
 
 class IAction {
 public:
-    virtual std::shared_ptr<IAction> execute(IDocument& document) = 0;
+    virtual std::shared_ptr<IAction> execute(std::shared_ptr<IDocument>& document) = 0;
 };
 
 #endif

@@ -3,10 +3,11 @@
 
 #include <memory>
 #include "Data/Document.hpp"
+#include "Include/IDocument.hpp"
 
 class IAction {
 public:
-    virtual std::shared_ptr<IAction> execute(std::shared_ptr<Document>& document) = 0;
+    virtual std::shared_ptr<IAction> execute(IDocument& document) = 0;
 };
 
 #endif

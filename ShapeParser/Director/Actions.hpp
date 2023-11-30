@@ -4,16 +4,14 @@
 #include <string>
 #include <iostream>
 #include <memory>
-#include <unordered_map>
-#include <fstream>
 
 #include "Data/Document.hpp"
 #include "Data/Item.hpp"
-#include "Data/Slide.hpp"
 #include "Serialization/Converter.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "IAction.hpp"
 #include "Renderer/IRenderer.hpp"
+#include "Include/IDocument.hpp"
 
 
 class AddItem : public IAction {
@@ -21,7 +19,7 @@ class AddItem : public IAction {
     size_t slideNumber;
 public:
     AddItem(const std::shared_ptr<Item>& item, size_t slideNumber);
-    std::shared_ptr<IAction> execute(std::shared_ptr<Document>& document) override; // current slide index is in item
+    std::shared_ptr<IAction> execute(IDocument& document) override; // current slide index is in item
 };
 
 class AddSlide : public IAction {
@@ -29,7 +27,7 @@ class AddSlide : public IAction {
     size_t slideNumber;
 public:
     AddSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber);
-    std::shared_ptr<IAction> execute(std::shared_ptr<Document>& document) override; 
+    std::shared_ptr<IAction> execute(IDocument& document) override; 
 };
 
 class RemoveItem : public IAction {
@@ -37,7 +35,7 @@ class RemoveItem : public IAction {
     size_t slideNumber;
 public:
     RemoveItem(const std::shared_ptr<Item>& item, size_t slideNumber);
-    std::shared_ptr<IAction> execute(std::shared_ptr<Document>& document) override; 
+    std::shared_ptr<IAction> execute(IDocument& document) override; 
 };
 
 class RemoveSlide : public IAction {
@@ -45,7 +43,7 @@ class RemoveSlide : public IAction {
     size_t slideNumber;
 public:
     RemoveSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber);
-    std::shared_ptr<IAction> execute(std::shared_ptr<Document>& document) override; 
+    std::shared_ptr<IAction> execute(IDocument& document) override; 
 };
 
 class ChangeItem : public IAction {
@@ -53,7 +51,7 @@ class ChangeItem : public IAction {
     size_t slideNumber;
 public:
     ChangeItem(const std::shared_ptr<Item>& item, size_t slideNumber);
-    std::shared_ptr<IAction> execute(std::shared_ptr<Document>& document) override; 
+    std::shared_ptr<IAction> execute(IDocument& document) override; 
 };
 
 

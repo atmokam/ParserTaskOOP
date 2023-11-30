@@ -248,8 +248,9 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: ../CLI/Command.cpp \
   ../Director/Director.hpp \
   ../Director/IDirector.hpp \
   ../Director/Actions.hpp \
-  ../Data/Slide.hpp \
   ../Director/IAction.hpp \
+  ../Include/IDocument.hpp \
+  ../Data/IDocument.hpp \
   ../Renderer/IRenderer.hpp \
   ../Director/UndoRedo.hpp \
   /usr/include/c++/11/stack \
@@ -509,8 +510,9 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: ../CLI/Controller.cpp \
   ../Director/Director.hpp \
   ../Director/IDirector.hpp \
   ../Director/Actions.hpp \
-  ../Data/Slide.hpp \
   ../Director/IAction.hpp \
+  ../Include/IDocument.hpp \
+  ../Data/IDocument.hpp \
   ../Renderer/IRenderer.hpp \
   ../Director/UndoRedo.hpp \
   /usr/include/c++/11/stack \
@@ -773,8 +775,9 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o: ../CLI/Parser.cpp \
   ../Director/Director.hpp \
   ../Director/IDirector.hpp \
   ../Director/Actions.hpp \
-  ../Data/Slide.hpp \
   ../Director/IAction.hpp \
+  ../Include/IDocument.hpp \
+  ../Data/IDocument.hpp \
   ../Renderer/IRenderer.hpp \
   ../Director/UndoRedo.hpp \
   /usr/include/c++/11/stack \
@@ -1038,8 +1041,9 @@ CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o: ../CLI/Validator.cpp \
   ../Director/Director.hpp \
   ../Director/IDirector.hpp \
   ../Director/Actions.hpp \
-  ../Data/Slide.hpp \
   ../Director/IAction.hpp \
+  ../Include/IDocument.hpp \
+  ../Data/IDocument.hpp \
   ../Renderer/IRenderer.hpp \
   ../Director/UndoRedo.hpp \
   /usr/include/c++/11/stack \
@@ -1931,18 +1935,6 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: ../Director/Actions.cpp
   /usr/include/c++/11/backward/auto_ptr.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
-  /usr/include/c++/11/unordered_map \
-  /usr/include/c++/11/bits/hashtable.h \
-  /usr/include/c++/11/bits/hashtable_policy.h \
-  /usr/include/c++/11/bits/enable_special_members.h \
-  /usr/include/c++/11/bits/node_handle.h \
-  /usr/include/c++/11/bits/unordered_map.h \
-  /usr/include/c++/11/bits/erase_if.h \
-  /usr/include/c++/11/fstream \
-  /usr/include/c++/11/bits/codecvt.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
-  /usr/include/c++/11/bits/fstream.tcc \
   ../Data/Document.hpp \
   ../Data/Slide.hpp \
   /usr/include/c++/11/vector \
@@ -1957,20 +1949,33 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: ../Director/Actions.cpp
   /usr/include/c++/11/pstl/glue_algorithm_defs.h \
   /usr/include/c++/11/functional \
   /usr/include/c++/11/bits/std_function.h \
+  /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/bits/hashtable.h \
+  /usr/include/c++/11/bits/hashtable_policy.h \
+  /usr/include/c++/11/bits/enable_special_members.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/c++/11/bits/erase_if.h \
   ../Data/Item.hpp \
   ../Data/ItemAttributes.hpp \
   ../Data/IItem.hpp \
   ../Data/ISlide.hpp \
   ../Data/IDocument.hpp \
   ../Data/Item.hpp \
-  ../Data/Slide.hpp \
   ../Serialization/Converter.hpp \
   ../Data/ItemAttributes.hpp \
   ../Serialization/SaveLoad.hpp \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../Serialization/Converter.hpp \
   ../Director/IAction.hpp \
+  ../Include/IDocument.hpp \
+  ../Data/IDocument.hpp \
   ../Renderer/IRenderer.hpp
 
 CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o: ../Director/Director.cpp \
@@ -2207,20 +2212,21 @@ CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o: ../Director/Director.c
   ../Data/IDocument.hpp \
   ../Director/IDirector.hpp \
   ../Director/Actions.hpp \
+  ../Data/Item.hpp \
+  ../Serialization/Converter.hpp \
+  ../Data/ItemAttributes.hpp \
+  ../Serialization/SaveLoad.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/c++/11/bits/codecvt.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
-  ../Data/Item.hpp \
-  ../Data/Slide.hpp \
-  ../Serialization/Converter.hpp \
-  ../Data/ItemAttributes.hpp \
-  ../Serialization/SaveLoad.hpp \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../Serialization/Converter.hpp \
   ../Director/IAction.hpp \
+  ../Include/IDocument.hpp \
+  ../Data/IDocument.hpp \
   ../Renderer/IRenderer.hpp \
   ../Director/UndoRedo.hpp \
   /usr/include/c++/11/stack \
@@ -2703,6 +2709,8 @@ CMakeFiles/PowerPointProject.dir/Director/UndoRedo.cpp.o: ../Director/UndoRedo.c
   ../Data/ItemAttributes.hpp \
   ../Data/IItem.hpp \
   ../Data/ISlide.hpp \
+  ../Data/IDocument.hpp \
+  ../Include/IDocument.hpp \
   ../Data/IDocument.hpp
 
 CMakeFiles/PowerPointProject.dir/Program.cpp.o: ../Program.cpp \
@@ -2954,8 +2962,9 @@ CMakeFiles/PowerPointProject.dir/Program.cpp.o: ../Program.cpp \
   ../Director/Director.hpp \
   ../Director/IDirector.hpp \
   ../Director/Actions.hpp \
-  ../Data/Slide.hpp \
   ../Director/IAction.hpp \
+  ../Include/IDocument.hpp \
+  ../Data/IDocument.hpp \
   ../Renderer/IRenderer.hpp \
   ../Director/UndoRedo.hpp \
   /usr/include/c++/11/stack \
@@ -3448,6 +3457,8 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 /usr/include/c++/11/bits/unordered_set.h:
 
+../CLI/Validator.hpp:
+
 /usr/include/stdlib.h:
 
 /usr/include/c++/11/bits/string_view.tcc:
@@ -3568,8 +3579,6 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
-/usr/include/c++/11/string:
-
 ../Director/Director.cpp:
 
 /usr/include/c++/11/bits/exception_defines.h:
@@ -3633,6 +3642,10 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/c++/11/string:
+
+../Include/IDocument.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
@@ -3967,5 +3980,3 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 /usr/include/c++/11/bits/functional_hash.h:
 
 ../CLI/Controller.cpp:
-
-../CLI/Validator.hpp:

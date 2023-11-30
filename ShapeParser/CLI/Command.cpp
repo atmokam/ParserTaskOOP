@@ -45,6 +45,9 @@ std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide
 void RemoveCommand::execute(std::shared_ptr<Director>& director) {
     if(operands.find("-id") != operands.end()){
         std::shared_ptr<Item> item = director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+        if (item == nullptr){
+            return;
+        }
         director->doAction(std::make_shared<RemoveItem>(item, director->getCurrentSlideNumber()));
     }
     else if(operands.find("-slide") != operands.end()){
@@ -101,6 +104,9 @@ void LoadCommand::execute(std::shared_ptr<Director>& director) {
 void DisplayCommand::execute(std::shared_ptr<Director>& director) {
     if(operands.find("-id") != operands.end()){
         std::shared_ptr<Item> item = director->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+        if (item == nullptr){
+            return;
+        }
         Renderer renderer;
         renderer.renderText(std::cout, item);
     }

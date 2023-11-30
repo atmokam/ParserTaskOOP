@@ -14,6 +14,10 @@ void Slide::removeItem(int id) {
 }
 
 std::shared_ptr<Item> Slide::getItem(int id) const {
+    if(items.find(id) == items.end()){
+        std::cout << "Item with id " + std::to_string(id) + " does not exist" << std::endl;
+        return nullptr;
+    }
     return items.at(id);
 }
 

@@ -9,7 +9,6 @@ class IController;
 class IDirector;
 
 
-
 class Application: public IApplication {
     std::unique_ptr<IController> controller;
     std::shared_ptr<IDirector> director; // director has the document, I dont know whether that's a good idea or not

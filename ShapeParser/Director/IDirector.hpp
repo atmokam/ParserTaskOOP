@@ -2,12 +2,12 @@
 #define IDIRECTOR_HPP
 
 #include <string>
-
-#include "Data/Document.hpp"
-#include "Director/Actions.hpp"
-#include "Director/UndoRedo.hpp"
+#include <memory>
 
 class IDocument;
+class Slide;
+class IAction;
+class UndoRedo;
 
 class IDirector {
 public:

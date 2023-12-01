@@ -6,8 +6,6 @@
 #include <memory>
 #include <vector>
 
-
-
 class IApplication;
 class Slide;
 class Item;

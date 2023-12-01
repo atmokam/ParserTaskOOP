@@ -184,11 +184,7 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o: ../Application/A
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/include/c++/11/bits/charconv.h \
   /usr/include/c++/11/bits/basic_string.tcc \
-  ../Include/IController.hpp \
-  ../CLI/IController.hpp \
-  ../Include/IDirector.hpp \
-  ../Director/IDirector.hpp \
-  ../Data/Document.hpp \
+  ../CLI/Controller.hpp \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -213,31 +209,33 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o: ../Application/A
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
-  ../Data/IDocument.hpp \
-  /usr/include/c++/11/vector \
-  /usr/include/c++/11/bits/stl_vector.h \
-  /usr/include/c++/11/bits/stl_bvector.h \
-  /usr/include/c++/11/bits/vector.tcc \
-  ../Director/Actions.hpp \
-  ../Director/IAction.hpp \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc \
+  ../CLI/IController.hpp \
+  ../Director/Director.hpp \
+  ../Director/IDirector.hpp \
   ../Director/UndoRedo.hpp \
   /usr/include/c++/11/stack \
   /usr/include/c++/11/deque \
   /usr/include/c++/11/bits/stl_deque.h \
   /usr/include/c++/11/bits/deque.tcc \
   /usr/include/c++/11/bits/stl_stack.h \
+  ../Director/IAction.hpp \
   ../Include/IDocument.hpp \
   ../Data/IDocument.hpp \
-  ../Director/Director.hpp \
-  ../Director/IDirector.hpp \
-  ../Director/UndoRedo.hpp \
-  ../CLI/Controller.hpp \
-  /usr/include/c++/11/fstream \
-  /usr/include/c++/11/bits/codecvt.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
-  /usr/include/c++/11/bits/fstream.tcc \
-  ../CLI/IController.hpp
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/bits/stl_vector.h \
+  /usr/include/c++/11/bits/stl_bvector.h \
+  /usr/include/c++/11/bits/vector.tcc \
+  ../Data/Document.hpp \
+  ../Data/IDocument.hpp \
+  ../Include/IController.hpp \
+  ../CLI/IController.hpp \
+  ../Include/IDirector.hpp \
+  ../Director/IDirector.hpp
 
 CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: ../CLI/Command.cpp \
   /usr/include/stdc-predef.h \
@@ -446,26 +444,6 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: ../CLI/Command.cpp \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
   ../Application/IApplication.hpp \
-  ../Include/IController.hpp \
-  ../CLI/IController.hpp \
-  ../Include/IDirector.hpp \
-  ../Director/IDirector.hpp \
-  ../Data/Document.hpp \
-  ../Data/IDocument.hpp \
-  /usr/include/c++/11/vector \
-  /usr/include/c++/11/bits/stl_vector.h \
-  /usr/include/c++/11/bits/stl_bvector.h \
-  /usr/include/c++/11/bits/vector.tcc \
-  ../Director/Actions.hpp \
-  ../Director/IAction.hpp \
-  ../Director/UndoRedo.hpp \
-  /usr/include/c++/11/stack \
-  /usr/include/c++/11/deque \
-  /usr/include/c++/11/bits/stl_deque.h \
-  /usr/include/c++/11/bits/deque.tcc \
-  /usr/include/c++/11/bits/stl_stack.h \
-  ../Include/IDocument.hpp \
-  ../Data/IDocument.hpp \
   ../Data/Slide.hpp \
   ../Data/ISlide.hpp \
   /usr/include/c++/11/unordered_map \
@@ -476,11 +454,24 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: ../CLI/Command.cpp \
   /usr/include/c++/11/bits/unordered_map.h \
   /usr/include/c++/11/bits/erase_if.h \
   ../Data/ItemAttributes.hpp \
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/bits/stl_vector.h \
+  /usr/include/c++/11/bits/stl_bvector.h \
+  /usr/include/c++/11/bits/vector.tcc \
   ../Data/Item.hpp \
   ../Data/IItem.hpp \
+  ../Data/Document.hpp \
+  ../Data/IDocument.hpp \
+  ../Director/Actions.hpp \
+  ../Director/IAction.hpp \
   ../Director/Director.hpp \
   ../Director/IDirector.hpp \
   ../Director/UndoRedo.hpp \
+  /usr/include/c++/11/stack \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/bits/stl_stack.h \
   ../CLI/Command.hpp \
   ../Renderer/Renderer.hpp \
   ../Renderer/IRenderer.hpp \
@@ -2212,15 +2203,54 @@ CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o: ../Director/Director.c
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/include/c++/11/bits/charconv.h \
   /usr/include/c++/11/bits/basic_string.tcc \
+  ../Director/IDirector.hpp \
+  /usr/include/c++/11/memory \
+  /usr/include/c++/11/bits/stl_uninitialized.h \
+  /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/11/bits/align.h \
+  /usr/include/c++/11/bit \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/unique_ptr.h \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
+  /usr/include/c++/11/typeinfo \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/ext/concurrence.h \
+  /usr/include/c++/11/exception \
+  /usr/include/c++/11/bits/exception_ptr.h \
+  /usr/include/c++/11/bits/cxxabi_init_exception.h \
+  /usr/include/c++/11/bits/nested_exception.h \
+  /usr/include/c++/11/bits/shared_ptr_atomic.h \
+  /usr/include/c++/11/bits/atomic_base.h \
+  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/11/backward/auto_ptr.h \
+  /usr/include/c++/11/pstl/glue_memory_defs.h \
+  /usr/include/c++/11/pstl/execution_defs.h \
+  ../Director/UndoRedo.hpp \
+  /usr/include/c++/11/stack \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/bits/stl_stack.h \
+  ../Director/IAction.hpp \
+  ../Include/IDocument.hpp \
+  ../Data/IDocument.hpp \
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/bits/stl_vector.h \
+  /usr/include/c++/11/bits/stl_bvector.h \
+  /usr/include/c++/11/bits/vector.tcc \
   ../Data/Document.hpp \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
-  /usr/include/c++/11/exception \
-  /usr/include/c++/11/bits/exception_ptr.h \
-  /usr/include/c++/11/bits/cxxabi_init_exception.h \
-  /usr/include/c++/11/typeinfo \
-  /usr/include/c++/11/bits/nested_exception.h \
   /usr/include/c++/11/bits/ios_base.h \
   /usr/include/c++/11/bits/locale_classes.h \
   /usr/include/c++/11/bits/locale_classes.tcc \
@@ -2242,47 +2272,8 @@ CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o: ../Director/Director.c
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
-  /usr/include/c++/11/memory \
-  /usr/include/c++/11/bits/stl_uninitialized.h \
-  /usr/include/c++/11/bits/stl_tempbuf.h \
-  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
-  /usr/include/c++/11/bits/align.h \
-  /usr/include/c++/11/bit \
-  /usr/include/c++/11/bits/uses_allocator.h \
-  /usr/include/c++/11/bits/unique_ptr.h \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/bits/stl_relops.h \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/bits/invoke.h \
-  /usr/include/c++/11/bits/shared_ptr.h \
-  /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
-  /usr/include/c++/11/bits/refwrap.h \
-  /usr/include/c++/11/ext/aligned_buffer.h \
-  /usr/include/c++/11/ext/concurrence.h \
-  /usr/include/c++/11/bits/shared_ptr_atomic.h \
-  /usr/include/c++/11/bits/atomic_base.h \
-  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
-  /usr/include/c++/11/backward/auto_ptr.h \
-  /usr/include/c++/11/pstl/glue_memory_defs.h \
-  /usr/include/c++/11/pstl/execution_defs.h \
   ../Data/IDocument.hpp \
-  /usr/include/c++/11/vector \
-  /usr/include/c++/11/bits/stl_vector.h \
-  /usr/include/c++/11/bits/stl_bvector.h \
-  /usr/include/c++/11/bits/vector.tcc \
-  ../Director/IDirector.hpp \
   ../Director/Actions.hpp \
-  ../Director/IAction.hpp \
-  ../Director/UndoRedo.hpp \
-  /usr/include/c++/11/stack \
-  /usr/include/c++/11/deque \
-  /usr/include/c++/11/bits/stl_deque.h \
-  /usr/include/c++/11/bits/deque.tcc \
-  /usr/include/c++/11/bits/stl_stack.h \
-  ../Include/IDocument.hpp \
-  ../Data/IDocument.hpp \
   ../Director/UndoRedo.hpp
 
 CMakeFiles/PowerPointProject.dir/Director/UndoRedo.cpp.o: ../Director/UndoRedo.cpp \
@@ -2689,11 +2680,6 @@ CMakeFiles/PowerPointProject.dir/Program.cpp.o: ../Program.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/include/c++/11/bits/charconv.h \
   /usr/include/c++/11/bits/basic_string.tcc \
-  ../Include/IController.hpp \
-  ../CLI/IController.hpp \
-  ../Include/IDirector.hpp \
-  ../Director/IDirector.hpp \
-  ../Data/Document.hpp \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -2717,22 +2703,7 @@ CMakeFiles/PowerPointProject.dir/Program.cpp.o: ../Program.cpp \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
-  /usr/include/c++/11/bits/istream.tcc \
-  ../Data/IDocument.hpp \
-  /usr/include/c++/11/vector \
-  /usr/include/c++/11/bits/stl_vector.h \
-  /usr/include/c++/11/bits/stl_bvector.h \
-  /usr/include/c++/11/bits/vector.tcc \
-  ../Director/Actions.hpp \
-  ../Director/IAction.hpp \
-  ../Director/UndoRedo.hpp \
-  /usr/include/c++/11/stack \
-  /usr/include/c++/11/deque \
-  /usr/include/c++/11/bits/stl_deque.h \
-  /usr/include/c++/11/bits/deque.tcc \
-  /usr/include/c++/11/bits/stl_stack.h \
-  ../Include/IDocument.hpp \
-  ../Data/IDocument.hpp
+  /usr/include/c++/11/bits/istream.tcc
 
 CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o: ../Renderer/Renderer.cpp \
   /usr/include/stdc-predef.h \
@@ -3847,14 +3818,6 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 /usr/include/c++/11/bits/basic_string.tcc:
 
-../Director/IDirector.hpp:
-
-/usr/include/c++/11/cwctype:
-
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-../Data/Document.hpp:
-
 /usr/include/c++/11/bits/ios_base.h:
 
 /usr/include/c++/11/bits/locale_classes.h:
@@ -3883,6 +3846,10 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 /usr/include/c++/11/bits/locale_facets.h:
 
+/usr/include/c++/11/cwctype:
+
+../Director/IDirector.hpp:
+
 /usr/include/c++/11/bits/streambuf_iterator.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
@@ -3899,11 +3866,23 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 /usr/include/c++/11/istream:
 
-../Include/IController.hpp:
-
-../CLI/Command.cpp:
-
 /usr/include/c++/11/bits/istream.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
+
+/usr/include/c++/11/bits/fstream.tcc:
+
+../Director/Director.hpp:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/c++/11/bits/stl_deque.h:
+
+../Renderer/Renderer.hpp:
+
+/usr/include/c++/11/bits/stl_stack.h:
 
 ../Data/IDocument.hpp:
 
@@ -3915,27 +3894,13 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 /usr/include/c++/11/bits/vector.tcc:
 
-/usr/include/c++/11/bits/node_handle.h:
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
-/usr/include/c++/11/iostream:
+../Data/Document.hpp:
 
-../Director/Actions.hpp:
+../CLI/Command.cpp:
 
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
-
-/usr/include/c++/11/bits/stl_deque.h:
-
-../Renderer/Renderer.hpp:
-
-/usr/include/c++/11/bits/stl_stack.h:
-
-../Director/Director.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
-
-/usr/include/c++/11/bits/fstream.tcc:
+../Include/IController.hpp:
 
 ../Serialization/SaveLoad.hpp:
 
@@ -3960,6 +3925,12 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 /usr/include/c++/11/bits/erase_if.h:
 
 ../Data/ItemAttributes.hpp:
+
+/usr/include/c++/11/bits/node_handle.h:
+
+/usr/include/c++/11/iostream:
+
+../Director/Actions.hpp:
 
 ../Renderer/IRenderer.hpp:
 

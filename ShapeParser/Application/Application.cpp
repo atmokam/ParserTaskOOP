@@ -1,6 +1,8 @@
 #include "Application.hpp"
-#include "Director/Director.hpp" // how can i solve the referncing of non-interface classes(i have to use std::make_shared)
 #include "CLI/Controller.hpp"
+#include "Director/Director.hpp" 
+#include "Include/IController.hpp"
+#include "Include/IDirector.hpp"
 
 
 Application::Application() {
@@ -19,7 +21,7 @@ void Application::run(int count, char* args[]) {
 }
 
 void Application::buildApplication() {
-    // setting up gui
+    // setting up gui, probably
 }
 
 std::shared_ptr<IDirector>& Application::getDirector() {

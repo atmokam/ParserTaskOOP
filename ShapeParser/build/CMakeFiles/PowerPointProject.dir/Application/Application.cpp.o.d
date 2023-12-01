@@ -150,11 +150,7 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/./CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDirector.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/./Director/IDirector.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Document.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Controller.hpp \
  /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
  /usr/include/c++/11/ios /usr/include/c++/11/bits/ios_base.h \
  /usr/include/c++/11/bits/locale_classes.h \
@@ -172,25 +168,25 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o: \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/IDocument.hpp \
- /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
- /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/Actions.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IAction.hpp \
+ /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/fstream \
+ /usr/include/c++/11/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/Director.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IDirector.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/UndoRedo.hpp \
  /usr/include/c++/11/stack /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/bits/stl_stack.h \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IAction.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/./Data/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/Director.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IDirector.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/UndoRedo.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Controller.hpp \
- /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
- /usr/include/c++/11/bits/fstream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/IController.hpp
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/./CLI/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/./Director/IDirector.hpp

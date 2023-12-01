@@ -4,8 +4,7 @@
 #include <string>
 #include <memory>
 
-#include "Include/IController.hpp"
-#include "Include/IDirector.hpp"
+class IDirector;
 
 class IApplication {
 public:

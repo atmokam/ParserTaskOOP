@@ -1,4 +1,5 @@
 #include "UndoRedo.hpp"
+#include "Data/Document.hpp"
 
 UndoRedo::UndoRedo(std::shared_ptr<IDocument>& document, const size_t current) : document(document), currentSlideIndex(current){}
 

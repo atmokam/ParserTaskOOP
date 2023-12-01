@@ -2,5 +2,17 @@ Personal notes to remember what things have been added or changed in the code
 
 in all modules:
     check the include headers, remove the ones that are not needed
-    change so dependencies move to the .cpp files that need them (done in:  )
+    change so dependencies move to the .cpp files that need them 
 
+
+
+
+
+
+
+
+
+
+
+Valgrind checking command:
+valgrind --leak-check=full   --show-leak-kinds=all  --track-origins=yes  --verbose  --log-file=valgrind-out.txt   ./PowerPointProject -filename ../TextFiles/text.txt

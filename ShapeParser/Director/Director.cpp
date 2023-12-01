@@ -1,4 +1,9 @@
 #include "Director.hpp"
+#include "Data/Document.hpp"
+#include "IAction.hpp"
+#include "Data/Document.hpp"
+#include "Director/Actions.hpp"
+#include "Director/UndoRedo.hpp"
 
 
 Director::Director() : document(std::make_shared<Document>()), currentSlide(*document->begin()), undoRedo(std::make_unique<UndoRedo>(document, currentSlideIndex)) {}

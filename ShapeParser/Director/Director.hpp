@@ -3,10 +3,8 @@
 
 #include <string>
 
-#include "Data/Document.hpp"
 #include "IDirector.hpp"
 #include "UndoRedo.hpp"
-#include "IAction.hpp"
 
 
 class Director : public IDirector {

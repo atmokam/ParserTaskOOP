@@ -106,7 +106,7 @@ void ChangeCommand::execute() {
 
 void SaveCommand::execute() {  // review document versioning
     SaveLoad serializer;
-    serializer.save(application.getDirector()->getDocument(), operands["-path"][0] , operands["-name"][0]);
+    serializer.save(application.getDirector()->getDocument(), operands["-path"][0] , operands["-filename"][0]);
 
 }
 

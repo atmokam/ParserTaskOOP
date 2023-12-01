@@ -25,7 +25,7 @@ void SaveLoad::save(const std::shared_ptr<IDocument>& document, const std::strin
 }
 
 void SaveLoad::serialize(std::ofstream& file, const std::shared_ptr<Slide>& slide) {
-    for(auto item : *slide) {
+    for(const auto& item : *slide) {
         file << "id:" << item.second->getID() << std::endl;
         file << ShapeType{item.second->getType()} << std::endl;
         file << item.second->getPosition() << std::endl;

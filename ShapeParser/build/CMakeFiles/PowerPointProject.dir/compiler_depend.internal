@@ -231,8 +231,6 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o
  /usr/include/c++/11/bits/stl_vector.h
  /usr/include/c++/11/bits/stl_bvector.h
  /usr/include/c++/11/bits/vector.tcc
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Document.hpp
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/IDocument.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IController.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/IController.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDirector.hpp
@@ -474,6 +472,8 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o
  /usr/include/c++/11/bits/stl_deque.h
  /usr/include/c++/11/bits/deque.tcc
  /usr/include/c++/11/bits/stl_stack.h
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/IDocument.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Command.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/Renderer.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/IRenderer.hpp

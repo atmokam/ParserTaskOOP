@@ -230,8 +230,6 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o: ../Application/A
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
-  ../Data/Document.hpp \
-  ../Data/IDocument.hpp \
   ../Include/IController.hpp \
   ../CLI/IController.hpp \
   ../Include/IDirector.hpp \
@@ -472,6 +470,8 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: ../CLI/Command.cpp \
   /usr/include/c++/11/bits/stl_deque.h \
   /usr/include/c++/11/bits/deque.tcc \
   /usr/include/c++/11/bits/stl_stack.h \
+  ../Include/IDocument.hpp \
+  ../Data/IDocument.hpp \
   ../CLI/Command.hpp \
   ../Renderer/Renderer.hpp \
   ../Renderer/IRenderer.hpp \
@@ -3894,10 +3894,6 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 /usr/include/c++/11/bits/vector.tcc:
 
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-../Data/Document.hpp:
-
 ../CLI/Command.cpp:
 
 ../Include/IController.hpp:
@@ -3925,6 +3921,10 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 /usr/include/c++/11/bits/erase_if.h:
 
 ../Data/ItemAttributes.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+
+../Data/Document.hpp:
 
 /usr/include/c++/11/bits/node_handle.h:
 

@@ -16,4 +16,4 @@ next
 display
 remove -slide
 list
-
+save -path /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/ -filename output4

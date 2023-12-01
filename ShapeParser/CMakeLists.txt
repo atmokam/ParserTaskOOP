@@ -27,5 +27,5 @@ add_executable(PowerPointProject
     Director/Actions.cpp 
     Director/UndoRedo.cpp 
     Director/Director.cpp 
-    Director/Renderer.cpp
+    Renderer/Renderer.cpp
     Application/Application.cpp )

@@ -369,30 +369,6 @@ Director/Director.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Director/Director.cpp.s
 .PHONY : Director/Director.cpp.s
 
-Director/Renderer.o: Director/Renderer.cpp.o
-.PHONY : Director/Renderer.o
-
-# target to build an object file
-Director/Renderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Director/Renderer.cpp.o
-.PHONY : Director/Renderer.cpp.o
-
-Director/Renderer.i: Director/Renderer.cpp.i
-.PHONY : Director/Renderer.i
-
-# target to preprocess a source file
-Director/Renderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Director/Renderer.cpp.i
-.PHONY : Director/Renderer.cpp.i
-
-Director/Renderer.s: Director/Renderer.cpp.s
-.PHONY : Director/Renderer.s
-
-# target to generate assembly for a file
-Director/Renderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Director/Renderer.cpp.s
-.PHONY : Director/Renderer.cpp.s
-
 Director/UndoRedo.o: Director/UndoRedo.cpp.o
 .PHONY : Director/UndoRedo.o
 
@@ -440,6 +416,30 @@ Program.s: Program.cpp.s
 Program.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Program.cpp.s
 .PHONY : Program.cpp.s
+
+Renderer/Renderer.o: Renderer/Renderer.cpp.o
+.PHONY : Renderer/Renderer.o
+
+# target to build an object file
+Renderer/Renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o
+.PHONY : Renderer/Renderer.cpp.o
+
+Renderer/Renderer.i: Renderer/Renderer.cpp.i
+.PHONY : Renderer/Renderer.i
+
+# target to preprocess a source file
+Renderer/Renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.i
+.PHONY : Renderer/Renderer.cpp.i
+
+Renderer/Renderer.s: Renderer/Renderer.cpp.s
+.PHONY : Renderer/Renderer.s
+
+# target to generate assembly for a file
+Renderer/Renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.s
+.PHONY : Renderer/Renderer.cpp.s
 
 Serialization/Converter.o: Serialization/Converter.cpp.o
 .PHONY : Serialization/Converter.o
@@ -528,15 +528,15 @@ help:
 	@echo "... Director/Director.o"
 	@echo "... Director/Director.i"
 	@echo "... Director/Director.s"
-	@echo "... Director/Renderer.o"
-	@echo "... Director/Renderer.i"
-	@echo "... Director/Renderer.s"
 	@echo "... Director/UndoRedo.o"
 	@echo "... Director/UndoRedo.i"
 	@echo "... Director/UndoRedo.s"
 	@echo "... Program.o"
 	@echo "... Program.i"
 	@echo "... Program.s"
+	@echo "... Renderer/Renderer.o"
+	@echo "... Renderer/Renderer.i"
+	@echo "... Renderer/Renderer.s"
 	@echo "... Serialization/Converter.o"
 	@echo "... Serialization/Converter.i"
 	@echo "... Serialization/Converter.s"

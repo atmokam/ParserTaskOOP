@@ -2,8 +2,8 @@
 #define IACTION_HPP
 
 #include <memory>
-#include "Data/Document.hpp"
-#include "Include/IDocument.hpp"
+
+class IDocument;
 
 class IAction {
 public:

@@ -6,6 +6,8 @@
 #include "IRenderer.hpp"
 #include "Data/ItemAttributes.hpp"
 
+
+
 class Renderer : public IRenderer {
     void lineDescriptorToText(std::ostream& os, const LineDescriptor line);
     void shapeToText(std::ostream& os, const ShapeType& shape) ;

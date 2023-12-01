@@ -2,8 +2,11 @@
 #define IRENDERER_HPP
 
 #include <memory>
-#include "Data/Document.hpp"
-#include "Data/Item.hpp"
+#include <ostream>
+
+class Slide;
+class Document;
+class Item;
 
 class IRenderer {
 public:

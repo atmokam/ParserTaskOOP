@@ -1,4 +1,7 @@
+#include <algorithm>
+#include <fstream>
 #include "CLI/Validator.hpp"
+#include "Command.hpp"
 
 
 // general checking

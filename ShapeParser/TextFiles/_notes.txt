@@ -1,30 +1,6 @@
 Personal notes to remember what things have been added or changed in the code
 
-in addcommand:
-   there are references to methods in the class Director that arent defined. 
-   +add to Director class:
-     getCurrentSlide() -> Slide*
-     getCurrentSlideIndex() -> size_t
+in all modules:
+    check the include headers, remove the ones that are not needed
+    change so dependencies move to the .cpp files that need them (done in:  )
 
-in removecommand:
-    if(director->getDocument()->size() == 1) in this line
-    +add size() method to Document class
-
-in command.cpp in some classes:
-    +add IAction 
-
-in item.hpp:
-    added slideNumber
-    +add initialization for slideNumber for Item class
-
-in actions:
-    +add createAction(ActionType type, std::shared_ptr<Item>& item)
-    -remove save load actions
-
-
-// Q: maybe its better to keep a state inside each action 
-//  so that all actions dont have to return a pointer to the opposing?
-// but does it really matter? i could just return a nullptr if there is no opposing action
-
-// the save load also have to take into account the possibility of the format of the document changing
-// but how? should document itself take care of it, what about the renderer? 

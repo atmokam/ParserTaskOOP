@@ -1,9 +1,6 @@
 #ifndef ITEM_HPP
 #define ITEM_HPP
 
-#include <string>
-#include <vector>
-#include <memory>
 
 #include "ItemAttributes.hpp"
 #include "IItem.hpp"

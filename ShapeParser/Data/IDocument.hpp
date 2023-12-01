@@ -1,10 +1,12 @@
 #ifndef IDOCUMENT_HPP
 #define IDOCUMENT_HPP
 
-#include <iostream>
-#include <string>
 
-#include "Slide.hpp"
+#include <string>
+#include <memory>
+#include <vector>
+
+class Slide;
 
 using DocumentContainer = std::vector<std::shared_ptr<Slide>>;
 

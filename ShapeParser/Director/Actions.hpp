@@ -2,16 +2,13 @@
 #define ACTIONS_HPP
 
 #include <string>
-#include <iostream>
 #include <memory>
 
-#include "Data/Document.hpp"
-#include "Data/Item.hpp"
-#include "Serialization/Converter.hpp"
-#include "Serialization/SaveLoad.hpp"
+
+class Slide; // forward declared as non-interfaces for now, will be changed to interfaces later
+class Item;
+
 #include "IAction.hpp"
-#include "Renderer/IRenderer.hpp"
-#include "Include/IDocument.hpp"
 
 
 class AddItem : public IAction {

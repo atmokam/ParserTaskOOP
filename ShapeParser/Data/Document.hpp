@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include <string>
+#include <memory>
 
-#include "Slide.hpp"
+
 #include "IDocument.hpp"
 
-using DocumentContainer = std::vector<std::shared_ptr<Slide>>;
 
 class Document : public IDocument {
     DocumentContainer slides;

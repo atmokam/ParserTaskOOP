@@ -1,12 +1,18 @@
-#include "Director/Actions.hpp"
+#include "Actions.hpp"
+#include "Data/Document.hpp"
+#include "Data/Item.hpp"
+#include "Renderer/IRenderer.hpp"
+#include "Include/IDocument.hpp"
+#include "Serialization/Converter.hpp"
+#include "Serialization/SaveLoad.hpp"
+#include "Data/Slide.hpp"
 
 
 
 AddItem::AddItem(const std::shared_ptr<Item>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}
 
 std::shared_ptr<IAction> AddItem::execute(std::shared_ptr<IDocument>& document) {
-    std::cout << "Adding item to slide " << slideNumber << std::endl;
-    document->getSlide(slideNumber)->addItem(item);    // undo error here      <----------------
+    document->getSlide(slideNumber)->addItem(item);  
     return std::make_shared<RemoveItem>(item, slideNumber);
     
 }

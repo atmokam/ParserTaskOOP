@@ -3,22 +3,14 @@
 
 #include <string>
 #include <unordered_map>
-#include <vector>
-#include <iostream>
 #include <memory>
-#include <fstream>
+#include <vector>
 
-#include "Data/Item.hpp" //
-#include "Serialization/Converter.hpp" //
-#include "Data/Document.hpp" //
-#include "Serialization/SaveLoad.hpp" //
-#include "Director/Director.hpp" //
-#include "Director/Renderer.hpp" //
-#include "Director/Actions.hpp" //
-#include "Application/IApplication.hpp"
-//#include "Application/Application.hpp"
 
-class Application;
+
+class IApplication;
+class Slide;
+class Item;
 
 using OperandsContainer = std::unordered_map<std::string, std::vector<std::string>>;
 

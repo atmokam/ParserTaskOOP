@@ -1,4 +1,7 @@
+#include <stdexcept>
 #include "Parser.hpp"
+#include "Command.hpp"
+#include "Validator.hpp"
 
 // parser does partial validation, checks the sequence for the structure <commandName> <operand> <value>, 
 // also checks that two operands dont follow each other, eg. add -name -w

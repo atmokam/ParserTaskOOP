@@ -2,18 +2,14 @@
 #define PARSER_HPP
 
 #include <string>
-#include <iostream>
 #include <memory>
-#include <vector>
 
-#include "Command.hpp"
-#include "Validator.hpp"
-
+class Command;
 
 class Parser {
 
     std::shared_ptr<Command> createCommand(std::string input);
-    std::string commandName = "", prevOperand = "", prevToken = ""; 
+    std::string commandName, prevOperand, prevToken; 
     std::shared_ptr<Command> command = nullptr;
     
 public:

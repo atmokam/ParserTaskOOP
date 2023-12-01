@@ -1,16 +1,13 @@
 #ifndef SLIDE_HPP
 #define SLIDE_HPP
 
-#include <vector>
 #include <string>
 #include <memory>
-#include <algorithm>
-#include <unordered_map>
 
 
-#include "Item.hpp"
 #include "ISlide.hpp"
 
+class Item;
 
 class Slide : public ISlide {
     SlideContainer items;

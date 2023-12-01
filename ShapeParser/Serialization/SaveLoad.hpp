@@ -10,15 +10,17 @@
 #include <memory>
 #include <vector>
 
-#include "Include/IDocument.hpp"
-#include "Converter.hpp"
 
+#include "Data/ItemAttributes.hpp"
 
-class SaveLoadSerializer {
+class IDocument;
+class Slide;
+
+class SaveLoad {
     void serialize(std::ofstream& file, const std::shared_ptr<Slide>& items);
     std::shared_ptr<IDocument> deserialize(std::ifstream& file);
 public:
-    void save(std::shared_ptr<IDocument> IDocument, const std::string& path);
+    void save(const std::shared_ptr<IDocument>& IDocument, const std::string& path, const std::string& filename);
     std::shared_ptr<IDocument> load(const std::string& path);
 };
 

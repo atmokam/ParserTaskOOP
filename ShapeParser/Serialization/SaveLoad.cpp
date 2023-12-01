@@ -1,11 +1,15 @@
 #include "SaveLoad.hpp"
 #include "Data/Document.hpp"
+#include "Data/Slide.hpp"
+#include "Data/Item.hpp"
+#include "Converter.hpp"
+#include "Include/IDocument.hpp"
 
 
-void SaveLoadSerializer::save(std::shared_ptr<IDocument> document, const std::string& path) {
+void SaveLoad::save(const std::shared_ptr<IDocument>& document, const std::string& path, const std::string& filename) {
     std::ofstream file;
     
-    file.open(path + ".ppx");
+    file.open(path + filename + ".ppx");
 
     if(!file.is_open()){
         throw std::invalid_argument("Invalid path or filename");
@@ -20,7 +24,7 @@ void SaveLoadSerializer::save(std::shared_ptr<IDocument> document, const std::st
 
 }
 
-void SaveLoadSerializer::serialize(std::ofstream& file, const std::shared_ptr<Slide>& slide) {
+void SaveLoad::serialize(std::ofstream& file, const std::shared_ptr<Slide>& slide) {
     for(auto item : *slide) {
         file << "id:" << item.second->getID() << std::endl;
         file << ShapeType{item.second->getType()} << std::endl;
@@ -32,7 +36,7 @@ void SaveLoadSerializer::serialize(std::ofstream& file, const std::shared_ptr<Sl
     }
 }
 
-std::shared_ptr<IDocument> SaveLoadSerializer::load(const std::string& path) { 
+std::shared_ptr<IDocument> SaveLoad::load(const std::string& path) { 
     std::ifstream file;
 
     file.open(path);
@@ -45,7 +49,7 @@ std::shared_ptr<IDocument> SaveLoadSerializer::load(const std::string& path) {
 } 
 
 
-std::shared_ptr<IDocument> SaveLoadSerializer::deserialize(std::ifstream& file) {
+std::shared_ptr<IDocument> SaveLoad::deserialize(std::ifstream& file) {
     Document document = Document();
 
     std::string line; 

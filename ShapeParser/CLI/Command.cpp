@@ -1,5 +1,16 @@
-#include "Command.hpp"
+#include <iostream>
+#include <stdexcept>
 #include "Application/Application.hpp"
+#include "Data/Slide.hpp"
+#include "Data/Item.hpp"
+#include "Data/Document.hpp"
+#include "Director/Actions.hpp"
+#include "Director/Director.hpp"
+#include "Command.hpp"
+#include "Renderer/Renderer.hpp"
+#include "Serialization/SaveLoad.hpp"
+#include "Serialization/Converter.hpp" 
+
 
 
 Command::Command() : application(Application::getInstance()) {}
@@ -94,19 +105,17 @@ void ChangeCommand::execute() {
 
 
 void SaveCommand::execute() {  // review document versioning
-    SaveLoadSerializer serializer;
-    serializer.save(application.getDirector()->getDocument(), operands["-path"][0] + operands["-name"][0]);
+    SaveLoad serializer;
+    serializer.save(application.getDirector()->getDocument(), operands["-path"][0] , operands["-name"][0]);
 
 }
 
 void LoadCommand::execute() { 
-    SaveLoadSerializer serializer;
-    std::shared_ptr<IDocument> document = serializer.load(operands["-path"][0]);
+    SaveLoad deserializer;
+    std::shared_ptr<IDocument> document = deserializer.load(operands["-path"][0]);
     std::cout << "Loaded document with " << document->size() << " slides" << std::endl;
     application.getDirector()->setDocument(document);
-    std::cout << "Document set"<< std::endl;
     application.getDirector()->setCurrentSlideNumber(0);
-    std::cout << "Slide set"<< std::endl;
     application.getDirector()->clearUndoRedoStack();
 }
 
@@ -127,12 +136,18 @@ void DisplayCommand::execute() {
 
 
 void ListCommand::execute() {
-    Renderer renderer;
+    
     auto document = application.getDirector()->getDocument();
     size_t currentSlideIndex  = 0;
-    for(auto slide : *document){
-        renderer.renderText(std::cout, slide, currentSlideIndex++);
+    for (const auto& slide : *document){
+        std::cout << "Slide: " << currentSlideIndex << std::endl;
+        for(const auto& item : *slide){
+            std::cout << item.first << "\t";
+        }
+        currentSlideIndex++;
+        std::cout << std::endl;
     }
+    
 }
 
 void NextCommand::execute() {

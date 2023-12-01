@@ -1,12 +1,13 @@
 #ifndef ISLIDE_HPP
 #define ISLIDE_HPP
 
-#include <vector>
 #include <string>
 #include <memory>
 #include <unordered_map>
 
-#include "Item.hpp"
+class Item;
+
+#include "ItemAttributes.hpp"
 
 using SlideContainer = std::unordered_map<int, std::shared_ptr<Item>>;
 

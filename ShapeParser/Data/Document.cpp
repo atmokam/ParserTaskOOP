@@ -1,6 +1,9 @@
+#include <algorithm>
 #include "Document.hpp"
+#include "Slide.hpp"
 
-std::vector<std::shared_ptr<Slide>> Document::getAllSlides() const {
+
+DocumentContainer Document::getAllSlides() const {
     return slides;
 }
 
@@ -25,11 +28,8 @@ void Document::removeSlide(std::shared_ptr<Slide> slide) {
 }
 
 std::shared_ptr<Slide> Document::getSlide(size_t number) const {
-    std::cout << "Getting slide " << number << std::endl;
-    std::cout << "Slides size: " << slides.size() << std::endl; // this line prints "Slides size: 1
-    std::shared_ptr<Slide> slide = (!slides.empty()) ? slides.at(number) : nullptr; // this line is the problem
-    std::cout << "Slide " << number << " returned" << std::endl;
-    return slide;
+    
+    return (!slides.empty()) ? slides.at(number) : nullptr;
 }
 
 size_t Document::size() const {
@@ -37,39 +37,38 @@ size_t Document::size() const {
 }
 
 Document::Document() {
-    std::cout << "Document created" << std::endl;
     slides.push_back(std::make_shared<Slide>());
 }
 
-std::vector<std::shared_ptr<Slide>>::iterator Document::begin() {
+DocumentContainer::iterator Document::begin() {
     return slides.begin();
 }
 
-std::vector<std::shared_ptr<Slide>>::const_iterator Document::cbegin() const {
+DocumentContainer::const_iterator Document::cbegin() const {
     return slides.cbegin();
 }
 
-std::vector<std::shared_ptr<Slide>>::iterator Document::end() {
+DocumentContainer::iterator Document::end() {
     return slides.end();
 }
 
-std::vector<std::shared_ptr<Slide>>::const_iterator Document::cend() const {
+DocumentContainer::const_iterator Document::cend() const {
     return slides.cend();
 }
 
-std::vector<std::shared_ptr<Slide>>::reverse_iterator Document::rbegin() {
+DocumentContainer::reverse_iterator Document::rbegin() {
     return slides.rbegin();
 }
 
-std::vector<std::shared_ptr<Slide>>::const_reverse_iterator Document::crbegin() const {
+DocumentContainer::const_reverse_iterator Document::crbegin() const {
     return slides.crbegin();
 }
 
-std::vector<std::shared_ptr<Slide>>::reverse_iterator Document::rend() {
+DocumentContainer::reverse_iterator Document::rend() {
     return slides.rend();
 }
 
-std::vector<std::shared_ptr<Slide>>::const_reverse_iterator Document::crend() const {
+DocumentContainer::const_reverse_iterator Document::crend() const {
     return slides.crend();
 }
 

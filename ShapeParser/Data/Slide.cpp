@@ -7,6 +7,7 @@ SlideContainer Slide::getItems() const {
 
 void Slide::addItem(std::shared_ptr<Item> item) {
     items[item->getID()] = item;
+    std::cout << "Item with id " + std::to_string(item->getID()) + " added" << std::endl;
 }
 
 void Slide::removeItem(int id) {

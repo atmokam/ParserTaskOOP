@@ -16,6 +16,7 @@ public:
     UndoRedo(std::shared_ptr<IDocument>& document, const size_t current);
     void addAction(std::shared_ptr<IAction> action); // adds to undo stack
     void clearStack();
+    void newDocument(std::shared_ptr<IDocument>& document);
     void undo();
     void redo();
 };

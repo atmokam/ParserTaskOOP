@@ -102,9 +102,12 @@ void SaveCommand::execute() {  // review document versioning
 void LoadCommand::execute() { 
     SaveLoadSerializer serializer;
     std::shared_ptr<IDocument> document = serializer.load(operands["-path"][0]);
+    std::cout << "Loaded document with " << document->size() << " slides" << std::endl;
     application.getDirector()->setDocument(document);
+    std::cout << "Document set"<< std::endl;
     application.getDirector()->setCurrentSlideNumber(0);
-    //application.getDirector()->clearUndoRedoStack();
+    std::cout << "Slide set"<< std::endl;
+    application.getDirector()->clearUndoRedoStack();
 }
 
 void DisplayCommand::execute() {

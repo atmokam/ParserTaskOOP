@@ -25,7 +25,11 @@ void Document::removeSlide(std::shared_ptr<Slide> slide) {
 }
 
 std::shared_ptr<Slide> Document::getSlide(size_t number) const {
-    return (!slides.empty()) ? slides.at(number) : nullptr;
+    std::cout << "Getting slide " << number << std::endl;
+    std::cout << "Slides size: " << slides.size() << std::endl; // this line prints "Slides size: 1
+    std::shared_ptr<Slide> slide = (!slides.empty()) ? slides.at(number) : nullptr; // this line is the problem
+    std::cout << "Slide " << number << " returned" << std::endl;
+    return slide;
 }
 
 size_t Document::size() const {
@@ -33,6 +37,7 @@ size_t Document::size() const {
 }
 
 Document::Document() {
+    std::cout << "Document created" << std::endl;
     slides.push_back(std::make_shared<Slide>());
 }
 

@@ -29,6 +29,7 @@ std::unique_ptr<UndoRedo> Director::getUndoRedo() {
 }
 
 void Director::clearUndoRedoStack() {
+    undoRedo->newDocument(document);
     undoRedo->clearStack();
 }
 

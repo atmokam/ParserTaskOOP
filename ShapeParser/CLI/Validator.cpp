@@ -5,6 +5,7 @@
 
 
 // general checking
+// [TK] Extra unnnecessary vector, the map below already contains commands info
 std::unordered_set<std::string> Validator::commands = {
         "add", "remove", "change", "display", "list", "save", "load", "next", "prev", "undo", "redo"
     };
@@ -22,7 +23,7 @@ std::unordered_map<std::string, std::vector<std::string>> Validator::validOperan
         {"undo", {}},
         {"redo", {}}
     };
-
+// list of shapes should be obtained from the shape library
 std::unordered_set<std::string> Validator::shapes = {
         "trapezoid", "rectangle", "line", "triangle", "ellipse"
     };
@@ -98,6 +99,7 @@ bool Validator::validateCommand(const std::shared_ptr<Command>& commandToBeCheck
     auto commandName = commandToBeChecked->getName();
     auto commandOperands = commandToBeChecked->getOperands();
 
+// [TK] very bad style, commands should not be duplicated here, all needed info should be taken from single place i.e. Validator::validOperands, dynamically, whithout such hardcodes 
     if (commandName == "add") {
         return checkOperandQuantity(commandOperands, addValidOperands) && (checkMandatoryOperands(commandOperands,  addShapeMandatoryOperands) || checkMandatoryOperands(commandOperands, addSlideMandatoryOperands));
 

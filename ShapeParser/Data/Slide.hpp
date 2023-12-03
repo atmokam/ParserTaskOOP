@@ -17,7 +17,10 @@ class Slide : public ISlide {
 public:
     Slide() = default;
 
+    // generateID is static method, what will happen if I override it and always return 1?
     ID generateID() override;
+
+    // [TK] those function doesn't look like Interface methoids, why are they here?
     std::shared_ptr<Item> getItem(int id) const override;
     size_t getMaximumID() const  override;
     void setMaximumID(size_t id) override;

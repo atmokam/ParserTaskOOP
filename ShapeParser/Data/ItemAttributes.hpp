@@ -27,7 +27,7 @@ public:
     Type getType() const { return type; }
     friend std::ostream& operator<<(std::ostream& os, const ShapeType& shape);
 };
-
+// [TK] Name is missleading, this is rather Dimensions than a Rect
 struct BoundingRect {
     double width;
     double height;

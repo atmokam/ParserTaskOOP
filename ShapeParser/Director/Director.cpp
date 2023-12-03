@@ -43,10 +43,13 @@ void Director::doAction(std::shared_ptr<IAction> action) {
 }
 
 void Director::undo() {
+  // [TK] Director is the very place to implement undo/redo logic, no need to call additional functions implement it here
+  
     undoRedo->undo();
 }
 
 void Director::redo() {
+  // [TK] Same as above
     undoRedo->redo();
 }
 

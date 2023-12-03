@@ -18,10 +18,13 @@ Command::Command() : application(Application::getInstance()) {}
 void AddCommand::execute() {  
 
     if(operands.find("-name") != operands.end()){
+        // [TK] Slide should not be passed to the item, item should not be aware about its containing Slide
         std::shared_ptr<Item> item = createItem(application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideNumber());
+        // [TK] Item already created by the above line, why we need to recreate it again?
         application.getDirector()->doAction(std::make_shared<AddItem>(item, application.getDirector()->getCurrentSlideNumber()));
     }
     else if(operands.find("-slide") != operands.end()){
+        // [TK] Need to generate unique ID: getCurrentSlideNumber() + 1 is wrong thing
         application.getDirector()->doAction(std::make_shared<AddSlide>(std::make_shared<Slide>(), application.getDirector()->getCurrentSlideNumber() + 1));
         application.getDirector()->nextSlide();
     }
@@ -51,7 +54,7 @@ std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide
         lineDescriptor.type = Converter::convertToLineType(operands["-lstyle"][0]);
     }
 
-
+    // [TK] generateID() belongs to the document, Ids should be unique across whole document, because Item could be moved from one slide to another
     return std::make_shared<Item>(type, pos, bounds, color, slide->generateID(), lineDescriptor);
 
 }
@@ -106,6 +109,7 @@ void ChangeCommand::execute() {
 
 void SaveCommand::execute() {  // review document versioning
     SaveLoad serializer;
+    // [TK] Serializer should get input stream, file creation is the job of the command
     serializer.save(application.getDirector()->getDocument(), operands["-path"][0] , operands["-filename"][0]);
 
 }

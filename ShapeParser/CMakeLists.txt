@@ -24,8 +24,7 @@ add_executable(PowerPointProject
     Serialization/Converter.cpp 
     CLI/Command.cpp 
     Serialization/SaveLoad.cpp 
-    Director/Actions.cpp 
-    Director/UndoRedo.cpp 
+    Director/Actions.cpp  
     Director/Director.cpp 
     Renderer/Renderer.cpp
     Application/Application.cpp )

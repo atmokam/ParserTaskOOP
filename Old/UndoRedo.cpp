@@ -1,3 +1,4 @@
+#include <iostream>
 #include "UndoRedo.hpp"
 #include "Data/Document.hpp"
 

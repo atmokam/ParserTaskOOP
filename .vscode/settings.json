@@ -51,6 +51,16 @@
         "chrono": "cpp",
         "ctime": "cpp",
         "map": "cpp",
-        "ratio": "cpp"
-    }
+        "ratio": "cpp",
+        "condition_variable": "cpp",
+        "cstring": "cpp",
+        "list": "cpp",
+        "optional": "cpp",
+        "future": "cpp",
+        "mutex": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
+    },
+    "cmake.configureOnOpen": true
 }

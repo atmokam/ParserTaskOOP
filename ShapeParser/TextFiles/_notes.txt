@@ -1,17 +1,6 @@
 Personal notes to remember what things have been added or changed in the code
 
-in all modules:
-    check the include headers, remove the ones that are not needed
-    change so dependencies move to the .cpp files that need them 
-
-
-
-
-
-
-
-
-
+"/usr/include/x86_64-linux-gnu/qt6/**"
 
 
 Valgrind checking command:

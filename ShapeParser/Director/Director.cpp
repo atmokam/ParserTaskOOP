@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Director.hpp"
 #include "Data/Document.hpp"
 #include "IAction.hpp"
@@ -6,8 +7,8 @@
 #include "Director/UndoRedo.hpp"
 
 
-Director::Director() : document(std::make_shared<Document>()), currentSlide(*document->begin()), undoRedo(std::make_unique<UndoRedo>(document, currentSlideIndex)) {}
-                                                              // check if this works
+Director::Director() : document(std::make_shared<Document>()) {}
+                                                              
 std::shared_ptr<IDocument>& Director::getDocument() {
     return document;
 }
@@ -17,54 +18,61 @@ void Director::setDocument(std::shared_ptr<IDocument>& document){
 }
 
 std::shared_ptr<Slide> Director::getCurrentSlide() {
-    return currentSlide;
+    return document->getSlide(currentSlideIndex);
 }
 
-size_t Director::getCurrentSlideNumber() {
+size_t Director::getCurrentSlideIndex() {
     return currentSlideIndex;
 }
 
-void Director::setCurrentSlideNumber(size_t currentSlideNumber) {
-    currentSlideIndex = currentSlideNumber;
-    currentSlide = document->getSlide(currentSlideIndex);
-}
-
-std::unique_ptr<UndoRedo> Director::getUndoRedo() {
-    return std::move(undoRedo);
+void Director::setCurrentSlideIndex(size_t currentSlideIndex) {
+    this->currentSlideIndex = currentSlideIndex;
 }
 
 void Director::clearUndoRedoStack() {
-    undoRedo->newDocument(document);
-    undoRedo->clearStack();
+    undoStack = std::stack<std::shared_ptr<IAction>>();
+    redoStack = std::stack<std::shared_ptr<IAction>>();
 }
 
 void Director::doAction(std::shared_ptr<IAction> action) {
-    undoRedo->addAction(action->execute(document));
+    addToUndoStack(action->execute(document));
 }
 
-void Director::undo() {
+
   // [TK] Director is the very place to implement undo/redo logic, no need to call additional functions implement it here
   
-    undoRedo->undo();
+ 
+
+  // [TK] Same as above
+   
+
+
+void Director::undo() {
+    if (undoStack.empty()) {
+        std::cout << "Nothing to undo" << std::endl;
+        return;
+    }
+    std::shared_ptr<IAction> action = undoStack.top();
+    std::cout << "Undoing action" << std::endl;
+    undoStack.pop();
+    redoStack.push(action->execute(document));
 }
+
 
 void Director::redo() {
-  // [TK] Same as above
-    undoRedo->redo();
+    if (redoStack.empty()) {
+        std::cout << "Nothing to redo" << std::endl;
+        return;
+    }
+    std::shared_ptr<IAction> action = redoStack.top();
+    std::cout << "Redoing action" << std::endl;
+    
+    redoStack.pop();
+    undoStack.push(action->execute(document));
 }
 
-void Director::nextSlide() {
-    if (currentSlideIndex < document->size() - 1) {
-        currentSlideIndex++;
-        currentSlide = document->getSlide(currentSlideIndex);
-    }
-}
-
-void Director::previousSlide() {
-    if (currentSlideIndex > 0) {
-        currentSlideIndex--;
-        currentSlide = document->getSlide(currentSlideIndex);
-    }
+void Director::addToUndoStack(std::shared_ptr<IAction> action) {
+    undoStack.push(action);
 }
 
 

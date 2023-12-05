@@ -184,4 +184,5 @@ CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o: \
  /usr/include/c++/11/bits/unordered_map.h \
  /usr/include/c++/11/bits/erase_if.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Document.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/IDocument.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp

@@ -3,36 +3,27 @@
 #include "Data/Slide.hpp"
 #include "Data/Item.hpp"
 #include "Converter.hpp"
-#include "Include/IDocument.hpp"
 
 
-void SaveLoad::save(const std::shared_ptr<IDocument>& document, const std::string& path, const std::string& filename) {
-    std::ofstream file;
-    
-    file.open(path + filename + ".ppx");
-
-    if(!file.is_open()){
-        throw std::invalid_argument("Invalid path or filename");
-    }
-
+void SaveLoad::save(const std::shared_ptr<IDocument>& document, std::ostream& stream) {
     size_t size = std::distance(document->cbegin(), document->cend());
 
     for(size_t i = 0; i < size; ++i){
-        file << "max_id:"  << document->getSlide(i)->getMaximumID() << std::endl;
-        serialize(file, document->getSlide(i));
+        stream << "max_id:"  << document->getSlide(i)->getMaximumID() << std::endl;
+        serialize(stream, document->getSlide(i));
     }
 
 }
 
-void SaveLoad::serialize(std::ofstream& file, const std::shared_ptr<Slide>& slide) {
+void SaveLoad::serialize(std::ostream& stream, const std::shared_ptr<Slide>& slide) {
     for(const auto& item : *slide) {
-        file << "id:" << item.second->getID() << std::endl;
-        file << ShapeType{item.second->getType()} << std::endl;
-        file << item.second->getPosition() << std::endl;
-        file << item.second->getBoundingRect() << std::endl;
-        file << item.second->getColor() << std::endl;
-        file << item.second->getLineDescriptor() << std::endl;
-        file << std::endl;
+        stream << "id:" << item.second->getID() << std::endl;
+        stream << ShapeType{item.second->getType()} << std::endl;
+        stream << item.second->getPosition() << std::endl;
+        stream << item.second->getBoundingRect() << std::endl;
+        stream << item.second->getColor() << std::endl;
+        stream << item.second->getLineDescriptor() << std::endl;
+        stream << std::endl;
     }
 }
 
@@ -44,7 +35,7 @@ std::shared_ptr<IDocument> SaveLoad::load(const std::string& path) {
         throw std::invalid_argument("Invalid path or filename");
     }
 
-    return std::static_pointer_cast<Document>(deserialize(file)); 
+    return std::static_pointer_cast<IDocument>(deserialize(file)); 
     
 } 
 

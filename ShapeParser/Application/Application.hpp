@@ -2,22 +2,24 @@
 #define APPLICATION_HPP
 
 #include <memory>
+#include "CLI/Controller.hpp"
+#include "Director/IDirector.hpp"
 
-#include "Application/IApplication.hpp"
-
-class IController;
-class IDirector;
+#include "Include/IApplication.hpp"
+#include "Include/IDocument.hpp"
 
 
 class Application: public IApplication {
     std::unique_ptr<IController> controller;
-    std::shared_ptr<IDirector> director; // director has the document, I dont know whether that's a good idea or not
+    std::shared_ptr<IDirector> director; 
+    std::shared_ptr<IDocument> document;
 public:
     
     static Application& getInstance();
     void run(int count, char* args[]) override;
     void buildApplication() override;
-    std::shared_ptr<IDirector>& getDirector() override;
+    std::shared_ptr<IDirector> getDirector() override;
+    std::shared_ptr<IDocument> getDocument() override;
 
 private:
     Application();

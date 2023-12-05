@@ -19,14 +19,14 @@ void AddCommand::execute() {
 
     if(operands.find("-name") != operands.end()){
         // [TK] Slide should not be passed to the item, item should not be aware about its containing Slide
-        std::shared_ptr<Item> item = createItem(application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideNumber());
+        std::shared_ptr<Item> item = createItem(application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideIndex());
         // [TK] Item already created by the above line, why we need to recreate it again?
-        application.getDirector()->doAction(std::make_shared<AddItem>(item, application.getDirector()->getCurrentSlideNumber()));
+        application.getDirector()->doAction(std::make_shared<AddItem>(item, application.getDirector()->getCurrentSlideIndex()));
     }
     else if(operands.find("-slide") != operands.end()){
-        // [TK] Need to generate unique ID: getCurrentSlideNumber() + 1 is wrong thing
-        application.getDirector()->doAction(std::make_shared<AddSlide>(std::make_shared<Slide>(), application.getDirector()->getCurrentSlideNumber() + 1));
-        application.getDirector()->nextSlide();
+        // [TK] Need to generate unique ID: getCurrentSlideIndex() + 1 is wrong thing
+        application.getDirector()->doAction(std::make_shared<AddSlide>(std::make_shared<Slide>(), application.getDirector()->getCurrentSlideIndex() + 1));
+        application.getDirector()->setCurrentSlideIndex(application.getDirector()->getCurrentSlideIndex() + 1);
     }
 
 }
@@ -65,15 +65,19 @@ void RemoveCommand::execute() {
         if (item == nullptr){
             return;
         }
-        application.getDirector()->doAction(std::make_shared<RemoveItem>(item, application.getDirector()->getCurrentSlideNumber()));
+        application.getDirector()->doAction(std::make_shared<RemoveItem>(
+            item, application.getDirector()->getCurrentSlideIndex()));
     }
     else if(operands.find("-slide") != operands.end()){
         if(application.getDirector()->getDocument()->size() == 1){
             std::cout << "Cannot remove slide, only 1 left" << std::endl;
             
         } else {
-            application.getDirector()->doAction(std::make_shared<RemoveSlide>(application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideNumber())); // director has the slide it needs to remove
-            application.getDirector()->previousSlide();
+            size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+            application.getDirector()->doAction(std::make_shared<RemoveSlide>(
+                application.getDirector()->getCurrentSlide(), currentSlideIndex)); 
+
+            application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
         }
     }
 
@@ -103,15 +107,22 @@ void ChangeCommand::execute() {
         item->setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0]));
     }
 
-    application.getDirector()->doAction(std::make_shared<ChangeItem>(item, application.getDirector()->getCurrentSlideNumber()));
+    size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+    application.getDirector()->doAction(std::make_shared<ChangeItem>(item, currentSlideIndex));
 }
 
 
-void SaveCommand::execute() {  // review document versioning
+void SaveCommand::execute() { 
     SaveLoad serializer;
     // [TK] Serializer should get input stream, file creation is the job of the command
-    serializer.save(application.getDirector()->getDocument(), operands["-path"][0] , operands["-filename"][0]);
+    std::ofstream file;
 
+    file.open(operands["-path"][0] + operands["-filename"][0] + ".ppx");
+    if(!file.is_open()){
+        throw std::invalid_argument("Invalid path or filename");
+    }
+
+    serializer.save(application.getDirector()->getDocument(), file);
 }
 
 void LoadCommand::execute() { 
@@ -119,7 +130,7 @@ void LoadCommand::execute() {
     std::shared_ptr<IDocument> document = deserializer.load(operands["-path"][0]);
     std::cout << "Loaded document with " << document->size() << " slides" << std::endl;
     application.getDirector()->setDocument(document);
-    application.getDirector()->setCurrentSlideNumber(0);
+    application.getDirector()->setCurrentSlideIndex(0);
     application.getDirector()->clearUndoRedoStack();
 }
 
@@ -134,7 +145,7 @@ void DisplayCommand::execute() {
     }
     else{
         Renderer renderer;
-        renderer.renderText(std::cout, application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideNumber());
+        renderer.renderText(std::cout, application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideIndex());
     }
 }
 
@@ -155,11 +166,13 @@ void ListCommand::execute() {
 }
 
 void NextCommand::execute() {
-    application.getDirector()->nextSlide();
+    size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+    application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
 }
 
 void PrevCommand::execute() {
-    application.getDirector()->previousSlide();
+    size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+    application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
 }
 
 void UndoCommand::execute() {

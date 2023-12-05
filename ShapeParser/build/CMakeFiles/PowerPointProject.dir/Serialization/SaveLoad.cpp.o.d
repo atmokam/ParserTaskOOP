@@ -187,7 +187,8 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: \
  /usr/include/c++/11/bits/vector.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Document.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Slide.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ISlide.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
@@ -199,6 +200,4 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: \
  /usr/include/c++/11/bits/stl_heap.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \
  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
- /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp
+ /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h

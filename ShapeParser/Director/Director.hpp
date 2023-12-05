@@ -12,9 +12,12 @@ class Director : public IDirector {
     std::shared_ptr<IDocument> document;
     size_t currentSlideIndex = 0;
     // [TK] Don't keep twice same thing, get current slide by currentSlideIndex whenever needed 
-    std::shared_ptr<Slide> currentSlide;
     // [TK] undoRedo should be siomple STL ciontainer, do not overdesing
-    std::unique_ptr<UndoRedo> undoRedo; // stacks
+    std::stack<std::shared_ptr<IAction>> undoStack;
+    std::stack<std::shared_ptr<IAction>> redoStack;
+
+private:
+    void addToUndoStack(std::shared_ptr<IAction> action);
 
 public:
     
@@ -25,15 +28,13 @@ public:
     std::shared_ptr<IDocument>& getDocument() override;
     void setDocument(std::shared_ptr<IDocument>& document) override;
     std::shared_ptr<Slide> getCurrentSlide() override;
-    void setCurrentSlideNumber(size_t currentSlideNumber) override;
-    size_t getCurrentSlideNumber() override;
+    void setCurrentSlideIndex(size_t currentSlideIndex) override;
+    size_t getCurrentSlideIndex() override;
     // [TK] Why we need this, UndoRedo is private internals of the director nobody should get it
-    std::unique_ptr<UndoRedo> getUndoRedo() override;
+
     void undo() override;
     void redo() override;
     // [TK] Why we need this methods?
-    void nextSlide() override;
-    void previousSlide() override;
 
 
 };

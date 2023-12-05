@@ -1,6 +1,6 @@
 #ifndef SAVELOADSERIALIZER_HPP
 #define SAVELOADSERIALIZER_HPP
-// this class is responsible for saving the IDocument to device and loading from device
+// this class is responsible for saving the Document to device and loading from device
 
 #include <string>
 #include <unordered_map>
@@ -17,10 +17,10 @@ class IDocument;
 class Slide;
 
 class SaveLoad {
-    void serialize(std::ofstream& file, const std::shared_ptr<Slide>& items);
+    void serialize(std::ostream& stream, const std::shared_ptr<Slide>& items);
     std::shared_ptr<IDocument> deserialize(std::ifstream& file);
 public:
-    void save(const std::shared_ptr<IDocument>& IDocument, const std::string& path, const std::string& filename);
+    void save(const std::shared_ptr<IDocument>& document, std::ostream& stream);
     std::shared_ptr<IDocument> load(const std::string& path);
 };
 

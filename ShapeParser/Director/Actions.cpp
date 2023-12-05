@@ -34,7 +34,7 @@ std::shared_ptr<IAction> RemoveItem::execute(std::shared_ptr<IDocument>& documen
 RemoveSlide::RemoveSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber) : slide(slide), slideNumber(slideNumber) {}
 
 std::shared_ptr<IAction> RemoveSlide::execute(std::shared_ptr<IDocument>& document) {
-    document->removeSlide(slide);
+    document->removeSlide(slideNumber);
     return std::make_shared<AddSlide>(slide, slideNumber);
 }
 

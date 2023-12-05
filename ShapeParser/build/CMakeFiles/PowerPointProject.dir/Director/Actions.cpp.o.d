@@ -155,6 +155,13 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: \
  /usr/include/c++/11/pstl/execution_defs.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IAction.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Document.hpp \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Item.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
  /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
  /usr/include/c++/11/ios /usr/include/c++/11/bits/ios_base.h \
  /usr/include/c++/11/bits/locale_classes.h \
@@ -173,16 +180,8 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/IDocument.hpp \
- /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
- /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Item.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/IItem.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/IRenderer.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/Converter.hpp \
  /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
  /usr/include/c++/11/bits/hashtable_policy.h \

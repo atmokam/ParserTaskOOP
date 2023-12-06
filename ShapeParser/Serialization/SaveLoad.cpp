@@ -20,7 +20,7 @@ void SaveLoad::serialize(std::ostream& stream, const std::shared_ptr<Slide>& sli
         stream << "id:" << item.second->getID() << std::endl;
         stream << ShapeType{item.second->getType()} << std::endl;
         stream << item.second->getPosition() << std::endl;
-        stream << item.second->getBoundingRect() << std::endl;
+        stream << item.second->getDimentions() << std::endl;
         stream << item.second->getColor() << std::endl;
         stream << item.second->getLineDescriptor() << std::endl;
         stream << std::endl;
@@ -44,7 +44,7 @@ std::shared_ptr<IDocument> SaveLoad::deserialize(std::ifstream& file) {
     Document document = Document();
 
     std::string line; 
-    Position pos; Type type; BoundingRect boundingRect; Color color; ID id; LineDescriptor lineDescriptor;
+    Position pos; Type type; Dimentions dimentions; Color color; ID id; LineDescriptor lineDescriptor;
     while (std::getline(file, line))
     {
         std::istringstream is_line(line);
@@ -61,9 +61,9 @@ std::shared_ptr<IDocument> SaveLoad::deserialize(std::ifstream& file) {
                 else if(key == "indices")
                     pos = Converter::convertToPosition(value, ' '); 
                 else if(key == "width")
-                    boundingRect.width = std::stod(value);
+                    dimentions.width = std::stod(value);
                 else if(key == "height")
-                    boundingRect.height = std::stod(value);
+                    dimentions.height = std::stod(value);
                 else if(key == "line_color")
                     color.hexLineColor = Converter::convertToColor(value);
                 else if(key == "fill_color")
@@ -72,7 +72,7 @@ std::shared_ptr<IDocument> SaveLoad::deserialize(std::ifstream& file) {
                     lineDescriptor.type = Converter::convertToLineType(value);
                 else if(key == "line_width"){
                     lineDescriptor.width = std::stod(value);
-                    (*std::prev(document.end()))->addItem(std::make_shared<Item>(type, pos, boundingRect, color, id, lineDescriptor));
+                    (*std::prev(document.end()))->addItem(std::make_shared<Item>(type, pos, dimentions, color, id, lineDescriptor));
                 }
                 else if(key == "max_id")
                     (*(std::prev(document.end())))->setMaximumID(std::stoi(value));

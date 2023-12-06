@@ -19,8 +19,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o.d"
-  "CMakeFiles/PowerPointProject.dir/Director/UndoRedo.cpp.o"
-  "CMakeFiles/PowerPointProject.dir/Director/UndoRedo.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Program.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Program.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o"

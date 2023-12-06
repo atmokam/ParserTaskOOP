@@ -1,23 +1,21 @@
 #ifndef CLIController_HPP
 #define CLIController_HPP
 
-#include <iostream>
+#include <istream>
 #include <string>
-#include <fstream>
 
 
 #include "IController.hpp"
 
 
 class CLIController : public IController {
-    std::ifstream stream;
     std::istream& input;
     
 public:
     CLIController() = default;
-    CLIController(int count, char* args[]); 
+    CLIController(std::istream& input); 
+    void runCommand(std::istream& input);
     void runProgram() override;
-    static std::ifstream buildStream(int count, char* args[]);
     
 };
 

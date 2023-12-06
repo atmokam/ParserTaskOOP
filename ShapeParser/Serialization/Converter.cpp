@@ -50,8 +50,8 @@ ID Converter::convertToID(const std::string& value) {
     return ID{std::stoi(value)};
 }
 
-BoundingRect Converter::convertToBoundingRect(const std::string& width, const std::string& height) { 
-    return BoundingRect{std::stod(width), std::stod(height)};
+Dimentions Converter::convertToDimentions(const std::string& width, const std::string& height) { 
+    return Dimentions{std::stod(width), std::stod(height)};
 }
 
 long Converter::convertToColor(const std::string& color) {

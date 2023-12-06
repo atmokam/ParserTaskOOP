@@ -19,13 +19,16 @@ void AddCommand::execute() {
 
     if(operands.find("-name") != operands.end()){
         // [TK] Slide should not be passed to the item, item should not be aware about its containing Slide
-        std::shared_ptr<Item> item = createItem(application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideIndex());
-        // [TK] Item already created by the above line, why we need to recreate it again?
-        application.getDirector()->doAction(std::make_shared<AddItem>(item, application.getDirector()->getCurrentSlideIndex()));
+        // TODO: document should be the one to generate ids
+        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+        std::shared_ptr<Item> item = createItem(application.getDirector()->getCurrentSlide(), currentSlideIndex);
+
+        application.getDirector()->doAction(std::make_shared<AddItem>(item, currentSlideIndex));
     }
     else if(operands.find("-slide") != operands.end()){
-        // [TK] Need to generate unique ID: getCurrentSlideIndex() + 1 is wrong thing
-        application.getDirector()->doAction(std::make_shared<AddSlide>(std::make_shared<Slide>(), application.getDirector()->getCurrentSlideIndex() + 1));
+        std::shared_ptr<Slide> slide = std::make_shared<Slide>();
+        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+        application.getDirector()->doAction(std::make_shared<AddSlide>(slide, currentSlideIndex));
         application.getDirector()->setCurrentSlideIndex(application.getDirector()->getCurrentSlideIndex() + 1);
     }
 
@@ -38,7 +41,7 @@ std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide
 
     Position pos = Position{Converter::convertToPosition(operands["-pos"])};
 
-    BoundingRect bounds = BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])};
+    Dimentions bounds = Dimentions{Converter::convertToDimentions(operands["-w"][0], operands["-h"][0])};
     
     Color color; LineDescriptor lineDescriptor;
     if(operands.find("-lcolor") != operands.end()){
@@ -92,7 +95,7 @@ void ChangeCommand::execute() {
     }
     // if(operands.find("-name") != operands.end())
     if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end()){
-        item->setBoundingRect(BoundingRect{Converter::convertToBoundingRect(operands["-w"][0], operands["-h"][0])}); 
+        item->setDimentions(Dimentions{Converter::convertToDimentions(operands["-w"][0], operands["-h"][0])}); 
     }
     if(operands.find("-lcolor") != operands.end()){
         item->setLineColor(Converter::convertToColor(operands["-lcolor"][0]));
@@ -114,7 +117,6 @@ void ChangeCommand::execute() {
 
 void SaveCommand::execute() { 
     SaveLoad serializer;
-    // [TK] Serializer should get input stream, file creation is the job of the command
     std::ofstream file;
 
     file.open(operands["-path"][0] + operands["-filename"][0] + ".ppx");
@@ -181,6 +183,10 @@ void UndoCommand::execute() {
 
 void RedoCommand::execute() {
     application.getDirector()->redo();
+}
+
+void ExitCommand::execute() {
+    application.callExit();
 }
 
 

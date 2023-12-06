@@ -74,9 +74,9 @@ inline std::ostream& operator<<(std::ostream& os, const Position& position) {
     return os;
 }
 
-inline std::ostream& operator<<(std::ostream& os, const BoundingRect& boundingRect) {
-    os << "width:" << boundingRect.width << std::endl;
-    os << "height:" << boundingRect.height;
+inline std::ostream& operator<<(std::ostream& os, const Dimentions& dimentions) {
+    os << "width:" << dimentions.width << std::endl;
+    os << "height:" << dimentions.height;
     return os;
 }
 

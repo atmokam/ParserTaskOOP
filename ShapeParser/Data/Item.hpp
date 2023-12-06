@@ -3,12 +3,11 @@
 
 
 #include "ItemAttributes.hpp"
-#include "IItem.hpp"
 
-class Item : public IItem{
+class Item {
     Position pos;
     Type type;
-    BoundingRect boundingRect;
+    Dimentions dimentions;
     ID id;
     Color color;
     LineDescriptor line;
@@ -16,23 +15,23 @@ class Item : public IItem{
 public:
 
     Item() = default;   
-    Item(Type type, Position pos, BoundingRect boundingRect, Color color, ID id, LineDescriptor line);
+    Item(Type type, Position pos, Dimentions dimentions, Color color, ID id, LineDescriptor line);
 
-    Position getPosition() const override;
-    Type getType() const override;
-    BoundingRect getBoundingRect() const override;
-    ID getID() const override;
-    Color getColor() const override;
-    LineDescriptor getLineDescriptor() const override;
+    Position getPosition() const;
+    Type getType() const;
+    Dimentions getDimentions() const;
+    ID getID() const;
+    Color getColor() const;
+    LineDescriptor getLineDescriptor() const;
 
-    void setID(ID id) override;
-    void setPosition(Position pos) override;
-    void setType(Type type) override;
-    void setBoundingRect(BoundingRect boundingRect) override;
-    void setFillColor(long color) override;
-    void setLineColor(long color) override;
-    void setLineDescriptorWidth(double width) override;
-    void setLineDescriptorStyle(LineType type) override;
+    void setID(ID id);
+    void setPosition(Position pos);
+    void setType(Type type);
+    void setDimentions(Dimentions dimentions);
+    void setFillColor(long color);
+    void setLineColor(long color);
+    void setLineDescriptorWidth(double width);
+    void setLineDescriptorStyle(LineType type);
 
 };
 

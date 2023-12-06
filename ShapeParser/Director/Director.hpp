@@ -2,17 +2,16 @@
 #define DIRECTOR_HPP
 
 #include <string>
+#include <memory>
+#include <stack>
 
 #include "IDirector.hpp"
-#include "UndoRedo.hpp"
+
 
 
 class Director : public IDirector {
-    // [TK] Document creation belongs to the application, director simply holds additional reference to it!
     std::shared_ptr<IDocument> document;
     size_t currentSlideIndex = 0;
-    // [TK] Don't keep twice same thing, get current slide by currentSlideIndex whenever needed 
-    // [TK] undoRedo should be siomple STL ciontainer, do not overdesing
     std::stack<std::shared_ptr<IAction>> undoStack;
     std::stack<std::shared_ptr<IAction>> redoStack;
 
@@ -30,7 +29,6 @@ public:
     std::shared_ptr<Slide> getCurrentSlide() override;
     void setCurrentSlideIndex(size_t currentSlideIndex) override;
     size_t getCurrentSlideIndex() override;
-    // [TK] Why we need this, UndoRedo is private internals of the director nobody should get it
 
     void undo() override;
     void redo() override;

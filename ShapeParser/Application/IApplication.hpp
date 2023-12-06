@@ -13,6 +13,7 @@ public:
     virtual std::shared_ptr<IDocument> getDocument() = 0;
     virtual void run(int count, char* args[]) = 0;
     virtual void buildApplication() = 0;
+    virtual void callExit() = 0;
     
 };
 

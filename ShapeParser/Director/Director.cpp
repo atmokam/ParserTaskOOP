@@ -4,7 +4,7 @@
 #include "IAction.hpp"
 #include "Data/Document.hpp"
 #include "Director/Actions.hpp"
-#include "Director/UndoRedo.hpp"
+
 
 
 Director::Director() : document(std::make_shared<Document>()) {}
@@ -37,14 +37,6 @@ void Director::clearUndoRedoStack() {
 void Director::doAction(std::shared_ptr<IAction> action) {
     addToUndoStack(action->execute(document));
 }
-
-
-  // [TK] Director is the very place to implement undo/redo logic, no need to call additional functions implement it here
-  
- 
-
-  // [TK] Same as above
-   
 
 
 void Director::undo() {

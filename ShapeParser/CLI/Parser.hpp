@@ -3,20 +3,25 @@
 
 #include <string>
 #include <memory>
+#include <istream>
 
 class Command;
 
 class Parser {
 
+    std::istream& inputStream;
     std::shared_ptr<Command> createCommand(std::string input);
-    std::string commandName, prevOperand, prevToken; 
-    std::shared_ptr<Command> command = nullptr;
+    std::string commandNameFlag, prevOperand, prevToken; 
+
+    bool IsNewLine(char c) const;
+    void processArgument(std::string argument, std::shared_ptr<Command>& command);
     
 public:
-    Parser() = default;
-    void parse(std::string token);
+    Parser(std::istream& input);
+    std::shared_ptr<Command> parse();
+    void skipSpaces();
+    std::string getToken();
     void reset();
-    std::shared_ptr<Command> getCommand() const;
 };
 
 #endif

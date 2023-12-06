@@ -4,7 +4,8 @@
 #include <vector>
 #include <iostream>
 
-class Position {
+class Position 
+{
     std::vector<double> coordinates;
 public:
     Position(std::vector<double> coordinates) : coordinates(coordinates) { }
@@ -15,11 +16,13 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Position& position);
 };
 
-enum class Type {
+enum class Type 
+{
     Rectangle, Trapezoid, Ellipse, Line, Triangle
 };
 
-class ShapeType{
+class ShapeType
+{
     Type type;
 
 public:
@@ -27,28 +30,44 @@ public:
     Type getType() const { return type; }
     friend std::ostream& operator<<(std::ostream& os, const ShapeType& shape);
 };
-// [TK] Name is missleading, this is rather Dimensions than a Rect
-struct BoundingRect {
+
+struct Dimentions 
+{
     double width;
     double height;
 };
 
 using ID = int;           
 
-struct Color {
+struct Color 
+{
     long hexLineColor = 0;
     long hexFillColor = 0; // black by default
 };
 
-enum class LineType {
+enum class LineType 
+{
     Solid, Dashed, Dotted
 };
 
-struct LineDescriptor { // by default
+struct LineDescriptor 
+{
     LineType type = LineType::Solid;
     double width = 1;
 };
 
+
+struct Attributes
+{
+    Color color;
+    LineDescriptor line;
+};
+
+struct Geometry
+{
+    Position pos;
+    Dimentions dimentions;
+};
 
 
 #endif

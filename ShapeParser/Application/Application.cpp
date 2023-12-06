@@ -16,11 +16,13 @@ Application& Application::getInstance() {
 }
 
 void Application::run(int count, char* args[]) {
+
     director = std::make_shared<Director>();
     document = std::make_shared<Document>();
-    // also you need to create blank document here, document also held by app
-    // and process arguments, if path is specified automatically load the document
-    controller = std::make_unique<CLIController>(count, args);
+   
+    std::ifstream stream = buildStream(count, args);
+
+    controller = std::make_unique<CLIController>(stream.is_open() ? stream : std::cin);
     controller->runProgram();
 }
 
@@ -29,10 +31,29 @@ void Application::buildApplication() {
     // setting up gui, probably
 }
 
+void Application::callExit() {
+    exitCalled = true;
+}
+
+bool Application::isExitCalled() const {
+    return exitCalled;
+}
+
 std::shared_ptr<IDirector> Application::getDirector() {
     return director;
 }
 
 std::shared_ptr<IDocument> Application::getDocument() {
     return document;
+}
+
+std::ifstream Application::buildStream(int count, char* args[]) {
+   
+    std::ifstream stream;
+    if(args[1] == nullptr)
+        return stream;
+    else if (std::string(args[1]) == "-filename") 
+        stream.open(args[2]);
+    return stream;
+
 }

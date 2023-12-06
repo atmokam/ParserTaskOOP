@@ -1,77 +1,131 @@
 #include <stdexcept>
+#include <iostream>
 #include "Parser.hpp"
 #include "Command.hpp"
 #include "Validator.hpp"
 
-// parser does partial validation, checks the sequence for the structure <commandName> <operand> <value>, 
-// also checks that two operands dont follow each other, eg. add -name -w
+// parser does partial validation, checks the sequence for the structure <commandNameFlag> <operand> <value>, 
+// also checks that two operands don't follow each other, eg. add -name -w
 
+Parser::Parser(std::istream& inputStream) : inputStream(inputStream) {}
 
-     Parser::skipSpaces()
+void Parser::skipSpaces()
 {
-    whuile (isSpace(input.peek())
-        input.get();
+    while(std::isspace(inputStream.peek()))
+    {
+        std::cout << inputStream.get();
+    }
 }
 
-Token Parser::getTopken()
+bool Parser::IsNewLine(char c) const
+{
+    return c == '\n' || c == '\r';
+}
+
+std::string Parser::getToken()
 {
     std::string sToken;
+    if (!IsNewLine(inputStream.peek()))
+        inputStream >> sToken; 
     skipSpaces();
-    if (!IsNewLine(input.peek()))
-        input >> sToken; 
-    returns Token;
+    return sToken;
 }
 
-void Parser::parse()
+
+
+// std::shared_ptr<Command> Parser::parse()
+// {
+//     std::string cmdName = getToken();
+
+//     std::shared_ptr<Command> pCmd = createCommand(cmdName);
+//     command->setName(cmdName);
+//     commandNameFlag = cmdName;
+//     prevToken = cmdName;
+
+//     if (pCmd == nullptr)
+//         throw std::invalid_argument("Invalid command: " + cmdName);
+
+//     std::string token = getToken();
+//     while (!token.empty())
+//     {
+//         if((prevOperand != prevToken) && Validator::isOperand(token, commandNameFlag))
+//         {
+//             command->addOperandToOperands(token);
+//             prevOperand = token;
+//             prevToken = token;
+//         }
+//         else if(prevOperand != "" && Validator::isValue(token, prevOperand))
+//         {
+//             command->addValueToOperands(token, prevOperand); 
+//             prevToken = token;
+//         }
+//         else 
+//         {
+//             throw std::invalid_argument("Invalid input: " + token);
+//         }
+
+//         token = getToken();
+//     }
+
+//     return pCmd;     
+// }
+
+
+
+
+
+// the above one throws segfault, for now I will be using the modifed-old version, for the sake of the demo
+// will get back to this when I'm done with the other tasks
+
+std::shared_ptr<Command> Parser::parse()
 {
-    Token cmdName = getToken();
-    // Lookup[ commad
-    pCmd = Factory->get(cmdName);
-    if (cmd == nullptr)
-        throw;
+    std::string token;
+    std::shared_ptr<Command> command = nullptr;
 
-    Token argName = getToken();
-    while (!argName.empty())
-    {
-        // Lookup argument
 
-        argValue = getToken();
+    while(inputStream >> token) 
+    {  
+        if(inputStream.peek() == '\n' || inputStream.peek() == EOF){
+            processArgument(token, command);
+            if(!Validator::validateCommand(command)) {
+                throw std::invalid_argument("Invalid command: " + command->getName());
+            }
+            return command;
+        } else {
+            processArgument(token, command);
+        }
+        
     }
 
-    return pCmd;     
-}
-
-
-
-void Parser::parse(std::string token){
     
-    if(commandName == "" && Validator::isName(token)){
-        command = createCommand(token);
-        command->setName(token);
-        commandName = token;
-        prevToken = token;
-    }
-    else if(commandName != "" && (prevOperand != prevToken) && Validator::isOperand(token, commandName)){
-        command->addOperandToOperands(token);
-        prevOperand = token;
-        prevToken = token;
-    }
-    else if(commandName != "" && prevOperand != "" && Validator::isValue(token, prevOperand) ){
-        command->addValueToOperands(token, prevOperand); 
-        prevToken = token;
-    }
-    else {
-        throw std::invalid_argument("Invalid input: " + token);
-    }
+    return command;
     
 }
 
-void Parser::reset(){
-    commandName = "";
-    prevOperand = "";
-    prevToken = "";
-    command = nullptr;
+
+
+void Parser::processArgument(std::string argument, std::shared_ptr<Command>& command){
+    if(commandNameFlag == "" && Validator::isName(argument)){
+            command = createCommand(argument);
+            command->setName(argument);
+            commandNameFlag = argument;
+            prevToken = argument;
+        }
+        else if(commandNameFlag != "" && (prevOperand != prevToken) && Validator::isOperand(argument, commandNameFlag)){
+            command->addOperandToOperands(argument);
+            prevOperand = argument;
+            prevToken = argument;
+        }
+        else if(commandNameFlag != "" && prevOperand != "" && Validator::isValue(argument, prevOperand) ){
+            command->addValueToOperands(argument, prevOperand); 
+            prevToken = argument;
+        }
+        else {
+            throw std::invalid_argument("Invalid input: " + argument);
+        }
 }
+
+
 
 
 std::shared_ptr<Command> Parser::createCommand(std::string input){
@@ -108,10 +162,12 @@ std::shared_ptr<Command> Parser::createCommand(std::string input){
     else if(input == "redo"){
         return std::make_shared<RedoCommand>();
     }
+    else if (input == "exit"){
+        return std::make_shared<ExitCommand>();
+    }
     else {
-        throw std::invalid_argument("Invalid command: " + input);
+        return nullptr;
     }
 }
 
 
-std::shared_ptr<Command> Parser::getCommand() const { return command; }

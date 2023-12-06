@@ -5,10 +5,6 @@
 
 
 // general checking
-// [TK] Extra unnnecessary vector, the map below already contains commands info
-std::unordered_set<std::string> Validator::commands = {
-        "add", "remove", "change", "display", "list", "save", "load", "next", "prev", "undo", "redo"
-    };
 
 std::unordered_map<std::string, std::vector<std::string>> Validator::validOperands = {
         {"add", {"-name", "-pos", "-lcolor", "-fcolor", "-w", "-h", "-slide", "-lwidth", "-lstyle"}},
@@ -21,7 +17,8 @@ std::unordered_map<std::string, std::vector<std::string>> Validator::validOperan
         {"next", {}}, 
         {"prev", {}},
         {"undo", {}},
-        {"redo", {}}
+        {"redo", {}},
+        {"exit", {}}
     };
 // list of shapes should be obtained from the shape library
 std::unordered_set<std::string> Validator::shapes = {
@@ -146,7 +143,7 @@ bool Validator::checkMandatoryOperands(std::unordered_map<std::string, std::vect
 
 
 bool Validator::isName(const std::string& inputToBeChecked) {
-    return std::find(commands.begin(), commands.end(), inputToBeChecked) != commands.end();
+    return validOperands.find(inputToBeChecked) != validOperands.end();
 }
 
 bool Validator::isOperand(const std::string& inputToBeChecked, const std::string& commandName) {

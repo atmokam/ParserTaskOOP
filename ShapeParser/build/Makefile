@@ -369,30 +369,6 @@ Director/Director.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Director/Director.cpp.s
 .PHONY : Director/Director.cpp.s
 
-Director/UndoRedo.o: Director/UndoRedo.cpp.o
-.PHONY : Director/UndoRedo.o
-
-# target to build an object file
-Director/UndoRedo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Director/UndoRedo.cpp.o
-.PHONY : Director/UndoRedo.cpp.o
-
-Director/UndoRedo.i: Director/UndoRedo.cpp.i
-.PHONY : Director/UndoRedo.i
-
-# target to preprocess a source file
-Director/UndoRedo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Director/UndoRedo.cpp.i
-.PHONY : Director/UndoRedo.cpp.i
-
-Director/UndoRedo.s: Director/UndoRedo.cpp.s
-.PHONY : Director/UndoRedo.s
-
-# target to generate assembly for a file
-Director/UndoRedo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Director/UndoRedo.cpp.s
-.PHONY : Director/UndoRedo.cpp.s
-
 Program.o: Program.cpp.o
 .PHONY : Program.o
 
@@ -528,9 +504,6 @@ help:
 	@echo "... Director/Director.o"
 	@echo "... Director/Director.i"
 	@echo "... Director/Director.s"
-	@echo "... Director/UndoRedo.o"
-	@echo "... Director/UndoRedo.i"
-	@echo "... Director/UndoRedo.s"
 	@echo "... Program.o"
 	@echo "... Program.i"
 	@echo "... Program.s"

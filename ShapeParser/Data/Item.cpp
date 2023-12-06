@@ -2,8 +2,8 @@
 
 
 
-Item::Item(Type type, Position pos, BoundingRect boundingRect, Color color, ID id, LineDescriptor line) 
-: type(type), pos(pos), boundingRect(boundingRect), color(color), id(id), line(line){}
+Item::Item(Type type, Position pos, Dimentions dimentions, Color color, ID id, LineDescriptor line) 
+: type(type), pos(pos), dimentions(dimentions), color(color), id(id), line(line){}
 
 Position Item::getPosition() const {
     return pos;
@@ -13,8 +13,8 @@ Type Item::getType() const {
     return type;
 }
 
-BoundingRect Item::getBoundingRect() const {
-    return boundingRect;
+Dimentions Item::getDimentions() const {
+    return dimentions;
 }
 
 ID Item::getID() const {
@@ -37,8 +37,8 @@ void Item::setType(Type type) {
     this->type = type;
 }
 
-void Item::setBoundingRect(BoundingRect boundingRect) {
-    this->boundingRect = boundingRect;
+void Item::setDimentions(Dimentions dimentions) {
+    this->dimentions = dimentions;
 }
 
 void Item::setFillColor(long color) {

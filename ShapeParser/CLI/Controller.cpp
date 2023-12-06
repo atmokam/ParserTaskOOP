@@ -45,3 +45,17 @@ void CLIController::runProgram() {
     }
 
 }
+
+void CLIController::runProgram() {
+    while (!exit) 
+    {
+        runCommand(input);
+    }
+}
+
+void CLIController::runCommand(std::istream& input)
+{
+    Parser oParser(input);
+    Command* pCmd = oParser.parse();
+    pCdm-execute();
+}

@@ -6,6 +6,43 @@
 // parser does partial validation, checks the sequence for the structure <commandName> <operand> <value>, 
 // also checks that two operands dont follow each other, eg. add -name -w
 
+
+     Parser::skipSpaces()
+{
+    whuile (isSpace(input.peek())
+        input.get();
+}
+
+Token Parser::getTopken()
+{
+    std::string sToken;
+    skipSpaces();
+    if (!IsNewLine(input.peek()))
+        input >> sToken; 
+    returns Token;
+}
+
+void Parser::parse()
+{
+    Token cmdName = getToken();
+    // Lookup[ commad
+    pCmd = Factory->get(cmdName);
+    if (cmd == nullptr)
+        throw;
+
+    Token argName = getToken();
+    while (!argName.empty())
+    {
+        // Lookup argument
+
+        argValue = getToken();
+    }
+
+    return pCmd;     
+}
+
+
+
 void Parser::parse(std::string token){
     
     if(commandName == "" && Validator::isName(token)){

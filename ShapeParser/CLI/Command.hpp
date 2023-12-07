@@ -33,7 +33,7 @@ public:
 };
 
 class AddCommand : public Command {
-    std::shared_ptr<Item> createItem(const std::shared_ptr<Slide>& slide, const size_t currentSlideIndex);
+    std::shared_ptr<ItemLeaf> createItem(const std::shared_ptr<Slide>& slide, const size_t currentSlideIndex);
 public:
     
     void execute() override;

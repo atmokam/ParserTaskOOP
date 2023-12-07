@@ -1,13 +1,5 @@
 #include "ItemBase.hpp"
 
-ID ItemBase::getID() const {
-    return id;
-}
-
-void ItemBase::setID(ID id) {
-    this->id = id;
-}
-
 
 // Leaf
 ItemLeaf::ItemLeaf(Type type, Geometry geometry, Attributes attributes)
@@ -35,6 +27,22 @@ void ItemLeaf::setGeometry(Geometry geometry) {
 
 void ItemLeaf::setAttributes(Attributes attributes) {
     this->attributes = attributes;
+}
+
+std::shared_ptr<ItemGroup> ItemLeaf::getParent() const {
+    return parent;
+}
+
+void ItemLeaf::setParent(std::shared_ptr<ItemGroup> parent) {
+    this->parent = parent;
+}
+
+ID ItemLeaf::getID() const {
+    return id;
+}
+
+void ItemLeaf::setID(ID id) {
+    this->id = id;
 }
 
 
@@ -75,6 +83,15 @@ std::unordered_map<ID, std::shared_ptr<ItemBase>>::const_iterator ItemGroup::cen
 }
 
 std::shared_ptr<ItemBase> ItemGroup::getItem(ID id) const {
+    
+    // actual implementation temporarily written in my copybook
+    // this is just placeholder code
+
     return items.at(id);
+
+
 }
 
+std::shared_ptr<ItemGroup> ItemGroup::getParent() const {
+    return parent;
+}

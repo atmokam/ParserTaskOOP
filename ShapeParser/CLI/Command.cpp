@@ -2,7 +2,8 @@
 #include <stdexcept>
 #include "Application/Application.hpp"
 #include "Data/Slide.hpp"
-#include "Data/Item.hpp"
+//#include "Data/Item.hpp"
+#include "Data/ItemLeafBuilder.hpp"
 #include "Data/Document.hpp"
 #include "Director/Actions.hpp"
 #include "Director/Director.hpp"
@@ -21,7 +22,7 @@ void AddCommand::execute() {
         // [TK] Slide should not be passed to the item, item should not be aware about its containing Slide
         // TODO: document should be the one to generate ids
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-        std::shared_ptr<Item> item = createItem(application.getDirector()->getCurrentSlide(), currentSlideIndex);
+        std::shared_ptr<ItemLeaf> item = createItem(application.getDirector()->getCurrentSlide(), currentSlideIndex);
 
         application.getDirector()->doAction(std::make_shared<AddItem>(item, currentSlideIndex));
     }
@@ -34,7 +35,7 @@ void AddCommand::execute() {
 
 }
 
-std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide, const size_t currentSlideIndex) {
+std::shared_ptr<ItemLeaf> AddCommand::createItem(const std::shared_ptr<Slide>& slide, const size_t currentSlideIndex) {
 
 
     Type type = Type{Converter::convertToType(operands["-name"])};
@@ -56,15 +57,16 @@ std::shared_ptr<Item> AddCommand::createItem(const std::shared_ptr<Slide>& slide
     if (operands.find("-lstyle") != operands.end()){
         lineDescriptor.type = Converter::convertToLineType(operands["-lstyle"][0]);
     }
-
-    // [TK] generateID() belongs to the document, Ids should be unique across whole document, because Item could be moved from one slide to another
-    return std::make_shared<Item>(type, pos, bounds, color, slide->generateID(), lineDescriptor);
+    std::shared_ptr<ItemLeaf> item = std::make_shared<ItemLeaf>(type, pos, bounds, color, currentSlideIndex, lineDescriptor);
+    std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
+    item->setID(document->generateID());
+    return item;
 
 }
 
 void RemoveCommand::execute() {
     if(operands.find("-id") != operands.end()){
-        std::shared_ptr<Item> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+        std::shared_ptr<ItemBase> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
         if (item == nullptr){
             return;
         }
@@ -88,26 +90,26 @@ void RemoveCommand::execute() {
 
 
 void ChangeCommand::execute() {
-    std::shared_ptr<Item> item = std::make_shared<Item>(*application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0])));
+    std::shared_ptr<ItemLeaf> item = std::make_shared<ItemLeaf>(*application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0])));
+    ItemLeafBuilder builder(item);
 
     if(operands.find("-pos") != operands.end()){ 
-        item->setPosition(Converter::convertToPosition(operands["-pos"]));
+        builder.setPosition(Converter::convertToPosition(operands["-pos"]));
     }
-    // if(operands.find("-name") != operands.end())
     if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end()){
-        item->setDimentions(Dimentions{Converter::convertToDimentions(operands["-w"][0], operands["-h"][0])}); 
+        builder.setDimentions(Dimentions{Converter::convertToDimentions(operands["-w"][0], operands["-h"][0])}); 
     }
     if(operands.find("-lcolor") != operands.end()){
-        item->setLineColor(Converter::convertToColor(operands["-lcolor"][0]));
+        builder.setLineColor(Converter::convertToColor(operands["-lcolor"][0]));
     }
     if(operands.find("-fcolor") != operands.end()){
-        item->setFillColor(Converter::convertToColor(operands["-fcolor"][0]));
+        builder.setFillColor(Converter::convertToColor(operands["-fcolor"][0]));
     }
     if(operands.find("-lwidth") != operands.end()){
-        item->setLineDescriptorWidth(std::stod(operands["-lwidth"][0]));
+        builder.setLineDescriptorWidth(std::stod(operands["-lwidth"][0]));
     }
     if(operands.find("-lstyle") != operands.end()){
-        item->setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0]));
+        builder.setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0]));
     }
 
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
@@ -138,7 +140,7 @@ void LoadCommand::execute() {
 
 void DisplayCommand::execute() {
     if(operands.find("-id") != operands.end()){
-        std::shared_ptr<Item> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+        std::shared_ptr<ItemBase> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
         if (item == nullptr){
             return;
         }

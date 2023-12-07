@@ -7,12 +7,13 @@ void Slide::addItem(std::shared_ptr<ItemBase> item) {
     items.addItem(item);
 }
 
-std::shared_ptr<ItemBase> Slide::getItem(int id) const {
-    if(std::find(items.cbegin(), items.cend(), id) == items.cend()){
+std::shared_ptr<ItemBase> Slide::getItem(int id) const {  // only returns leaf for now
+auto item = items.getItem(id);
+    if(item == nullptr){
         std::cout << "Item with id " + std::to_string(id) + " does not exist" << std::endl;
         return nullptr;
     }
-    return items.getItem(id);
+    return item;
 }
 
 Slide::Slide(std::shared_ptr<Slide> slide) { 

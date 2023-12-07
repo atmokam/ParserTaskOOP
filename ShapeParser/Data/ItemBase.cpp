@@ -5,6 +5,10 @@
 ItemLeaf::ItemLeaf(Type type, Geometry geometry, Attributes attributes)
 : type(type), geometry(geometry), attributes(attributes) {}
 
+ItemLeaf::ItemLeaf(std::shared_ptr<ItemLeaf> item)
+: id(item->id), parent(item->parent), type(item->type), 
+geometry(item->geometry), attributes(item->attributes) {}
+
 Type ItemLeaf::getType() const {
     return type;
 }
@@ -44,6 +48,8 @@ ID ItemLeaf::getID() const {
 void ItemLeaf::setID(ID id) {
     this->id = id;
 }
+
+
 
 
 // Group
@@ -86,7 +92,9 @@ std::shared_ptr<ItemBase> ItemGroup::getItem(ID id) const {
     
     // actual implementation temporarily written in my copybook
     // this is just placeholder code
-
+    if(items.find(id) == items.end()){
+        return nullptr;
+    }
     return items.at(id);
 
 
@@ -95,3 +103,16 @@ std::shared_ptr<ItemBase> ItemGroup::getItem(ID id) const {
 std::shared_ptr<ItemGroup> ItemGroup::getParent() const {
     return parent;
 }
+
+ID ItemGroup::getID() const {
+    return id;
+}
+
+void ItemGroup::setID(ID id) {
+    this->id = id;
+}
+
+void ItemGroup::setParent(std::shared_ptr<ItemGroup> parent) {
+    this->parent = parent;
+}
+

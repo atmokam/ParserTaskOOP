@@ -8,6 +8,7 @@
 #include "ItemAttributes.hpp"
 
 
+class ItemGroup;
 
 class ItemBase {
 public:
@@ -35,6 +36,7 @@ class ItemLeaf : public ItemBase {
 public:
     ItemLeaf() = default;
     ItemLeaf(Type type, Geometry geometry, Attributes attributes);
+    ItemLeaf(std::shared_ptr<ItemLeaf> item);
     Type getType() const;
     Geometry getGeometry() const;
     Attributes getAttributes() const;
@@ -48,6 +50,8 @@ public:
     void setParent(std::shared_ptr<ItemGroup> parent) override;
     ID getID() const override;
     void setID(ID id) override;
+
+
 
 };
 
@@ -65,7 +69,6 @@ public:
     void removeItem(ID id);
     void swapItems(ID idOfInitialItem, std::shared_ptr<ItemBase>& newItem);
     std::shared_ptr<ItemBase> getItem(ID id) const;
-    std::shared_ptr<ItemGroup> getParent() const;
 
     std::unordered_map<ID, std::shared_ptr<ItemBase>>::iterator begin();
     std::unordered_map<ID, std::shared_ptr<ItemBase>>::const_iterator cbegin() const;

@@ -500,7 +500,9 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: ../CLI/Command.cpp \
 CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: ../CLI/Controller.cpp \
   /usr/include/stdc-predef.h \
   ../CLI/Controller.hpp \
-  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/istream \
+  /usr/include/c++/11/ios \
+  /usr/include/c++/11/iosfwd \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/features.h \
@@ -513,9 +515,6 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: ../CLI/Controller.cpp \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
   /usr/include/c++/11/pstl/pstl_config.h \
-  /usr/include/c++/11/ostream \
-  /usr/include/c++/11/ios \
-  /usr/include/c++/11/iosfwd \
   /usr/include/c++/11/bits/stringfwd.h \
   /usr/include/c++/11/bits/memoryfwd.h \
   /usr/include/c++/11/bits/postypes.h \
@@ -675,14 +674,9 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: ../CLI/Controller.cpp \
   /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
   /usr/include/c++/11/bits/locale_facets.tcc \
   /usr/include/c++/11/bits/basic_ios.tcc \
+  /usr/include/c++/11/ostream \
   /usr/include/c++/11/bits/ostream.tcc \
-  /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
-  /usr/include/c++/11/fstream \
-  /usr/include/c++/11/bits/codecvt.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
-  /usr/include/c++/11/bits/fstream.tcc \
   ../CLI/IController.hpp \
   ../CLI/Parser.hpp \
   /usr/include/c++/11/memory \
@@ -1808,7 +1802,7 @@ CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o: ../Data/Slide.cpp \
   /usr/include/c++/11/bits/atomic_lockfree_defines.h \
   /usr/include/c++/11/backward/auto_ptr.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
-  ../Data/ISlide.hpp \
+  ../Data/ItemBase.hpp \
   ../Data/ItemAttributes.hpp \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
@@ -1834,8 +1828,7 @@ CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o: ../Data/Slide.cpp \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
-  ../Data/Item.hpp \
-  ../Data/IItem.hpp
+  ../Data/Item.hpp
 
 CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: ../Director/Actions.cpp \
   /usr/include/stdc-predef.h \
@@ -3570,6 +3563,8 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 /usr/include/c++/11/bits/ostream.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
+
+../Data/ItemBase.hpp:
 
 /usr/include/c++/11/cctype:
 

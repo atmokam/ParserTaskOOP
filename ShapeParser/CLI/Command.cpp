@@ -2,7 +2,6 @@
 #include <stdexcept>
 #include "Application/Application.hpp"
 #include "Data/Slide.hpp"
-//#include "Data/Item.hpp"
 #include "Data/ItemLeafBuilder.hpp"
 #include "Data/Document.hpp"
 #include "Director/Actions.hpp"
@@ -16,13 +15,12 @@
 
 Command::Command() : application(Application::getInstance()) {}
 
-void AddCommand::execute() {  
-
+void AddCommand::execute() 
+{  
     if(operands.find("-name") != operands.end()){
-        // [TK] Slide should not be passed to the item, item should not be aware about its containing Slide
-        // TODO: document should be the one to generate ids
+    
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-        std::shared_ptr<ItemLeaf> item = createItem(application.getDirector()->getCurrentSlide(), currentSlideIndex);
+        std::shared_ptr<ItemLeaf> item = createItem();
 
         application.getDirector()->doAction(std::make_shared<AddItem>(item, currentSlideIndex));
     }
@@ -35,53 +33,65 @@ void AddCommand::execute() {
 
 }
 
-std::shared_ptr<ItemLeaf> AddCommand::createItem(const std::shared_ptr<Slide>& slide, const size_t currentSlideIndex) {
+std::shared_ptr<ItemLeaf> AddCommand::createItem() 
+{
+
+    ItemLeafBuilder builder;
 
 
     Type type = Type{Converter::convertToType(operands["-name"])};
+    builder.setType(type);
 
     Position pos = Position{Converter::convertToPosition(operands["-pos"])};
+    builder.setPosition(pos);
 
     Dimentions bounds = Dimentions{Converter::convertToDimentions(operands["-w"][0], operands["-h"][0])};
+    builder.setDimentions(bounds);
     
     Color color; LineDescriptor lineDescriptor;
     if(operands.find("-lcolor") != operands.end()){
         color.hexLineColor = Converter::convertToColor(operands["-lcolor"][0]);
+        builder.setLineColor(color.hexLineColor);
     }
     if (operands.find("-fcolor") != operands.end()){
         color.hexFillColor = Converter::convertToColor(operands["-fcolor"][0]);
+        builder.setFillColor(color.hexFillColor);
     }
     if (operands.find("-lwidth") != operands.end()){
         lineDescriptor.width = std::stod(operands["-lwidth"][0]);
+        builder.setLineDescriptorWidth(lineDescriptor.width);
     }
     if (operands.find("-lstyle") != operands.end()){
         lineDescriptor.type = Converter::convertToLineType(operands["-lstyle"][0]);
+        builder.setLineDescriptorStyle(lineDescriptor.type);
     }
-    std::shared_ptr<ItemLeaf> item = std::make_shared<ItemLeaf>(type, pos, bounds, color, currentSlideIndex, lineDescriptor);
+
+    std::shared_ptr<ItemLeaf> item = builder.build();
     std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
     item->setID(document->generateID());
     return item;
 
 }
 
-void RemoveCommand::execute() {
+void RemoveCommand::execute() 
+{
+    std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
+    size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+
     if(operands.find("-id") != operands.end()){
-        std::shared_ptr<ItemBase> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+
+        std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
         if (item == nullptr){
             return;
         }
-        application.getDirector()->doAction(std::make_shared<RemoveItem>(
-            item, application.getDirector()->getCurrentSlideIndex()));
+        application.getDirector()->doAction(std::make_shared<RemoveItem>(item, currentSlideIndex));
     }
     else if(operands.find("-slide") != operands.end()){
         if(application.getDirector()->getDocument()->size() == 1){
             std::cout << "Cannot remove slide, only 1 left" << std::endl;
             
         } else {
-            size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-            application.getDirector()->doAction(std::make_shared<RemoveSlide>(
-                application.getDirector()->getCurrentSlide(), currentSlideIndex)); 
-
+            application.getDirector()->doAction(std::make_shared<RemoveSlide>(slide, currentSlideIndex)); 
             application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
         }
     }
@@ -89,9 +99,11 @@ void RemoveCommand::execute() {
 }
 
 
-void ChangeCommand::execute() {
-    std::shared_ptr<ItemLeaf> item = std::make_shared<ItemLeaf>(*application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0])));
-    ItemLeafBuilder builder(item);
+void ChangeCommand::execute() 
+{
+    std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
+    std::shared_ptr<ItemLeaf> item = std::make_shared<ItemLeaf>(slide->getItem(std::stoi(operands["-id"][0])));
+    ItemLeafBuilder builder(item); // sets on item
 
     if(operands.find("-pos") != operands.end()){ 
         builder.setPosition(Converter::convertToPosition(operands["-pos"]));
@@ -117,7 +129,8 @@ void ChangeCommand::execute() {
 }
 
 
-void SaveCommand::execute() { 
+void SaveCommand::execute() 
+{ 
     SaveLoad serializer;
     std::ofstream file;
 
@@ -129,7 +142,8 @@ void SaveCommand::execute() {
     serializer.save(application.getDirector()->getDocument(), file);
 }
 
-void LoadCommand::execute() { 
+void LoadCommand::execute() 
+{ 
     SaveLoad deserializer;
     std::shared_ptr<IDocument> document = deserializer.load(operands["-path"][0]);
     std::cout << "Loaded document with " << document->size() << " slides" << std::endl;
@@ -138,24 +152,25 @@ void LoadCommand::execute() {
     application.getDirector()->clearUndoRedoStack();
 }
 
-void DisplayCommand::execute() {
-    if(operands.find("-id") != operands.end()){
-        std::shared_ptr<ItemBase> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
-        if (item == nullptr){
-            return;
-        }
-        Renderer renderer;
-        renderer.renderText(std::cout, item);
-    }
-    else{
-        Renderer renderer;
-        renderer.renderText(std::cout, application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideIndex());
-    }
+void DisplayCommand::execute() 
+{
+    // if(operands.find("-id") != operands.end()){
+    //     std::shared_ptr<ItemBase> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+    //     if (item == nullptr){
+    //         return;
+    //     }
+    //     Renderer renderer;
+    //     renderer.renderText(std::cout, item);
+    // }
+    // else{
+    //     Renderer renderer;
+    //     renderer.renderText(std::cout, application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideIndex());
+    // }
 }
 
 
-void ListCommand::execute() {
-    
+void ListCommand::execute() 
+{
     auto document = application.getDirector()->getDocument();
     size_t currentSlideIndex  = 0;
     for (const auto& slide : *document){
@@ -169,48 +184,58 @@ void ListCommand::execute() {
     
 }
 
-void NextCommand::execute() {
+void NextCommand::execute() 
+{
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
     application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
 }
 
-void PrevCommand::execute() {
+void PrevCommand::execute() 
+{
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
     application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
 }
 
-void UndoCommand::execute() {
+void UndoCommand::execute() 
+{
     application.getDirector()->undo();
 }
 
-void RedoCommand::execute() {
+void RedoCommand::execute() 
+{
     application.getDirector()->redo();
 }
 
-void ExitCommand::execute() {
+void ExitCommand::execute() 
+{
     application.callExit();
 }
 
 
 
 
-void Command::addOperandToOperands(std::string operand) {
+void Command::addOperandToOperands(std::string operand) 
+{
     operands[operand];                           // in case of no value
 }
 
-void Command::addValueToOperands(std::string value, std::string operand) {
+void Command::addValueToOperands(std::string value, std::string operand) 
+{
     operands[operand].push_back(value);
 }
 
 
-std::string Command::getName() const {
+std::string Command::getName() const 
+{
     return name;
 }
 
-void Command::setName(std::string name) {
+void Command::setName(std::string name) 
+{
     this->name = name;
 }
 
-OperandsContainer Command::getOperands() const {
+OperandsContainer Command::getOperands() const 
+{
     return operands;
 }

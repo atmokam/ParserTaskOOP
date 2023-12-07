@@ -4,12 +4,12 @@
 #include "Data/Document.hpp"
 
 
-void Renderer::renderText(std::ostream& os, const std::shared_ptr<Slide>& slide, const size_t slideNumber) {
-    os << "Slide: " << slideNumber << std::endl;
-    for(const auto& item : *slide) {
-        renderText(os, item.second);
-    }
-}
+// void Renderer::renderText(std::ostream& os, const std::shared_ptr<Slide>& slide, const size_t slideNumber) {
+//     os << "Slide: " << slideNumber << std::endl;
+//     for(const auto& item : *slide) {
+//         renderText(os, item.second);
+//     }
+// }
 
 void Renderer::renderText(std::ostream& os, const std::shared_ptr<Document>& document) {
     size_t slideNumber = 0;
@@ -23,12 +23,12 @@ void Renderer::renderImage(std::shared_ptr<Slide>& slide) {
 }
 
 void Renderer::renderText(std::ostream &os, const std::shared_ptr<Item>& item) {
-    os << item->getID() << std::endl;
-    shapeToText(os, ShapeType{item->getType()}) ;
-    positionToText(os, item->getPosition());
-    boundingRectToText(os, item->getBoundingRect());
-    colorToText(os, item->getColor());
-    lineDescriptorToText(os, item->getLineDescriptor());
+    // os << item->getID() << std::endl;
+    // shapeToText(os, ShapeType{item->getType()}) ;
+    // positionToText(os, item->getPosition());
+    // boundingRectToText(os, item->getBoundingRect());
+    // colorToText(os, item->getColor());
+    // lineDescriptorToText(os, item->getLineDescriptor());
 }
 
 void Renderer::renderImage(std::shared_ptr<Item>& item) {
@@ -92,11 +92,11 @@ void Renderer::positionToText(std::ostream& os, const Position& position) {
     os << std::endl;
 }
 
-void Renderer::boundingRectToText(std::ostream& os, const BoundingRect& boundingRect) {
-    os << "Width: " << boundingRect.width << std::endl;
-    os << "Height: " << boundingRect.height;
-    os << std::endl;
-}
+// void Renderer::boundingRectToText(std::ostream& os, const Dimentions& boundingRect) {
+//     os << "Width: " << boundingRect.width << std::endl;
+//     os << "Height: " << boundingRect.height;
+//     os << std::endl;
+// }
 
 void Renderer::colorToText(std::ostream& os, const Color& color) {
     os << "Line_color: #" << std::hex << color.hexLineColor << std::endl;

@@ -9,6 +9,7 @@
 class IApplication;
 class Slide;
 class Item;
+class ItemLeaf;
 
 using OperandsContainer = std::unordered_map<std::string, std::vector<std::string>>;
 
@@ -33,7 +34,7 @@ public:
 };
 
 class AddCommand : public Command {
-    std::shared_ptr<ItemLeaf> createItem(const std::shared_ptr<Slide>& slide, const size_t currentSlideIndex);
+    std::shared_ptr<ItemLeaf> createItem();
 public:
     
     void execute() override;

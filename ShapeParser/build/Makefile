@@ -297,6 +297,54 @@ Data/Item.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item.cpp.s
 .PHONY : Data/Item.cpp.s
 
+Data/ItemBase.o: Data/ItemBase.cpp.o
+.PHONY : Data/ItemBase.o
+
+# target to build an object file
+Data/ItemBase.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o
+.PHONY : Data/ItemBase.cpp.o
+
+Data/ItemBase.i: Data/ItemBase.cpp.i
+.PHONY : Data/ItemBase.i
+
+# target to preprocess a source file
+Data/ItemBase.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.i
+.PHONY : Data/ItemBase.cpp.i
+
+Data/ItemBase.s: Data/ItemBase.cpp.s
+.PHONY : Data/ItemBase.s
+
+# target to generate assembly for a file
+Data/ItemBase.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.s
+.PHONY : Data/ItemBase.cpp.s
+
+Data/ItemLeafBuilder.o: Data/ItemLeafBuilder.cpp.o
+.PHONY : Data/ItemLeafBuilder.o
+
+# target to build an object file
+Data/ItemLeafBuilder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemLeafBuilder.cpp.o
+.PHONY : Data/ItemLeafBuilder.cpp.o
+
+Data/ItemLeafBuilder.i: Data/ItemLeafBuilder.cpp.i
+.PHONY : Data/ItemLeafBuilder.i
+
+# target to preprocess a source file
+Data/ItemLeafBuilder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemLeafBuilder.cpp.i
+.PHONY : Data/ItemLeafBuilder.cpp.i
+
+Data/ItemLeafBuilder.s: Data/ItemLeafBuilder.cpp.s
+.PHONY : Data/ItemLeafBuilder.s
+
+# target to generate assembly for a file
+Data/ItemLeafBuilder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemLeafBuilder.cpp.s
+.PHONY : Data/ItemLeafBuilder.cpp.s
+
 Data/Slide.o: Data/Slide.cpp.o
 .PHONY : Data/Slide.o
 
@@ -495,6 +543,12 @@ help:
 	@echo "... Data/Item.o"
 	@echo "... Data/Item.i"
 	@echo "... Data/Item.s"
+	@echo "... Data/ItemBase.o"
+	@echo "... Data/ItemBase.i"
+	@echo "... Data/ItemBase.s"
+	@echo "... Data/ItemLeafBuilder.o"
+	@echo "... Data/ItemLeafBuilder.i"
+	@echo "... Data/ItemLeafBuilder.s"
 	@echo "... Data/Slide.o"
 	@echo "... Data/Slide.i"
 	@echo "... Data/Slide.s"

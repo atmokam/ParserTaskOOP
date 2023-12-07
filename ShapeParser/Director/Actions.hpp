@@ -9,13 +9,14 @@ class Slide; // forward declared as non-interfaces for now, will be changed to i
 class Item;
 
 #include "IAction.hpp"
+class ItemBase;
 
 
 class AddItem : public IAction {
-    std::shared_ptr<Item> item;
+    std::shared_ptr<ItemBase> item;
     size_t slideNumber;
 public:
-    AddItem(const std::shared_ptr<Item>& item, size_t slideNumber);
+    AddItem(const std::shared_ptr<ItemBase>& item, size_t slideNumber);
     std::shared_ptr<IAction> execute(std::shared_ptr<IDocument>& document) override; 
 };
 
@@ -28,10 +29,10 @@ public:
 };
 
 class RemoveItem : public IAction {
-    std::shared_ptr<Item> item;
+    std::shared_ptr<ItemBase> item;
     size_t slideNumber;
 public:
-    RemoveItem(const std::shared_ptr<Item>& item, size_t slideNumber);
+    RemoveItem(const std::shared_ptr<ItemBase>& item, size_t slideNumber);
     std::shared_ptr<IAction> execute(std::shared_ptr<IDocument>& document) override; 
 };
 
@@ -44,10 +45,10 @@ public:
 };
 
 class ChangeItem : public IAction {
-    std::shared_ptr<Item> item;
+    std::shared_ptr<ItemBase> item;
     size_t slideNumber;
 public:
-    ChangeItem(const std::shared_ptr<Item>& item, size_t slideNumber);
+    ChangeItem(const std::shared_ptr<ItemBase>& item, size_t slideNumber);
     std::shared_ptr<IAction> execute(std::shared_ptr<IDocument>& document) override; 
 };
 

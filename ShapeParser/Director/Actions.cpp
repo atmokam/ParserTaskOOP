@@ -6,10 +6,11 @@
 #include "Serialization/Converter.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Data/Slide.hpp"
+#include "Data/ItemBase.hpp"
 
 
 
-AddItem::AddItem(const std::shared_ptr<Item>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}
+AddItem::AddItem(const std::shared_ptr<ItemBase>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}
 
 std::shared_ptr<IAction> AddItem::execute(std::shared_ptr<IDocument>& document) {
     document->getSlide(slideNumber)->addItem(item);  
@@ -24,7 +25,7 @@ std::shared_ptr<IAction> AddSlide::execute(std::shared_ptr<IDocument>& document)
     return std::make_shared<RemoveSlide>(slide, slideNumber);
 }
 
-RemoveItem::RemoveItem(const std::shared_ptr<Item>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}
+RemoveItem::RemoveItem(const std::shared_ptr<ItemBase>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}
 
 std::shared_ptr<IAction> RemoveItem::execute(std::shared_ptr<IDocument>& document) {
     document->getSlide(slideNumber)->removeItem(item->getID());
@@ -38,10 +39,10 @@ std::shared_ptr<IAction> RemoveSlide::execute(std::shared_ptr<IDocument>& docume
     return std::make_shared<AddSlide>(slide, slideNumber);
 }
 
-ChangeItem::ChangeItem(const std::shared_ptr<Item>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}   
+ChangeItem::ChangeItem(const std::shared_ptr<ItemBase>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}   
 
 std::shared_ptr<IAction> ChangeItem::execute(std::shared_ptr<IDocument>& document) {
-    std::shared_ptr<Item> oldItem = document->getSlide(slideNumber)->getItem(item->getID()); // item has the same id number
+    std::shared_ptr<ItemBase> oldItem = document->getSlide(slideNumber)->getItem(item->getID()); // item has the same id number
     document->getSlide(slideNumber)->swapItems(item->getID(), item);
     return std::make_shared<ChangeItem>(oldItem, slideNumber);
 }

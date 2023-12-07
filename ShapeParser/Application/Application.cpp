@@ -1,3 +1,5 @@
+#include <fstream>
+#include <iostream>
 #include "Application.hpp"
 #include "CLI/Controller.hpp"
 #include "Director/Director.hpp" 
@@ -6,16 +8,19 @@
 #include "Data/Document.hpp"
 
 
-Application::Application() {
+Application::Application() 
+{
     buildApplication();
 }
 
-Application& Application::getInstance() {
+Application& Application::getInstance() 
+{
     static Application instance;
     return instance;
 }
 
-void Application::run(int count, char* args[]) {
+void Application::run(int count, char* args[]) 
+{
 
     director = std::make_shared<Director>();
     document = std::make_shared<Document>();
@@ -26,29 +31,34 @@ void Application::run(int count, char* args[]) {
     controller->runProgram();
 }
 
-void Application::buildApplication() {
+void Application::buildApplication() 
+{
     
     // setting up gui, probably
 }
 
-void Application::callExit() {
+void Application::callExit() 
+{
     exitCalled = true;
 }
 
-bool Application::isExitCalled() const {
+bool Application::isExitCalled() const 
+{
     return exitCalled;
 }
 
-std::shared_ptr<IDirector> Application::getDirector() {
+std::shared_ptr<IDirector> Application::getDirector() 
+{
     return director;
 }
 
-std::shared_ptr<IDocument> Application::getDocument() {
+std::shared_ptr<IDocument> Application::getDocument() 
+{
     return document;
 }
 
-std::ifstream Application::buildStream(int count, char* args[]) {
-   
+std::ifstream Application::buildStream(int count, char* args[]) 
+{
     std::ifstream stream;
     if(args[1] == nullptr)
         return stream;

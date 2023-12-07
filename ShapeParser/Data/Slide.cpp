@@ -3,65 +3,43 @@
 #include "Slide.hpp"
 #include "Item.hpp"
 
-
-SlideContainer Slide::getItems() const {
-    return items;
+void Slide::addItem(std::shared_ptr<ItemBase> item) {
+    items.addItem(item);
 }
 
-void Slide::addItem(std::shared_ptr<Item> item) {
-    items[item->getID()] = item;
-}
-
-void Slide::removeItem(int id) {
-    items.erase(id);
-}
-
-std::shared_ptr<Item> Slide::getItem(int id) const {
-    if(items.find(id) == items.end()){
+std::shared_ptr<ItemBase> Slide::getItem(int id) const {
+    if(std::find(items.cbegin(), items.cend(), id) == items.cend()){
         std::cout << "Item with id " + std::to_string(id) + " does not exist" << std::endl;
         return nullptr;
     }
-    return items.at(id);
+    return items.getItem(id);
 }
 
 Slide::Slide(std::shared_ptr<Slide> slide) { 
-    items = slide->getItems();
-    maximumID = slide->getMaximumID();
+    items = slide->items;
+} ////
+
+void Slide::removeItem(int id) {
+    items.removeItem(id);
 }
 
-void Slide::setMaximumID(size_t id) {
-    maximumID = id;
+void Slide::swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem) {
+    items.swapItems(idOfInitialItem, newItem);  
 }
 
-size_t Slide::getMaximumID() const {
-    return maximumID;
-}
 
-void Slide::incrementMaximumID() {
-    ++maximumID;
-}
-
-ID Slide::generateID() {
-    incrementMaximumID();
-    return getMaximumID();
-}
-
-void Slide::swapItems(int idOfInitialItem, std::shared_ptr<Item>& newItem) {
-    std::swap(items[idOfInitialItem], newItem);
-}
-
-SlideContainer::iterator Slide::begin() {
+std::unordered_map<ID, std::shared_ptr<ItemBase>>::iterator Slide::begin() {
     return items.begin();
 }
 
-SlideContainer::const_iterator Slide::cbegin() const {
+std::unordered_map<ID, std::shared_ptr<ItemBase>>::const_iterator Slide::cbegin() const {
     return items.cbegin();
 }
 
-SlideContainer::iterator Slide::end() {
+std::unordered_map<ID, std::shared_ptr<ItemBase>>::iterator Slide::end() {
     return items.end();
 }
 
-SlideContainer::const_iterator Slide::cend() const {
+std::unordered_map<ID, std::shared_ptr<ItemBase>>::const_iterator Slide::cend() const {
     return items.cend();
 }

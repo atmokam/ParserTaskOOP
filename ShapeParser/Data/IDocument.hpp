@@ -8,8 +8,6 @@
 
 class Slide;
 
-using DocumentContainer = std::vector<std::shared_ptr<Slide>>;
-
 class IDocument {
 public:
 
@@ -17,10 +15,10 @@ public:
     virtual void removeSlide(size_t number) = 0;
     virtual size_t size() const = 0;
 
-    virtual DocumentContainer::iterator begin()  = 0;
-    virtual DocumentContainer::const_iterator cbegin() const = 0;
-    virtual DocumentContainer::iterator end()  = 0;
-    virtual DocumentContainer::const_iterator cend() const = 0;
+    virtual std::vector<std::shared_ptr<Slide>>::iterator begin()  = 0;
+    virtual std::vector<std::shared_ptr<Slide>>::const_iterator cbegin() const = 0;
+    virtual std::vector<std::shared_ptr<Slide>>::iterator end()  = 0;
+    virtual std::vector<std::shared_ptr<Slide>>::const_iterator cend() const = 0;
 
 
     virtual std::shared_ptr<Slide> getSlide(size_t number) const = 0;

@@ -5,36 +5,35 @@
 #include <memory>
 
 
-#include "ISlide.hpp"
+#include "ItemBase.hpp"
 
-class Item;
+class Slide {
+    ItemGroup items;
 
-class Slide : public ISlide {
-    SlideContainer items;
-    size_t maximumID = 0;
-    SlideContainer getItems() const; 
 
 public:
     Slide() = default;
 
     // generateID is static method, what will happen if I override it and always return 1?
-    ID generateID() override;
 
     // [TK] those function doesn't look like Interface methoids, why are they here?
-    std::shared_ptr<Item> getItem(int id) const override;
-    size_t getMaximumID() const  override;
-    void setMaximumID(size_t id) override;
-    void incrementMaximumID() override;
+    std::shared_ptr<ItemBase> getItem(int id) const;
+
+
+    // size_t getMaximumID() const ;
+    // void setMaximumID(size_t id);
+    // void incrementMaximumID();
     
-    void addItem(std::shared_ptr<Item> item) override;
-    void removeItem(int id) override;
-    void swapItems(int idOfInitialItem, std::shared_ptr<Item>& newItem) override;
+    void addItem(std::shared_ptr<ItemBase> item);
+    void removeItem(int id);
+    void swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem);
 
-    SlideContainer::iterator begin() override;
-    SlideContainer::const_iterator cbegin() const override;
+    // iterators
+    std::unordered_map<ID, std::shared_ptr<ItemBase>>::iterator begin();
+    std::unordered_map<ID, std::shared_ptr<ItemBase>>::const_iterator cbegin() const;
 
-    SlideContainer::iterator end() override;
-    SlideContainer::const_iterator cend() const override;
+    std::unordered_map<ID, std::shared_ptr<ItemBase>>::iterator end();
+    std::unordered_map<ID, std::shared_ptr<ItemBase>>::const_iterator cend() const;
 
 
     Slide(std::shared_ptr<Slide> slide);

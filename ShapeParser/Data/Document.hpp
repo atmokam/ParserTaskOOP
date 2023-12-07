@@ -26,7 +26,6 @@ public:
     std::vector<std::shared_ptr<Slide>>::const_iterator cend() const;
 
 
-    // [TK] what is number, Slide ID or index?
     std::shared_ptr<Slide> getSlide(size_t index) const;
 };
 

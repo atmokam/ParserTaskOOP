@@ -1,7 +1,9 @@
-Personal notes to remember what things have been added or changed in the code
+# Note:
 
-"/usr/include/x86_64-linux-gnu/qt6/**"
+After doing a lot of thinking I decided to store items in an itemgroup, this way:
+unordered_map<ID, ItemBase*> items;
 
 
 Valgrind checking command:
 valgrind --leak-check=full   --show-leak-kinds=all  --track-origins=yes  --verbose  --log-file=valgrind-out.txt   ./PowerPointProject -filename ../TextFiles/text.txt
+"/usr/include/x86_64-linux-gnu/qt6/**"

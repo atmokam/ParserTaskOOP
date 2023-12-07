@@ -5,6 +5,10 @@
 
 
 void Document::addSlide(std::shared_ptr<Slide> slide, size_t number) {
+    if(number == -1){
+        slides.push_back(slide);
+        return;
+    }
     auto it = slides.begin();
     std::advance(it, number);
     slides.insert(it, slide);

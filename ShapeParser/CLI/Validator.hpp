@@ -6,6 +6,7 @@
 #include <memory>
 #include <unordered_set>
 #include <unordered_map>
+#include <tuple>
 
 
 class Command;
@@ -13,47 +14,31 @@ class Command;
 
 class Validator {
 
-    static std::unordered_set<std::string> commands ;
-    static std::unordered_map<std::string, std::vector<std::string>> validOperands;
-    static std::unordered_set<std::string> shapes;
-    static std::unordered_set<std::string> styles;
+    std::unordered_map<std::string, std::unordered_map<std::string, int>> valids;
+    std::unordered_set<std::string> shapes;
+    std::unordered_set<std::string> styles;
 
-    // quantity checking
-    static std::unordered_map<std::string, size_t> addValidOperands;
-    static std::unordered_map<std::string, size_t> removeValidOperands;
-    static std::unordered_map<std::string, size_t> changeValidOperands;
-    static std::unordered_map<std::string, size_t> displayValidOperands;    
-    static std::unordered_map<std::string, size_t> saveValidOperands;
-    static std::unordered_map<std::string, size_t> loadValidOperands;
-
-    static bool checkOperandQuantity(std::unordered_map<std::string, std::vector<std::string>> commandOperands, std::unordered_map<std::string, size_t> validOperands);
+    bool checkOperandQuantity(const std::shared_ptr<Command>& commandToBeChecked);
+    std::unordered_map<std::string, std::vector<std::string>> mandatoryOperands;
     
-    static std::unordered_set<std::string> addShapeMandatoryOperands;
-    static std::unordered_set<std::string> addSlideMandatoryOperands;
-    static std::unordered_set<std::string> removeIDMandatoryOperands;
-    static std::unordered_set<std::string> removeSlideMandatoryOperands;
-    static std::unordered_set<std::string> changeMandatoryOperands;
-    static std::unordered_set<std::string> displayMandatoryOperands;
-    static std::unordered_set<std::string> saveMandatoryOperands;
-    static std::unordered_set<std::string> loadMandatoryOperands;
-    
-    static bool checkMandatoryOperands(std::unordered_map<std::string, std::vector<std::string>> commandOperands, std::unordered_set<std::string> validOperands);
+    bool checkMandatoryOperands(const std::shared_ptr<Command>& commandToBeChecked);
 
 
-    static bool isID(const std::string& inputToBeChecked);
-    static bool isDouble(const std::string& inputToBeChecked);
-    static bool isHex(const std::string& inputToBeChecked);
-    static bool isInteger(const std::string& inputToBeChecked);
-    static bool isPath(const std::string& inputToBeChecked);
-    static bool isFilename(const std::string& inputToBeChecked);
-    static bool isStyle(const std::string& inputToBeChecked);
+    bool isID(const std::string& inputToBeChecked);
+    bool isDouble(const std::string& inputToBeChecked);
+    bool isHex(const std::string& inputToBeChecked);
+    bool isInteger(const std::string& inputToBeChecked);
+    bool isPath(const std::string& inputToBeChecked);
+    bool isFilename(const std::string& inputToBeChecked);
+    bool isStyle(const std::string& inputToBeChecked);
 
 
 public:
-    static bool isName(const std::string& inputToBeChecked);
-    static bool isOperand(const std::string& inputToBeChecked, const std::string& commandName);
-    static bool isValue(const std::string& inputToBeChecked, const std::string& operandName);
-    static bool validateCommand(const std::shared_ptr<Command>& commandToBeChecked);
+    Validator();
+    bool isName(const std::string& inputToBeChecked);
+    bool isOperand(const std::string& inputToBeChecked, const std::string& commandName);
+    bool isValue(const std::string& inputToBeChecked, const std::string& operandName);
+    bool validateCommand(const std::shared_ptr<Command>& commandToBeChecked);
 };
 
 

@@ -4,137 +4,108 @@
 #include "Command.hpp"
 
 
-// general checking
 
-std::unordered_map<std::string, std::vector<std::string>> Validator::validOperands = {
-        {"add", {"-name", "-pos", "-lcolor", "-fcolor", "-w", "-h", "-slide", "-lwidth", "-lstyle"}},
-        {"remove", {"-id", "-slide"}},
-        {"change", {"-id", "-name", "-pos", "-lcolor", "-fcolor", "-w", "-h", "-lwidth", "-lstyle"}},
-        {"display", {"-id"}},
+// operand quantity checking: 0 means no value, -1 means any number of values
+
+Validator::Validator(){
+    valids = {
+        {"add", {{"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-w", 1}, {"-h", 1}, {"-slide", 0}, {"-lwidth", 1}, {"-lstyle", 1}}},
+        {"remove", {{"-id", 1}, {"-slide", 0}}},
+        {"change", {{"-id", 1}, {"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-w", 1}, {"-h", 1},  {"-lwidth", 1}, {"-lstyle", 1}}},
+        {"display", {{"-id", 1}}},
         {"list", {}},
-        {"save", {"-path", "-filename"}},
-        {"load", {"-path"}}, 
+        {"save", {{"-path", 1}, {"-filename", 1}}},
+        {"load", {{"-path", 1}}}, 
         {"next", {}}, 
         {"prev", {}},
         {"undo", {}},
         {"redo", {}},
         {"exit", {}}
     };
-// list of shapes should be obtained from the shape library
-std::unordered_set<std::string> Validator::shapes = {
+
+    mandatoryOperands = {
+        {"addSlide", {"-slide"}},
+        {"addItem", {"-name", "-pos", "-w", "-h", "-lwidth", "-lstyle"}},
+        {"removeSlide", {"-slide"}},
+        {"removeItem", {"-id"}},
+        {"changeItem", {"-id"}},
+        {"save", {"-path", "-filename"}},
+        {"load", {"-path"}}
+    };
+
+    shapes = {
         "trapezoid", "rectangle", "line", "triangle", "ellipse"
     };
 
-std::unordered_set<std::string> Validator::styles = {
-    "solid", "dashed", "dotted"
+    styles = {
+        "solid", "dashed", "dotted"
     };
 
 
+}
+
+// list of shapes should be obtained from the shape library
+// TODO: add list of shapes to the shape library
 
 
-// operand quantity checking: 0 means no value, -1 means any number of values
-std::unordered_map<std::string, size_t> Validator::addValidOperands = {
-        {"-name", 1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-pos", -1}, {"-w", 1}, {"-h", 1}, {"-slide", 0}, {"-lwidth", 1}, {"-lstyle", 1}
-    };
-
-std::unordered_map<std::string, size_t> Validator::removeValidOperands = {
-        {"-id", 1}, {"-slide", 0}
-    };
-
-std::unordered_map<std::string, size_t> Validator::changeValidOperands = {
-        {"-id", 1}, {"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-w", 1}, {"-h", 1}
-    };
-
-std::unordered_map<std::string, size_t> Validator::displayValidOperands = {
-        {"-id", 1} 
-    };
-
-std::unordered_map<std::string, size_t> Validator::saveValidOperands = {
-        {"-path", 1},
-        {"-filename", 1}
-    };
-
-std::unordered_map<std::string, size_t> Validator::loadValidOperands = {
-        {"-path", 1}
-    };
+bool Validator::validateCommand(const std::shared_ptr<Command>& commandToBeChecked) 
+{ 
+    if (!checkOperandQuantity(commandToBeChecked) || !checkMandatoryOperands(commandToBeChecked)) 
+    {
+        return false;
+    }
+    return true;
+}
 
 
-
-// mandatory operand checking
-std::unordered_set<std::string> Validator::addShapeMandatoryOperands = {
-        "-name", "-pos", "-w", "-h"
-    };
-
-std::unordered_set<std::string> Validator::addSlideMandatoryOperands = {
-        "-slide"
-    };
-
-std::unordered_set<std::string> Validator::removeIDMandatoryOperands = {
-        "-id"
-    };
-
-std::unordered_set<std::string> Validator::removeSlideMandatoryOperands = {
-        "-slide"
-    };
-
-std::unordered_set<std::string> Validator::changeMandatoryOperands = {
-        "-id"
-    };
-
-std::unordered_set<std::string> Validator::saveMandatoryOperands = {
-        "-path", "-filename"
-    };
-
-std::unordered_set<std::string> Validator::loadMandatoryOperands = {
-        "-path"
-    };
-
-
-
-
-bool Validator::validateCommand(const std::shared_ptr<Command>& commandToBeChecked) { 
+bool Validator::checkOperandQuantity(const std::shared_ptr<Command>& commandToBeChecked)
+{
     auto commandName = commandToBeChecked->getName();
     auto commandOperands = commandToBeChecked->getOperands();
+    
+    auto values = valids.at(commandName);
 
-// [TK] very bad style, commands should not be duplicated here, all needed info should be taken from single place i.e. Validator::validOperands, dynamically, whithout such hardcodes 
-// I have to think how I can check the quanity of operands for each command, because it is different for each command
-    if (commandName == "add") {
-        return checkOperandQuantity(commandOperands, addValidOperands) && (checkMandatoryOperands(commandOperands,  addShapeMandatoryOperands) || checkMandatoryOperands(commandOperands, addSlideMandatoryOperands));
-
-    } else if (commandName == "remove") {
-        return checkOperandQuantity(commandOperands, removeValidOperands) && (checkMandatoryOperands(commandOperands, removeIDMandatoryOperands) || checkMandatoryOperands(commandOperands, removeSlideMandatoryOperands));
-
-    } else if (commandName == "change") {
-        return checkOperandQuantity(commandOperands, changeValidOperands) && checkMandatoryOperands(commandOperands, changeMandatoryOperands);
-
-    } else if (commandName == "display") {
-        return checkOperandQuantity(commandOperands, displayValidOperands) ;
-
-    } else if (commandName == "save") {
-        return checkOperandQuantity(commandOperands, saveValidOperands) && checkMandatoryOperands(commandOperands, saveMandatoryOperands);
-
-    } else if (commandName == "load") {
-        return checkOperandQuantity(commandOperands, loadValidOperands) && checkMandatoryOperands(commandOperands, loadMandatoryOperands);
-    }
-
-    return true;
-}
-
-bool Validator::checkOperandQuantity(std::unordered_map<std::string, std::vector<std::string>> commandOperands, std::unordered_map<std::string, size_t> validOperands) {
-    for(const auto& [key, value] : commandOperands) {
-        if (validOperands.at(key) != -1 && validOperands.at(key) != value.size()) {
+    for(const auto& [key, value] : commandOperands) 
+    {
+        auto validOperand = values.find(key);
+        if(validOperand == values.end()) 
+        {
+            return false;
+        }
+        if (validOperand != values.end() && validOperand->second != -1 && validOperand->second != value.size()) 
+        {
             return false;
         }
     }
+
     return true;
 }
 
-bool Validator::checkMandatoryOperands(std::unordered_map<std::string, std::vector<std::string>> commandOperands, std::unordered_set<std::string> validOperands) {
-    for(const auto& key: validOperands){
-        if (commandOperands.find(key) == commandOperands.end()) {
+
+
+bool Validator::checkMandatoryOperands(const std::shared_ptr<Command>& commandToBeChecked) 
+{
+    auto commandName = commandToBeChecked->getName();
+    auto commandOperands = commandToBeChecked->getOperands();
+    std::vector<std::string> mandatory;
+    
+
+    if (commandName == "addSlide") {
+        mandatory = mandatoryOperands.at("addSlide");
+    } else if (commandName == "addItem") {
+        mandatory = mandatoryOperands.at("addItem");
+    } else if (commandName == "removeSlide") {
+        mandatory = mandatoryOperands.at("removeSlide");
+    } else if (commandName == "removeItem") {
+        mandatory = mandatoryOperands.at("removeItem");
+    }
+
+    for (const auto& operand : mandatory) {
+        if (commandOperands.find(operand) == commandOperands.end()) {
             return false;
         }
     }
+
     return true;
 }
 
@@ -143,16 +114,19 @@ bool Validator::checkMandatoryOperands(std::unordered_map<std::string, std::vect
 
 
 
-bool Validator::isName(const std::string& inputToBeChecked) {
-    return validOperands.find(inputToBeChecked) != validOperands.end();
+bool Validator::isName(const std::string& inputToBeChecked) 
+{
+    return valids.find(inputToBeChecked) != valids.end();
 }
 
-bool Validator::isOperand(const std::string& inputToBeChecked, const std::string& commandName) {
-    auto validOperandsForCommand = validOperands[commandName];
-    return std::find(validOperandsForCommand.begin(), validOperandsForCommand.end(), inputToBeChecked) != validOperandsForCommand.end();
+bool Validator::isOperand(const std::string& inputToBeChecked, const std::string& commandName) 
+{
+    auto validsForCommand = valids.at(commandName);
+    return validsForCommand.find(inputToBeChecked) != validsForCommand.end();
 }
 
-bool Validator::isDouble(const std::string& inputToBeChecked) {
+bool Validator::isDouble(const std::string& inputToBeChecked) 
+{
     try {
         double number = std::stod(inputToBeChecked);
         return true;
@@ -161,31 +135,37 @@ bool Validator::isDouble(const std::string& inputToBeChecked) {
     }
 }
 
-bool Validator::isHex(const std::string& inputToBeChecked) {
-    return inputToBeChecked.size() == 7 && inputToBeChecked[0] == '#' && std::all_of(inputToBeChecked.begin() + 1, inputToBeChecked.end(), isxdigit);
+bool Validator::isHex(const std::string& inputToBeChecked) 
+{
+    return inputToBeChecked.size() == 7 && inputToBeChecked[0] == '#' &&
+     std::all_of(inputToBeChecked.begin() + 1, inputToBeChecked.end(), isxdigit);
 }
 
-bool Validator::isInteger(const std::string& inputToBeChecked) {
+bool Validator::isInteger(const std::string& inputToBeChecked) 
+{
     return std::all_of(inputToBeChecked.begin(), inputToBeChecked.end(), isdigit);
 }
 
-bool Validator::isPath(const std::string& inputToBeChecked) { 
+bool Validator::isPath(const std::string& inputToBeChecked) 
+{ 
     std::ifstream file(inputToBeChecked);
     return file.good();
 }
 
-bool Validator::isFilename(const std::string& inputToBeChecked) {
+bool Validator::isFilename(const std::string& inputToBeChecked) 
+{
     return std::all_of(inputToBeChecked.begin(), inputToBeChecked.end(), isalnum);
 }
 
-bool Validator::isStyle(const std::string& inputToBeChecked) {
+bool Validator::isStyle(const std::string& inputToBeChecked) 
+{
     return std::find(styles.begin(), styles.end(), inputToBeChecked) != styles.end();
 }
 
 
 
-bool Validator::isValue(const std::string& inputToBeChecked, const std::string& operandName) {
-
+bool Validator::isValue(const std::string& inputToBeChecked, const std::string& operandName) 
+{
     if (operandName == "-name") {
         return std::find(shapes.begin(), shapes.end(), inputToBeChecked) != shapes.end();
 

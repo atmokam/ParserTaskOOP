@@ -97,6 +97,7 @@ bool Validator::validateCommand(const std::shared_ptr<Command>& commandToBeCheck
     auto commandOperands = commandToBeChecked->getOperands();
 
 // [TK] very bad style, commands should not be duplicated here, all needed info should be taken from single place i.e. Validator::validOperands, dynamically, whithout such hardcodes 
+// I have to think how I can check the quanity of operands for each command, because it is different for each command
     if (commandName == "add") {
         return checkOperandQuantity(commandOperands, addValidOperands) && (checkMandatoryOperands(commandOperands,  addShapeMandatoryOperands) || checkMandatoryOperands(commandOperands, addSlideMandatoryOperands));
 

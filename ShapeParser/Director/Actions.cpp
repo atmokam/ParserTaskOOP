@@ -13,7 +13,6 @@ AddItem::AddItem(const std::shared_ptr<ItemBase>& item, size_t slideNumber) : it
 std::shared_ptr<IAction> AddItem::execute(std::shared_ptr<IDocument>& document) 
 {
     document->getSlide(slideNumber)->addItem(item);  
-    std::cout << "action item with id: " << item->getID() << std::endl;
     return std::make_shared<RemoveItem>(item, slideNumber);
     
 }

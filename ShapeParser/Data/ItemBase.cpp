@@ -2,12 +2,6 @@
 #include <algorithm>
 
 
-// ItemBase
-
-
-
-
-
 // Leaf
 ItemLeaf::ItemLeaf(Type type, Geometry& geometry, Attributes& attributes, ID id)
 : type(type), geometry(geometry), attributes(attributes), id(id) {}
@@ -26,9 +20,9 @@ Geometry ItemLeaf::getGeometry() const
     return geometry;
 }
 
-Attributes ItemLeaf::getAttributes() const 
+std::vector<Attributes> ItemLeaf::getAttributes() const 
 {
-    return attributes;
+    return {attributes};
 }
 
 void ItemLeaf::setType(Type type) 
@@ -201,6 +195,16 @@ void ItemGroup::setAttributes(Attributes& attributes)
         item.second->setAttributes(attributes);
 
     }
+}
+
+std::vector<Attributes> ItemGroup::getAttributes() const 
+{
+    std::vector<Attributes> attributes;
+    for(auto& item : items)
+    {
+        attributes.push_back(item.second->getAttributes()[0]);
+    }
+    return attributes;
 }
 
 

@@ -8,9 +8,16 @@
 #include "ItemAttributes.hpp"
 
 
+// in both ItemLeaf and ItemGroup, we need to have a parent pointer, so that when we select
+// an id of ItemBase, it checks whether it is has a parent, and if it does, it selects the the parent
+// that's how selection operation works in Powerpoint (as far as I have seen)
+
+// I think a selection functionality might be needed 
+
+
 class ItemGroup;
 
-class ItemBase {
+class ItemBase {    
 public:
     virtual ID getID() const = 0;
     virtual void setID(ID id) = 0;
@@ -18,14 +25,13 @@ public:
     virtual void setParent(std::shared_ptr<ItemGroup> parent) = 0;
     virtual Geometry getGeometry() const = 0;
     virtual void setAttributes(Attributes& attributes) = 0;
+    virtual std::vector<Attributes> getAttributes() const = 0;
     virtual void setDifferenceGeometry(Geometry& difference) = 0;
     virtual void setGeometry(Geometry& geometry) = 0;
     virtual ~ItemBase() = default;
-};
+}; // I remember this was supposed to be an abstract class 
 
-// in both leaf and group, we need to have a parent pointer, so that when we select
-// an id from itemgroup, it checks whether it is has a parent, returns the the parent
-// that's how selection operation works in Powerpoint (I think)
+
 
 
 class ItemLeaf : public ItemBase {
@@ -41,10 +47,10 @@ public:
     ItemLeaf(Type type, Geometry& geometry, Attributes& attributes, ID id);
     ItemLeaf(std::shared_ptr<ItemLeaf> item);
     Type getType() const;
-    Attributes getAttributes() const;
     
     void setType(Type type);
 
+    std::vector<Attributes> getAttributes() const override;
     void setAttributes(Attributes& attributes) override;
     void setDifferenceGeometry(Geometry& difference) override;
     Geometry getGeometry() const override;
@@ -80,6 +86,7 @@ public:
     std::unordered_map<ID, std::shared_ptr<ItemBase>>::const_iterator cend() const;
 
     void setAttributes(Attributes& attributes) override;
+    std::vector<Attributes> getAttributes() const override;
     Geometry getGeometry() const override;
     void setDifferenceGeometry(Geometry& difference) override;
     void setGeometry(Geometry& geometry) override;

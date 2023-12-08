@@ -19,6 +19,8 @@ void AddCommand::execute()
     
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
         std::shared_ptr<ItemLeaf> item = createItem();
+        std::cout << "Added item with id: " << item->getID() << std::endl;
+        std::cout << item->getType() << std::endl;
 
         application.getDirector()->doAction(std::make_shared<AddItem>(item, currentSlideIndex));
     }

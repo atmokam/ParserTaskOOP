@@ -3,11 +3,14 @@
 #include "Slide.hpp"
 
 
-void Slide::addItem(std::shared_ptr<ItemBase> item) {
+Slide::Slide() : items(std::make_shared<ItemGroup>()) {}
+
+void Slide::addItem(std::shared_ptr<ItemBase>& item) {
+    std::cout << "Slide::addItem" << std::endl;
     items->addItem(item);
 }
 
-std::shared_ptr<ItemBase> Slide::getItem(int id) const {  // only returns leaf for now
+std::shared_ptr<ItemBase> Slide::getItem(int id) const {  // only leaf for now
 auto item = items->getItem(id);
     if(item == nullptr){
         std::cout << "Item with id " + std::to_string(id) + " does not exist" << std::endl;
@@ -18,7 +21,7 @@ auto item = items->getItem(id);
 
 Slide::Slide(std::shared_ptr<Slide> slide) { 
     items = slide->items;
-} ////
+} 
 
 void Slide::removeItem(int id) {
     items->removeItem(id);

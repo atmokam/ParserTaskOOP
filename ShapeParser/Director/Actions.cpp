@@ -10,22 +10,26 @@
 
 AddItem::AddItem(const std::shared_ptr<ItemBase>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}
 
-std::shared_ptr<IAction> AddItem::execute(std::shared_ptr<IDocument>& document) {
+std::shared_ptr<IAction> AddItem::execute(std::shared_ptr<IDocument>& document) 
+{
     document->getSlide(slideNumber)->addItem(item);  
+    std::cout << "action item with id: " << item->getID() << std::endl;
     return std::make_shared<RemoveItem>(item, slideNumber);
     
 }
 
 AddSlide::AddSlide(const std::shared_ptr<Slide>& slide, size_t slideNumber) : slide(slide), slideNumber(slideNumber) {}
 
-std::shared_ptr<IAction> AddSlide::execute(std::shared_ptr<IDocument>& document) {
+std::shared_ptr<IAction> AddSlide::execute(std::shared_ptr<IDocument>& document) 
+{
     document->addSlide(slide, slideNumber);
     return std::make_shared<RemoveSlide>(slide, slideNumber);
 }
 
 RemoveItem::RemoveItem(const std::shared_ptr<ItemBase>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}
 
-std::shared_ptr<IAction> RemoveItem::execute(std::shared_ptr<IDocument>& document) {
+std::shared_ptr<IAction> RemoveItem::execute(std::shared_ptr<IDocument>& document) 
+{
     document->getSlide(slideNumber)->removeItem(item->getID());
     return std::make_shared<AddItem>(item, slideNumber);
 }

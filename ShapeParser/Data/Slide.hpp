@@ -12,7 +12,7 @@ class Slide {
 
 
 public:
-    Slide() = default;
+    Slide();
 
     // generateID is static method, what will happen if I override it and always return 1?
 
@@ -24,7 +24,7 @@ public:
     // void setMaximumID(size_t id);
     // void incrementMaximumID();
     
-    void addItem(std::shared_ptr<ItemBase> item);
+    void addItem(std::shared_ptr<ItemBase>& item);
     void removeItem(int id);
     void swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem);
 

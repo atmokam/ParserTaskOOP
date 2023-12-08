@@ -12,14 +12,14 @@ class ItemGroup;
 
 class ItemBase {
 public:
-    virtual ID getID() const {};
-    virtual void setID(ID id) {};
-    virtual std::shared_ptr<ItemGroup> getParent() const {};
-    virtual void setParent(std::shared_ptr<ItemGroup> parent) {};
-    virtual Geometry getGeometry() const {};
-    virtual void setAttributes(Attributes& attributes) {};
-    virtual void setDifferenceGeometry(Geometry& difference) {};
-    virtual void setGeometry(Geometry& geometry) {};
+    virtual ID getID() const = 0;
+    virtual void setID(ID id) = 0;
+    virtual std::shared_ptr<ItemGroup> getParent() const = 0;
+    virtual void setParent(std::shared_ptr<ItemGroup> parent) = 0;
+    virtual Geometry getGeometry() const = 0;
+    virtual void setAttributes(Attributes& attributes) = 0;
+    virtual void setDifferenceGeometry(Geometry& difference) = 0;
+    virtual void setGeometry(Geometry& geometry) = 0;
     virtual ~ItemBase() = default;
 };
 

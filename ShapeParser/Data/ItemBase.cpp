@@ -85,6 +85,7 @@ void ItemLeaf::setID(ID id)
 
 
 // Group
+
 ItemGroup::ItemGroup(std::unordered_map<ID, std::shared_ptr<ItemBase>>& items, Geometry& geometry)
 : items(items), geometry(geometry) {}
 
@@ -95,7 +96,7 @@ void ItemGroup::setItems(std::unordered_map<ID, std::shared_ptr<ItemBase>>& item
 
 void ItemGroup::addItem(std::shared_ptr<ItemBase> item) 
 {
-    items.at(item->getID()) = item;
+    items[item->getID()] = item;
 }
 
 void ItemGroup::removeItem(ID id) 

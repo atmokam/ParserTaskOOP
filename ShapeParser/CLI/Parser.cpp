@@ -48,13 +48,13 @@ std::string Parser::getToken()
 //     std::string token = getToken();
 //     while (!token.empty())
 //     {
-//         if((prevOperand != prevToken) && Validator::isOperand(token, commandNameFlag))
+//         if((prevOperand != prevToken) && validator.isOperand(token, commandNameFlag))
 //         {
 //             command->addOperandToOperands(token);
 //             prevOperand = token;
 //             prevToken = token;
 //         }
-//         else if(prevOperand != "" && Validator::isValue(token, prevOperand))
+//         else if(prevOperand != "" && validator.isValue(token, prevOperand))
 //         {
 //             command->addValueToOperands(token, prevOperand); 
 //             prevToken = token;
@@ -81,13 +81,14 @@ std::shared_ptr<Command> Parser::parse()
 {
     std::string token;
     std::shared_ptr<Command> command = nullptr;
+    Validator validator;
 
 
     while(inputStream >> token) 
     {  
         if(inputStream.peek() == '\n' || inputStream.peek() == EOF){
             processArgument(token, command);
-            if(!Validator::validateCommand(command)) {
+            if(!validator.validateCommand(command)) {
                 throw std::invalid_argument("Invalid command: " + command->getName());
             }
             return command;
@@ -96,8 +97,6 @@ std::shared_ptr<Command> Parser::parse()
         }
         
     }
-
-    
     return command;
     
 }
@@ -105,18 +104,19 @@ std::shared_ptr<Command> Parser::parse()
 
 
 void Parser::processArgument(std::string argument, std::shared_ptr<Command>& command){
-    if(commandNameFlag == "" && Validator::isName(argument)){
+    Validator validator;
+    if(commandNameFlag == "" && validator.isName(argument)){
             command = createCommand(argument);
             command->setName(argument);
             commandNameFlag = argument;
             prevToken = argument;
         }
-        else if(commandNameFlag != "" && (prevOperand != prevToken) && Validator::isOperand(argument, commandNameFlag)){
+        else if(commandNameFlag != "" && (prevOperand != prevToken) && validator.isOperand(argument, commandNameFlag)){
             command->addOperandToOperands(argument);
             prevOperand = argument;
             prevToken = argument;
         }
-        else if(commandNameFlag != "" && prevOperand != "" && Validator::isValue(argument, prevOperand) ){
+        else if(commandNameFlag != "" && prevOperand != "" && validator.isValue(argument, prevOperand) ){
             command->addValueToOperands(argument, prevOperand); 
             prevToken = argument;
         }

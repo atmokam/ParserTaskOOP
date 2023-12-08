@@ -20,9 +20,6 @@ void CLIController::runCommand(std::istream& input)
 {
     Parser oParser(input);
     std::shared_ptr<Command> pCmd = oParser.parse();
-
-    if(!Validator::validateCommand(pCmd)) 
-        throw std::invalid_argument("Invalid command: " + pCmd->getName());
     
     pCmd->execute();
 }

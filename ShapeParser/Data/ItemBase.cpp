@@ -20,9 +20,9 @@ Geometry ItemLeaf::getGeometry() const
     return geometry;
 }
 
-std::vector<Attributes> ItemLeaf::getAttributes() const 
+std::vector<std::pair<ID, Attributes>> ItemLeaf::getAttributes() const 
 {
-    return {attributes};
+    return {{id, attributes}};
 }
 
 void ItemLeaf::setType(Type type) 
@@ -188,6 +188,7 @@ void ItemGroup::setGeometry(Geometry& geometry)
 }
 
 
+// handle when there are no values(it should get the default)
 void ItemGroup::setAttributes(Attributes& attributes)
 {
     for(auto& item : items)
@@ -197,12 +198,12 @@ void ItemGroup::setAttributes(Attributes& attributes)
     }
 }
 
-std::vector<Attributes> ItemGroup::getAttributes() const 
+std::vector<std::pair<ID, Attributes>> ItemGroup::getAttributes() const 
 {
-    std::vector<Attributes> attributes;
+    std::vector<std::pair<ID, Attributes>> attributes;
     for(auto& item : items)
     {
-        attributes.push_back(item.second->getAttributes()[0]);
+        attributes.push_back({item.first, item.second->getAttributes()[0].second});
     }
     return attributes;
 }

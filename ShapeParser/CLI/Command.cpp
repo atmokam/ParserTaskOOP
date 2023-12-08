@@ -2,12 +2,10 @@
 #include <stdexcept>
 #include "Application/Application.hpp"
 #include "Data/Slide.hpp"
-#include "Data/ItemLeafBuilder.hpp"
 #include "Data/Document.hpp"
 #include "Director/Actions.hpp"
 #include "Director/Director.hpp"
 #include "Command.hpp"
-#include "Renderer/Renderer.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Serialization/Converter.hpp" 
 
@@ -35,40 +33,30 @@ void AddCommand::execute()
 
 std::shared_ptr<ItemLeaf> AddCommand::createItem() 
 {
+    Attributes attributes; Geometry geometry;
+    Converter converter;
 
-    ItemLeafBuilder builder;
+    Type type = Type{converter.convertToType(operands["-name"][0])};
 
+    geometry.setPosition(Position{converter.convertToPosition(operands["-pos"])});
+   
+    geometry.setWidth(converter.convertToDimention(operands["-w"][0]));
 
-    Type type = Type{Converter::convertToType(operands["-name"])};
-    builder.setType(type);
-
-    Position pos = Position{Converter::convertToPosition(operands["-pos"])};
-    builder.setPosition(pos);
-
-    Dimentions bounds = Dimentions{Converter::convertToDimentions(operands["-w"][0], operands["-h"][0])};
-    builder.setDimentions(bounds);
-    
-    Color color; LineDescriptor lineDescriptor;
     if(operands.find("-lcolor") != operands.end()){
-        color.hexLineColor = Converter::convertToColor(operands["-lcolor"][0]);
-        builder.setLineColor(color.hexLineColor);
+        attributes.setHexLineColor(converter.convertToColor(operands["-lcolor"][0]));
     }
     if (operands.find("-fcolor") != operands.end()){
-        color.hexFillColor = Converter::convertToColor(operands["-fcolor"][0]);
-        builder.setFillColor(color.hexFillColor);
+        attributes.setHexFillColor(converter.convertToColor(operands["-fcolor"][0]));
     }
     if (operands.find("-lwidth") != operands.end()){
-        lineDescriptor.width = std::stod(operands["-lwidth"][0]);
-        builder.setLineDescriptorWidth(lineDescriptor.width);
+        attributes.setLineWidth(std::stod(operands["-lwidth"][0]));
     }
     if (operands.find("-lstyle") != operands.end()){
-        lineDescriptor.type = Converter::convertToLineType(operands["-lstyle"][0]);
-        builder.setLineDescriptorStyle(lineDescriptor.type);
+        attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
     }
 
-    std::shared_ptr<ItemLeaf> item = builder.build();
     std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
-    item->setID(document->generateID());
+    std::shared_ptr<ItemLeaf> item = std::make_shared<ItemLeaf>(type, geometry, attributes, document->generateID());
     return item;
 
 }
@@ -101,28 +89,32 @@ void RemoveCommand::execute()
 
 void ChangeCommand::execute() 
 {
+    Converter converter;
     std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
-    std::shared_ptr<ItemLeaf> item = std::make_shared<ItemLeaf>(slide->getItem(std::stoi(operands["-id"][0])));
-    ItemLeafBuilder builder(item); // sets on item
+    std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
 
+    Attributes attributes; Geometry geometry;
     if(operands.find("-pos") != operands.end()){ 
-        builder.setPosition(Converter::convertToPosition(operands["-pos"]));
+        geometry.setPosition(converter.convertToPosition(operands["-pos"]));
     }
     if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end()){
-        builder.setDimentions(Dimentions{Converter::convertToDimentions(operands["-w"][0], operands["-h"][0])}); 
+        geometry.setWidth(converter.convertToDimention(operands["-w"][0])); 
+        geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
     }
     if(operands.find("-lcolor") != operands.end()){
-        builder.setLineColor(Converter::convertToColor(operands["-lcolor"][0]));
+        attributes.setHexLineColor(converter.convertToColor(operands["-lcolor"][0]));
     }
     if(operands.find("-fcolor") != operands.end()){
-        builder.setFillColor(Converter::convertToColor(operands["-fcolor"][0]));
+        attributes.setHexFillColor(converter.convertToColor(operands["-fcolor"][0]));
     }
     if(operands.find("-lwidth") != operands.end()){
-        builder.setLineDescriptorWidth(std::stod(operands["-lwidth"][0]));
+        attributes.setLineWidth(std::stod(operands["-lwidth"][0]));
     }
     if(operands.find("-lstyle") != operands.end()){
-        builder.setLineDescriptorStyle(Converter::convertToLineType(operands["-lstyle"][0]));
+        attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
     }
+    item->setAttributes(attributes);
+    item->setGeometry(geometry);
 
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
     application.getDirector()->doAction(std::make_shared<ChangeItem>(item, currentSlideIndex));
@@ -131,25 +123,25 @@ void ChangeCommand::execute()
 
 void SaveCommand::execute() 
 { 
-    SaveLoad serializer;
-    std::ofstream file;
+    // SaveLoad serializer;
+    // std::ofstream file;
 
-    file.open(operands["-path"][0] + operands["-filename"][0] + ".ppx");
-    if(!file.is_open()){
-        throw std::invalid_argument("Invalid path or filename");
-    }
+    // file.open(operands["-path"][0] + operands["-filename"][0] + ".ppx");
+    // if(!file.is_open()){
+    //     throw std::invalid_argument("Invalid path or filename");
+    // }
 
-    serializer.save(application.getDirector()->getDocument(), file);
+    // serializer.save(application.getDirector()->getDocument(), file);
 }
 
 void LoadCommand::execute() 
 { 
-    SaveLoad deserializer;
-    std::shared_ptr<IDocument> document = deserializer.load(operands["-path"][0]);
-    std::cout << "Loaded document with " << document->size() << " slides" << std::endl;
-    application.getDirector()->setDocument(document);
-    application.getDirector()->setCurrentSlideIndex(0);
-    application.getDirector()->clearUndoRedoStack();
+    // SaveLoad deserializer;
+    // std::shared_ptr<IDocument> document = deserializer.load(operands["-path"][0]);
+    // std::cout << "Loaded document with " << document->size() << " slides" << std::endl;
+    // application.getDirector()->setDocument(document);
+    // application.getDirector()->setCurrentSlideIndex(0);
+    // application.getDirector()->clearUndoRedoStack();
 }
 
 void DisplayCommand::execute() 

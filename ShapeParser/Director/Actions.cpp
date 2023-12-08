@@ -1,7 +1,5 @@
 #include "Actions.hpp"
 #include "Data/Document.hpp"
-#include "Data/Item.hpp"
-#include "Renderer/IRenderer.hpp"
 #include "Include/IDocument.hpp"
 #include "Serialization/Converter.hpp"
 #include "Serialization/SaveLoad.hpp"

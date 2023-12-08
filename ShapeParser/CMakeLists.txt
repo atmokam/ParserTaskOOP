@@ -19,14 +19,11 @@ add_executable(PowerPointProject
     Data/Slide.cpp 
     Program.cpp 
     CLI/Parser.cpp 
-    Data/Item.cpp 
     Data/Document.cpp 
     Serialization/Converter.cpp 
     CLI/Command.cpp 
     Serialization/SaveLoad.cpp 
     Director/Actions.cpp  
     Director/Director.cpp 
-    Renderer/Renderer.cpp
     Application/Application.cpp
-    Data/ItemLeafBuilder.cpp
     Data/ItemBase.cpp )

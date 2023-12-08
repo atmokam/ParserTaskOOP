@@ -8,7 +8,7 @@
 #include "ItemBase.hpp"
 
 class Slide {
-    ItemGroup items;
+    std::shared_ptr<ItemGroup> items;
 
 
 public:

@@ -8,19 +8,19 @@
 #include "Data/ItemAttributes.hpp"
 
 class Converter {
-    static std::unordered_map<std::string, Type> typeMap;
+    std::unordered_map<std::string, Type> typeMap;
 
 public:
-    static Position convertToPosition(const std::vector<std::string>& values);
-    static Position convertToPosition(const std::string& str, const char delimiter);
-    static Type convertToType(const std::vector<std::string>& values);
-    static Type convertToType(const std::string& value);
-    static ID convertToID(const std::vector<std::string>& values);
-    static ID convertToID(const std::string& values);
-    static Dimentions convertToDimentions(const std::string& width, const std::string& height);
-    static long convertToColor(const std::string& color);
-    static LineType convertToLineType(const std::string& lineType);
-    static LineDescriptor convertToLineDescriptor(const std::string& lineType, const std::string& lineWidth);
+    Converter();
+    Position convertToPosition(const std::vector<std::string>& values);
+    Position convertToPosition(const std::string& str, const char delimiter);
+    Type convertToType(const std::string& value);
+    ID convertToID(const std::string& values);
+    double convertToDimention(const std::string& value);
+    //Dimentions convertToDimentions(const std::string& width, const std::string& height);
+    long convertToColor(const std::string& color);
+    LineType convertToLineType(const std::string& lineType);
+    //LineDescriptor convertToLineDescriptor(const std::string& lineType, const std::string& lineWidth);
 };
 
 #endif

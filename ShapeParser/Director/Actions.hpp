@@ -5,7 +5,7 @@
 #include <memory>
 
 
-class Slide; // forward declared as non-interfaces for now, will be changed to interfaces later
+class Slide;
 class Item;
 
 #include "IAction.hpp"

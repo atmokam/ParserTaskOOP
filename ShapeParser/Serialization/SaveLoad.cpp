@@ -1,96 +1,95 @@
 #include "SaveLoad.hpp"
 #include "Data/Document.hpp"
 #include "Data/Slide.hpp"
-#include "Data/Item.hpp"
 #include "Converter.hpp"
 
 
-void SaveLoad::save(const std::shared_ptr<IDocument>& document, std::ostream& stream) {
-    size_t size = std::distance(document->cbegin(), document->cend());
+// void SaveLoad::save(const std::shared_ptr<IDocument>& document, std::ostream& stream) {
+//     size_t size = std::distance(document->cbegin(), document->cend());
 
-    for(size_t i = 0; i < size; ++i){
-        stream << "max_id:"  << document->getSlide(i)->getMaximumID() << std::endl;
-        serialize(stream, document->getSlide(i));
-    }
+//     for(size_t i = 0; i < size; ++i){
+//         stream << "max_id:"  << document->getSlide(i)->getMaximumID() << std::endl;
+//         serialize(stream, document->getSlide(i));
+//     }
 
-}
+// }
 
-void SaveLoad::serialize(std::ostream& stream, const std::shared_ptr<Slide>& slide) {
-    for(const auto& item : *slide) {
-        stream << "id:" << item.second->getID() << std::endl;
-        stream << ShapeType{item.second->getType()} << std::endl;
-        stream << item.second->getPosition() << std::endl;
-        stream << item.second->getDimentions() << std::endl;
-        stream << item.second->getColor() << std::endl;
-        stream << item.second->getLineDescriptor() << std::endl;
-        stream << std::endl;
-    }
-}
+// void SaveLoad::serialize(std::ostream& stream, const std::shared_ptr<Slide>& slide) {
+//     for(const auto& item : *slide) {
+//         stream << "id:" << item.second->getID() << std::endl;
+//         stream << ShapeType{item.second->getType()} << std::endl;
+//         stream << item.second->getPosition() << std::endl;
+//         stream << item.second->getDimentions() << std::endl;
+//         stream << item.second->getColor() << std::endl;
+//         stream << item.second->getLineDescriptor() << std::endl;
+//         stream << std::endl;
+//     }
+// }
 
-std::shared_ptr<IDocument> SaveLoad::load(const std::string& path) { 
-    std::ifstream file;
+// std::shared_ptr<IDocument> SaveLoad::load(const std::string& path) { 
+//     std::ifstream file;
 
-    file.open(path);
-    if(!file.is_open()){
-        throw std::invalid_argument("Invalid path or filename");
-    }
+//     file.open(path);
+//     if(!file.is_open()){
+//         throw std::invalid_argument("Invalid path or filename");
+//     }
 
-    return std::static_pointer_cast<IDocument>(deserialize(file)); 
+//     return std::static_pointer_cast<IDocument>(deserialize(file)); 
     
-} 
+// } 
 
 
-std::shared_ptr<IDocument> SaveLoad::deserialize(std::ifstream& file) {
-    Document document = Document();
+// std::shared_ptr<IDocument> SaveLoad::deserialize(std::ifstream& file) {
+//     Document document = Document();
 
-    std::string line; 
-    Position pos; Type type; Dimentions dimentions; Color color; ID id; LineDescriptor lineDescriptor;
-    while (std::getline(file, line))
-    {
-        std::istringstream is_line(line);
-        std::string key;
-        if (std::getline(is_line, key, ':'))
-        {
-            std::string value;
-            if (std::getline(is_line, value))
-            {
-                if(key == "id")               
-                    id = Converter::convertToID(value);
-                else if(key == "type")
-                    type = Converter::convertToType(value);
-                else if(key == "indices")
-                    pos = Converter::convertToPosition(value, ' '); 
-                else if(key == "width")
-                    dimentions.width = std::stod(value);
-                else if(key == "height")
-                    dimentions.height = std::stod(value);
-                else if(key == "line_color")
-                    color.hexLineColor = Converter::convertToColor(value);
-                else if(key == "fill_color")
-                    color.hexFillColor = Converter::convertToColor(value);
-                else if(key == "line_style")
-                    lineDescriptor.type = Converter::convertToLineType(value);
-                else if(key == "line_width"){
-                    lineDescriptor.width = std::stod(value);
-                    (*std::prev(document.end()))->addItem(std::make_shared<Item>(type, pos, dimentions, color, id, lineDescriptor));
-                }
-                else if(key == "max_id")
-                    (*(std::prev(document.end())))->setMaximumID(std::stoi(value));
-                else if(key == "slide"){
-                    if(value == "0")
-                        continue;
-                    document.addSlide(std::make_shared<Slide>());
-                }
-                else {
-                    std::cout << key << " " << value << std::endl;
-                    throw std::invalid_argument("Invalid file contents");
-                }
+//     std::string line; 
+//     Position pos; Type type; Dimentions dimentions; Color color; ID id; LineDescriptor lineDescriptor;
+//     while (std::getline(file, line))
+//     {
+//         std::istringstream is_line(line);
+//         std::string key;
+//         if (std::getline(is_line, key, ':'))
+//         {
+//             std::string value;
+//             if (std::getline(is_line, value))
+//             {
+//                 if(key == "id")               
+//                     id = Converter::convertToID(value);
+//                 else if(key == "type")
+//                     type = Converter::convertToType(value);
+//                 else if(key == "indices")
+//                     pos = Converter::convertToPosition(value, ' '); 
+//                 else if(key == "width")
+//                     dimentions.width = std::stod(value);
+//                 else if(key == "height")
+//                     dimentions.height = std::stod(value);
+//                 else if(key == "line_color")
+//                     color.hexLineColor = Converter::convertToColor(value);
+//                 else if(key == "fill_color")
+//                     color.hexFillColor = Converter::convertToColor(value);
+//                 else if(key == "line_style")
+//                     lineDescriptor.type = Converter::convertToLineType(value);
+//                 else if(key == "line_width"){
+//                     lineDescriptor.width = std::stod(value);
+//                     (*std::prev(document.end()))->addItem(std::make_shared<Item>(type, pos, dimentions, color, id, lineDescriptor));
+//                 }
+//                 else if(key == "max_id")
+//                     (*(std::prev(document.end())))->setMaximumID(std::stoi(value));
+//                 else if(key == "slide"){
+//                     if(value == "0")
+//                         continue;
+//                     document.addSlide(std::make_shared<Slide>());
+//                 }
+//                 else {
+//                     std::cout << key << " " << value << std::endl;
+//                     throw std::invalid_argument("Invalid file contents");
+//                 }
 
-            }
-        }
+//             }
+//         }
 
-    }
+//     }
 
-    return std::make_shared<Document>(document);
-}
+//     return std::make_shared<Document>(document);
+// }
 

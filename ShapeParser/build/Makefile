@@ -273,30 +273,6 @@ Data/Document.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Document.cpp.s
 .PHONY : Data/Document.cpp.s
 
-Data/Item.o: Data/Item.cpp.o
-.PHONY : Data/Item.o
-
-# target to build an object file
-Data/Item.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item.cpp.o
-.PHONY : Data/Item.cpp.o
-
-Data/Item.i: Data/Item.cpp.i
-.PHONY : Data/Item.i
-
-# target to preprocess a source file
-Data/Item.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item.cpp.i
-.PHONY : Data/Item.cpp.i
-
-Data/Item.s: Data/Item.cpp.s
-.PHONY : Data/Item.s
-
-# target to generate assembly for a file
-Data/Item.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item.cpp.s
-.PHONY : Data/Item.cpp.s
-
 Data/ItemBase.o: Data/ItemBase.cpp.o
 .PHONY : Data/ItemBase.o
 
@@ -320,30 +296,6 @@ Data/ItemBase.s: Data/ItemBase.cpp.s
 Data/ItemBase.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.s
 .PHONY : Data/ItemBase.cpp.s
-
-Data/ItemLeafBuilder.o: Data/ItemLeafBuilder.cpp.o
-.PHONY : Data/ItemLeafBuilder.o
-
-# target to build an object file
-Data/ItemLeafBuilder.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemLeafBuilder.cpp.o
-.PHONY : Data/ItemLeafBuilder.cpp.o
-
-Data/ItemLeafBuilder.i: Data/ItemLeafBuilder.cpp.i
-.PHONY : Data/ItemLeafBuilder.i
-
-# target to preprocess a source file
-Data/ItemLeafBuilder.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemLeafBuilder.cpp.i
-.PHONY : Data/ItemLeafBuilder.cpp.i
-
-Data/ItemLeafBuilder.s: Data/ItemLeafBuilder.cpp.s
-.PHONY : Data/ItemLeafBuilder.s
-
-# target to generate assembly for a file
-Data/ItemLeafBuilder.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemLeafBuilder.cpp.s
-.PHONY : Data/ItemLeafBuilder.cpp.s
 
 Data/Slide.o: Data/Slide.cpp.o
 .PHONY : Data/Slide.o
@@ -441,30 +393,6 @@ Program.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Program.cpp.s
 .PHONY : Program.cpp.s
 
-Renderer/Renderer.o: Renderer/Renderer.cpp.o
-.PHONY : Renderer/Renderer.o
-
-# target to build an object file
-Renderer/Renderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o
-.PHONY : Renderer/Renderer.cpp.o
-
-Renderer/Renderer.i: Renderer/Renderer.cpp.i
-.PHONY : Renderer/Renderer.i
-
-# target to preprocess a source file
-Renderer/Renderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.i
-.PHONY : Renderer/Renderer.cpp.i
-
-Renderer/Renderer.s: Renderer/Renderer.cpp.s
-.PHONY : Renderer/Renderer.s
-
-# target to generate assembly for a file
-Renderer/Renderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.s
-.PHONY : Renderer/Renderer.cpp.s
-
 Serialization/Converter.o: Serialization/Converter.cpp.o
 .PHONY : Serialization/Converter.o
 
@@ -540,15 +468,9 @@ help:
 	@echo "... Data/Document.o"
 	@echo "... Data/Document.i"
 	@echo "... Data/Document.s"
-	@echo "... Data/Item.o"
-	@echo "... Data/Item.i"
-	@echo "... Data/Item.s"
 	@echo "... Data/ItemBase.o"
 	@echo "... Data/ItemBase.i"
 	@echo "... Data/ItemBase.s"
-	@echo "... Data/ItemLeafBuilder.o"
-	@echo "... Data/ItemLeafBuilder.i"
-	@echo "... Data/ItemLeafBuilder.s"
 	@echo "... Data/Slide.o"
 	@echo "... Data/Slide.i"
 	@echo "... Data/Slide.s"
@@ -561,9 +483,6 @@ help:
 	@echo "... Program.o"
 	@echo "... Program.i"
 	@echo "... Program.s"
-	@echo "... Renderer/Renderer.o"
-	@echo "... Renderer/Renderer.i"
-	@echo "... Renderer/Renderer.s"
 	@echo "... Serialization/Converter.o"
 	@echo "... Serialization/Converter.i"
 	@echo "... Serialization/Converter.s"

@@ -26,22 +26,22 @@ public:
 
 
 
-inline std::ostream& operator<<(std::ostream& os, const LineDescriptor& line) {
-    os << "line_style:";
-    switch (line.type) {
-        case LineType::Solid:
-            os << "solid" << std::endl;
-            break;
-        case LineType::Dashed:
-            os << "dashed" << std::endl;
-            break;
-        case LineType::Dotted:
-            os << "dotted" << std::endl;
-            break;
-    }
-    os << "line_width:" << line.width;
-    return os;
-}
+// inline std::ostream& operator<<(std::ostream& os, const LineDescriptor& line) {
+//     os << "line_style:";
+//     switch (line.type) {
+//         case LineType::Solid:
+//             os << "solid" << std::endl;
+//             break;
+//         case LineType::Dashed:
+//             os << "dashed" << std::endl;
+//             break;
+//         case LineType::Dotted:
+//             os << "dotted" << std::endl;
+//             break;
+//     }
+//     os << "line_width:" << line.width;
+//     return os;
+// }
 
 
 inline std::ostream& operator<<(std::ostream& os, const ShapeType& shape) {
@@ -74,17 +74,17 @@ inline std::ostream& operator<<(std::ostream& os, const Position& position) {
     return os;
 }
 
-inline std::ostream& operator<<(std::ostream& os, const Dimentions& dimentions) {
-    os << "width:" << dimentions.width << std::endl;
-    os << "height:" << dimentions.height;
-    return os;
-}
+// inline std::ostream& operator<<(std::ostream& os, const Dimentions& dimentions) {
+//     os << "width:" << dimentions.width << std::endl;
+//     os << "height:" << dimentions.height;
+//     return os;
+// }
 
-inline std::ostream& operator<<(std::ostream& os, const Color& color) {
-    os << "line_color:#" << std::hex << color.hexLineColor << std::endl;
-    os << "fill_color:#" << std::hex << color.hexFillColor;
-    return os;
-}
+// inline std::ostream& operator<<(std::ostream& os, const Color& color) {
+//     os << "line_color:#" << std::hex << color.hexLineColor << std::endl;
+//     os << "fill_color:#" << std::hex << color.hexFillColor;
+//     return os;
+// }
 
 inline std::ostream& operator<<(std::ostream& os, const Type& type) {
     switch (type) {

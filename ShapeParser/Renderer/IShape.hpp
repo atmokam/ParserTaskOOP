@@ -8,9 +8,10 @@
 #include "ITextDisplayable.hpp"
 
 
-class IShape : public ITextDisplayable {
+class IShape {
 public:
-    virtual void print(std::ostream& stream) = 0;
+    virtual std::unique_ptr<IShape> clone() const = 0;
+    virtual ~IShape() = default;
 };
 
 

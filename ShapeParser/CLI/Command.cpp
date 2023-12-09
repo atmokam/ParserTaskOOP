@@ -108,9 +108,6 @@ void ChangeCommand::execute()
         newItem = std::make_shared<ItemLeaf>(*(std::static_pointer_cast<ItemLeaf>(item)));
     }
 
-
-    //i need to create a temporary base
-
     if(operands.find("-pos") != operands.end()){ 
         geometry.setPosition(converter.convertToPosition(operands["-pos"]));
     }

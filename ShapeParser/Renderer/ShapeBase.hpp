@@ -11,7 +11,8 @@ class ItemBase;
 class QPainter;
 class DimentionConverter;
 
-class ShapeBase : public IShape {
+class ShapeBase : public IShape, public ITextDisplayable    // I decided to move ITextDisplayable here from IShape since 
+{                                                           // I think ShapeBase is more responsible for text displaying
     std::shared_ptr<ItemBase> item;
     void recursivePrintHandler(std::ostream& stream, const std::shared_ptr<ItemBase>& item);
     void leafPrintHandler(std::ostream& stream, const std::shared_ptr<ItemLeaf>& leaf);

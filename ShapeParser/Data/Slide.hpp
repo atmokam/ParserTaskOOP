@@ -14,16 +14,8 @@ class Slide {
 public:
     Slide();
 
-    // generateID is static method, what will happen if I override it and always return 1?
-
-    // [TK] those function doesn't look like Interface methoids, why are they here?
     std::shared_ptr<ItemBase> getItem(int id) const;
 
-
-    // size_t getMaximumID() const ;
-    // void setMaximumID(size_t id);
-    // void incrementMaximumID();
-    
     void addItem(std::shared_ptr<ItemBase>& item);
     void removeItem(int id);
     void swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem);

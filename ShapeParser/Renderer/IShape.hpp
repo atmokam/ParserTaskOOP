@@ -10,7 +10,7 @@
 
 class IShape {
 public:
-    virtual std::unique_ptr<IShape> clone() const = 0;
+    virtual std::shared_ptr<IShape> clone() const = 0;
     virtual ~IShape() = default;
 };
 

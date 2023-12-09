@@ -169,10 +169,17 @@ void DisplayCommand::execute()
         ShapeBase shape(item);
         shape.print(std::cout);
     }
-    else{}
-    //     Renderer renderer;
-    //     renderer.renderText(std::cout, application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideIndex());
-    // }
+    else
+    {
+        std::shared_ptr<Slide> current = application.getDirector()->getCurrentSlide();
+        for(const auto& item : *current)
+        {
+            ShapeBase shape(item.second);
+            shape.print(std::cout);
+            std::cout << std::endl;
+        }
+
+    }
 }
 
 

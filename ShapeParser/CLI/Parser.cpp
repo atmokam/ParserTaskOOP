@@ -74,7 +74,7 @@ std::string Parser::getToken()
 
 
 
-// the above one throws segfault, for now I will be using the modifed-old version, for the sake of the demo
+// the above one throws segfault, for now I will be using the modifed-old version, temporarily
 // will get back to this when I'm done with the other tasks
 
 std::shared_ptr<Command> Parser::parse()
@@ -86,13 +86,17 @@ std::shared_ptr<Command> Parser::parse()
 
     while(inputStream >> token) 
     {  
-        if(inputStream.peek() == '\n' || inputStream.peek() == EOF){
+        if(inputStream.peek() == '\n' || inputStream.peek() == EOF)
+        {
             processArgument(token, command);
-            if(!validator.validateCommand(command)) {
+            if(!validator.validateCommand(command)) 
+            {
                 throw std::invalid_argument("Invalid command: " + command->getName());
             }
             return command;
-        } else {
+        } 
+        else 
+        {
             processArgument(token, command);
         }
         

@@ -234,7 +234,10 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o: ../Application/A
   ../CLI/IController.hpp \
   ../Include/IDirector.hpp \
   ../Director/IDirector.hpp \
-  ../Data/Document.hpp
+  ../Data/Document.hpp \
+  ../Data/ItemAttributes.hpp \
+  /usr/include/c++/11/optional \
+  /usr/include/c++/11/bits/enable_special_members.h
 
 CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: ../CLI/Command.cpp \
   /usr/include/stdc-predef.h \
@@ -1386,8 +1389,6 @@ CMakeFiles/PowerPointProject.dir/Data/Document.cpp.o: ../Data/Document.cpp \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   ../Include/IDocument.hpp \
   ../Data/IDocument.hpp \
-  ../Data/Slide.hpp \
-  ../Data/ItemBase.hpp \
   ../Data/ItemAttributes.hpp \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
@@ -1413,7 +1414,11 @@ CMakeFiles/PowerPointProject.dir/Data/Document.cpp.o: ../Data/Document.cpp \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
-  /usr/include/c++/11/optional
+  /usr/include/c++/11/optional \
+  ../Data/Slide.hpp \
+  ../Data/ItemBase.hpp \
+  ../Serialization/Converter.hpp \
+  ../Data/ItemAttributes.hpp
 
 CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o: ../Data/ItemBase.cpp \
   /usr/include/stdc-predef.h \
@@ -2062,22 +2067,6 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: ../Director/Actions.cpp
   /usr/include/c++/11/bits/vector.tcc \
   ../Include/IDocument.hpp \
   ../Data/IDocument.hpp \
-  ../Serialization/Converter.hpp \
-  /usr/include/c++/11/unordered_map \
-  /usr/include/c++/11/bits/hashtable.h \
-  /usr/include/c++/11/bits/hashtable_policy.h \
-  /usr/include/c++/11/bits/enable_special_members.h \
-  /usr/include/c++/11/bits/node_handle.h \
-  /usr/include/c++/11/bits/unordered_map.h \
-  /usr/include/c++/11/bits/erase_if.h \
-  /usr/include/c++/11/algorithm \
-  /usr/include/c++/11/bits/stl_algo.h \
-  /usr/include/c++/11/bits/algorithmfwd.h \
-  /usr/include/c++/11/bits/stl_heap.h \
-  /usr/include/c++/11/bits/uniform_int_dist.h \
-  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
-  /usr/include/c++/11/functional \
-  /usr/include/c++/11/bits/std_function.h \
   ../Data/ItemAttributes.hpp \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
@@ -2104,6 +2093,23 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: ../Director/Actions.cpp
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/optional \
+  /usr/include/c++/11/bits/enable_special_members.h \
+  ../Serialization/Converter.hpp \
+  /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/bits/hashtable.h \
+  /usr/include/c++/11/bits/hashtable_policy.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  /usr/include/c++/11/algorithm \
+  /usr/include/c++/11/bits/stl_algo.h \
+  /usr/include/c++/11/bits/algorithmfwd.h \
+  /usr/include/c++/11/bits/stl_heap.h \
+  /usr/include/c++/11/bits/uniform_int_dist.h \
+  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/bits/std_function.h \
+  ../Data/ItemAttributes.hpp \
   ../Serialization/SaveLoad.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/c++/11/bits/codecvt.h \
@@ -2114,7 +2120,6 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: ../Director/Actions.cpp
   /usr/include/c++/11/bits/sstream.tcc \
   ../Data/Slide.hpp \
   ../Data/ItemBase.hpp \
-  ../Data/ItemAttributes.hpp \
   ../Data/ItemBase.hpp
 
 CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o: ../Director/Director.cpp \
@@ -2336,6 +2341,9 @@ CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o: ../Director/Director.c
   /usr/include/c++/11/bits/vector.tcc \
   ../Include/IDocument.hpp \
   ../Data/IDocument.hpp \
+  ../Data/ItemAttributes.hpp \
+  /usr/include/c++/11/optional \
+  /usr/include/c++/11/bits/enable_special_members.h \
   ../Director/IAction.hpp \
   ../Director/Actions.hpp
 
@@ -3225,9 +3233,9 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
   ../Data/Document.hpp \
   ../Include/IDocument.hpp \
   ../Data/IDocument.hpp \
+  ../Data/ItemAttributes.hpp \
   ../Data/Slide.hpp \
   ../Data/ItemBase.hpp \
-  ../Data/ItemAttributes.hpp \
   ../Serialization/Converter.hpp \
   /usr/include/c++/11/algorithm \
   /usr/include/c++/11/bits/stl_algo.h \
@@ -3757,15 +3765,17 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 ../Data/Document.hpp:
 
-/usr/include/c++/11/bits/hashtable.h:
-
-/usr/include/c++/11/bits/hashtable_policy.h:
+../Data/ItemAttributes.hpp:
 
 /usr/include/c++/11/bits/codecvt.h:
 
 /usr/include/c++/11/bits/basic_ios.tcc:
 
 /usr/include/c++/11/bits/enable_special_members.h:
+
+/usr/include/c++/11/bits/hashtable.h:
+
+/usr/include/c++/11/bits/hashtable_policy.h:
 
 /usr/include/c++/11/bits/ptr_traits.h:
 
@@ -3774,8 +3784,6 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 /usr/include/endian.h:
 
 /usr/include/c++/11/bits/erase_if.h:
-
-../Data/ItemAttributes.hpp:
 
 /usr/include/c++/11/iostream:
 

@@ -8,7 +8,8 @@ Converter::Converter() {
         {"rectangle", Type::Rectangle},
         {"trapezoid", Type::Trapezoid},
         {"ellipse", Type::Ellipse},
-        {"triangle", Type::Triangle}
+        {"triangle", Type::Triangle},
+        {"group", Type::Group}
     };
 }
 

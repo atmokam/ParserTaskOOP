@@ -17,8 +17,19 @@
 
 class ItemGroup;
 
-class ItemBase {    
+class ItemBase {  
+protected:
+    std::shared_ptr<ItemGroup> parent = nullptr;
+
+    ID id;
+    Type type;
+    Geometry geometry;
+    Attributes attributes;  
 public:
+    ItemBase();
+    ItemBase(Type type, Geometry& geometry, Attributes& attributes, ID id) ;
+    virtual Type getType() const = 0;
+    virtual void setType(Type type) = 0;
     virtual ID getID() const = 0;
     virtual void setID(ID id) = 0;
     virtual std::shared_ptr<ItemGroup> getParent() const = 0;
@@ -29,27 +40,21 @@ public:
     virtual void setDifferenceGeometry(Geometry& difference) = 0;
     virtual void setGeometry(Geometry& geometry) = 0;
     virtual ~ItemBase() = default;
-}; // I remember this was supposed to be an abstract class 
+}; 
 
 
 
 
 class ItemLeaf : public ItemBase {
-    std::shared_ptr<ItemGroup> parent = nullptr;
-
-    ID id;
-    Type type;
-    Geometry geometry;
-    Attributes attributes;
 
 public:
     ItemLeaf() = default;
     ItemLeaf(Type type, Geometry& geometry, Attributes& attributes, ID id);
     ItemLeaf(std::shared_ptr<ItemLeaf> item);
-    Type getType() const;
     
-    void setType(Type type);
 
+    void setType(Type type) override;
+    Type getType() const override;
     Attributes getAttributes() const override;
     void setAttributes(Attributes& attributes) override;
     void setDifferenceGeometry(Geometry& difference) override;
@@ -64,15 +69,11 @@ public:
 };
 
 class ItemGroup : public ItemBase {
-    std::shared_ptr<ItemGroup> parent = nullptr;
 
     std::unordered_map<ID, std::shared_ptr<ItemBase>> items;
-
-    ID id;
-    Geometry geometry;
 public:
-    ItemGroup() = default;
-    ItemGroup(std::unordered_map<ID, std::shared_ptr<ItemBase>>& items, Geometry& geometry);
+    ItemGroup();
+    ItemGroup(std::unordered_map<ID, std::shared_ptr<ItemBase>>& items, Geometry& geometry, Attributes& attributes, ID id);
     
     void setItems(std::unordered_map<ID, std::shared_ptr<ItemBase>>& items);
     void addItem(std::shared_ptr<ItemBase> item);
@@ -94,6 +95,9 @@ public:
     void setID(ID id) override;
     std::shared_ptr<ItemGroup> getParent() const override;
     void setParent(std::shared_ptr<ItemGroup> parent) override;
+    Type getType() const override;
+    void setType(Type type) override;
+
 
 
 };

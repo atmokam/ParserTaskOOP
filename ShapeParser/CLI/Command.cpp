@@ -97,7 +97,20 @@ void ChangeCommand::execute()
     std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
     std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
 
-    Attributes attributes; Geometry geometry;
+    Attributes attributes = item->getAttributes(); 
+    Geometry geometry = item->getGeometry();
+    std::shared_ptr<ItemBase> newItem;
+
+    if(item->getType() == Type::Group) {
+        newItem = std::make_shared<ItemGroup>(*(std::static_pointer_cast<ItemGroup>(item)));
+    }
+    else{
+        newItem = std::make_shared<ItemLeaf>(*(std::static_pointer_cast<ItemLeaf>(item)));
+    }
+
+
+    //i need to create a temporary base
+
     if(operands.find("-pos") != operands.end()){ 
         geometry.setPosition(converter.convertToPosition(operands["-pos"]));
     }
@@ -117,11 +130,12 @@ void ChangeCommand::execute()
     if(operands.find("-lstyle") != operands.end()){
         attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
     }
-    item->setAttributes(attributes);
-    item->setGeometry(geometry);
+    newItem->setAttributes(attributes);
+    newItem->setGeometry(geometry);
+    
 
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-    application.getDirector()->doAction(std::make_shared<ChangeItem>(item, currentSlideIndex));
+    application.getDirector()->doAction(std::make_shared<ChangeItem>(newItem, currentSlideIndex));
 }
 
 

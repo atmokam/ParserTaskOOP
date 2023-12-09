@@ -1,14 +1,20 @@
 #include "ItemBase.hpp"
 #include <algorithm>
 
+// ItemBase
+
+ItemBase::ItemBase() : type(), geometry(Geometry{}), attributes(Attributes{}), id(0) {}
+
+ItemBase::ItemBase(Type type, Geometry& geometry, Attributes& attributes, ID id) 
+: type(type), geometry(geometry), attributes(attributes), id(id) {}
 
 // Leaf
 ItemLeaf::ItemLeaf(Type type, Geometry& geometry, Attributes& attributes, ID id)
-: type(type), geometry(geometry), attributes(attributes), id(id) {}
+: ItemBase(type, geometry, attributes, id) {}
 
 ItemLeaf::ItemLeaf(std::shared_ptr<ItemLeaf> item)
-: id(item->id), parent(item->parent), type(item->type), 
-geometry(item->geometry), attributes(item->attributes) {}
+: ItemBase(item->type, item->geometry, item->attributes, item->id) {}
+
 
 Type ItemLeaf::getType() const 
 {
@@ -33,8 +39,10 @@ void ItemLeaf::setType(Type type)
 void ItemLeaf::setDifferenceGeometry(Geometry& difference) 
 {
     if(difference.getPosition().has_value()){
-        std::transform(this->geometry.getPosition().value().begin(), this->geometry.getPosition().value().end(),
-        difference.getPosition().value().begin(), this->geometry.getPosition().value().begin(), std::plus<double>());
+        std::transform(this->geometry.getPosition().value().begin(), 
+        this->geometry.getPosition().value().end(),
+        difference.getPosition().value().begin(), 
+        this->geometry.getPosition().value().begin(), std::plus<double>());
     }
     
     if(difference.getWidth().has_value()){
@@ -80,8 +88,22 @@ void ItemLeaf::setID(ID id)
 
 // Group
 
-ItemGroup::ItemGroup(std::unordered_map<ID, std::shared_ptr<ItemBase>>& items, Geometry& geometry)
-: items(items), geometry(geometry) {}
+ItemGroup::ItemGroup() : ItemBase(), items({}) {}
+
+ItemGroup::ItemGroup(std::unordered_map<ID, std::shared_ptr<ItemBase>>& items, Geometry& geometry, 
+Attributes& attributes, ID id)
+: items(items), ItemBase(Type::Group, geometry, attributes, id) {}
+
+
+Type ItemGroup::getType() const 
+{
+    return type;
+}
+
+void ItemGroup::setType(Type type) 
+{
+    this->type = type;
+}
 
 void ItemGroup::setItems(std::unordered_map<ID, std::shared_ptr<ItemBase>>& items) 
 {

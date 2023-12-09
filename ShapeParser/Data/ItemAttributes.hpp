@@ -77,7 +77,7 @@ public:
 
 enum class Type 
 {
-    Rectangle, Trapezoid, Ellipse, Line, Triangle
+    Rectangle, Trapezoid, Ellipse, Line, Triangle, Group
 };
 
 class ShapeType
@@ -116,6 +116,8 @@ inline std::ostream& operator<<(std::ostream& os, const Type& type) {
             return os << "line";
         case Type::Triangle:
             return os << "triangle";
+        case Type::Group:
+            return os << "group";
         default:
             return os;
     }

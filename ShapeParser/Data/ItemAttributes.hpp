@@ -7,7 +7,7 @@
 
 class Position 
 {
-    std::vector<double> coordinates = {0, 0};
+    std::vector<double> coordinates = {0, 0}; // default for now
 public:
     Position(std::vector<double> coordinates) : coordinates(coordinates) { }
     Position() = default;
@@ -48,7 +48,6 @@ public:
     void setLineType(LineType lineType) { this->lineType = lineType; }
     void setLineWidth(double lineWidth) { this->lineWidth = lineWidth; }
 
-    
 };
 
 
@@ -70,6 +69,7 @@ public:
     void setWidth(double width) { this->width = width; }
     void setHeight(double height) { this->height = height; }
 
+
 };
 
 
@@ -90,27 +90,49 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const ShapeType& shape);
 };
 
-// struct Dimentions 
-// {
-//     double width;
-//     double height;
-// };
 
 using ID = int;           
 
-// struct Color 
-// {
-//     long hexLineColor = 0;
-//     long hexFillColor = 0; // black by default
-// };
+inline std::ostream& operator<<(std::ostream& os, const Position& position) {
+    std::vector<double> coordinates = position.getCoordinates();
+    for (int i = 0; i < coordinates.size(); i++) {
+        os << coordinates[i];
+        if (i != coordinates.size() - 1) {
+            os << " ";
+        }
+    }
+    return os;
+}
 
+inline std::ostream& operator<<(std::ostream& os, const Type& type) {
+    switch (type) {
+        case Type::Rectangle:
+            return os << "rectangle";
+        case Type::Trapezoid:
+            return os << "trapezoid";
+        case Type::Ellipse:
+            return os << "ellipse";
+        case Type::Line:
+            return os << "line";
+        case Type::Triangle:
+            return os << "triangle";
+        default:
+            return os;
+    }
+}   
 
-// struct LineDescriptor 
-// {
-//     LineType type = LineType::Solid;
-//     double width = 1;
-// };
-
+inline std::ostream& operator<<(std::ostream& os, const LineType& line) {
+    switch (line) {
+        case LineType::Solid:
+            return os << "solid";
+        case LineType::Dashed:
+            return os << "dashed";
+        case LineType::Dotted:
+            return os << "dotted";
+        default:
+            return os;
+    }
+}
 
 
 

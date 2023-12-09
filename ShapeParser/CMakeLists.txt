@@ -26,4 +26,5 @@ add_executable(PowerPointProject
     Director/Actions.cpp  
     Director/Director.cpp 
     Application/Application.cpp
-    Data/ItemBase.cpp )
+    Data/ItemBase.cpp
+    Renderer/ShapeBase.cpp )

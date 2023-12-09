@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "Include/IDocument.hpp"
+#include "ItemAttributes.hpp"
 
 class Slide;
 
@@ -13,6 +14,7 @@ class Slide;
 class Document : public IDocument {
     std::vector<std::shared_ptr<Slide>> slides;
     // add format later
+    Attributes defaultAttributes;
     size_t maxID = 0;
 public:
     Document();
@@ -24,6 +26,7 @@ public:
     size_t getMaximumID() const override;
     void setMaximumID(size_t id) override;
     size_t generateID() override;
+    Attributes getDefaultAttributes() const override;
 
     std::vector<std::shared_ptr<Slide>>::iterator begin()  override;
     std::vector<std::shared_ptr<Slide>>::const_iterator cbegin() const override;

@@ -209,4 +209,9 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: \
  /usr/include/c++/11/bits/stl_heap.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \
  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
- /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h
+ /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/ShapeBase.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/IVisualDisplayable.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/IShape.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/ITextDisplayable.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemBase.hpp

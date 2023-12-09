@@ -7,6 +7,7 @@
 #include <vector>
 
 class Slide;
+class Attributes;
 
 class IDocument {
 public:
@@ -17,6 +18,8 @@ public:
     virtual size_t generateID() = 0;
     virtual size_t getMaximumID() const = 0;
     virtual void setMaximumID(size_t id) = 0;
+    virtual Attributes getDefaultAttributes() const = 0;
+    virtual ~IDocument() = default;
 
     virtual std::vector<std::shared_ptr<Slide>>::iterator begin()  = 0;
     virtual std::vector<std::shared_ptr<Slide>>::const_iterator cbegin() const = 0;

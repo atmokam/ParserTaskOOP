@@ -5,6 +5,7 @@
 
 #include "IVisualDisplayable.hpp"
 #include "IShape.hpp"
+#include "Data/ItemBase.hpp"
 
 class ItemBase;
 class QPainter;

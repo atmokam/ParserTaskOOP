@@ -44,35 +44,9 @@ public:
 // }
 
 
-inline std::ostream& operator<<(std::ostream& os, const ShapeType& shape) {
-        os << "type:";
-    switch (shape.type) {
-        case Type::Rectangle:
-            return os << "rectangle";
-        case Type::Trapezoid:
-            return os << "trapezoid";
-        case Type::Ellipse:
-            return os << "ellipse";
-        case Type::Line:
-            return os << "line";
-        case Type::Triangle:
-            return os << "triangle";
-        default:
-            return os;
-    }
-}
 
-inline std::ostream& operator<<(std::ostream& os, const Position& position) {
-    std::vector<double> coordinates = position.getCoordinates();
-    os << "indices:";
-    for (int i = 0; i < coordinates.size(); i++) {
-        os << coordinates[i];
-        if (i != coordinates.size() - 1) {
-            os << " ";
-        }
-    }
-    return os;
-}
+
+
 
 // inline std::ostream& operator<<(std::ostream& os, const Dimentions& dimentions) {
 //     os << "width:" << dimentions.width << std::endl;
@@ -86,22 +60,6 @@ inline std::ostream& operator<<(std::ostream& os, const Position& position) {
 //     return os;
 // }
 
-inline std::ostream& operator<<(std::ostream& os, const Type& type) {
-    switch (type) {
-        case Type::Rectangle:
-            return os << "rectangle";
-        case Type::Trapezoid:
-            return os << "trapezoid";
-        case Type::Ellipse:
-            return os << "ellipse";
-        case Type::Line:
-            return os << "line";
-        case Type::Triangle:
-            return os << "triangle";
-        default:
-            return os;
-    }
-}   
 
 #endif
 

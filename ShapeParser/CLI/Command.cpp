@@ -8,6 +8,7 @@
 #include "Command.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Serialization/Converter.hpp" 
+#include "Renderer/ShapeBase.hpp"
 
 
 
@@ -35,27 +36,30 @@ std::shared_ptr<ItemLeaf> AddCommand::createItem()
 {
     Attributes attributes; Geometry geometry;
     Converter converter;
+    std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
+    Attributes defaultAttributes = document->getDefaultAttributes();
 
     Type type = Type{converter.convertToType(operands["-name"][0])};
 
     geometry.setPosition(Position{converter.convertToPosition(operands["-pos"])});
    
     geometry.setWidth(converter.convertToDimention(operands["-w"][0]));
+    geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
+    
+    attributes.setHexLineColor((operands.find("-lcolor") != operands.end()) ? 
+    converter.convertToColor(operands["-lcolor"][0]) : defaultAttributes.getHexLineColor().value());
+   
+    attributes.setHexFillColor((operands.find("-fcolor") != operands.end()) ?
+    converter.convertToColor(operands["-fcolor"][0]) : defaultAttributes.getHexFillColor().value());
+    
+    attributes.setLineWidth((operands.find("-lwidth") != operands.end()) ? 
+    std::stod(operands["-lwidth"][0]) : defaultAttributes.getLineWidth().value());
+    
+    attributes.setLineType((operands.find("-lstyle") != operands.end())? 
+    converter.convertToLineType(operands["-lstyle"][0]) : defaultAttributes.getLineType().value());
+    
+    
 
-    if(operands.find("-lcolor") != operands.end()){
-        attributes.setHexLineColor(converter.convertToColor(operands["-lcolor"][0]));
-    }
-    if (operands.find("-fcolor") != operands.end()){
-        attributes.setHexFillColor(converter.convertToColor(operands["-fcolor"][0]));
-    }
-    if (operands.find("-lwidth") != operands.end()){
-        attributes.setLineWidth(std::stod(operands["-lwidth"][0]));
-    }
-    if (operands.find("-lstyle") != operands.end()){
-        attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
-    }
-
-    std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
     std::shared_ptr<ItemLeaf> item = std::make_shared<ItemLeaf>(type, geometry, attributes, document->generateID());
     return item;
 
@@ -146,15 +150,15 @@ void LoadCommand::execute()
 
 void DisplayCommand::execute() 
 {
-    // if(operands.find("-id") != operands.end()){
-    //     std::shared_ptr<ItemBase> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
-    //     if (item == nullptr){
-    //         return;
-    //     }
-    //     Renderer renderer;
-    //     renderer.renderText(std::cout, item);
-    // }
-    // else{
+    if(operands.find("-id") != operands.end()){
+        std::shared_ptr<ItemBase> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
+        if (item == nullptr){
+            return;
+        }
+        ShapeBase shape(item);
+        shape.print(std::cout);
+    }
+    else{}
     //     Renderer renderer;
     //     renderer.renderText(std::cout, application.getDirector()->getCurrentSlide(), application.getDirector()->getCurrentSlideIndex());
     // }

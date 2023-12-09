@@ -393,6 +393,30 @@ Program.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Program.cpp.s
 .PHONY : Program.cpp.s
 
+Renderer/ShapeBase.o: Renderer/ShapeBase.cpp.o
+.PHONY : Renderer/ShapeBase.o
+
+# target to build an object file
+Renderer/ShapeBase.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o
+.PHONY : Renderer/ShapeBase.cpp.o
+
+Renderer/ShapeBase.i: Renderer/ShapeBase.cpp.i
+.PHONY : Renderer/ShapeBase.i
+
+# target to preprocess a source file
+Renderer/ShapeBase.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.i
+.PHONY : Renderer/ShapeBase.cpp.i
+
+Renderer/ShapeBase.s: Renderer/ShapeBase.cpp.s
+.PHONY : Renderer/ShapeBase.s
+
+# target to generate assembly for a file
+Renderer/ShapeBase.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.s
+.PHONY : Renderer/ShapeBase.cpp.s
+
 Serialization/Converter.o: Serialization/Converter.cpp.o
 .PHONY : Serialization/Converter.o
 
@@ -483,6 +507,9 @@ help:
 	@echo "... Program.o"
 	@echo "... Program.i"
 	@echo "... Program.s"
+	@echo "... Renderer/ShapeBase.o"
+	@echo "... Renderer/ShapeBase.i"
+	@echo "... Renderer/ShapeBase.s"
 	@echo "... Serialization/Converter.o"
 	@echo "... Serialization/Converter.i"
 	@echo "... Serialization/Converter.s"

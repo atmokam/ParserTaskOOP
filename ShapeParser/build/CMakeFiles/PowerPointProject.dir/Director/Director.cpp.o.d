@@ -176,5 +176,8 @@ CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o: \
  /usr/include/c++/11/bits/vector.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
+ /usr/include/c++/11/optional \
+ /usr/include/c++/11/bits/enable_special_members.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IAction.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/Actions.hpp

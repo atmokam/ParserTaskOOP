@@ -1,6 +1,8 @@
 #include <algorithm>
 #include "Document.hpp"
 #include "Slide.hpp"
+#include "Serialization/Converter.hpp"
+
 
 
 
@@ -51,7 +53,18 @@ size_t Document::size() const
 
 Document::Document() 
 {
+    Converter converter;
     slides.push_back(std::make_shared<Slide>());
+    defaultAttributes.setLineWidth(1);
+    defaultAttributes.setHexFillColor(converter.convertToColor("#FFFFFF"));
+    defaultAttributes.setHexLineColor(converter.convertToColor("#000000"));
+    defaultAttributes.setLineType(converter.convertToLineType("solid"));
+
+}
+
+Attributes Document::getDefaultAttributes() const 
+{
+    return defaultAttributes;
 }
 
 std::vector<std::shared_ptr<Slide>>::iterator Document::begin() 

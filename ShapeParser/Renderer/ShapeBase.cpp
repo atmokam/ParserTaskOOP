@@ -1,5 +1,6 @@
 #include "ShapeBase.hpp"
-#include "ItemBase.hpp"
+#include "Data/ItemBase.hpp"
+#include "Data/ItemAttributes.hpp"
 #include <vector>
 
 ShapeBase::ShapeBase(std::shared_ptr<ItemBase> item) : item(item) {}
@@ -10,32 +11,42 @@ void ShapeBase::print(std::ostream& stream)
     
 }
 
-void ShapeBase::recursivePrintHandler(std::ostream& stream, const std::shared_ptr<ItemBase>& item) {
-    if(auto leaf = std::dynamic_pointer_cast<ItemLeaf>(item))
+void ShapeBase::recursivePrintHandler(std::ostream& stream, const std::shared_ptr<ItemBase>& item) 
+{
+    if(auto leaf = std::dynamic_pointer_cast<ItemLeaf>(item))  
     {
         leafPrintHandler(stream, leaf);
         return;
     }
     else if(auto group = std::dynamic_pointer_cast<ItemGroup>(item))
     {
-        for(auto& [_, item]: *group)
+        for(auto& [_, subItem]: *group)
         {
-            recursivePrintHandler(stream, item);
+            recursivePrintHandler(stream, subItem);
         }
     }
 
-}
+} 
 
-void ShapeBase::leafPrintHandler(std::ostream& stream, const std::shared_ptr<ItemLeaf>& leaf) {
-    stream << "Shape: " << leaf->getType() << std::endl;
+void ShapeBase::leafPrintHandler(std::ostream& stream, const std::shared_ptr<ItemLeaf>& leaf) 
+{
+    stream << "Shape: ";
+    stream << leaf->getType() << std::endl;
     stream << "---Geometry---" << std::endl;
-    stream << "Position: " << leaf->getGeometry().getPosition() << std::endl;
-    stream << "Height: " << leaf->getGeometry().getHeight() << std::endl;
-    stream << "Width: " << leaf->getGeometry().getWidth() << std::endl;
+    stream << "Position: ";
+    stream << leaf->getGeometry().getPosition().value() << std::endl;
+    stream << "Height: ";
+    stream << leaf->getGeometry().getHeight().value() << std::endl;
+    stream << "Width: ";
+    stream << leaf->getGeometry().getWidth().value() << std::endl;
     stream << "---Attributes---" << std::endl;
-    stream << "FillColor: " << leaf->getAttributes().getHexFillColor() << std::endl;
-    stream << "LineColor: " << leaf->getAttributes().getHexLineColor() << std::endl;
-    stream << "LineWidth: " << leaf->getAttributes().getLineWidth() << std::endl;
-    stream << "LineType: " << leaf->getAttributes().getLineType() << std::endl;
+    stream << "FillColor: ";
+    stream << leaf->getAttributes().getHexFillColor().value() << std::endl;
+    stream << "LineColor: ";
+    stream << leaf->getAttributes().getHexLineColor().value() << std::endl;
+    stream << "LineWidth: ";
+    stream << leaf->getAttributes().getLineWidth().value() << std::endl;
+    stream << "LineType: ";
+    stream << leaf->getAttributes().getLineType().value() << std::endl;
 }
 

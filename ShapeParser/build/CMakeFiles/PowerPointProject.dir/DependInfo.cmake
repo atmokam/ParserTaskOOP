@@ -19,6 +19,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/Actions.cpp" "CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/Director.cpp" "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Program.cpp" "CMakeFiles/PowerPointProject.dir/Program.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Program.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/ShapeBase.cpp" "CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/Converter.cpp" "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/SaveLoad.cpp" "CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o.d"
   )

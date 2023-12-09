@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Program.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Program.cpp.o.d"
+  "CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o"
+  "CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o"

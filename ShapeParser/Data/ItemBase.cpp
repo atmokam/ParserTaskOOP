@@ -20,9 +20,9 @@ Geometry ItemLeaf::getGeometry() const
     return geometry;
 }
 
-std::vector<std::pair<ID, Attributes>> ItemLeaf::getAttributes() const 
+Attributes ItemLeaf::getAttributes() const 
 {
-    return {{id, attributes}};
+    return attributes;
 }
 
 void ItemLeaf::setType(Type type) 
@@ -198,14 +198,9 @@ void ItemGroup::setAttributes(Attributes& attributes)
     }
 }
 
-std::vector<std::pair<ID, Attributes>> ItemGroup::getAttributes() const 
+Attributes ItemGroup::getAttributes() const 
 {
-    std::vector<std::pair<ID, Attributes>> attributes;
-    for(auto& item : items)
-    {
-        attributes.push_back({item.first, item.second->getAttributes()[0].second});
-    }
-    return attributes;
+    return Attributes{};
 }
 
 

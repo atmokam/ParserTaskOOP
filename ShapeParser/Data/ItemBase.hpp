@@ -25,7 +25,7 @@ public:
     virtual void setParent(std::shared_ptr<ItemGroup> parent) = 0;
     virtual Geometry getGeometry() const = 0;
     virtual void setAttributes(Attributes& attributes) = 0;
-    virtual std::vector<std::pair<ID, Attributes>> getAttributes() const = 0;
+    virtual Attributes getAttributes() const = 0;
     virtual void setDifferenceGeometry(Geometry& difference) = 0;
     virtual void setGeometry(Geometry& geometry) = 0;
     virtual ~ItemBase() = default;
@@ -50,7 +50,7 @@ public:
     
     void setType(Type type);
 
-    std::vector<std::pair<ID, Attributes>> getAttributes() const override;
+    Attributes getAttributes() const override;
     void setAttributes(Attributes& attributes) override;
     void setDifferenceGeometry(Geometry& difference) override;
     Geometry getGeometry() const override;
@@ -86,7 +86,7 @@ public:
     std::unordered_map<ID, std::shared_ptr<ItemBase>>::const_iterator cend() const;
 
     void setAttributes(Attributes& attributes) override;
-    std::vector<std::pair<ID, Attributes>> getAttributes() const override;
+    Attributes getAttributes() const override;
     Geometry getGeometry() const override;
     void setDifferenceGeometry(Geometry& difference) override;
     void setGeometry(Geometry& geometry) override;

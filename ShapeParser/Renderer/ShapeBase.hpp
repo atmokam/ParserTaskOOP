@@ -8,9 +8,12 @@
 
 class ItemBase;
 class QPainter;
+class DimentionConverter;
 
 class ShapeBase : public IShape {
     std::shared_ptr<ItemBase> item;
+    void recursivePrintHandler(std::ostream& stream, const std::shared_ptr<ItemBase>& item);
+    void leafPrintHandler(std::ostream& stream, const std::shared_ptr<ItemLeaf>& leaf);
 public:
     void print(std::ostream& stream) override;
     ShapeBase(std::shared_ptr<ItemBase> item);

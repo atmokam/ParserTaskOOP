@@ -28,7 +28,7 @@ Validator::Validator(){
         {"addItem", {"-name", "-pos", "-w", "-h", "-lwidth", "-lstyle"}},
         {"removeSlide", {"-slide"}},
         {"removeItem", {"-id"}},
-        {"changeItem", {"-id"}},
+        {"change", {"-id"}},
         {"save", {"-path", "-filename"}},
         {"load", {"-path"}}
     };
@@ -90,14 +90,18 @@ bool Validator::checkMandatoryOperands(const std::shared_ptr<Command>& commandTo
     std::vector<std::string> mandatory;
     
 
-    if (commandName == "addSlide") {
+    if (commandName == "add" && commandOperands.find("-slide") != commandOperands.end()) {
         mandatory = mandatoryOperands.at("addSlide");
-    } else if (commandName == "addItem") {
+    } else if (commandName == "add" && commandOperands.find("-name") == commandOperands.end()) {
         mandatory = mandatoryOperands.at("addItem");
-    } else if (commandName == "removeSlide") {
+    } else if (commandName == "remove" && commandOperands.find("-slide") != commandOperands.end()) {
         mandatory = mandatoryOperands.at("removeSlide");
-    } else if (commandName == "removeItem") {
+    } else if (commandName == "remove" && commandOperands.find("-id") != commandOperands.end()) {
         mandatory = mandatoryOperands.at("removeItem");
+    } 
+    
+    if (mandatoryOperands.find(commandName) != mandatoryOperands.end()) {
+        mandatory = mandatoryOperands.at(commandName);
     }
 
     for (const auto& operand : mandatory) {

@@ -2,7 +2,7 @@
 
 
 
-Converter::Converter() {
+Converter::Converter() { // shapelibrary
     typeMap = {
         {"line", Type::Line},
         {"rectangle", Type::Rectangle},

@@ -178,7 +178,6 @@ void DisplayCommand::execute()
             shape.print(std::cout);
             std::cout << std::endl;
         }
-
     }
 }
 

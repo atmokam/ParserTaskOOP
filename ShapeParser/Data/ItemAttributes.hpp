@@ -7,7 +7,7 @@
 
 class Position 
 {
-    std::vector<double> coordinates = {0, 0}; // default for now
+    std::vector<double> coordinates;
 public:
     Position(std::vector<double> coordinates) : coordinates(coordinates) { }
     Position() = default;

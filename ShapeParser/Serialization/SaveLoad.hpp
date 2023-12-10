@@ -15,12 +15,13 @@
 
 class IDocument;
 class Slide;
+class QJsonDocument;
 
 class SaveLoad {
-    void serialize(std::ostream& stream, const std::shared_ptr<Slide>& items);
+    QJsonObject serialize(const std::shared_ptr<Slide>& slide, QJsonDocument& stream);
     std::shared_ptr<IDocument> deserialize(std::ifstream& file);
 public:
-    void save(const std::shared_ptr<IDocument>& document, std::ostream& stream);
+    void save(const std::shared_ptr<IDocument>& document, QJsonDocument& stream);
     std::shared_ptr<IDocument> load(const std::string& path);
 };
 

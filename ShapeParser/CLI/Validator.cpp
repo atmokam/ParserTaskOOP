@@ -3,6 +3,8 @@
 #include "CLI/Validator.hpp"
 #include "Command.hpp"
 
+#include <iostream>
+
 
 
 // operand quantity checking: 0 means no value, -1 means any number of values
@@ -49,9 +51,11 @@ Validator::Validator(){
 
 
 bool Validator::validateCommand(const std::shared_ptr<Command>& commandToBeChecked) 
+
 { 
     if (!checkOperandQuantity(commandToBeChecked) || !checkMandatoryOperands(commandToBeChecked)) 
     {
+        std:: cout << "Invalid command: " << commandToBeChecked->getName() << std::endl;
         return false;
     }
     return true;
@@ -90,22 +94,32 @@ bool Validator::checkMandatoryOperands(const std::shared_ptr<Command>& commandTo
     std::vector<std::string> mandatory;
     
 
-    if (commandName == "add" && commandOperands.find("-slide") != commandOperands.end()) {
+    if (commandName == "add" && commandOperands.find("-slide") != commandOperands.end()) 
+    {
         mandatory = mandatoryOperands.at("addSlide");
-    } else if (commandName == "add" && commandOperands.find("-name") == commandOperands.end()) {
+    } 
+    else if (commandName == "add" && commandOperands.find("-name") == commandOperands.end()) 
+    {
         mandatory = mandatoryOperands.at("addItem");
-    } else if (commandName == "remove" && commandOperands.find("-slide") != commandOperands.end()) {
+    } 
+    else if (commandName == "remove" && commandOperands.find("-slide") != commandOperands.end()) 
+    {
         mandatory = mandatoryOperands.at("removeSlide");
-    } else if (commandName == "remove" && commandOperands.find("-id") != commandOperands.end()) {
+    } 
+    else if (commandName == "remove" && commandOperands.find("-id") != commandOperands.end()) 
+    {
         mandatory = mandatoryOperands.at("removeItem");
     } 
     
-    if (mandatoryOperands.find(commandName) != mandatoryOperands.end()) {
+    if (mandatoryOperands.find(commandName) != mandatoryOperands.end()) 
+    {
         mandatory = mandatoryOperands.at(commandName);
     }
 
-    for (const auto& operand : mandatory) {
-        if (commandOperands.find(operand) == commandOperands.end()) {
+    for (const auto& operand : mandatory) 
+    {
+        if (commandOperands.find(operand) == commandOperands.end()) 
+        {
             return false;
         }
     }

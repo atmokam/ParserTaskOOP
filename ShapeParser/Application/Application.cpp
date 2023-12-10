@@ -1,11 +1,11 @@
 #include <fstream>
-#include <iostream>
 #include "Application.hpp"
 #include "CLI/Controller.hpp"
 #include "Director/Director.hpp" 
 #include "Include/IController.hpp"
 #include "Include/IDirector.hpp"
 #include "Data/Document.hpp"
+#include "CLI/ActionHistory.hpp"
 
 
 Application::Application() 
@@ -24,6 +24,7 @@ void Application::run(int count, char* args[])
 
     director = std::make_shared<Director>();
     document = std::make_shared<Document>();
+    history = std::make_shared<ActionHistory>();
    
     std::ifstream stream = buildStream(count, args);
 
@@ -66,4 +67,10 @@ std::ifstream Application::buildStream(int count, char* args[])
         stream.open(args[2]);
     return stream;
 
+}
+
+
+std::shared_ptr<ActionHistory> Application::getHistory() const
+{
+    return history;
 }

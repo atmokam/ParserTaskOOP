@@ -153,6 +153,30 @@ Application/Application.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Application/Application.cpp.s
 .PHONY : Application/Application.cpp.s
 
+CLI/ActionHistory.o: CLI/ActionHistory.cpp.o
+.PHONY : CLI/ActionHistory.o
+
+# target to build an object file
+CLI/ActionHistory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/ActionHistory.cpp.o
+.PHONY : CLI/ActionHistory.cpp.o
+
+CLI/ActionHistory.i: CLI/ActionHistory.cpp.i
+.PHONY : CLI/ActionHistory.i
+
+# target to preprocess a source file
+CLI/ActionHistory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/ActionHistory.cpp.i
+.PHONY : CLI/ActionHistory.cpp.i
+
+CLI/ActionHistory.s: CLI/ActionHistory.cpp.s
+.PHONY : CLI/ActionHistory.s
+
+# target to generate assembly for a file
+CLI/ActionHistory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/ActionHistory.cpp.s
+.PHONY : CLI/ActionHistory.cpp.s
+
 CLI/Command.o: CLI/Command.cpp.o
 .PHONY : CLI/Command.o
 
@@ -477,6 +501,9 @@ help:
 	@echo "... Application/Application.o"
 	@echo "... Application/Application.i"
 	@echo "... Application/Application.s"
+	@echo "... CLI/ActionHistory.o"
+	@echo "... CLI/ActionHistory.i"
+	@echo "... CLI/ActionHistory.s"
 	@echo "... CLI/Command.o"
 	@echo "... CLI/Command.i"
 	@echo "... CLI/Command.s"

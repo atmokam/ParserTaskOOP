@@ -188,4 +188,5 @@ CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o: \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/unordered_set \
  /usr/include/c++/11/bits/unordered_set.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Command.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Command.hpp \
+ /usr/include/c++/11/iostream

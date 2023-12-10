@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Application/Application.cpp" "CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/ActionHistory.cpp" "CMakeFiles/PowerPointProject.dir/CLI/ActionHistory.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/CLI/ActionHistory.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Command.cpp" "CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Controller.cpp" "CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Parser.cpp" "CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o.d"

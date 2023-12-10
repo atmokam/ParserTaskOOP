@@ -1,6 +1,8 @@
 #ifndef COMMAND_HPP
 #define COMMAND_HPP
 
+// I might need to add a group command for item grouping
+
 #include <string>
 #include <unordered_map>
 #include <memory>
@@ -107,6 +109,16 @@ public:
 class ExitCommand : public Command {
 public:
     
+    void execute() override;
+};
+
+class UpCommand : public Command {  // thinking about this being a good idea
+public:
+    void execute() override;
+};
+
+class DownCommand : public Command {
+public:
     void execute() override;
 };
 

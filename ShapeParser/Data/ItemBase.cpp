@@ -3,7 +3,7 @@
 
 // ItemBase
 
-ItemBase::ItemBase() : type(), geometry(Geometry{}), attributes(Attributes{}), id(0) {}
+ItemBase::ItemBase() : type(), geometry(Geometry{}), attributes(Attributes{}), id() {}
 
 ItemBase::ItemBase(Type type, Geometry& geometry, Attributes& attributes, ID id) 
 : type(type), geometry(geometry), attributes(attributes), id(id) {}

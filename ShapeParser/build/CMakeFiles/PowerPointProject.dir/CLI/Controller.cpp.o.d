@@ -149,9 +149,13 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: \
  /usr/include/c++/11/bits/ostream.tcc \
  /usr/include/c++/11/bits/istream.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/ActionHistory.hpp \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/iostream \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Parser.hpp \
- /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_uninitialized.h \
- /usr/include/c++/11/bits/stl_tempbuf.h \
+ /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
  /usr/include/c++/11/bits/uses_allocator.h \
@@ -171,10 +175,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Validator.hpp \
- /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
- /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/unordered_set \
- /usr/include/c++/11/bits/hashtable.h \
+ /usr/include/c++/11/unordered_set /usr/include/c++/11/bits/hashtable.h \
  /usr/include/c++/11/bits/hashtable_policy.h \
  /usr/include/c++/11/bits/enable_special_members.h \
  /usr/include/c++/11/bits/node_handle.h \
@@ -183,8 +184,12 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: \
  /usr/include/c++/11/bits/unordered_map.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Command.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Application/Application.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IDirector.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IApplication.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Application/IApplication.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Director/IDirector.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../CLI/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/ActionHistory.hpp

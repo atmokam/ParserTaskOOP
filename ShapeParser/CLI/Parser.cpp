@@ -11,71 +11,60 @@ Parser::Parser(std::istream& inputStream) : inputStream(inputStream) {}
 
 void Parser::skipSpaces()
 {
-    while(std::isspace(inputStream.peek()))
+    while(inputStream.peek() == ' ')
     {
-        std::cout << inputStream.get();
+        inputStream.get();
     }
 }
 
 bool Parser::IsNewLine(char c) const
 {
-    return c == '\n' || c == '\r';
+    return c == '\n' || c == '\r' || c == EOF;
 }
 
 std::string Parser::getToken()
 {
     std::string sToken;
+    skipSpaces();
+
     if (!IsNewLine(inputStream.peek()))
         inputStream >> sToken; 
-    skipSpaces();
+    else
+        sToken = "";
     return sToken;
 }
 
 
 
-// std::shared_ptr<Command> Parser::parse()
+// the one below keeps entering the controller loop, even if the input is empty
+// that's why i get a segfault. I'm not sure, but I think the >> operator handles this case that's why it stops 
+// reading when the stream is empty, and so i get that waiting behaviour
+
+
+// std::shared_ptr<Command> Parser::parse()                           // 2nd attempt
 // {
-//     std::string cmdName = getToken();
+//     std::shared_ptr<Command> command = nullptr;
+//     Validator validator;
 
-//     std::shared_ptr<Command> pCmd = createCommand(cmdName);
-//     command->setName(cmdName);
-//     commandNameFlag = cmdName;
-//     prevToken = cmdName;
-
-//     if (pCmd == nullptr)
-//         throw std::invalid_argument("Invalid command: " + cmdName);
-
-//     std::string token = getToken();
-//     while (!token.empty())
-//     {
-//         if((prevOperand != prevToken) && validator.isOperand(token, commandNameFlag))
-//         {
-//             command->addOperandToOperands(token);
-//             prevOperand = token;
-//             prevToken = token;
-//         }
-//         else if(prevOperand != "" && validator.isValue(token, prevOperand))
-//         {
-//             command->addValueToOperands(token, prevOperand); 
-//             prevToken = token;
-//         }
-//         else 
-//         {
-//             throw std::invalid_argument("Invalid input: " + token);
-//         }
-
+//     std::string token;
+   
+//     do {  
 //         token = getToken();
+//         if(token == "") break;
+//         std::cout << token << std::endl;
+//         processArgument(token, command);
+//     } while(!token.empty());
+
+//     if(!validator.validateCommand(command)) 
+//     {
+//         throw std::invalid_argument("Invalid commands: " + command->getName());
 //     }
 
-//     return pCmd;     
+
+//     return command;
+    
 // }
 
-
-
-
-
-// the above one throws segfault, for now I will be using the modifed-old version, temporarily
-// will get back to this when I'm done with the other tasks
 
 std::shared_ptr<Command> Parser::parse()
 {
@@ -101,6 +90,7 @@ std::shared_ptr<Command> Parser::parse()
         }
         
     }
+
     return command;
     
 }

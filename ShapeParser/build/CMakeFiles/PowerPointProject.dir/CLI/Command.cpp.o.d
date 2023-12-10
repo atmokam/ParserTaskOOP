@@ -167,16 +167,18 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Controller.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IDirector.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IApplication.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Application/IApplication.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Director/IDirector.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../CLI/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/ActionHistory.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Slide.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemBase.hpp \
  /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \

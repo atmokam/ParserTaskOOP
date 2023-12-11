@@ -26,10 +26,11 @@ QJsonObject SaveLoad::serialize(const std::shared_ptr<Slide>& slide, QJsonDocume
         itemObject["id"] = item.first;
         itemObject["type"] = converter.convertToJson(item.second->getType());
         itemObject["attributes"] = converter.convertToJson(item.second->getAttributes());
-        itemObject["geometry"] = converter.convertToJson(item.second->getGeometry());
-        
+        itemObject["geometry"] = converter.convertToJson(item.second->getGeometry());        
 
     }
+    
+    return slideObject;
     
 }
 

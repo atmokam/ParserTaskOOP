@@ -6,7 +6,7 @@
 
 
 
-Converter::Converter() { // shapelibrary
+Converter::Converter() { // move to shapelibrary
     typeMap = {
         {"line", Type::Line},
         {"rectangle", Type::Rectangle},
@@ -70,8 +70,10 @@ LineType Converter::convertToLineType(const std::string& lineType) {
 }
 
 
+// convert to json
+
 QJsonArray Converter::convertToJson(const Position& position) {
-    QJsonArray result;
+    QJsonArray result = QJsonArray();
     std::vector<double> values = position.getCoordinates();
     for (auto value : values) {
         result.append(value);
@@ -111,16 +113,19 @@ QJsonValue Converter::convertToJson(const LineType& lineType) {
     }
 }
 
+
 QJsonValue convertToJson(const long& color) {
     std::stringstream stream;
     stream << "#" << std::hex << color;
     return QJsonValue(QString::fromStdString(stream.str()));
 }
 
+
 QJsonValue Converter::convertToJson(const Attributes& attribute) {
     Application& app = Application::getInstance();
     Attributes defaultAttributes = app.getDocument()->getDefaultAttributes();
     QJsonObject result;
+
     result["lineWidth"] = attribute.getLineWidth().has_value() ? 
     attribute.getLineWidth().value() : defaultAttributes.getLineWidth().value();   
 
@@ -132,6 +137,23 @@ QJsonValue Converter::convertToJson(const Attributes& attribute) {
 
     result["fillColorHex"] = convertToJson(attribute.getHexFillColor().has_value() ? 
     attribute.getHexFillColor().value() : defaultAttributes.getHexFillColor().value());
-    
+
+    return result;
+}
+
+
+QJsonValue Converter::convertToJson(const Geometry& geometry) {
+    QJsonObject result;
+
+    result["position"] = convertToJson(geometry.getPosition().has_value() ?
+    geometry.getPosition().value() : Position{});
+
+    result["width"] = geometry.getWidth().has_value() ?
+    geometry.getWidth().value() : 0;
+
+    result["height"] = geometry.getHeight().has_value() ?
+    geometry.getHeight().value() : 0;
+
+
     return result;
 }

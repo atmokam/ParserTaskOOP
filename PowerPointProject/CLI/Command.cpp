@@ -74,11 +74,15 @@ void RemoveCommand::execute()
         }
         application.getDirector()->doAction(std::make_shared<RemoveItem>(item, currentSlideIndex));
     }
-    else if(operands.find("-slide") != operands.end()){
-        if(application.getDirector()->getDocument()->size() == 1){
+    else if(operands.find("-slide") != operands.end())
+    {
+        if(application.getDirector()->getDocument()->size() == 1)
+        {
             std::cout << "Cannot remove slide, only 1 left" << std::endl;
             
-        } else {
+        } 
+        else 
+        {
             application.getDirector()->doAction(std::make_shared<RemoveSlide>(slide, currentSlideIndex)); 
             application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
         }
@@ -107,7 +111,8 @@ void ChangeCommand::execute()
         newItem = std::make_shared<ItemLeaf>(*(std::static_pointer_cast<ItemLeaf>(item)));
     }
 
-    if(operands.find("-pos") != operands.end()){ 
+    if(operands.find("-pos") != operands.end())
+    { 
         geometry.setPosition(converter.convertToPosition(operands["-pos"]));
     }
 

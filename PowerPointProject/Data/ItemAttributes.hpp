@@ -61,9 +61,9 @@ public:
     Geometry() = default;
     Geometry(Position position, double width, double height) : position(position), width(width), height(height) { }
 
-    std::optional<Position>& getPosition() { return position; }
-    std::optional<double>& getWidth() { return width; }
-    std::optional<double>& getHeight() { return height; }
+    std::optional<Position> getPosition() const { return position; }
+    std::optional<double> getWidth() const  { return width; }
+    std::optional<double> getHeight() const  { return height; }
 
     void setPosition(Position position) { this->position = position; }
     void setWidth(double width) { this->width = width; }

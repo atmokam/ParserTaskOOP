@@ -16,6 +16,7 @@
 class IDocument;
 class Slide;
 class QJsonDocument;
+class QJsonObject;
 
 class SaveLoad {
     QJsonObject serialize(const std::shared_ptr<Slide>& slide, QJsonDocument& stream);

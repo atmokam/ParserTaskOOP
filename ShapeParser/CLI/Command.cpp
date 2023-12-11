@@ -16,18 +16,18 @@ Command::Command() : application(Application::getInstance()) {}
 
 void AddCommand::execute() 
 {  
-    if(operands.find("-name") != operands.end()){
-    
+    if(operands.find("-name") != operands.end())
+    {
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
         std::shared_ptr<ItemLeaf> item = createItem();
-
         application.getDirector()->doAction(std::make_shared<AddItem>(item, currentSlideIndex));
     }
-    else if(operands.find("-slide") != operands.end()){
+    else if(operands.find("-slide") != operands.end())
+    {
         std::shared_ptr<Slide> slide = std::make_shared<Slide>();
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
         application.getDirector()->doAction(std::make_shared<AddSlide>(slide, currentSlideIndex));
-        application.getDirector()->setCurrentSlideIndex(application.getDirector()->getCurrentSlideIndex() + 1);
+        application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
     }
 
 }
@@ -42,7 +42,6 @@ std::shared_ptr<ItemLeaf> AddCommand::createItem()
     Type type = Type{converter.convertToType(operands["-name"][0])};
 
     geometry.setPosition(Position{converter.convertToPosition(operands["-pos"])});
-   
     geometry.setWidth(converter.convertToDimention(operands["-w"][0]));
     geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
     
@@ -58,10 +57,7 @@ std::shared_ptr<ItemLeaf> AddCommand::createItem()
     attributes.setLineType((operands.find("-lstyle") != operands.end())? 
     converter.convertToLineType(operands["-lstyle"][0]) : defaultAttributes.getLineType().value());
     
-    
-
-    std::shared_ptr<ItemLeaf> item = std::make_shared<ItemLeaf>(type, geometry, attributes, document->generateID());
-    return item;
+    return std::make_shared<ItemLeaf>(type, geometry, attributes, document->generateID());
 
 }
 
@@ -70,8 +66,8 @@ void RemoveCommand::execute()
     std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
 
-    if(operands.find("-id") != operands.end()){
-
+    if(operands.find("-id") != operands.end())
+    {
         std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
         if (item == nullptr){
             return;
@@ -99,34 +95,48 @@ void ChangeCommand::execute()
 
     Attributes attributes = item->getAttributes(); 
     Geometry geometry = item->getGeometry();
+
     std::shared_ptr<ItemBase> newItem;
 
-    if(item->getType() == Type::Group) {
+    if(item->getType() == Type::Group) 
+    {
         newItem = std::make_shared<ItemGroup>(*(std::static_pointer_cast<ItemGroup>(item)));
     }
-    else{
+    else
+    {
         newItem = std::make_shared<ItemLeaf>(*(std::static_pointer_cast<ItemLeaf>(item)));
     }
 
     if(operands.find("-pos") != operands.end()){ 
         geometry.setPosition(converter.convertToPosition(operands["-pos"]));
     }
-    if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end()){
+
+    if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end())
+    {
         geometry.setWidth(converter.convertToDimention(operands["-w"][0])); 
         geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
     }
-    if(operands.find("-lcolor") != operands.end()){
+
+    if(operands.find("-lcolor") != operands.end())
+    {
         attributes.setHexLineColor(converter.convertToColor(operands["-lcolor"][0]));
     }
-    if(operands.find("-fcolor") != operands.end()){
+
+    if(operands.find("-fcolor") != operands.end())
+    {
         attributes.setHexFillColor(converter.convertToColor(operands["-fcolor"][0]));
     }
-    if(operands.find("-lwidth") != operands.end()){
+
+    if(operands.find("-lwidth") != operands.end())
+    {
         attributes.setLineWidth(std::stod(operands["-lwidth"][0]));
     }
-    if(operands.find("-lstyle") != operands.end()){
+
+    if(operands.find("-lstyle") != operands.end())
+    {
         attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
     }
+
     newItem->setAttributes(attributes);
     newItem->setGeometry(geometry);
     
@@ -161,11 +171,15 @@ void LoadCommand::execute()
 
 void DisplayCommand::execute() 
 {
-    if(operands.find("-id") != operands.end()){
-        std::shared_ptr<ItemBase> item = application.getDirector()->getCurrentSlide()->getItem(std::stoi(operands["-id"][0]));
-        if (item == nullptr){
+    if(operands.find("-id") != operands.end())
+    {
+        std::shared_ptr<Slide> current = application.getDirector()->getCurrentSlide();
+        std::shared_ptr<ItemBase> item = current->getItem(std::stoi(operands["-id"][0]));
+        if (item == nullptr)
+        {
             return;
         }
+
         ShapeBase shape(item);
         shape.print(std::cout);
     }
@@ -186,7 +200,8 @@ void ListCommand::execute()
 {
     auto document = application.getDirector()->getDocument();
     size_t currentSlideIndex  = 0;
-    for (const auto& slide : *document){
+    for (const auto& slide : *document)
+    {
         std::cout << "Slide: " << currentSlideIndex << std::endl;
         for(const auto& item : *slide){
             std::cout << item.first << "\t";
@@ -219,9 +234,19 @@ void RedoCommand::execute()
     application.getDirector()->redo();
 }
 
-void ExitCommand::execute() 
+void ExitCommand::execute()    
 {
+    if(application.isDocumentModified())
+    {
+        std::cout << "You have unsaved changes, are you sure you want to exit? (y/n)" << std::endl;
+        char answer;
+        std::cin >> answer;
+        if(answer == 'n')
+            return;
+    }
+
     application.callExit();
+    
 }
 
 

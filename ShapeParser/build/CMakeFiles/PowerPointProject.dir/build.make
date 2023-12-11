@@ -316,6 +316,7 @@ PowerPointProject: CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/CLI/ActionHistory.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/build.make
+PowerPointProject: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.2.4
 PowerPointProject: CMakeFiles/PowerPointProject.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable PowerPointProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PowerPointProject.dir/link.txt --verbose=$(VERBOSE)

@@ -112,16 +112,6 @@ public:
     void execute() override;
 };
 
-class UpCommand : public Command {  // thinking about this being a good idea
-public:
-    void execute() override;
-};
-
-class DownCommand : public Command {
-public:
-    void execute() override;
-};
-
 
 
 #endif

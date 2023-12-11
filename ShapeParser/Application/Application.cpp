@@ -24,7 +24,6 @@ void Application::run(int count, char* args[])
 
     director = std::make_shared<Director>();
     document = std::make_shared<Document>();
-    history = std::make_shared<ActionHistory>();
    
     std::ifstream stream = buildStream(count, args);
 
@@ -69,8 +68,12 @@ std::ifstream Application::buildStream(int count, char* args[])
 
 }
 
-
-std::shared_ptr<ActionHistory> Application::getHistory() const
+bool Application::isDocumentModified() const 
 {
-    return history;
+    return documentModified;
+}
+
+void Application::setDocumentModified() 
+{
+    documentModified = true;
 }

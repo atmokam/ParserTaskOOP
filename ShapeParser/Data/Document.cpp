@@ -5,8 +5,6 @@
 
 
 
-
-
 void Document::addSlide(std::shared_ptr<Slide> slide, size_t number) 
 {
     if(number == -1){

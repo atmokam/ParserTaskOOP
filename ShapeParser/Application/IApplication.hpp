@@ -14,6 +14,9 @@ public:
     virtual void run(int count, char* args[]) = 0;
     virtual void buildApplication() = 0;
     virtual void callExit() = 0;
+    virtual bool isExitCalled() const = 0;
+    virtual bool isDocumentModified() const = 0;
+    virtual void setDocumentModified() = 0;
     
 };
 

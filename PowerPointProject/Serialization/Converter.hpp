@@ -8,6 +8,7 @@
 #include "Data/ItemAttributes.hpp"
 
 class QJsonArray;
+class QJsonValueRef;
 
 class Converter {
     std::unordered_map<std::string, Type> typeMap;
@@ -22,9 +23,15 @@ public:
     long convertToColor(const std::string& color);
     LineType convertToLineType(const std::string& lineType);
 
-    QJsonArray convertToArray(const Position& position);
-    std::string convertToString(const Type& type);
-    std::string convertToString(const LineType& lineType);
+    QJsonValue convertToJson(const Attributes& attribute);
+    QJsonValue convertToJson(const Geometry& geometry);
+    
+    QJsonArray convertToJson(const Position& position);
+    QJsonValue convertToJson(const Type& type);
+    QJsonValue convertToJson(const LineType& lineType);
+    QJsonValue convertToJson(const long& color);
+
+
     
 
 };

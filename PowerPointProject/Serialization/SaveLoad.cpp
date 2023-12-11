@@ -19,10 +19,15 @@ void SaveLoad::save(const std::shared_ptr<IDocument>& document, QJsonDocument& s
 QJsonObject SaveLoad::serialize(const std::shared_ptr<Slide>& slide, QJsonDocument& stream)
 {
     QJsonObject slideObject;
+    Converter converter;
     for(auto& item: *slide)
     {
         QJsonObject itemObject;
-       // to implement
+        itemObject["id"] = item.first;
+        itemObject["type"] = converter.convertToJson(item.second->getType());
+        itemObject["attributes"] = converter.convertToJson(item.second->getAttributes());
+        itemObject["geometry"] = converter.convertToJson(item.second->getGeometry());
+        
 
     }
     

@@ -1,4 +1,6 @@
 #include "Converter.hpp"
+#include "Application/Application.hpp"
+#include <sstream>
 #include <QJsonArray>
 #include <QJsonObject>
 
@@ -68,7 +70,7 @@ LineType Converter::convertToLineType(const std::string& lineType) {
 }
 
 
-QJsonArray Converter::convertToArray(const Position& position) {
+QJsonArray Converter::convertToJson(const Position& position) {
     QJsonArray result;
     std::vector<double> values = position.getCoordinates();
     for (auto value : values) {
@@ -77,34 +79,59 @@ QJsonArray Converter::convertToArray(const Position& position) {
     return result;
 }
 
-std::string Converter::convertToString(const Type& type) {
+QJsonValue Converter::convertToJson(const Type& type) {
     switch (type) {
-        case Type::Line:
-            return "line";
+         case Type::Line:
+            return QJsonValue("line");
         case Type::Rectangle:
-            return "rectangle";
+            return QJsonValue("rectangle");
         case Type::Trapezoid:
-            return "trapezoid";
+            return QJsonValue("trapezoid");
         case Type::Ellipse:
-            return "ellipse";
+            return QJsonValue("ellipse");
         case Type::Triangle:
-            return "triangle";
+            return QJsonValue("triangle");
         case Type::Group:
-            return "group";
+            return QJsonValue("group");
         default:
-            return "";
+            return QJsonValue("");
     }
 }
 
-std::string Converter::convertToString(const LineType& lineType) {
+QJsonValue Converter::convertToJson(const LineType& lineType) {
     switch (lineType) {
         case LineType::Solid:
-            return "solid";
+            return QJsonValue("solid");
         case LineType::Dashed:
-            return "dashed";
+            return QJsonValue("dashed");
         case LineType::Dotted:
-            return "dotted";
+            return QJsonValue("dotted");
         default:
-            return "";
+            return QJsonValue("");
     }
+}
+
+QJsonValue convertToJson(const long& color) {
+    std::stringstream stream;
+    stream << "#" << std::hex << color;
+    return QJsonValue(QString::fromStdString(stream.str()));
+}
+
+QJsonValue Converter::convertToJson(const Attributes& attribute) {
+    Application& app = Application::getInstance();
+    Attributes defaultAttributes = app.getDocument()->getDefaultAttributes();
+    QJsonObject result;
+    result["lineWidth"] = attribute.getLineWidth().has_value() ? 
+    attribute.getLineWidth().value() : defaultAttributes.getLineWidth().value();   
+
+    result["lineType"] = convertToJson(attribute.getLineType().has_value() ? 
+    attribute.getLineType().value() : defaultAttributes.getLineType().value());
+
+    result["lineColorHex"] = convertToJson(attribute.getHexLineColor().has_value() ?
+    attribute.getHexLineColor().value() : defaultAttributes.getHexLineColor().value());
+
+    result["fillColorHex"] = convertToJson(attribute.getHexFillColor().has_value() ? 
+    attribute.getHexFillColor().value() : defaultAttributes.getHexFillColor().value());
+    
+    return result;
 }

@@ -28,24 +28,16 @@ void ShapeBase::recursivePrintHandler(std::ostream& stream, const std::shared_pt
 
 void ShapeBase::leafPrintHandler(std::ostream& stream, const std::shared_ptr<ItemLeaf>& leaf) 
 {
-    stream << "Shape: ";
-    stream << leaf->getType() << std::endl;
+    stream << "Shape: " << leaf->getType() << std::endl;
     stream << "---Geometry---" << std::endl;
-    stream << "Position: ";
-    stream << leaf->getGeometry().getPosition().value() << std::endl;
-    stream << "Height: ";
-    stream << leaf->getGeometry().getHeight().value() << std::endl;
-    stream << "Width: ";
-    stream << leaf->getGeometry().getWidth().value() << std::endl;
+    stream << "Position: " << leaf->getGeometry().getPosition().value() << std::endl;
+    stream << "Height: " << leaf->getGeometry().getHeight().value() << std::endl;
+    stream << "Width: "<< leaf->getGeometry().getWidth().value() << std::endl;
     stream << "---Attributes---" << std::endl;
-    stream << "FillColor: ";
-    stream << leaf->getAttributes().getHexFillColor().value() << std::endl;
-    stream << "LineColor: ";
-    stream << leaf->getAttributes().getHexLineColor().value() << std::endl;
-    stream << "LineWidth: ";
-    stream << leaf->getAttributes().getLineWidth().value() << std::endl;
-    stream << "LineType: ";
-    stream << leaf->getAttributes().getLineType().value() << std::endl;
+    stream << "FillColor: " << leaf->getAttributes().getHexFillColor().value() << std::endl;
+    stream << "LineColor: " << leaf->getAttributes().getHexLineColor().value() << std::endl;
+    stream << "LineWidth: " << leaf->getAttributes().getLineWidth().value() << std::endl;
+    stream << "LineType: " << leaf->getAttributes().getLineType().value() << std::endl;
 }
 
 std::shared_ptr<IShape> ShapeBase::clone() const

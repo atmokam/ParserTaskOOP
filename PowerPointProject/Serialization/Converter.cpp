@@ -64,9 +64,7 @@ LineType Converter::convertToLineType(const std::string& lineType) {
         return LineType::Dashed;
     } else if (lineType == "dotted") {
         return LineType::Dotted;
-    } else {
-        throw std::invalid_argument("Invalid line type");
-    }
+    } 
 }
 
 
@@ -94,7 +92,7 @@ std::string Converter::convertToString(const Type& type) {
         case Type::Group:
             return "group";
         default:
-            throw std::invalid_argument("Invalid type");
+            return "";
     }
 }
 
@@ -107,6 +105,6 @@ std::string Converter::convertToString(const LineType& lineType) {
         case LineType::Dotted:
             return "dotted";
         default:
-            throw std::invalid_argument("Invalid line type");
+            return "";
     }
 }

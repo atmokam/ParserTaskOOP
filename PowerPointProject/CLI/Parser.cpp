@@ -15,6 +15,7 @@ void Parser::skipSpaces()
     {
         inputStream.get();
     }
+    
 }
 
 bool Parser::IsNewLine(char c) const
@@ -29,67 +30,35 @@ std::string Parser::getToken()
 
     if (!IsNewLine(inputStream.peek()))
         inputStream >> sToken; 
-    else
-        sToken = "";
+    else 
+    {
+        inputStream.get();
+        return "";
+    }
+
     return sToken;
 }
 
 
-
-// the one below keeps entering the controller loop, even if the input is empty
-// that's why i get a segfault. I'm not sure, but I think the >> operator handles this case that's why it stops 
-// reading when the stream is empty, and so i get that waiting behaviour
-
-
-// std::shared_ptr<Command> Parser::parse()                           // 2nd attempt
-// {
-//     std::shared_ptr<Command> command = nullptr;
-//     Validator validator;
-
-//     std::string token;
-   
-//     do {  
-//         token = getToken();
-//         if(token == "") break;
-//         std::cout << token << std::endl;
-//         processArgument(token, command);
-//     } while(!token.empty());
-
-//     if(!validator.validateCommand(command)) 
-//     {
-//         throw std::invalid_argument("Invalid commands: " + command->getName());
-//     }
-
-
-//     return command;
-    
-// }
-
-
-std::shared_ptr<Command> Parser::parse()
+std::shared_ptr<Command> Parser::parse()                        
 {
-    std::string token;
-    std::shared_ptr<Command> command = nullptr;
+    std::string argument = getToken();
+    std::shared_ptr<Command> command = createCommand(argument); // validation, flags add
     Validator validator;
 
-
-    while(inputStream >> token) 
+    std::string token;
+   
+    while(!token.empty())
     {  
-        if(inputStream.peek() == '\n' || inputStream.peek() == EOF)
-        {
-            processArgument(token, command);
-            if(!validator.validateCommand(command)) 
-            {
-                throw std::invalid_argument("Invalid command: " + command->getName());
-            }
-            return command;
-        } 
-        else 
-        {
-            processArgument(token, command);
-        }
-        
+        token = getToken();
+        processArgument(token, command);
+    } 
+
+    if(!validator.validateCommand(command)) 
+    {
+        throw std::invalid_argument("Invalid commands: " + command->getName());
     }
+
 
     return command;
     
@@ -97,10 +66,41 @@ std::shared_ptr<Command> Parser::parse()
 
 
 
+// std::shared_ptr<Command> Parser::parse()
+// {
+//     std::string token;
+//     std::shared_ptr<Command> command = nullptr;
+//     Validator validator;
+
+
+//     while(inputStream >> token) 
+//     {  
+//         if(inputStream.peek() == '\n' || inputStream.peek() == EOF)
+//         {
+//             processArgument(token, command);
+//             if(!validator.validateCommand(command)) 
+//             {
+//                 throw std::invalid_argument("Invalid command: " + command->getName());
+//             }
+//             return command;
+//         } 
+//         else 
+//         {
+//             processArgument(token, command);
+//         }
+        
+//     }
+
+//     return command;
+    
+// }
+
+
+
 void Parser::processArgument(std::string argument, std::shared_ptr<Command>& command){
     Validator validator;
     if(commandNameFlag == "" && validator.isName(argument)){
-            command = createCommand(argument);
+            command = createCommand(argument); // move validation to factory
             command->setName(argument);
             commandNameFlag = argument;
             prevToken = argument;

@@ -14,12 +14,15 @@ void CLIController::runProgram() {
     Application& application = Application::getInstance();  
     while (!application.isExitCalled()) 
     {
+        // if(input.eof()) // +-
+        //     continue;
         runCommand(input);
     }
 }
 
 void CLIController::runCommand(std::istream& input)
 {
+    
     Parser oParser(input);
     std::shared_ptr<Command> pCmd = oParser.parse();
     

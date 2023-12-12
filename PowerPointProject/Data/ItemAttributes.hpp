@@ -4,6 +4,7 @@
 #include <vector>
 #include <optional>
 #include <ostream>
+#include "Renderer/ShapeLibrary.hpp"
 
 class Position 
 {
@@ -69,13 +70,6 @@ public:
 
 };
 
-
-
-
-enum class Type 
-{
-    Rectangle, Trapezoid, Ellipse, Line, Triangle, Group
-};
 
 class ShapeType
 {

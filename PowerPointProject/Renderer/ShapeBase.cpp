@@ -41,11 +41,16 @@ void ShapeBase::leafPrintHandler(std::ostream& stream, const std::shared_ptr<Ite
     stream << "LineType: " << leaf->getAttributes().getLineType().value() << std::endl;
 }
 
-std::shared_ptr<IShape> ShapeBase::clone() const
+std::shared_ptr<IShape> ShapeBase::clone(std::shared_ptr<ItemBase> item)
 {
+    setItem(item);
     return std::make_shared<ShapeBase>(*this);
 }
 
+void ShapeBase::setItem(std::shared_ptr<ItemBase> item)
+{
+    this->item = item;
+}
 
 
 
@@ -56,8 +61,9 @@ void ShapeRectangle::draw(QPainter& painter, DimentionConverter& converter)
     
 }
 
-std::shared_ptr<IShape> ShapeRectangle::clone() const
+std::shared_ptr<IShape> ShapeRectangle::clone(std::shared_ptr<ItemBase> item)
 {
+    setItem(item);
     return std::make_shared<ShapeRectangle>(*this);
 }
 
@@ -69,8 +75,9 @@ void ShapeEllipse::draw(QPainter& painter, DimentionConverter& converter)
     
 }
 
-std::shared_ptr<IShape> ShapeEllipse::clone() const
+std::shared_ptr<IShape> ShapeEllipse::clone(std::shared_ptr<ItemBase> item)
 {
+    setItem(item);
     return std::make_shared<ShapeEllipse>(*this);
 }
 
@@ -83,8 +90,9 @@ void ShapeLine::draw(QPainter& painter, DimentionConverter& converter)
 }
 
 
-std::shared_ptr<IShape> ShapeLine::clone() const
+std::shared_ptr<IShape> ShapeLine::clone(std::shared_ptr<ItemBase> item)
 {
+    setItem(item);
     return std::make_shared<ShapeLine>(*this);
 }
 
@@ -96,8 +104,9 @@ void ShapeTrapezoid::draw(QPainter& painter, DimentionConverter& converter)
     
 }
 
-std::shared_ptr<IShape> ShapeTrapezoid::clone() const
+std::shared_ptr<IShape> ShapeTrapezoid::clone(std::shared_ptr<ItemBase> item)
 {
+    setItem(item);
     return std::make_shared<ShapeTrapezoid>(*this);
 }
 
@@ -109,8 +118,9 @@ void ShapeTriangle::draw(QPainter& painter, DimentionConverter& converter)
     
 }
 
-std::shared_ptr<IShape> ShapeTriangle::clone() const
+std::shared_ptr<IShape> ShapeTriangle::clone(std::shared_ptr<ItemBase> item)
 {
+    setItem(item);
     return std::make_shared<ShapeTriangle>(*this);
 }
 
@@ -122,8 +132,9 @@ void ShapeGroup::draw(QPainter& painter, DimentionConverter& converter)
     
 }
 
-std::shared_ptr<IShape> ShapeGroup::clone() const
+std::shared_ptr<IShape> ShapeGroup::clone(std::shared_ptr<ItemBase> item)
 {
+    setItem(item);
     return std::make_shared<ShapeGroup>(*this);
 }
 

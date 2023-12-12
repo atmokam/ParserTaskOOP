@@ -19,21 +19,22 @@ class ShapeBase : public IShape, public ITextDisplayable
 public:
     void print(std::ostream& stream) override;
     ShapeBase(std::shared_ptr<ItemBase> item);
-    virtual std::shared_ptr<IShape> clone() const;
+    void setItem(std::shared_ptr<ItemBase> item);
+    virtual std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
 };
 
 class ShapeRectangle : public ShapeBase, public IVisualDisplayable {  
 public:
     ShapeRectangle(std::shared_ptr<ItemBase> item);
     void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone() const override;
+    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
 };
 
 class ShapeEllipse : public ShapeBase, public IVisualDisplayable {
 public:
     ShapeEllipse(std::shared_ptr<ItemBase> item);
     void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone() const override;
+    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
 
 };
 
@@ -41,7 +42,7 @@ class ShapeLine : public ShapeBase, public IVisualDisplayable {
 public:
     ShapeLine(std::shared_ptr<ItemBase> item);
     void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone() const override;
+    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
 
 };
 
@@ -49,7 +50,7 @@ class ShapeTrapezoid : public ShapeBase, public IVisualDisplayable {
 public:
     ShapeTrapezoid(std::shared_ptr<ItemBase> item);
     void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone() const override;
+    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
 
 };
 
@@ -57,7 +58,7 @@ class ShapeTriangle : public ShapeBase, public IVisualDisplayable {
 public:
     ShapeTriangle(std::shared_ptr<ItemBase> item);
     void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone() const override;
+    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
 
 };
 
@@ -65,7 +66,7 @@ class ShapeGroup : public ShapeBase, public IVisualDisplayable {
 public:
     ShapeGroup(std::shared_ptr<ItemBase> item);
     void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone() const override;
+    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
 
 };
 

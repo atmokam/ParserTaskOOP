@@ -11,6 +11,7 @@
 #include "Director/Actions.hpp"
 #include "Director/Director.hpp"
 #include "Renderer/ShapeBase.hpp"
+#include "Renderer/Renderer.hpp"
 #include "Renderer/Formatting/DimentionConverter.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Serialization/Converter.hpp" 
@@ -286,7 +287,7 @@ void DrawCommand::execute()
     auto height = converter.toPixels(format.second);
     QImage image(width, height, QImage::Format_ARGB32_Premultiplied);
     Renderer renderer;
-    renderer.draw(slide, image);
+    renderer.draw(image, converter, slide);
     QString path = QString::fromStdString(operands["-path"][0]);
     image.save(path);
 

@@ -3,15 +3,25 @@
 
 #include <string>
 #include <unordered_map>
+#include <memory>
+#include <functional>
 
-#include "IShape.hpp"
-#include "ShapeBase.hpp"
+class IShape;
+class ShapeBase;
+class ItemBase;
+
+enum class Type 
+{
+    Rectangle, Trapezoid, Ellipse, Line, Triangle, Group
+};
+
 
 class ShapeLibrary {
-    std::unordered_map<std::string, std::shared_ptr<IShape>> library;
+    std::unordered_map<Type, std::shared_ptr<IShape>> library;
 public:
     ShapeLibrary();
-    std::shared_ptr<IShape> getShape(std::string name);
+    std::shared_ptr<IShape> getShape(std::shared_ptr<ItemBase> item);
+
 };
 
 #endif

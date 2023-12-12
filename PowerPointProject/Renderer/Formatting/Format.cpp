@@ -12,6 +12,6 @@ Format::Format()
 
 std::pair<double, double> Format::getFormat(const std::string& format) 
 {
-    return formatMap[format];
+    return formatMap.at(format);
 }
 

@@ -5,8 +5,8 @@
 
 class IShape {
 public:
-    virtual std::shared_ptr<IShape> clone() const = 0;
-};
+    virtual std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) = 0;
+}; // make_shared<IShape>(item);
 
 
 #endif

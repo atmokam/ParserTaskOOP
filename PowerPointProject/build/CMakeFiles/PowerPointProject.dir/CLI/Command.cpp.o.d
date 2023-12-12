@@ -1,5 +1,5 @@
 CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Command.cpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Command.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -146,73 +146,205 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Application/Application.hpp \
- /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonDocument \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qjsondocument.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonvalue.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qglobal.h \
+ /usr/include/c++/11/cstddef /usr/include/c++/11/utility \
+ /usr/include/c++/11/bits/stl_relops.h /usr/include/assert.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qsystemdetection.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcompilerdetection.h \
+ /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
+ /usr/include/c++/11/bits/algorithmfwd.h \
+ /usr/include/c++/11/bits/stl_heap.h \
  /usr/include/c++/11/bits/stl_tempbuf.h \
- /usr/include/c++/11/bits/stl_raw_storage_iter.h \
- /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
- /usr/include/c++/11/bits/uses_allocator.h \
- /usr/include/c++/11/bits/unique_ptr.h /usr/include/c++/11/utility \
- /usr/include/c++/11/bits/stl_relops.h /usr/include/c++/11/tuple \
- /usr/include/c++/11/array /usr/include/c++/11/bits/invoke.h \
- /usr/include/c++/11/bits/shared_ptr.h \
- /usr/include/c++/11/bits/shared_ptr_base.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
- /usr/include/c++/11/bits/refwrap.h \
+ /usr/include/c++/11/bits/uniform_int_dist.h \
+ /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/11/functional /usr/include/c++/11/tuple \
+ /usr/include/c++/11/array /usr/include/c++/11/bits/uses_allocator.h \
+ /usr/include/c++/11/bits/invoke.h /usr/include/c++/11/bits/refwrap.h \
+ /usr/include/c++/11/bits/std_function.h \
+ /usr/include/c++/11/unordered_map \
  /usr/include/c++/11/ext/aligned_buffer.h \
- /usr/include/c++/11/ext/concurrence.h \
- /usr/include/c++/11/bits/shared_ptr_atomic.h \
- /usr/include/c++/11/bits/atomic_base.h \
- /usr/include/c++/11/bits/atomic_lockfree_defines.h \
- /usr/include/c++/11/backward/auto_ptr.h \
- /usr/include/c++/11/pstl/glue_memory_defs.h \
- /usr/include/c++/11/pstl/execution_defs.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IApplication.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Application/IApplication.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDirector.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Director/IDirector.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp \
- /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
- /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Slide.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemBase.hpp \
- /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
+ /usr/include/c++/11/bits/hashtable.h \
  /usr/include/c++/11/bits/hashtable_policy.h \
  /usr/include/c++/11/bits/enable_special_members.h \
  /usr/include/c++/11/bits/node_handle.h \
  /usr/include/c++/11/bits/unordered_map.h \
- /usr/include/c++/11/bits/erase_if.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
+ /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/vector \
+ /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc \
+ /usr/include/c++/11/pstl/execution_defs.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerfwd.h \
+ /usr/include/c++/11/variant /usr/include/c++/11/bits/parse_numbers.h \
  /usr/include/c++/11/optional \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Document.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/Actions.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IAction.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/Director.hpp \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qsysinfo.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
+ /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
+ /usr/include/c++/11/cmath /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+ /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+ /usr/include/c++/11/bits/specfun.h /usr/include/c++/11/limits \
+ /usr/include/c++/11/tr1/gamma.tcc \
+ /usr/include/c++/11/tr1/special_function_util.h \
+ /usr/include/c++/11/tr1/bessel_function.tcc \
+ /usr/include/c++/11/tr1/beta_function.tcc \
+ /usr/include/c++/11/tr1/ell_integral.tcc \
+ /usr/include/c++/11/tr1/exp_integral.tcc \
+ /usr/include/c++/11/tr1/hypergeometric.tcc \
+ /usr/include/c++/11/tr1/legendre_function.tcc \
+ /usr/include/c++/11/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/11/tr1/poly_hermite.tcc \
+ /usr/include/c++/11/tr1/poly_laguerre.tcc \
+ /usr/include/c++/11/tr1/riemann_zeta.tcc \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringview.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h /usr/include/string.h \
+ /usr/include/strings.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydatapointer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
+ /usr/include/c++/11/cstring /usr/include/c++/11/iterator \
+ /usr/include/c++/11/bits/stream_iterator.h /usr/include/c++/11/memory \
+ /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
+ /usr/include/c++/11/bits/unique_ptr.h \
+ /usr/include/c++/11/bits/shared_ptr.h \
+ /usr/include/c++/11/bits/shared_ptr_base.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/ext/concurrence.h \
+ /usr/include/c++/11/bits/shared_ptr_atomic.h \
+ /usr/include/c++/11/backward/auto_ptr.h \
+ /usr/include/c++/11/pstl/glue_memory_defs.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h \
+ /usr/include/c++/11/stdlib.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringliteral.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringalgorithms.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qshareddata.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+ /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
+ /usr/include/c++/11/pstl/glue_numeric_defs.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcborvalue.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearraylist.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringmatcher.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qscopeguard.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qscopedpointer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevicebase.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterable.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmetacontainer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerinfo.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qtaggedpointer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmath.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qobjectdefs.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qobjectdefs_impl.h \
+ /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
+ /usr/include/c++/11/bits/list.tcc /usr/include/c++/11/map \
+ /usr/include/c++/11/bits/stl_tree.h /usr/include/c++/11/bits/stl_map.h \
+ /usr/include/c++/11/bits/stl_multimap.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmap.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qshareddata_impl.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qhash.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject_impl.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qbindingstorage.h \
+ /usr/include/c++/11/chrono /usr/include/c++/11/ratio \
+ /usr/include/c++/11/ctime \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qtextstream.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringconverter.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qset.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcontiguouscache.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qsharedpointer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qsharedpointer_impl.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcborcommon.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qregularexpression.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qurl.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/quuid.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QByteArray \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Application/Application.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IApplication.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Application/IApplication.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Director/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Data/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../CLI/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Slide.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Document.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Actions.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/IAction.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Director.hpp \
  /usr/include/c++/11/stack /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/bits/stl_stack.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IDirector.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Command.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/SaveLoad.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Command.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.hpp \
  /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/Converter.hpp \
- /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
- /usr/include/c++/11/bits/algorithmfwd.h \
- /usr/include/c++/11/bits/stl_heap.h \
- /usr/include/c++/11/bits/uniform_int_dist.h \
- /usr/include/c++/11/pstl/glue_algorithm_defs.h \
- /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/ShapeBase.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/IVisualDisplayable.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/IShape.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/ITextDisplayable.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemBase.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Converter.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeBase.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/IVisualDisplayable.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/IShape.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ITextDisplayable.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp

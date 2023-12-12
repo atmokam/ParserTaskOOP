@@ -1,0 +1,58 @@
+{
+    "slide 0": [
+        {
+            "attributes": {
+                "fillColorHex": "#ffffff",
+                "lineColorHex": "#0",
+                "lineType": "solid",
+                "lineWidth": 1
+            },
+            "geometry": {
+                "height": 50,
+                "position": [
+                    89,
+                    85
+                ],
+                "width": 50
+            },
+            "id": 2,
+            "type": "line"
+        },
+        {
+            "attributes": {
+                "fillColorHex": "#ffffff",
+                "lineColorHex": "#0",
+                "lineType": "solid",
+                "lineWidth": 1
+            },
+            "geometry": {
+                "height": 50,
+                "position": [
+                    89,
+                    85
+                ],
+                "width": 50
+            },
+            "id": 1,
+            "type": "line"
+        },
+        {
+            "attributes": {
+                "fillColorHex": "#ffffff",
+                "lineColorHex": "#0",
+                "lineType": "solid",
+                "lineWidth": 1
+            },
+            "geometry": {
+                "height": 50,
+                "position": [
+                    89,
+                    85
+                ],
+                "width": 50
+            },
+            "id": 0,
+            "type": "line"
+        }
+    ]
+}

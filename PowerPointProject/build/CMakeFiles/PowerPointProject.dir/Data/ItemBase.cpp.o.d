@@ -1,7 +1,7 @@
 CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o: \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemBase.cpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.cpp \
  /usr/include/stdc-predef.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemBase.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp \
  /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -159,10 +159,10 @@ CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/iostream \
+ /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/optional \
  /usr/include/c++/11/ostream /usr/include/c++/11/ios \
  /usr/include/c++/11/bits/ios_base.h \
  /usr/include/c++/11/bits/locale_classes.h \
@@ -179,9 +179,8 @@ CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
- /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/optional \
- /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
+ /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/algorithm \
+ /usr/include/c++/11/bits/stl_algo.h \
  /usr/include/c++/11/bits/algorithmfwd.h \
  /usr/include/c++/11/bits/stl_heap.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \

@@ -27,7 +27,7 @@ public:
     std::shared_ptr<IDocument> getDocument() override;
 
     bool isDocumentModified() const override;
-    void setDocumentModified() override;
+    void setDocumentModified(bool modified) override;
 
 private:
     Application();

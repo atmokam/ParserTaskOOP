@@ -1,7 +1,7 @@
 CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Controller.cpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Controller.cpp \
  /usr/include/stdc-predef.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Controller.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Controller.hpp \
  /usr/include/c++/11/istream /usr/include/c++/11/ios \
  /usr/include/c++/11/iosfwd \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -148,13 +148,12 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc /usr/include/c++/11/ostream \
  /usr/include/c++/11/bits/ostream.tcc \
  /usr/include/c++/11/bits/istream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/ActionHistory.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/iostream \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Parser.hpp \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
@@ -174,7 +173,8 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Validator.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Parser.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Validator.hpp \
  /usr/include/c++/11/unordered_set /usr/include/c++/11/bits/hashtable.h \
  /usr/include/c++/11/bits/hashtable_policy.h \
  /usr/include/c++/11/bits/enable_special_members.h \
@@ -182,13 +182,13 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: \
  /usr/include/c++/11/bits/unordered_set.h \
  /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/unordered_map \
  /usr/include/c++/11/bits/unordered_map.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Command.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Application/Application.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IApplication.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Application/IApplication.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDirector.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Director/IDirector.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Command.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Application/Application.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IApplication.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Application/IApplication.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Director/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Data/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../CLI/IController.hpp

@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser
+CMAKE_SOURCE_DIR = /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/build
+CMAKE_BINARY_DIR = /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/build/CMakeFiles /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -153,30 +153,6 @@ Application/Application.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Application/Application.cpp.s
 .PHONY : Application/Application.cpp.s
 
-CLI/ActionHistory.o: CLI/ActionHistory.cpp.o
-.PHONY : CLI/ActionHistory.o
-
-# target to build an object file
-CLI/ActionHistory.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/ActionHistory.cpp.o
-.PHONY : CLI/ActionHistory.cpp.o
-
-CLI/ActionHistory.i: CLI/ActionHistory.cpp.i
-.PHONY : CLI/ActionHistory.i
-
-# target to preprocess a source file
-CLI/ActionHistory.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/ActionHistory.cpp.i
-.PHONY : CLI/ActionHistory.cpp.i
-
-CLI/ActionHistory.s: CLI/ActionHistory.cpp.s
-.PHONY : CLI/ActionHistory.s
-
-# target to generate assembly for a file
-CLI/ActionHistory.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/ActionHistory.cpp.s
-.PHONY : CLI/ActionHistory.cpp.s
-
 CLI/Command.o: CLI/Command.cpp.o
 .PHONY : CLI/Command.o
 
@@ -200,6 +176,30 @@ CLI/Command.s: CLI/Command.cpp.s
 CLI/Command.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.s
 .PHONY : CLI/Command.cpp.s
+
+CLI/CommandHistory.o: CLI/CommandHistory.cpp.o
+.PHONY : CLI/CommandHistory.o
+
+# target to build an object file
+CLI/CommandHistory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/CommandHistory.cpp.o
+.PHONY : CLI/CommandHistory.cpp.o
+
+CLI/CommandHistory.i: CLI/CommandHistory.cpp.i
+.PHONY : CLI/CommandHistory.i
+
+# target to preprocess a source file
+CLI/CommandHistory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/CommandHistory.cpp.i
+.PHONY : CLI/CommandHistory.cpp.i
+
+CLI/CommandHistory.s: CLI/CommandHistory.cpp.s
+.PHONY : CLI/CommandHistory.s
+
+# target to generate assembly for a file
+CLI/CommandHistory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/CommandHistory.cpp.s
+.PHONY : CLI/CommandHistory.cpp.s
 
 CLI/Controller.o: CLI/Controller.cpp.o
 .PHONY : CLI/Controller.o
@@ -296,6 +296,30 @@ Data/Document.s: Data/Document.cpp.s
 Data/Document.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Document.cpp.s
 .PHONY : Data/Document.cpp.s
+
+Data/ItemAttributes.o: Data/ItemAttributes.cpp.o
+.PHONY : Data/ItemAttributes.o
+
+# target to build an object file
+Data/ItemAttributes.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o
+.PHONY : Data/ItemAttributes.cpp.o
+
+Data/ItemAttributes.i: Data/ItemAttributes.cpp.i
+.PHONY : Data/ItemAttributes.i
+
+# target to preprocess a source file
+Data/ItemAttributes.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.i
+.PHONY : Data/ItemAttributes.cpp.i
+
+Data/ItemAttributes.s: Data/ItemAttributes.cpp.s
+.PHONY : Data/ItemAttributes.s
+
+# target to generate assembly for a file
+Data/ItemAttributes.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.s
+.PHONY : Data/ItemAttributes.cpp.s
 
 Data/ItemBase.o: Data/ItemBase.cpp.o
 .PHONY : Data/ItemBase.o
@@ -501,12 +525,12 @@ help:
 	@echo "... Application/Application.o"
 	@echo "... Application/Application.i"
 	@echo "... Application/Application.s"
-	@echo "... CLI/ActionHistory.o"
-	@echo "... CLI/ActionHistory.i"
-	@echo "... CLI/ActionHistory.s"
 	@echo "... CLI/Command.o"
 	@echo "... CLI/Command.i"
 	@echo "... CLI/Command.s"
+	@echo "... CLI/CommandHistory.o"
+	@echo "... CLI/CommandHistory.i"
+	@echo "... CLI/CommandHistory.s"
 	@echo "... CLI/Controller.o"
 	@echo "... CLI/Controller.i"
 	@echo "... CLI/Controller.s"
@@ -519,6 +543,9 @@ help:
 	@echo "... Data/Document.o"
 	@echo "... Data/Document.i"
 	@echo "... Data/Document.s"
+	@echo "... Data/ItemAttributes.o"
+	@echo "... Data/ItemAttributes.i"
+	@echo "... Data/ItemAttributes.s"
 	@echo "... Data/ItemBase.o"
 	@echo "... Data/ItemBase.i"
 	@echo "... Data/ItemBase.s"

@@ -1,5 +1,5 @@
 CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o: \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Application/Application.cpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Application/Application.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/fstream \
  /usr/include/c++/11/istream /usr/include/c++/11/ios \
  /usr/include/c++/11/iosfwd \
@@ -150,7 +150,7 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Application/Application.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Application/Application.hpp \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
@@ -171,28 +171,28 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IApplication.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Application/IApplication.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDirector.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Director/IDirector.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IApplication.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Application/IApplication.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Director/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Data/IDocument.hpp \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Controller.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/ActionHistory.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../CLI/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Controller.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp \
  /usr/include/c++/11/iostream \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/Director.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Director.hpp \
  /usr/include/c++/11/stack /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/bits/stl_stack.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IDirector.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Document.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Document.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
  /usr/include/c++/11/optional \
  /usr/include/c++/11/bits/enable_special_members.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/ActionHistory.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp

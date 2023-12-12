@@ -16,7 +16,7 @@ public:
     virtual void callExit() = 0;
     virtual bool isExitCalled() const = 0;
     virtual bool isDocumentModified() const = 0;
-    virtual void setDocumentModified() = 0;
+    virtual void setDocumentModified(bool modified) = 0;
     
 };
 

@@ -1,7 +1,7 @@
 CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o: \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/ShapeBase.cpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeBase.cpp \
  /usr/include/stdc-predef.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/ShapeBase.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeBase.hpp \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -117,8 +117,8 @@ CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/IVisualDisplayable.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/IShape.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/IVisualDisplayable.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/IShape.hpp \
  /usr/include/c++/11/string /usr/include/c++/11/bits/char_traits.h \
  /usr/include/c++/11/cstdint /usr/include/c++/11/bits/localefwd.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
@@ -167,18 +167,16 @@ CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o: \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Renderer/ITextDisplayable.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemBase.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ITextDisplayable.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp \
  /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
  /usr/include/c++/11/bits/hashtable_policy.h \
  /usr/include/c++/11/bits/enable_special_members.h \
  /usr/include/c++/11/bits/node_handle.h \
  /usr/include/c++/11/bits/unordered_map.h \
  /usr/include/c++/11/bits/erase_if.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/iostream \
- /usr/include/c++/11/istream /usr/include/c++/11/bits/istream.tcc \
- /usr/include/c++/11/optional \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp
+ /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/optional \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp

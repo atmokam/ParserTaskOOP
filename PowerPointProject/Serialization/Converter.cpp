@@ -1,8 +1,10 @@
 #include "Converter.hpp"
+#include "Data/ItemAttributes.hpp"
 #include "Application/Application.hpp"
 #include <sstream>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QJsonValue>
 
 
 
@@ -100,7 +102,8 @@ QJsonValue Converter::convertToJson(const Type& type) {
     }
 }
 
-QJsonValue Converter::convertToJson(const LineType& lineType) {
+QJsonValue Converter::convertToJson(const LineType& lineType) 
+{
     switch (lineType) {
         case LineType::Solid:
             return QJsonValue("solid");
@@ -114,14 +117,16 @@ QJsonValue Converter::convertToJson(const LineType& lineType) {
 }
 
 
-QJsonValue convertToJson(const long& color) {
+QJsonValue Converter::convertToJson(const long& color) 
+{
     std::stringstream stream;
     stream << "#" << std::hex << color;
     return QJsonValue(QString::fromStdString(stream.str()));
 }
 
 
-QJsonValue Converter::convertToJson(const Attributes& attribute) {
+QJsonValue Converter::convertToJson(const Attributes& attribute) 
+{
     Application& app = Application::getInstance();
     Attributes defaultAttributes = app.getDocument()->getDefaultAttributes();
     QJsonObject result;
@@ -142,7 +147,8 @@ QJsonValue Converter::convertToJson(const Attributes& attribute) {
 }
 
 
-QJsonValue Converter::convertToJson(const Geometry& geometry) {
+QJsonValue Converter::convertToJson(const Geometry& geometry) 
+{
     QJsonObject result;
 
     result["position"] = convertToJson(geometry.getPosition().has_value() ?

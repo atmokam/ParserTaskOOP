@@ -1,7 +1,7 @@
 CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/Actions.cpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Actions.cpp \
  /usr/include/stdc-predef.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/Actions.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Actions.hpp \
  /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -153,16 +153,18 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Director/IAction.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Document.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/IAction.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Document.hpp \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
- /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
- /usr/include/c++/11/ios /usr/include/c++/11/bits/ios_base.h \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Data/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
+ /usr/include/c++/11/optional \
+ /usr/include/c++/11/bits/enable_special_members.h \
+ /usr/include/c++/11/ostream /usr/include/c++/11/ios \
+ /usr/include/c++/11/bits/ios_base.h \
  /usr/include/c++/11/bits/locale_classes.h \
  /usr/include/c++/11/bits/locale_classes.tcc \
  /usr/include/c++/11/system_error \
@@ -177,10 +179,8 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
- /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/optional \
- /usr/include/c++/11/bits/enable_special_members.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/Converter.hpp \
+ /usr/include/c++/11/bits/ostream.tcc \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Converter.hpp \
  /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
  /usr/include/c++/11/bits/hashtable_policy.h \
  /usr/include/c++/11/bits/node_handle.h \
@@ -192,13 +192,15 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: \
  /usr/include/c++/11/bits/uniform_int_dist.h \
  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
  /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/SaveLoad.hpp \
- /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.hpp \
+ /usr/include/c++/11/iostream /usr/include/c++/11/istream \
+ /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/fstream \
+ /usr/include/c++/11/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Slide.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemBase.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemBase.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Slide.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp

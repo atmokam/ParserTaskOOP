@@ -5,7 +5,7 @@
 #include "Include/IController.hpp"
 #include "Include/IDirector.hpp"
 #include "Data/Document.hpp"
-#include "CLI/ActionHistory.hpp"
+#include "CLI/CommandHistory.hpp"
 
 
 Application::Application() 
@@ -73,7 +73,7 @@ bool Application::isDocumentModified() const
     return documentModified;
 }
 
-void Application::setDocumentModified() 
+void Application::setDocumentModified(bool modified) 
 {
-    documentModified = true;
+    documentModified = modified;
 }

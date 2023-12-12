@@ -1,7 +1,7 @@
 CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/SaveLoad.cpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.cpp \
  /usr/include/stdc-predef.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/SaveLoad.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.hpp \
  /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -185,15 +185,15 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
  /usr/include/c++/11/optional \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Document.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Include/../Data/IDocument.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemAttributes.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/Slide.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Data/ItemBase.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/Serialization/Converter.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Document.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Data/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Slide.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Converter.hpp \
  /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
  /usr/include/c++/11/bits/algorithmfwd.h \
  /usr/include/c++/11/bits/stl_heap.h \
@@ -333,4 +333,6 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonObject \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonobject.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonArray \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonarray.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonarray.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h

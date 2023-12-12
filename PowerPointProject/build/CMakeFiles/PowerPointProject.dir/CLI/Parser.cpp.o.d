@@ -1,5 +1,5 @@
 CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o: \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Parser.cpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Parser.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/stdexcept \
  /usr/include/c++/11/exception \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -150,7 +150,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Parser.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Parser.hpp \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
@@ -171,7 +171,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Command.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Command.hpp \
  /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
  /usr/include/c++/11/bits/hashtable_policy.h \
  /usr/include/c++/11/bits/enable_special_members.h \
@@ -181,6 +181,6 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Validator.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Validator.hpp \
  /usr/include/c++/11/unordered_set \
  /usr/include/c++/11/bits/unordered_set.h

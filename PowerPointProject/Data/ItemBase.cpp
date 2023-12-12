@@ -38,18 +38,25 @@ void ItemLeaf::setType(Type type)
 
 void ItemLeaf::setDifferenceGeometry(Geometry& difference) 
 {
-    if(difference.getPosition().has_value()){
+    if(difference.getPosition().has_value())
+    {
         std::transform(this->geometry.getPosition().value().begin(), 
         this->geometry.getPosition().value().end(),
         difference.getPosition().value().begin(), 
         this->geometry.getPosition().value().begin(), std::plus<double>());
     }
     
-    if(difference.getWidth().has_value()){
-        this->geometry.getWidth().value() += difference.getWidth().value();
+    if(difference.getWidth().has_value())
+    {
+        auto width = this->geometry.getWidth().value();
+        width += difference.getWidth().value();
+        this->geometry.setWidth(width);
     }
-    if(difference.getHeight().has_value()){
-        this->geometry.getHeight().value() += difference.getHeight().value();
+    if(difference.getHeight().has_value())
+    {
+        auto height = this->geometry.getHeight().value();
+        height += difference.getHeight().value();
+        this->geometry.setHeight(height);
     }
 }
 
@@ -165,13 +172,18 @@ void ItemGroup::setDifferenceGeometry(Geometry& difference)
         difference.getPosition().value().begin(), this->geometry.getPosition().value().begin(), std::plus<double>());
     }
     
-    if(difference.getWidth().has_value()){
-        this->geometry.getWidth().value() += difference.getWidth().value();
+    if(difference.getWidth().has_value())
+    {
+        auto width = this->geometry.getWidth().value();
+        width += difference.getWidth().value();
+        this->geometry.setWidth(width);
     }
-    if(difference.getHeight().has_value()){
-        this->geometry.getHeight().value() += difference.getHeight().value();
+    if(difference.getHeight().has_value())
+    {
+        auto height = this->geometry.getHeight().value();
+        height += difference.getHeight().value();
+        this->geometry.setHeight(height);
     }
-
 
     for(auto& item : items)
     {

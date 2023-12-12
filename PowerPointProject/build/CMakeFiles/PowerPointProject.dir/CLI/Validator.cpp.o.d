@@ -1,5 +1,5 @@
 CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o: \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Validator.cpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Validator.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/algorithm \
  /usr/include/c++/11/utility \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -172,7 +172,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Validator.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Validator.hpp \
  /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
@@ -188,5 +188,5 @@ CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o: \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/unordered_set \
  /usr/include/c++/11/bits/unordered_set.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/CLI/Command.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Command.hpp \
  /usr/include/c++/11/iostream

@@ -1,4 +1,4 @@
-# Install script for directory: /home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser
+# Install script for directory: /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/atmokam/Desktop/OOP/ParserTaskOOP/ShapeParser/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

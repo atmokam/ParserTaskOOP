@@ -6,7 +6,7 @@
 
 
 #include "IController.hpp"
-#include "ActionHistory.hpp"
+#include "CommandHistory.hpp"
 
 
 class CLIController : public IController {

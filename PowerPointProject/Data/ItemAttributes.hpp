@@ -2,20 +2,20 @@
 #define ITEMATTRIBUTES_HPP
 
 #include <vector>
-#include <iostream>
 #include <optional>
+#include <ostream>
 
 class Position 
 {
     std::vector<double> coordinates;
 public:
-    Position(std::vector<double> coordinates) : coordinates(coordinates) { }
+    Position(std::vector<double> coordinates);
     Position() = default;
 
-    std::vector<double> getCoordinates() const { return coordinates; }
-    void setCoordinates(std::vector<double> coordinates) { this->coordinates = coordinates; }
-    std::vector<double>::iterator begin() { return coordinates.begin(); }
-    std::vector<double>::iterator end() { return coordinates.end(); }
+    std::vector<double> getCoordinates() const;
+    void setCoordinates(std::vector<double> coordinates);
+    std::vector<double>::iterator begin();
+    std::vector<double>::iterator end();
 
     friend std::ostream& operator<<(std::ostream& os, const Position& position);
 };
@@ -35,18 +35,16 @@ class Attributes
 
 public:
     Attributes() = default;
-    Attributes(long hexFillColor, long hexLineColor, LineType lineType, double lineWidth) : 
-        hexFillColor(hexFillColor), hexLineColor(hexLineColor), lineType(lineType), lineWidth(lineWidth) { }
+    Attributes(long hexFillColor, long hexLineColor, LineType lineType, double lineWidth);
+    std::optional<long> getHexFillColor() const;
+    std::optional<long> getHexLineColor() const;
+    std::optional<LineType> getLineType() const;
+    std::optional<double> getLineWidth() const;
 
-    std::optional<long> getHexFillColor() const { return hexFillColor; }
-    std::optional<long> getHexLineColor() const { return hexLineColor; }
-    std::optional<LineType> getLineType() const { return lineType; }
-    std::optional<double> getLineWidth() const { return lineWidth; }
-
-    void setHexFillColor(long hexFillColor) { this->hexFillColor = hexFillColor; }
-    void setHexLineColor(long hexLineColor) { this->hexLineColor = hexLineColor; }
-    void setLineType(LineType lineType) { this->lineType = lineType; }
-    void setLineWidth(double lineWidth) { this->lineWidth = lineWidth; }
+    void setHexFillColor(long hexFillColor);
+    void setHexLineColor(long hexLineColor);
+    void setLineType(LineType lineType);
+    void setLineWidth(double lineWidth);
 
 };
 
@@ -59,15 +57,14 @@ class Geometry
 
 public:
     Geometry() = default;
-    Geometry(Position position, double width, double height) : position(position), width(width), height(height) { }
+    Geometry(Position position, double width, double height);
+    std::optional<Position> getPosition() const ;
+    std::optional<double> getWidth() const ;
+    std::optional<double> getHeight() const ;
 
-    std::optional<Position> getPosition() const { return position; }
-    std::optional<double> getWidth() const  { return width; }
-    std::optional<double> getHeight() const  { return height; }
-
-    void setPosition(Position position) { this->position = position; }
-    void setWidth(double width) { this->width = width; }
-    void setHeight(double height) { this->height = height; }
+    void setPosition(Position position) ;
+    void setWidth(double width);
+    void setHeight(double height);
 
 
 };

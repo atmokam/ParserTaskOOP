@@ -60,7 +60,8 @@
         "mutex": "cpp",
         "semaphore": "cpp",
         "stop_token": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "qjsonobject": "cpp"
     },
     "cmake.configureOnOpen": true
 }

@@ -5,6 +5,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QString>
 
 void SaveLoad::save(const std::shared_ptr<IDocument>& document, QJsonDocument& stream)
 {
@@ -12,13 +13,14 @@ void SaveLoad::save(const std::shared_ptr<IDocument>& document, QJsonDocument& s
     size_t slideIndex = 0;
     for (auto slide : *document)
     {
-       documentObject["slide " + slideIndex] = serialize(slide, stream);
+       documentObject[QString("slide ") + QString::number(slideIndex)] = serialize(slide);
     }
+    stream.setObject(documentObject);
 }
 
-QJsonObject SaveLoad::serialize(const std::shared_ptr<Slide>& slide, QJsonDocument& stream)
+QJsonArray SaveLoad::serialize(const std::shared_ptr<Slide>& slide)
 {
-    QJsonObject slideObject;
+    QJsonArray slideObject;
     Converter converter;
     for(auto& item: *slide)
     {
@@ -26,7 +28,8 @@ QJsonObject SaveLoad::serialize(const std::shared_ptr<Slide>& slide, QJsonDocume
         itemObject["id"] = item.first;
         itemObject["type"] = converter.convertToJson(item.second->getType());
         itemObject["attributes"] = converter.convertToJson(item.second->getAttributes());
-        itemObject["geometry"] = converter.convertToJson(item.second->getGeometry());        
+        itemObject["geometry"] = converter.convertToJson(item.second->getGeometry());
+        slideObject.append(itemObject);        
 
     }
     
@@ -35,4 +38,7 @@ QJsonObject SaveLoad::serialize(const std::shared_ptr<Slide>& slide, QJsonDocume
 }
 
 
-std::shared_ptr<IDocument> SaveLoad::load(const std::string& path){}
+std::shared_ptr<IDocument> SaveLoad::load(const std::string& path)
+{
+
+}

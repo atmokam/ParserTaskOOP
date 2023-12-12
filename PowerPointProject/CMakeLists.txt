@@ -30,6 +30,7 @@ Director/Director.cpp
 Application/Application.cpp
 Data/ItemBase.cpp
 Renderer/ShapeBase.cpp
-CLI/ActionHistory.cpp )
+CLI/CommandHistory.cpp
+Data/ItemAttributes.cpp )
 
 target_link_libraries(PowerPointProject PRIVATE Qt6::Core)

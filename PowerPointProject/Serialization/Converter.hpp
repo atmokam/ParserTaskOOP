@@ -8,7 +8,7 @@
 #include "Data/ItemAttributes.hpp"
 
 class QJsonArray;
-class QJsonValueRef;
+class QJsonValue;
 
 class Converter {
     std::unordered_map<std::string, Type> typeMap;

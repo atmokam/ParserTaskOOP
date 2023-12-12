@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <unordered_map>
+#include <iostream>
 #include "Slide.hpp"
 
 

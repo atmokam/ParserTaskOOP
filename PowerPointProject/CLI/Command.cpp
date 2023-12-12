@@ -1,5 +1,7 @@
 #include <iostream>
 #include <stdexcept>
+#include <QJsonDocument>
+#include <QByteArray>
 #include "Application/Application.hpp"
 #include "Data/Slide.hpp"
 #include "Data/Document.hpp"
@@ -26,9 +28,10 @@ void AddCommand::execute()
     {
         std::shared_ptr<Slide> slide = std::make_shared<Slide>();
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-        application.getDirector()->doAction(std::make_shared<AddSlide>(slide, currentSlideIndex));
+        application.getDirector()->doAction(std::make_shared<AddSlide>(slide, currentSlideIndex + 1));
         application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
     }
+    application.setDocumentModified(true);
 
 }
 
@@ -87,6 +90,7 @@ void RemoveCommand::execute()
             application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
         }
     }
+    application.setDocumentModified(true);
 
 }
 
@@ -148,20 +152,32 @@ void ChangeCommand::execute()
 
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
     application.getDirector()->doAction(std::make_shared<ChangeItem>(newItem, currentSlideIndex));
+
+    application.setDocumentModified(true);
 }
 
 
-void SaveCommand::execute() 
+void SaveCommand::execute() // TODO: address the case when the filename exists, and you are saving another document
 { 
-    // SaveLoad serializer;
-    // std::ofstream file;
+    std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
+    SaveLoad serializer;
+    QJsonDocument documentJson;
+    serializer.save(document, documentJson);
+    QByteArray byteArray = documentJson.toJson();
+    std::ofstream file;
+    file.open(operands["-path"][0] + operands["-filename"][0] + ".json");
+    if(file.is_open())
+    {
+        file << byteArray.toStdString();
+        file.close();
+    }
+    else
+    {
+        throw std::runtime_error("Could not open file");
+    }
 
-    // file.open(operands["-path"][0] + operands["-filename"][0] + ".ppx");
-    // if(!file.is_open()){
-    //     throw std::invalid_argument("Invalid path or filename");
-    // }
+    application.setDocumentModified(false);
 
-    // serializer.save(application.getDirector()->getDocument(), file);
 }
 
 void LoadCommand::execute() 
@@ -204,6 +220,7 @@ void DisplayCommand::execute()
 void ListCommand::execute() 
 {
     auto document = application.getDirector()->getDocument();
+
     size_t currentSlideIndex  = 0;
     for (const auto& slide : *document)
     {
@@ -220,13 +237,15 @@ void ListCommand::execute()
 void NextCommand::execute() 
 {
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-    application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
+    if(currentSlideIndex < application.getDirector()->getDocument()->size() - 1)
+        application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
 }
 
 void PrevCommand::execute() 
 {
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-    application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
+    if(currentSlideIndex > 0)
+        application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
 }
 
 void UndoCommand::execute() 

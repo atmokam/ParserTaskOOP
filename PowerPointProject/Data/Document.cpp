@@ -2,6 +2,8 @@
 #include "Document.hpp"
 #include "Slide.hpp"
 #include "Serialization/Converter.hpp"
+#include "Renderer/Formatting/Format.hpp"
+
 
 
 Document::Document() 
@@ -16,6 +18,11 @@ Document::Document()
 
     format = formatMap.getFormat("A4");
 
+}
+
+std::pair<double, double> Document::getFormat() const 
+{
+    return format;
 }
 
 void Document::addSlide(std::shared_ptr<Slide> slide, size_t number) 

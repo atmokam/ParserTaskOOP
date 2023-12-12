@@ -2,15 +2,18 @@
 #include <stdexcept>
 #include <QJsonDocument>
 #include <QByteArray>
+#include <QImage>
+#include <QString>
 #include "Application/Application.hpp"
+#include "Command.hpp"
 #include "Data/Slide.hpp"
 #include "Data/Document.hpp"
 #include "Director/Actions.hpp"
 #include "Director/Director.hpp"
-#include "Command.hpp"
+#include "Renderer/ShapeBase.hpp"
+#include "Renderer/Formatting/DimentionConverter.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Serialization/Converter.hpp" 
-#include "Renderer/ShapeBase.hpp"
 
 
 
@@ -275,7 +278,18 @@ void ExitCommand::execute()
 
 void DrawCommand::execute() 
 {
+    DimentionConverter converter;
     std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
+    std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
+    auto format = document->getFormat();
+    auto width = converter.toPixels(format.first); // only A4 format for now
+    auto height = converter.toPixels(format.second);
+    QImage image(width, height, QImage::Format_ARGB32_Premultiplied);
+    Renderer renderer;
+    renderer.draw(slide, image);
+    QString path = QString::fromStdString(operands["-path"][0]);
+    image.save(path);
+
     
 }
 

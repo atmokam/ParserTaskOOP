@@ -20,6 +20,7 @@ public:
     virtual void setMaximumID(size_t id) = 0;
     virtual Attributes getDefaultAttributes() const = 0;
     virtual ~IDocument() = default;
+    virtual std::pair<double, double> getFormat() const = 0;
 
     virtual std::vector<std::shared_ptr<Slide>>::iterator begin()  = 0;
     virtual std::vector<std::shared_ptr<Slide>>::const_iterator cbegin() const = 0;

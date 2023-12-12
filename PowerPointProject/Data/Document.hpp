@@ -7,14 +7,17 @@
 
 #include "Include/IDocument.hpp"
 #include "ItemAttributes.hpp"
+#include "Format.hpp"
 
 class Slide;
 
 
+
 class Document : public IDocument {
     std::vector<std::shared_ptr<Slide>> slides;
-    // add format later
+    std::pair<double, double> format;
     Attributes defaultAttributes;
+    
     size_t maxID = 0;
 public:
     Document();

@@ -4,6 +4,19 @@
 #include "Serialization/Converter.hpp"
 
 
+Document::Document() 
+{
+    Format formatMap;
+    Converter converter;
+    slides.push_back(std::make_shared<Slide>());
+    defaultAttributes.setLineWidth(1);
+    defaultAttributes.setHexFillColor(converter.convertToColor("#FFFFFF"));
+    defaultAttributes.setHexLineColor(converter.convertToColor("#000000"));
+    defaultAttributes.setLineType(converter.convertToLineType("solid"));
+
+    format = formatMap.getFormat("A4");
+
+}
 
 void Document::addSlide(std::shared_ptr<Slide> slide, size_t number) 
 {
@@ -49,16 +62,6 @@ size_t Document::size() const
     return slides.size();
 }
 
-Document::Document() 
-{
-    Converter converter;
-    slides.push_back(std::make_shared<Slide>());
-    defaultAttributes.setLineWidth(1);
-    defaultAttributes.setHexFillColor(converter.convertToColor("#FFFFFF"));
-    defaultAttributes.setHexLineColor(converter.convertToColor("#000000"));
-    defaultAttributes.setLineType(converter.convertToLineType("solid"));
-
-}
 
 Attributes Document::getDefaultAttributes() const 
 {

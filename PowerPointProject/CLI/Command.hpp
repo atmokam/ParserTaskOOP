@@ -106,6 +106,13 @@ public:
     void execute() override;
 };
 
+class DrawCommand : public Command {
+public:
+    
+    void execute() override;
+};
+
+
 class ExitCommand : public Command {
 public:
     

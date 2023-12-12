@@ -4,15 +4,15 @@
 #include <memory>
 
 #include "IVisualDisplayable.hpp"
+#include "ITextDisplayable.hpp"
 #include "IShape.hpp"
-#include "Data/ItemBase.hpp"
 
 class ItemBase;
 class QPainter;
 class DimentionConverter;
 
-class ShapeBase : public IShape, public ITextDisplayable    // I decided to move ITextDisplayable here from IShape since 
-{                                                           // I think ShapeBase is more responsible for text displaying, also inheriting from interfaces is not a problem
+class ShapeBase : public IShape, public ITextDisplayable    
+{                                                           
     std::shared_ptr<ItemBase> item;
     void recursivePrintHandler(std::ostream& stream, const std::shared_ptr<ItemBase>& item);
     void leafPrintHandler(std::ostream& stream, const std::shared_ptr<ItemLeaf>& leaf);
@@ -61,7 +61,7 @@ public:
 
 };
 
-class ShapeGroup : public ShapeBase, public IVisualDisplayable {
+class ShapeGroup : public ShapeBase, public IVisualDisplayable { 
 public:
     ShapeGroup(std::shared_ptr<ItemBase> item);
     void draw(QPainter& painter, DimentionConverter& converter) override;

@@ -1,7 +1,6 @@
 #ifndef ITEXTDISPLAYABLE_HPP
 #define ITEXTDISPLAYABLE_HPP
 
-#include <string>
 #include <ostream>
 
 class ITextDisplayable {

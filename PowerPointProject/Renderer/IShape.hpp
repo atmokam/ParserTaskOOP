@@ -1,17 +1,11 @@
 #ifndef ISHAPE_HPP
 #define ISHAPE_HPP
 
-#include <string>
-#include <ostream>
-
-
-#include "ITextDisplayable.hpp"
-
+#include <memory>
 
 class IShape {
 public:
     virtual std::shared_ptr<IShape> clone() const = 0;
-    virtual ~IShape() = default;
 };
 
 

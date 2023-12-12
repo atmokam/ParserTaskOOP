@@ -1,7 +1,8 @@
+#include <vector>
 #include "ShapeBase.hpp"
 #include "Data/ItemBase.hpp"
 #include "Data/ItemAttributes.hpp"
-#include <vector>
+
 
 ShapeBase::ShapeBase(std::shared_ptr<ItemBase> item) : item(item) {}
 
@@ -44,6 +45,8 @@ std::shared_ptr<IShape> ShapeBase::clone() const
 {
     return std::make_shared<ShapeBase>(*this);
 }
+
+
 
 
 ShapeRectangle::ShapeRectangle(std::shared_ptr<ItemBase> item) : ShapeBase(item) {}

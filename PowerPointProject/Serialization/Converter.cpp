@@ -163,3 +163,55 @@ QJsonValue Converter::convertToJson(const Geometry& geometry)
 
     return result;
 }
+
+QJsonArray Converter::convertToJson(const std::pair<double, double>& format)
+{
+    QJsonArray result;
+    result.append(format.first);
+    result.append(format.second);
+    return result;
+}
+
+// convert from json
+
+Attributes Converter::convertToAttributes(const QJsonValue& value) 
+{
+    Attributes result;
+    QJsonObject object = value.toObject();
+    if (object.contains("lineWidth")) {
+        result.setLineWidth(convertToDimention(object["lineWidth"].toString().toStdString()));
+    }
+    if (object.contains("lineType")) {
+        result.setLineType(convertToLineType(object["lineType"].toString().toStdString()));
+    }
+    if (object.contains("lineColorHex")) {
+        result.setHexLineColor(convertToColor(object["lineColorHex"].toString().toStdString()));
+    }
+    if (object.contains("fillColorHex")) {
+        result.setHexFillColor(convertToColor(object["fillColorHex"].toString().toStdString()));
+    }
+    return result;
+}
+
+Geometry Converter::convertToGeometry(const QJsonValue& value) 
+{
+    Geometry result;
+    QJsonObject object = value.toObject();
+    if (object.contains("position")) {
+        result.setPosition(convertToPosition(object["position"].toArray()));
+    }
+    if (object.contains("width")) {
+        result.setWidth(convertToDimention(object["width"].toString().toStdString()));
+    }
+    if (object.contains("height")) {
+        result.setHeight(convertToDimention(object["height"].toString().toStdString()));
+    }
+    return result;
+}
+
+
+std::pair<double, double> Converter::convertToFormat(const QJsonArray& array)
+{
+    return std::make_pair(array[0].toDouble(), array[1].toDouble());
+}
+

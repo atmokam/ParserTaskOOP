@@ -23,7 +23,7 @@ class SaveLoad {
     std::shared_ptr<IDocument> deserialize(std::ifstream& file);
 public:
     void save(const std::shared_ptr<IDocument>& document, QJsonDocument& stream);
-    std::shared_ptr<IDocument> load(const std::string& path);
+    std::shared_ptr<IDocument> load(QJsonDocument& stream, const std::shared_ptr<IDocument>& document);
 };
 
 

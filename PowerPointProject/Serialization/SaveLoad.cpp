@@ -9,18 +9,22 @@
 
 void SaveLoad::save(const std::shared_ptr<IDocument>& document, QJsonDocument& stream)
 {
-    QJsonObject documentObject;
-    size_t slideIndex = 0;
+    QJsonArray documentArray;
+    Converter converter;
     for (auto slide : *document)
     {
-       documentObject[QString("slide ") + QString::number(slideIndex)] = serialize(slide);
+       documentArray.append(serialize(slide));
     }
+    QJsonObject documentObject;
+    documentObject["slides"] = documentArray;
+    documentObject["maxID"] = converter.convertToJson(document->getMaximumID());
+    documentObject["format"] = converter.convertToJson(document->getFormat());
     stream.setObject(documentObject);
 }
 
 QJsonArray SaveLoad::serialize(const std::shared_ptr<Slide>& slide)
 {
-    QJsonArray slideObject;
+    QJsonArray slideArray;
     Converter converter;
     for(auto& item: *slide)
     {
@@ -29,16 +33,16 @@ QJsonArray SaveLoad::serialize(const std::shared_ptr<Slide>& slide)
         itemObject["type"] = converter.convertToJson(item.second->getType());
         itemObject["attributes"] = converter.convertToJson(item.second->getAttributes());
         itemObject["geometry"] = converter.convertToJson(item.second->getGeometry());
-        slideObject.append(itemObject);        
-
+        slideArray.append(itemObject);        
     }
     
-    return slideObject;
+    return slideArray;
     
 }
 
 
-std::shared_ptr<IDocument> SaveLoad::load(const std::string& path)
+std::shared_ptr<IDocument> SaveLoad::load(QJsonDocument& stream, const std::shared_ptr<IDocument>& document)
 {
+    
 
 }

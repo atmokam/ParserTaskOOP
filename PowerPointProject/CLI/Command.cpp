@@ -186,9 +186,26 @@ void SaveCommand::execute() // TODO: address the case when the filename exists, 
 
 void LoadCommand::execute() 
 { 
-    // SaveLoad deserializer;
-    // std::shared_ptr<IDocument> document = deserializer.load(operands["-path"][0]);
-    // std::cout << "Loaded document with " << document->size() << " slides" << std::endl;
+    std::ifstream file;
+    file.open(operands["-path"][0]);
+    if(file.is_open())
+    {
+        std::string contents{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
+        QJsonDocument content(QJsonDocument::fromJson(QString::fromStdString(contents).toUtf8()));
+        file.close();
+        SaveLoad deserializer;
+        std::shared_ptr<IDocument> newDoc;
+        deserializer.load(content, newDoc);
+        application.getDirector()->setDocument(newDoc);
+        application.getDirector()->setCurrentSlideIndex(0);
+        application.getDirector()->clearUndoRedoStack();
+    }
+    else
+    {
+        throw std::runtime_error("Could not open file");
+    }
+
+
     // application.getDirector()->setDocument(document);
     // application.getDirector()->setCurrentSlideIndex(0);
     // application.getDirector()->clearUndoRedoStack();

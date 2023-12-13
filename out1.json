@@ -1,0 +1,67 @@
+{
+    "format": [
+        8.3,
+        11.7
+    ],
+    "maxID": "#3",
+    "slides": [
+        [
+            {
+                "attributes": {
+                    "fillColorHex": "#ffffff",
+                    "lineColorHex": "#123456",
+                    "lineType": "solid",
+                    "lineWidth": 1
+                },
+                "geometry": {
+                    "height": 88,
+                    "position": [
+                        6,
+                        8
+                    ],
+                    "width": 67
+                },
+                "id": 2,
+                "type": "triangle"
+            }
+        ],
+        [
+            {
+                "attributes": {
+                    "fillColorHex": "#ffffff",
+                    "lineColorHex": "#0",
+                    "lineType": "solid",
+                    "lineWidth": 1
+                },
+                "geometry": {
+                    "height": 76,
+                    "position": [
+                        6,
+                        8
+                    ],
+                    "width": 78
+                },
+                "id": 1,
+                "type": "line"
+            },
+            {
+                "attributes": {
+                    "fillColorHex": "#ffffff",
+                    "lineColorHex": "#0",
+                    "lineType": "solid",
+                    "lineWidth": 1
+                },
+                "geometry": {
+                    "height": 76,
+                    "position": [
+                        6,
+                        8
+                    ],
+                    "width": 78
+                },
+                "id": 0,
+                "type": "line"
+            }
+        ]
+    ]
+}

@@ -9,7 +9,8 @@
 
 // operand quantity checking: 0 means no value, -1 means any number of values
 
-Validator::Validator(){
+Validator::Validator()
+{
     valids = {
         {"add", {{"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-w", 1}, {"-h", 1}, {"-slide", 0}, {"-lwidth", 1}, {"-lstyle", 1}}},
         {"remove", {{"-id", 1}, {"-slide", 0}}},
@@ -51,10 +52,8 @@ Validator::Validator(){
 
 
 bool Validator::validateCommand(const std::shared_ptr<Command>& commandToBeChecked) 
-
 { 
     
-    auto ops = commandToBeChecked->getOperands();
    
     if (!checkOperandQuantity(commandToBeChecked) || !checkMandatoryOperands(commandToBeChecked)) 
     {

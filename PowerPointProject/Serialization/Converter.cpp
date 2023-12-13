@@ -193,6 +193,16 @@ Attributes Converter::convertToAttributes(const QJsonValue& value)
     return result;
 }
 
+Position Converter::convertToPosition(const QJsonArray& array)
+{
+    std::vector<double> result;
+    for (auto value : array) {
+        result.push_back(value.toDouble());
+    }
+    return Position{result};
+}
+
+
 Geometry Converter::convertToGeometry(const QJsonValue& value) 
 {
     Geometry result;

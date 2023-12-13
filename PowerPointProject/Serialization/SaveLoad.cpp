@@ -2,6 +2,7 @@
 #include "Data/Document.hpp"
 #include "Data/Slide.hpp"
 #include "Converter.hpp"
+#include "Data/ItemBase.hpp"
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -13,7 +14,12 @@ void SaveLoad::save(const std::shared_ptr<IDocument>& document, QJsonDocument& s
     Converter converter;
     for (auto slide : *document)
     {
-       documentArray.append(serialize(slide));
+        QJsonArray slideArray;
+        for(auto& [_, subItem]: *slide)
+        {
+            recursiveSerialize(subItem, slideArray);
+        }   
+        documentArray.append(slideArray);
     }
     QJsonObject documentObject;
     documentObject["slides"] = documentArray;
@@ -22,27 +28,39 @@ void SaveLoad::save(const std::shared_ptr<IDocument>& document, QJsonDocument& s
     stream.setObject(documentObject);
 }
 
-QJsonArray SaveLoad::serialize(const std::shared_ptr<Slide>& slide)
+void SaveLoad::recursiveSerialize(const std::shared_ptr<ItemBase>& item, QJsonArray& slideArray)
 {
-    QJsonArray slideArray;
-    Converter converter;
-    for(auto& item: *slide)
+    if(auto group = std::dynamic_pointer_cast<ItemGroup>(item))
     {
-        QJsonObject itemObject;
-        itemObject["id"] = item.first;
-        itemObject["type"] = converter.convertToJson(item.second->getType());
-        itemObject["attributes"] = converter.convertToJson(item.second->getAttributes());
-        itemObject["geometry"] = converter.convertToJson(item.second->getGeometry());
-        slideArray.append(itemObject);        
+        for(auto& [_, subItem]: *group)
+        {
+            recursiveSerialize(subItem, slideArray);
+        }   
+    }
+    else if(auto leaf = std::dynamic_pointer_cast<ItemLeaf>(item))
+    {
+        slideArray.append(serializeLeaf(leaf));
     }
     
-    return slideArray;
     
+}
+
+QJsonObject SaveLoad::serializeLeaf(const std::shared_ptr<ItemLeaf>& item)
+{
+    Converter converter;
+    QJsonObject itemObject;
+    itemObject["id"] = item->getID();
+    itemObject["type"] = converter.convertToJson(item->getType());
+    itemObject["attributes"] = converter.convertToJson(item->getAttributes());
+    itemObject["geometry"] = converter.convertToJson(item->getGeometry());
+    
+    return itemObject;
 }
 
 
 std::shared_ptr<IDocument> SaveLoad::load(QJsonDocument& stream, const std::shared_ptr<IDocument>& document)
 {
+    
     
 
 }

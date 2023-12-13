@@ -4842,6 +4842,7 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
   ../Serialization/Converter.hpp \
   /usr/include/c++/11/algorithm \
   /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+  ../Data/ItemBase.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonDocument \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qjsondocument.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonvalue.h \

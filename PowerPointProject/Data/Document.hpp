@@ -28,6 +28,7 @@ public:
     size_t generateID() override;
     Attributes getDefaultAttributes() const override;
     std::pair<double, double> getFormat() const override;
+    void setFormat(const std::pair<double, double>& format) override;
 
     std::vector<std::shared_ptr<Slide>>::iterator begin()  override;
     std::vector<std::shared_ptr<Slide>>::const_iterator cbegin() const override;

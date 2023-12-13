@@ -18,17 +18,18 @@ class Slide;
 class QJsonDocument;
 class QJsonArray;
 class QJsonObject;
+class QJsonValueRef;
 class ItemBase;
 class ItemLeaf;
 
 class SaveLoad {
-    QJsonArray serialize(const std::shared_ptr<Slide>& slide);
     QJsonObject serializeLeaf(const std::shared_ptr<ItemLeaf>& item);
+    std::shared_ptr<ItemLeaf> deserializeLeaf(const QJsonObject& object);
     void recursiveSerialize(const std::shared_ptr<ItemBase>& item, QJsonArray& slideArray);
-    std::shared_ptr<IDocument> deserialize(std::ifstream& file);
+    void recursiveDeserialize(QJsonValueRef& item, const std::shared_ptr<Slide>& slide);
 public:
     void save(const std::shared_ptr<IDocument>& document, QJsonDocument& stream);
-    std::shared_ptr<IDocument> load(QJsonDocument& stream, const std::shared_ptr<IDocument>& document);
+    void load(QJsonDocument& stream, const std::shared_ptr<IDocument>& document);
 };
 
 

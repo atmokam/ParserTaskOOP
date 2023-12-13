@@ -191,10 +191,11 @@ void LoadCommand::execute()
     if(file.is_open())
     {
         std::string contents{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
-        QJsonDocument content(QJsonDocument::fromJson(QString::fromStdString(contents).toUtf8()));
+        QJsonDocument content = QJsonDocument::fromJson(contents.c_str());
         file.close();
         SaveLoad deserializer;
-        std::shared_ptr<IDocument> newDoc;
+        std::shared_ptr<IDocument> newDoc = std::make_shared<Document>();
+        std::cout << "loading" << std::endl;
         deserializer.load(content, newDoc);
         application.getDirector()->setDocument(newDoc);
         application.getDirector()->setCurrentSlideIndex(0);

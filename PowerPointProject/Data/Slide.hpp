@@ -16,7 +16,7 @@ public:
 
     std::shared_ptr<ItemBase> getItem(int id) const;
 
-    void addItem(std::shared_ptr<ItemBase>& item);
+    void addItem(std::shared_ptr<ItemBase> item);
     void removeItem(int id);
     void swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem);
 

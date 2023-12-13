@@ -19,7 +19,7 @@ class ItemGroup;
 
 class ItemBase {  
 protected:
-    std::shared_ptr<ItemGroup> parent = nullptr;
+    std::weak_ptr<ItemGroup> parent;
 
     ID id;
     Type type;
@@ -32,8 +32,8 @@ public:
     virtual void setType(Type type) = 0;
     virtual ID getID() const = 0;
     virtual void setID(ID id) = 0;
-    virtual std::shared_ptr<ItemGroup> getParent() const = 0;
-    virtual void setParent(std::shared_ptr<ItemGroup> parent) = 0;
+    //virtual std::shared_ptr<ItemGroup> getParent() const = 0;
+    //virtual void setParent(std::shared_ptr<ItemGroup> parent) = 0;
     virtual Geometry getGeometry() const = 0;
     virtual void setAttributes(Attributes& attributes) = 0;
     virtual Attributes getAttributes() const = 0;
@@ -60,8 +60,8 @@ public:
     void setDifferenceGeometry(Geometry& difference) override;
     Geometry getGeometry() const override;
     void setGeometry(Geometry& geometry) override;
-    std::shared_ptr<ItemGroup> getParent() const override;
-    void setParent(std::shared_ptr<ItemGroup> parent) override;
+    //std::shared_ptr<ItemGroup> getParent() const override;
+    //void setParent(std::shared_ptr<ItemGroup> parent) override;
     ID getID() const override;
     void setID(ID id) override;
 
@@ -93,8 +93,8 @@ public:
     void setGeometry(Geometry& geometry) override;
     ID getID() const override;
     void setID(ID id) override;
-    std::shared_ptr<ItemGroup> getParent() const override;
-    void setParent(std::shared_ptr<ItemGroup> parent) override;
+    //std::shared_ptr<ItemGroup> getParent() const override;
+    //void setParent(std::shared_ptr<ItemGroup> parent) override;
     Type getType() const override;
     void setType(Type type) override;
 

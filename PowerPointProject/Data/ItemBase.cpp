@@ -70,15 +70,15 @@ void ItemLeaf::setAttributes(Attributes& attributes)
     this->attributes = attributes;
 }
 
-std::shared_ptr<ItemGroup> ItemLeaf::getParent() const 
-{
-    return parent;
-}
+// std::shared_ptr<ItemGroup> ItemLeaf::getParent() const 
+// {
+//     return parent;
+// }
 
-void ItemLeaf::setParent(std::shared_ptr<ItemGroup> parent) 
-{
-    this->parent = parent;
-}
+// void ItemLeaf::setParent(std::shared_ptr<ItemGroup> parent) 
+// {
+//     this->parent = parent;
+// }
 
 ID ItemLeaf::getID() const 
 {
@@ -238,10 +238,10 @@ Attributes ItemGroup::getAttributes() const
 }
 
 
-std::shared_ptr<ItemGroup> ItemGroup::getParent() const 
-{
-    return parent;
-}
+// std::shared_ptr<ItemGroup> ItemGroup::getParent() const 
+// {
+//     return parent;
+// }
 
 ID ItemGroup::getID() const 
 {
@@ -253,8 +253,8 @@ void ItemGroup::setID(ID id)
     this->id = id;
 }
 
-void ItemGroup::setParent(std::shared_ptr<ItemGroup> parent) 
-{
-    this->parent = parent;
-}
+// void ItemGroup::setParent(std::shared_ptr<ItemGroup> parent) 
+// {
+//     this->parent = parent;
+// }
 

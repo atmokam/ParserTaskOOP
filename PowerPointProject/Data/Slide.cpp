@@ -6,7 +6,7 @@
 
 Slide::Slide() : items(std::make_shared<ItemGroup>()) {}
 
-void Slide::addItem(std::shared_ptr<ItemBase>& item) 
+void Slide::addItem(std::shared_ptr<ItemBase> item) 
 {
     items->addItem(item);
 }

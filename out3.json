@@ -1,0 +1,49 @@
+{
+    "format": [
+        8.3,
+        11.7
+    ],
+    "maxID": "#2",
+    "slides": [
+        [
+            {
+                "attributes": {
+                    "fillColorHex": "#ffffff",
+                    "lineColorHex": "#0",
+                    "lineType": "solid",
+                    "lineWidth": 1
+                },
+                "geometry": {
+                    "height": 78,
+                    "position": [
+                        7,
+                        8
+                    ],
+                    "width": 87
+                },
+                "id": 0,
+                "type": "line"
+            }
+        ],
+        [
+            {
+                "attributes": {
+                    "fillColorHex": "#ffffff",
+                    "lineColorHex": "#0",
+                    "lineType": "solid",
+                    "lineWidth": 1
+                },
+                "geometry": {
+                    "height": 99,
+                    "position": [
+                        9,
+                        9
+                    ],
+                    "width": 88
+                },
+                "id": 1,
+                "type": "triangle"
+            }
+        ]
+    ]
+}

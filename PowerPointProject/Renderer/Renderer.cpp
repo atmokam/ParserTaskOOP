@@ -1,7 +1,7 @@
 #include "Renderer.hpp"
 #include <QPainter>
 #include <QPaintDevice>
-#include "DimentionConverter.hpp"
+#include "Formatting/DimentionConverter.hpp"
 #include "Data/Slide.hpp"
 #include "ShapeLibrary.hpp" 
 #include "IShape.hpp"

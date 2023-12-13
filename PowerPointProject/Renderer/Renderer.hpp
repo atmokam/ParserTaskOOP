@@ -1,8 +1,11 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
+#include <memory>
+
 class QPaintDevice;
 class DimentionConverter;
+class Slide;
 
 class Renderer
 {

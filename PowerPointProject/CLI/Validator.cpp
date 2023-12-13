@@ -53,6 +53,9 @@ Validator::Validator(){
 bool Validator::validateCommand(const std::shared_ptr<Command>& commandToBeChecked) 
 
 { 
+    
+    auto ops = commandToBeChecked->getOperands();
+   
     if (!checkOperandQuantity(commandToBeChecked) || !checkMandatoryOperands(commandToBeChecked)) 
     {
         std:: cout << "Invalid command: " << commandToBeChecked->getName() << std::endl;
@@ -76,9 +79,12 @@ bool Validator::checkOperandQuantity(const std::shared_ptr<Command>& commandToBe
         {
             return false;
         }
-        if (validOperand != values.end() && validOperand->second != -1 && validOperand->second != value.size()) 
+        else if (validOperand != values.end())
         {
-            return false;
+            if(validOperand->second == -1 || validOperand->second == value.size())
+                return true;
+            else
+                return false;
         }
     }
 

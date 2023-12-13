@@ -25,7 +25,8 @@ void CLIController::runCommand(std::istream& input)
     
     Parser oParser(input);
     std::shared_ptr<Command> pCmd = oParser.parse();
-    
+    if(pCmd == nullptr)
+        return;
     pCmd->execute();
 }
 

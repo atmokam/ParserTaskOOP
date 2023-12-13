@@ -25,16 +25,14 @@ bool Parser::IsNewLine(char c) const
 
 std::string Parser::getToken()
 {
-    std::string sToken;
+    std::string sToken = "";
     skipSpaces();
 
     if (!IsNewLine(inputStream.peek()))
         inputStream >> sToken; 
+    
     else 
-    {
         inputStream.get();
-        return "";
-    }
 
     return sToken;
 }
@@ -42,23 +40,32 @@ std::string Parser::getToken()
 
 std::shared_ptr<Command> Parser::parse()                        
 {
-    std::string argument = getToken();
-    std::shared_ptr<Command> command = createCommand(argument); // validation, flags add
     Validator validator;
+    std::string name = getToken();
+    if(name.empty())
+        return nullptr;
+    
+    std::shared_ptr<Command> command = createCommand(name); 
+    if(!command)
+        throw std::invalid_argument("Invalid command: " + name);
 
-    std::string token;
+    command->setName(name);
+    commandNameFlag = name;
+    prevToken = name;
    
-    while(!token.empty())
-    {  
-        token = getToken();
-        processArgument(token, command);
-    } 
+    std::string argument;
+    do{  
+        argument = getToken();
+        if(argument.empty())
+            break;
+        processArgument(argument, command);
+
+    } while(!argument.empty());
 
     if(!validator.validateCommand(command)) 
     {
         throw std::invalid_argument("Invalid commands: " + command->getName());
     }
-
 
     return command;
     
@@ -66,41 +73,12 @@ std::shared_ptr<Command> Parser::parse()
 
 
 
-// std::shared_ptr<Command> Parser::parse()
-// {
-//     std::string token;
-//     std::shared_ptr<Command> command = nullptr;
-//     Validator validator;
-
-
-//     while(inputStream >> token) 
-//     {  
-//         if(inputStream.peek() == '\n' || inputStream.peek() == EOF)
-//         {
-//             processArgument(token, command);
-//             if(!validator.validateCommand(command)) 
-//             {
-//                 throw std::invalid_argument("Invalid command: " + command->getName());
-//             }
-//             return command;
-//         } 
-//         else 
-//         {
-//             processArgument(token, command);
-//         }
-        
-//     }
-
-//     return command;
-    
-// }
-
-
 
 void Parser::processArgument(std::string argument, std::shared_ptr<Command>& command){
     Validator validator;
+
     if(commandNameFlag == "" && validator.isName(argument)){
-            command = createCommand(argument); // move validation to factory
+            command = createCommand(argument); 
             command->setName(argument);
             commandNameFlag = argument;
             prevToken = argument;
@@ -123,6 +101,7 @@ void Parser::processArgument(std::string argument, std::shared_ptr<Command>& com
 
 
 std::shared_ptr<Command> Parser::createCommand(std::string input){
+    
     if(input == "add"){
         return std::make_shared<AddCommand>();
     }

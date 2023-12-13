@@ -293,6 +293,62 @@ CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.cpp -o CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.s
 
+CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
+CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o: ../Renderer/Renderer.cpp
+CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o -MF CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Renderer.cpp
+
+CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Renderer.cpp > CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.i
+
+CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Renderer.cpp -o CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.s
+
+CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
+CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o: ../Renderer/ShapeLibrary.cpp
+CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o -MF CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeLibrary.cpp
+
+CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeLibrary.cpp > CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.i
+
+CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeLibrary.cpp -o CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.s
+
+CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
+CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o: ../Renderer/Formatting/DimentionConverter.cpp
+CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o -MF CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.cpp
+
+CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.cpp > CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.i
+
+CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.cpp -o CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.s
+
+CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
+CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o: ../Renderer/Formatting/Format.cpp
+CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o -MF CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/Format.cpp
+
+CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/Format.cpp > CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.i
+
+CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/Format.cpp -o CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.s
+
 # Object files for target PowerPointProject
 PowerPointProject_OBJECTS = \
 "CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o" \
@@ -310,7 +366,11 @@ PowerPointProject_OBJECTS = \
 "CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/CLI/CommandHistory.cpp.o" \
-"CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o"
+"CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o" \
+"CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o" \
+"CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o" \
+"CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o" \
+"CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o"
 
 # External object files for target PowerPointProject
 PowerPointProject_EXTERNAL_OBJECTS =
@@ -331,10 +391,17 @@ PowerPointProject: CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/CLI/CommandHistory.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o
+PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o
+PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o
+PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o
+PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/build.make
+PowerPointProject: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.2.4
 PowerPointProject: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.2.4
+PowerPointProject: /usr/lib/x86_64-linux-gnu/libGLX.so
+PowerPointProject: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 PowerPointProject: CMakeFiles/PowerPointProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable PowerPointProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable PowerPointProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PowerPointProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

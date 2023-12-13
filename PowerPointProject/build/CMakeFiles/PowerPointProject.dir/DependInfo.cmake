@@ -21,7 +21,11 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Actions.cpp" "CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Director.cpp" "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Program.cpp" "CMakeFiles/PowerPointProject.dir/Program.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Program.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.cpp" "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/Format.cpp" "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Renderer.cpp" "CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeBase.cpp" "CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeLibrary.cpp" "CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Converter.cpp" "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.cpp" "CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o.d"
   )

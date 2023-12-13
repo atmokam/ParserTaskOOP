@@ -1,7 +1,7 @@
 #include "ShapeLibrary.hpp"
 #include "IShape.hpp"
 #include "ShapeBase.hpp"
-#include "ItemBase.hpp"
+#include "Data/ItemBase.hpp"
 
 ShapeLibrary::ShapeLibrary() 
 {

@@ -10,6 +10,7 @@
 class ItemBase;
 class QPainter;
 class DimentionConverter;
+class ItemLeaf;
 
 class ShapeBase : public IShape, public ITextDisplayable    
 {                                                           

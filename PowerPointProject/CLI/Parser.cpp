@@ -138,6 +138,9 @@ std::shared_ptr<Command> Parser::createCommand(std::string input){
     else if (input == "exit"){
         return std::make_shared<ExitCommand>();
     }
+    else if(input == "draw"){
+        return std::make_shared<DrawCommand>();
+    }
     else {
         return nullptr;
     }

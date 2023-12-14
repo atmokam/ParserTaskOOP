@@ -2,6 +2,7 @@
 #include <fstream>
 #include "CLI/Validator.hpp"
 #include "Command.hpp"
+#include "Renderer/ShapeLibrary.hpp"
 
 #include <iostream>
 
@@ -23,7 +24,8 @@ Validator::Validator()
         {"prev", {}},
         {"undo", {}},
         {"redo", {}},
-        {"exit", {}}
+        {"exit", {}},
+        {"draw", {{"-path", 1}}}
     };
 
     mandatoryOperands = {
@@ -36,9 +38,7 @@ Validator::Validator()
         {"load", {"-path"}}
     };
 
-    shapes = {
-        "trapezoid", "rectangle", "line", "triangle", "ellipse"
-    };
+    
 
     styles = {
         "solid", "dashed", "dotted"
@@ -190,7 +190,8 @@ bool Validator::isStyle(const std::string& inputToBeChecked)
 bool Validator::isValue(const std::string& inputToBeChecked, const std::string& operandName) 
 {
     if (operandName == "-name") {
-        return std::find(shapes.begin(), shapes.end(), inputToBeChecked) != shapes.end();
+        ShapeLibrary shapeLibrary;
+        return shapeLibrary.getType(inputToBeChecked) != std::nullopt;
 
     } else if (operandName == "-id") {
         return isInteger(inputToBeChecked);

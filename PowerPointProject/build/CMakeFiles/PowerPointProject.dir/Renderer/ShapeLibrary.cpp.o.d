@@ -158,14 +158,7 @@ CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o: \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/functional \
- /usr/include/c++/11/bits/std_function.h /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_vector.h \
- /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/bits/stl_algo.h \
- /usr/include/c++/11/bits/algorithmfwd.h \
- /usr/include/c++/11/bits/stl_heap.h \
- /usr/include/c++/11/bits/uniform_int_dist.h \
+ /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/optional \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/IShape.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeBase.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/IVisualDisplayable.hpp \
@@ -189,5 +182,7 @@ CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o: \
  /usr/include/c++/11/bits/ostream.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
- /usr/include/c++/11/optional \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeLibrary.hpp

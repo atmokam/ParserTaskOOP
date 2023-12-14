@@ -184,4 +184,4 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o: \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Application/IApplication.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Validator.hpp \
  /usr/include/c++/11/unordered_set \
- /usr/include/c++/11/bits/unordered_set.h
+ /usr/include/c++/11/bits/unordered_set.h /usr/include/c++/11/optional

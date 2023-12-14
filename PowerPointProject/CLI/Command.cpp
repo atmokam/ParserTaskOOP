@@ -322,7 +322,7 @@ void DrawCommand::execute()
     QImage image(width, height, QImage::Format_ARGB32_Premultiplied);
     Renderer renderer;
     renderer.draw(image, converter, slide);
-    QString path = QString::fromStdString(operands["-path"][0]);
+    QString path = QString::fromStdString(operands["-path"][0] + "a.png");
     image.save(path);
 
     

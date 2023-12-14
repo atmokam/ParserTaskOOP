@@ -185,15 +185,14 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: \
  /usr/include/c++/11/bits/hashtable_policy.h \
  /usr/include/c++/11/bits/node_handle.h \
  /usr/include/c++/11/bits/unordered_map.h \
- /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/functional \
- /usr/include/c++/11/bits/std_function.h \
- /usr/include/c++/11/bits/stl_algo.h \
+ /usr/include/c++/11/bits/erase_if.h \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Converter.hpp \
+ /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
  /usr/include/c++/11/bits/algorithmfwd.h \
  /usr/include/c++/11/bits/stl_heap.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Converter.hpp \
- /usr/include/c++/11/algorithm \
  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.hpp \
  /usr/include/c++/11/iostream /usr/include/c++/11/istream \

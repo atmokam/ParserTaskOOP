@@ -5,7 +5,7 @@
 int main(int count, char* args[])
 {
     try {
-        Application& app = Application::getInstance();
+        App::Application& app = App::Application::getInstance();
         app.run(count, args);
     }
     catch (const std::exception& e) {

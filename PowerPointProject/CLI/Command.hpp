@@ -8,7 +8,7 @@
 #include <memory>
 #include <vector>
 
-class IApplication;
+#include "Application/IApplication.hpp"
 class Slide;
 class Item;
 class ItemLeaf;
@@ -20,7 +20,7 @@ class Command {
 protected:
     OperandsContainer operands;
     std::string name;
-    IApplication& application;
+    App::IApplication& application;
 
 public:
     Command();

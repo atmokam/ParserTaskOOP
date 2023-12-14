@@ -8,18 +8,10 @@
 #include "ItemAttributes.hpp"
 
 
-// in both ItemLeaf and ItemGroup, we need to have a parent pointer, so that when we select
-// an id of ItemBase, it checks whether it is has a parent, and if it does, it selects the the parent
-// that's how selection operation works in Powerpoint (as far as I have seen)
-
-// I think a selection functionality might be needed 
-
-
-class ItemGroup;
 
 class ItemBase {  
 protected:
-    std::weak_ptr<ItemGroup> parent;
+    //std::weak_ptr<ItemGroup> parent;
 
     ID id;
     Type type;
@@ -46,13 +38,14 @@ public:
 
 
 class ItemLeaf : public ItemBase {
-
+    std::string text;
 public:
     ItemLeaf() = default;
     ItemLeaf(Type type, Geometry& geometry, Attributes& attributes, ID id);
     ItemLeaf(std::shared_ptr<ItemLeaf> item);
     
-
+    void setText(std::string text);
+    std::string getText() const;
     void setType(Type type) override;
     Type getType() const override;
     Attributes getAttributes() const override;

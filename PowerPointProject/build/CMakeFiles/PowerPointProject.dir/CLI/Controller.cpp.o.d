@@ -183,6 +183,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: \
  /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/unordered_map \
  /usr/include/c++/11/bits/unordered_map.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Command.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Application/IApplication.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Application/Application.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IApplication.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Application/IApplication.hpp \

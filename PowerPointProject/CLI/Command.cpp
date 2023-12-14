@@ -18,7 +18,7 @@
 
 
 
-Command::Command() : application(Application::getInstance()) {}
+Command::Command() : application(App::Application::getInstance()) {}
 
 void AddCommand::execute() 
 {  

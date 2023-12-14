@@ -36,6 +36,6 @@ Data/ItemAttributes.cpp
 Renderer/Renderer.cpp
 Renderer/ShapeLibrary.cpp
 Renderer/Formatting/DimentionConverter.cpp
-Renderer/Formatting/Format.cpp )
+Renderer/Formatting/FormatLibrary.cpp )
 
 target_link_libraries(PowerPointProject PRIVATE Qt6::Core Qt6::Gui)

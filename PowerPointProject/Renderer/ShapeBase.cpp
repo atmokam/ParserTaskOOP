@@ -1,7 +1,10 @@
 #include <vector>
+#include <QPainter>
+#include <QtGui>
 #include "ShapeBase.hpp"
 #include "Data/ItemBase.hpp"
 #include "Data/ItemAttributes.hpp"
+#include "Formatting/DimentionConverter.hpp"
 
 
 ShapeBase::ShapeBase(std::shared_ptr<ItemBase> item) : item(item) {}
@@ -56,10 +59,32 @@ void ShapeBase::setItem(std::shared_ptr<ItemBase> item)
 
 ShapeRectangle::ShapeRectangle(std::shared_ptr<ItemBase> item) : ShapeBase(item) {}
 
-void ShapeRectangle::draw(QPainter& painter, DimentionConverter& converter) 
+void ShapeRectangle::draw(QPainter& painter, DimentionConverter& converter) // TODO: implement
 {
-    
+    auto geometry = item->getGeometry();
+    auto attributes = item->getAttributes();
+    auto position = geometry.getPosition();
+    auto height = geometry.getHeight();
+    auto width = geometry.getWidth();
+    auto fillColor = attributes.getHexFillColor();
+    auto lineColor = attributes.getHexLineColor();
+    auto lineWidth = attributes.getLineWidth();
+    auto lineType = attributes.getLineType();
+
+    QColor lineColorValue = lineColor.value();
+    qreal lineWidthValue = lineWidth.value();
+    Qt::PenStyle lineTypeValue = Qt::PenStyle(Qt::PenStyle::DotLine);
+
+    auto pen = QPen(lineColorValue, lineWidthValue, lineTypeValue);
+    auto brush = QBrush(QColor(fillColor.value()));
+    painter.setPen(pen);
+    painter.setBrush(brush);
+    std::vector<double> coordinates = position.value().getCoordinates();
+
+    QRect rect(converter.toPixels(coordinates[0]), converter.toPixels(coordinates[1]), converter.toPixels(width.value()), converter.toPixels(height.value()));
+    painter.drawRect(rect);
 }
+
 
 std::shared_ptr<IShape> ShapeRectangle::clone(std::shared_ptr<ItemBase> item)
 {

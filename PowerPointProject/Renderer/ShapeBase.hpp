@@ -13,7 +13,8 @@ class DimentionConverter;
 class ItemLeaf;
 
 class ShapeBase : public IShape, public ITextDisplayable    
-{                                                           
+{   
+protected:                                                        
     std::shared_ptr<ItemBase> item;
     void recursivePrintHandler(std::ostream& stream, const std::shared_ptr<ItemBase>& item);
     void leafPrintHandler(std::ostream& stream, const std::shared_ptr<ItemLeaf>& leaf);

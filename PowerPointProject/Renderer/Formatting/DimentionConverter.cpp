@@ -1,7 +1,8 @@
 #include "DimentionConverter.hpp"
+#include "FormatLibrary.hpp"
 
 
-DimentionConverter::DimentionConverter(double dpi) : dpi(dpi) {} // default DPI set to 96
+DimentionConverter::DimentionConverter(double dpi) : dpi(dpi){} // default DPI set to 96
 
 int DimentionConverter::toPixels(double inches) const 
 {

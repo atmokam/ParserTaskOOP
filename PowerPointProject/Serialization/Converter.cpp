@@ -127,7 +127,7 @@ QJsonValue Converter::convertToJson(const long& color)
 
 QJsonValue Converter::convertToJson(const Attributes& attribute) 
 {
-    Application& app = Application::getInstance();
+    App::Application& app = App::Application::getInstance();
     Attributes defaultAttributes = app.getDocument()->getDefaultAttributes();
     QJsonObject result;
 

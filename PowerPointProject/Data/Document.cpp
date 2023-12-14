@@ -2,13 +2,13 @@
 #include "Document.hpp"
 #include "Slide.hpp"
 #include "Serialization/Converter.hpp"
-#include "Renderer/Formatting/Format.hpp"
+#include "Renderer/Formatting/FormatLibrary.hpp"
 
 
 
 Document::Document() 
 {
-    Format formatMap;
+    FormatLibrary formatMap;
     Converter converter;
     slides.push_back(std::make_shared<Slide>());
     defaultAttributes.setLineWidth(1);

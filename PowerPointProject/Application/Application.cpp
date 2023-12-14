@@ -7,73 +7,77 @@
 #include "Data/Document.hpp"
 #include "CLI/CommandHistory.hpp"
 
-
-Application::Application() 
-{
-    buildApplication();
-}
-
-Application& Application::getInstance() 
-{
-    static Application instance;
-    return instance;
-}
-
-void Application::run(int count, char* args[]) 
+namespace App
 {
 
-    director = std::make_shared<Director>();
-    document = std::make_shared<Document>();
-   
-    std::ifstream stream = buildStream(count, args);
+    Application::Application() 
+    {
+        buildApplication();
+    }
 
-    controller = std::make_unique<CLIController>(stream.is_open() ? stream : std::cin);
-    controller->runProgram();
-}
+    Application& Application::getInstance() 
+    {
+        static Application instance;
+        return instance;
+    }
 
-void Application::buildApplication() 
-{
+    void Application::run(int count, char* args[]) 
+    {
+
+        director = std::make_shared<Director>();
+        document = std::make_shared<Document>();
     
-    // setting up gui, probably
-}
+        std::ifstream stream = buildStream(count, args);
 
-void Application::callExit() 
-{
-    exitCalled = true;
-}
+        controller = std::make_unique<CLIController>(stream.is_open() ? stream : std::cin);
+        controller->runProgram();
+    }
 
-bool Application::isExitCalled() const 
-{
-    return exitCalled;
-}
+    void Application::buildApplication() 
+    {
+        
+        // setting up gui, probably
+    }
 
-std::shared_ptr<IDirector> Application::getDirector() 
-{
-    return director;
-}
+    void Application::callExit() 
+    {
+        exitCalled = true;
+    }
 
-std::shared_ptr<IDocument> Application::getDocument() 
-{
-    return document;
-}
+    bool Application::isExitCalled() const 
+    {
+        return exitCalled;
+    }
 
-std::ifstream Application::buildStream(int count, char* args[]) 
-{
-    std::ifstream stream;
-    if(args[1] == nullptr)
+    std::shared_ptr<IDirector> Application::getDirector() 
+    {
+        return director;
+    }
+
+    std::shared_ptr<IDocument> Application::getDocument() 
+    {
+        return document;
+    }
+
+    std::ifstream Application::buildStream(int count, char* args[]) 
+    {
+        std::ifstream stream;
+        if(args[1] == nullptr)
+            return stream;
+        else if (std::string(args[1]) == "-filename") 
+            stream.open(args[2]);
         return stream;
-    else if (std::string(args[1]) == "-filename") 
-        stream.open(args[2]);
-    return stream;
 
-}
+    }
 
-bool Application::isDocumentModified() const 
-{
-    return documentModified;
-}
+    bool Application::isDocumentModified() const 
+    {
+        return documentModified;
+    }
 
-void Application::setDocumentModified(bool modified) 
-{
-    documentModified = modified;
+    void Application::setDocumentModified(bool modified) 
+    {
+        documentModified = modified;
+    }
+
 }

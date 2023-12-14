@@ -465,29 +465,29 @@ Renderer/Formatting/DimentionConverter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.s
 .PHONY : Renderer/Formatting/DimentionConverter.cpp.s
 
-Renderer/Formatting/Format.o: Renderer/Formatting/Format.cpp.o
-.PHONY : Renderer/Formatting/Format.o
+Renderer/Formatting/FormatLibrary.o: Renderer/Formatting/FormatLibrary.cpp.o
+.PHONY : Renderer/Formatting/FormatLibrary.o
 
 # target to build an object file
-Renderer/Formatting/Format.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.o
-.PHONY : Renderer/Formatting/Format.cpp.o
+Renderer/Formatting/FormatLibrary.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.o
+.PHONY : Renderer/Formatting/FormatLibrary.cpp.o
 
-Renderer/Formatting/Format.i: Renderer/Formatting/Format.cpp.i
-.PHONY : Renderer/Formatting/Format.i
+Renderer/Formatting/FormatLibrary.i: Renderer/Formatting/FormatLibrary.cpp.i
+.PHONY : Renderer/Formatting/FormatLibrary.i
 
 # target to preprocess a source file
-Renderer/Formatting/Format.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.i
-.PHONY : Renderer/Formatting/Format.cpp.i
+Renderer/Formatting/FormatLibrary.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.i
+.PHONY : Renderer/Formatting/FormatLibrary.cpp.i
 
-Renderer/Formatting/Format.s: Renderer/Formatting/Format.cpp.s
-.PHONY : Renderer/Formatting/Format.s
+Renderer/Formatting/FormatLibrary.s: Renderer/Formatting/FormatLibrary.cpp.s
+.PHONY : Renderer/Formatting/FormatLibrary.s
 
 # target to generate assembly for a file
-Renderer/Formatting/Format.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Formatting/Format.cpp.s
-.PHONY : Renderer/Formatting/Format.cpp.s
+Renderer/Formatting/FormatLibrary.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.s
+.PHONY : Renderer/Formatting/FormatLibrary.cpp.s
 
 Renderer/Renderer.o: Renderer/Renderer.cpp.o
 .PHONY : Renderer/Renderer.o
@@ -660,9 +660,9 @@ help:
 	@echo "... Renderer/Formatting/DimentionConverter.o"
 	@echo "... Renderer/Formatting/DimentionConverter.i"
 	@echo "... Renderer/Formatting/DimentionConverter.s"
-	@echo "... Renderer/Formatting/Format.o"
-	@echo "... Renderer/Formatting/Format.i"
-	@echo "... Renderer/Formatting/Format.s"
+	@echo "... Renderer/Formatting/FormatLibrary.o"
+	@echo "... Renderer/Formatting/FormatLibrary.i"
+	@echo "... Renderer/Formatting/FormatLibrary.s"
 	@echo "... Renderer/Renderer.o"
 	@echo "... Renderer/Renderer.i"
 	@echo "... Renderer/Renderer.s"

@@ -11,7 +11,7 @@
 CLIController::CLIController(std::istream& stream) : input(stream){}
 
 void CLIController::runProgram() {
-    Application& application = Application::getInstance();  
+    App::Application& application = App::Application::getInstance();  
     while (!application.isExitCalled()) 
     {
         // if(input.eof()) // +-

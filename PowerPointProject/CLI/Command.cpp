@@ -168,12 +168,24 @@ void SaveCommand::execute() // TODO: address the case when the filename exists, 
     QJsonDocument documentJson;
     serializer.save(document, documentJson);
     QByteArray byteArray = documentJson.toJson();
-    std::ofstream file;
-    file.open(operands["-path"][0] + operands["-filename"][0] + ".json");
-    if(file.is_open())
-    {
-        file << byteArray.toStdString();
+
+    std::string path = operands["-path"][0] + operands["-filename"][0] + ".json";
+
+    std::ifstream file (path);
+    if(file.good()){
+        std::cout << "File already exists, do you want to overwrite it? (y/n)" << std::endl;
         file.close();
+        char answer;
+        std::cin >> answer; // change to stream
+        if(answer == 'n')
+            return;
+    }
+   
+    std::ofstream output (path);
+    if(output.is_open())
+    {
+        output << byteArray.toStdString();
+        output.close();
     }
     else
     {
@@ -188,29 +200,22 @@ void LoadCommand::execute()
 { 
     std::ifstream file;
     file.open(operands["-path"][0]);
-    if(file.is_open())
-    {
-        std::string contents{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
-        QJsonDocument content = QJsonDocument::fromJson(contents.c_str());
-        file.close();
-        SaveLoad deserializer;
-        std::shared_ptr<IDocument> newDoc = std::make_shared<Document>();
-        std::cout << "loading" << std::endl;
-        deserializer.load(content, newDoc);
-        application.getDirector()->setDocument(newDoc);
-        application.getDirector()->setCurrentSlideIndex(0);
-        application.getDirector()->clearUndoRedoStack();
-    }
-    else
+    if(!file.is_open())
     {
         throw std::runtime_error("Could not open file");
     }
-
-
-    // application.getDirector()->setDocument(document);
-    // application.getDirector()->setCurrentSlideIndex(0);
-    // application.getDirector()->clearUndoRedoStack();
+    std::string contents{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
+    QJsonDocument content = QJsonDocument::fromJson(contents.c_str());
+    file.close();
+    SaveLoad deserializer;
+    std::shared_ptr<IDocument> newDoc = std::make_shared<Document>();
+    deserializer.load(content, newDoc);
+    application.getDirector()->setDocument(newDoc);
+    application.getDirector()->setCurrentSlideIndex(0);
+    application.getDirector()->clearUndoRedoStack();
 }
+
+
 
 void DisplayCommand::execute() 
 {
@@ -256,12 +261,16 @@ void ListCommand::execute()
     
 }
 
+
+
 void NextCommand::execute() 
 {
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
     if(currentSlideIndex < application.getDirector()->getDocument()->size() - 1)
         application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
 }
+
+
 
 void PrevCommand::execute() 
 {
@@ -270,15 +279,21 @@ void PrevCommand::execute()
         application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
 }
 
+
+
 void UndoCommand::execute() 
 {
     application.getDirector()->undo();
 }
 
+
+
 void RedoCommand::execute() 
 {
     application.getDirector()->redo();
 }
+
+
 
 void ExitCommand::execute()    
 {
@@ -294,6 +309,7 @@ void ExitCommand::execute()
     application.callExit();
     
 }
+
 
 void DrawCommand::execute() 
 {
@@ -311,8 +327,6 @@ void DrawCommand::execute()
 
     
 }
-
-
 
 
 

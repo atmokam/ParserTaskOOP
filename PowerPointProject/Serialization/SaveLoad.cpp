@@ -28,7 +28,7 @@ void SaveLoad::save(const std::shared_ptr<IDocument>& document, QJsonDocument& s
     stream.setObject(documentObject);
 }
 
-void SaveLoad::recursiveSerialize(const std::shared_ptr<ItemBase>& item, QJsonArray& slideArray)
+void SaveLoad::recursiveSerialize(const std::shared_ptr<ItemBase>& item, QJsonArray& slideArray)  // attribs and geometry for groups?
 {
     if(auto group = std::dynamic_pointer_cast<ItemGroup>(item))
     {
@@ -61,13 +61,13 @@ void SaveLoad::load(QJsonDocument& stream, const std::shared_ptr<IDocument>& doc
 {    
     QJsonObject documentObject = stream.object();
     Converter converter;
-    std::cout << "loading load" << std::endl;
+   
 
     document->setMaximumID(documentObject["maxID"].toInt());
     document->setFormat(converter.convertToFormat(documentObject["format"].toArray()));
-    std::cout << "format set" << std::endl;
+    
     QJsonArray documentArray = documentObject["slides"].toArray();
-    std::cout << "array set" << std::endl;
+   
     size_t counter = 0;
     for(auto slide: documentArray)
     {
@@ -96,6 +96,7 @@ void SaveLoad::recursiveDeserialize(QJsonValueRef& item, const std::shared_ptr<S
     }
     else if(item.isObject())
     {
+        
         slide->addItem(deserializeLeaf(item.toObject()));
     }
     
@@ -107,9 +108,12 @@ std::shared_ptr<ItemLeaf> SaveLoad::deserializeLeaf(const QJsonObject& object)
     std::shared_ptr<ItemLeaf> item = std::make_shared<ItemLeaf>();
     item->setID(object["id"].toInt());
     item->setType(converter.convertToType(object["type"].toString().toStdString()));
+    
     Attributes attributes = converter.convertToAttributes(object["attributes"]);
     item->setAttributes(attributes);
+   
     Geometry geometry = converter.convertToGeometry(object["geometry"]);
     item->setGeometry(geometry);
+    
     return item;
 }

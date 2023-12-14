@@ -179,7 +179,7 @@ Attributes Converter::convertToAttributes(const QJsonValue& value)
     Attributes result;
     QJsonObject object = value.toObject();
     if (object.contains("lineWidth")) {
-        result.setLineWidth(convertToDimention(object["lineWidth"].toString().toStdString()));
+        result.setLineWidth(object["lineWidth"].toDouble());
     }
     if (object.contains("lineType")) {
         result.setLineType(convertToLineType(object["lineType"].toString().toStdString()));
@@ -209,12 +209,14 @@ Geometry Converter::convertToGeometry(const QJsonValue& value)
     QJsonObject object = value.toObject();
     if (object.contains("position")) {
         result.setPosition(convertToPosition(object["position"].toArray()));
+       
     }
     if (object.contains("width")) {
-        result.setWidth(convertToDimention(object["width"].toString().toStdString()));
+        result.setWidth(object["width"].toDouble());
+       
     }
     if (object.contains("height")) {
-        result.setHeight(convertToDimention(object["height"].toString().toStdString()));
+        result.setHeight(object["height"].toDouble());
     }
     return result;
 }

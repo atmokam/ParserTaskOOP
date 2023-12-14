@@ -327,4 +327,13 @@ CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o: \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeLibrary.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeLibrary.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/IShape.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/IVisualDisplayable.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/IVisualDisplayable.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Application/Application.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IApplication.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Application/IApplication.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Director/IDirector.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Data/IDocument.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IController.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../CLI/IController.hpp

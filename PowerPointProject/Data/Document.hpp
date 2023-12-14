@@ -14,7 +14,7 @@ class Document : public IDocument {
     std::vector<std::shared_ptr<Slide>> slides;
     std::pair<double, double> format;
     Attributes defaultAttributes;
-    
+
     size_t maxID = 0;
 public:
     Document();

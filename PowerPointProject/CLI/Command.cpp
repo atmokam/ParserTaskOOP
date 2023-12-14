@@ -27,6 +27,7 @@ void AddCommand::execute()
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
         std::shared_ptr<ItemLeaf> item = createItem();
         application.getDirector()->doAction(std::make_shared<AddItem>(item, currentSlideIndex));
+        application.getDocument()->setMaximumID(item->getID());
     }
     else if(operands.find("-slide") != operands.end())
     {
@@ -322,10 +323,9 @@ void DrawCommand::execute()
     QImage image(width, height, QImage::Format_ARGB32_Premultiplied);
     Renderer renderer;
     renderer.draw(image, converter, slide);
-    QString path = QString::fromStdString(operands["-path"][0] + "a.png");
+    QString path = QString::fromStdString(operands["-path"][0] + operands["-filename"][0] + ".png");
     image.save(path);
 
-    
 }
 
 

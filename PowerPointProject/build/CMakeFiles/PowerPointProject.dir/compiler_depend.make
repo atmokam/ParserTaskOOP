@@ -3909,7 +3909,16 @@ CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o: ../Renderer/Renderer.c
   ../Renderer/ShapeLibrary.hpp \
   ../Renderer/ShapeLibrary.hpp \
   ../Renderer/IShape.hpp \
-  ../Renderer/IVisualDisplayable.hpp
+  ../Renderer/IVisualDisplayable.hpp \
+  ../Application/Application.hpp \
+  ../Include/IApplication.hpp \
+  ../Application/IApplication.hpp \
+  ../Include/IDirector.hpp \
+  ../Director/IDirector.hpp \
+  ../Include/IDocument.hpp \
+  ../Data/IDocument.hpp \
+  ../Include/IController.hpp \
+  ../CLI/IController.hpp
 
 CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o: ../Renderer/ShapeBase.cpp \
   /usr/include/stdc-predef.h \

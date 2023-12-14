@@ -25,7 +25,7 @@ Validator::Validator()
         {"undo", {}},
         {"redo", {}},
         {"exit", {}},
-        {"draw", {{"-path", 1}}}
+        {"draw", {{"-path", 1}, {"-filename", 1}}}
     };
 
     mandatoryOperands = {
@@ -35,7 +35,8 @@ Validator::Validator()
         {"removeItem", {"-id"}},
         {"change", {"-id"}},
         {"save", {"-path", "-filename"}},
-        {"load", {"-path"}}
+        {"load", {"-path"}},
+        {"draw", {"-path", "-filename"}}
     };
 
     
@@ -47,14 +48,9 @@ Validator::Validator()
 
 }
 
-// list of shapes should be obtained from the shape library
-// TODO: add list of shapes to the shape library
-
 
 bool Validator::validateCommand(const std::shared_ptr<Command>& commandToBeChecked) 
 { 
-    
-   
     if (!checkOperandQuantity(commandToBeChecked) || !checkMandatoryOperands(commandToBeChecked)) 
     {
         std:: cout << "Invalid command: " << commandToBeChecked->getName() << std::endl;

@@ -29,3 +29,22 @@ std::optional<Type> ShapeLibrary::getType(const std::string& type)
 {
     return (stringToType.find(type) != stringToType.end()) ? std::optional<Type>(stringToType[type]) : std::nullopt;
 }
+
+std::string ShapeLibrary::getString(const Type type)
+{
+    switch(type)
+    {
+        case Type::Rectangle:
+            return "rectangle";
+        case Type::Ellipse:
+            return "ellipse";
+        case Type::Line:
+            return "line";
+        case Type::Trapezoid:
+            return "trapezoid";
+        case Type::Triangle:
+            return "triangle";
+        default:
+            return "";
+    }
+}

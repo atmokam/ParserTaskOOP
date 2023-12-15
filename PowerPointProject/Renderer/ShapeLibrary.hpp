@@ -23,7 +23,9 @@ class ShapeLibrary {
 public:
     ShapeLibrary();
     std::shared_ptr<IShape> getShape(std::shared_ptr<ItemBase> item);
+    
     std::optional<Type> getType(const std::string& type);
+    std::string getString(const Type type);
 
 };
 

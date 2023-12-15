@@ -1,5 +1,6 @@
 #ifndef CONVERTER_HPP
 #define CONVERTER_HPP
+// converts between types
 
 #include <string>
 #include <unordered_map>
@@ -11,10 +12,8 @@ class QJsonArray;
 class QJsonValue;
 
 class Converter {
-    std::unordered_map<std::string, Type> typeMap;
-
 public:
-    Converter();
+    Converter() = default;
     Position convertToPosition(const std::vector<std::string>& values);
     Position convertToPosition(const std::string& str, const char delimiter);
     Type convertToType(const std::string& value);
@@ -23,26 +22,10 @@ public:
     long convertToColor(const std::string& color);
     LineType convertToLineType(const std::string& lineType);
 
-    QJsonValue convertToJson(const Attributes& attribute);
-    QJsonValue convertToJson(const Geometry& geometry);
-    
-    QJsonArray convertToJson(const Position& position);
-    QJsonArray convertToJson(const std::pair<double, double>& format);
-    QJsonValue convertToJson(const Type& type);
-    QJsonValue convertToJson(const LineType& lineType);
-    QJsonValue convertToJson(const long& color);
-
-    Attributes convertToAttributes(const QJsonValue& value);
-    Geometry convertToGeometry(const QJsonValue& value);
-    Position convertToPosition(const QJsonArray& array);
-    std::pair<double, double> convertToFormat(const QJsonArray& array);
-    Type convertToType(const QJsonValue& value);
-    LineType convertToLineType(const QJsonValue& value);
-    long convertToColor(const QJsonValue& value);
-    
-
-
-    
+    std::string convertToString(const Position& position);
+    std::string convertToString(const Type type);
+    std::string convertToString(const LineType line);
+   
 
 };
 

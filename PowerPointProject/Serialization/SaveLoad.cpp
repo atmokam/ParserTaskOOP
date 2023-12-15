@@ -1,7 +1,7 @@
 #include "SaveLoad.hpp"
 #include "Data/Document.hpp"
 #include "Data/Slide.hpp"
-#include "Converter.hpp"
+#include "JsonConverter.hpp"
 #include "Data/ItemBase.hpp"
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -11,7 +11,7 @@
 void SaveLoad::save(const std::shared_ptr<IDocument>& document, QJsonDocument& stream)
 {
     QJsonArray documentArray;
-    Converter converter;
+    JsonConverter converter;
     for (auto slide : *document)
     {
         QJsonArray slideArray;
@@ -46,7 +46,7 @@ void SaveLoad::recursiveSerialize(const std::shared_ptr<ItemBase>& item, QJsonAr
 
 QJsonObject SaveLoad::serializeLeaf(const std::shared_ptr<ItemLeaf>& item)
 {
-    Converter converter;
+    JsonConverter converter;
     QJsonObject itemObject;
     itemObject["id"] = item->getID();
     itemObject["type"] = converter.convertToJson(item->getType());
@@ -60,7 +60,7 @@ QJsonObject SaveLoad::serializeLeaf(const std::shared_ptr<ItemLeaf>& item)
 void SaveLoad::load(QJsonDocument& stream, const std::shared_ptr<IDocument>& document)
 {    
     QJsonObject documentObject = stream.object();
-    Converter converter;
+    JsonConverter converter;
    
 
     document->setMaximumID(documentObject["maxID"].toInt());
@@ -104,10 +104,10 @@ void SaveLoad::recursiveDeserialize(QJsonValueRef& item, const std::shared_ptr<S
 
 std::shared_ptr<ItemLeaf> SaveLoad::deserializeLeaf(const QJsonObject& object)
 {
-    Converter converter;
+    JsonConverter converter;
     std::shared_ptr<ItemLeaf> item = std::make_shared<ItemLeaf>();
     item->setID(object["id"].toInt());
-    item->setType(converter.convertToType(object["type"].toString().toStdString()));
+    item->setType(converter.convertToType(object["type"]));
     
     Attributes attributes = converter.convertToAttributes(object["attributes"]);
     item->setAttributes(attributes);

@@ -84,49 +84,6 @@ public:
 
 using ID = int;           
 
-inline std::ostream& operator<<(std::ostream& os, const Position& position) {
-    std::vector<double> coordinates = position.getCoordinates();
-    for (int i = 0; i < coordinates.size(); i++) {
-        os << coordinates[i];
-        if (i != coordinates.size() - 1) {
-            os << " ";
-        }
-    }
-    return os;
-}
-
-inline std::ostream& operator<<(std::ostream& os, const Type& type) {
-    switch (type) {
-        case Type::Rectangle:
-            return os << "rectangle";
-        case Type::Trapezoid:
-            return os << "trapezoid";
-        case Type::Ellipse:
-            return os << "ellipse";
-        case Type::Line:
-            return os << "line";
-        case Type::Triangle:
-            return os << "triangle";
-        case Type::Group:
-            return os << "group";
-        default:
-            return os;
-    }
-}   
-
-inline std::ostream& operator<<(std::ostream& os, const LineType& line) {
-    switch (line) {
-        case LineType::Solid:
-            return os << "solid";
-        case LineType::Dashed:
-            return os << "dashed";
-        case LineType::Dotted:
-            return os << "dotted";
-        default:
-            return os;
-    }
-}
-
 
 
 #endif

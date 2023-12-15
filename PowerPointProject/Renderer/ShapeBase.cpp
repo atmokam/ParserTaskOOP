@@ -4,6 +4,7 @@
 #include "ShapeBase.hpp"
 #include "Data/ItemBase.hpp"
 #include "Data/ItemAttributes.hpp"
+#include "Serialization/Converter.hpp"
 #include "Formatting/DimentionConverter.hpp"
 
 
@@ -32,16 +33,17 @@ void ShapeBase::recursivePrintHandler(std::ostream& stream, const std::shared_pt
 
 void ShapeBase::leafPrintHandler(std::ostream& stream, const std::shared_ptr<ItemLeaf>& leaf) 
 {
-    stream << "Shape: " << leaf->getType() << std::endl;
+    Converter converter;
+    stream << "Shape: " << converter.convertToString(leaf->getType()) << std::endl;
     stream << "---Geometry---" << std::endl;
-    stream << "Position: " << leaf->getGeometry().getPosition().value() << std::endl;
+    stream << "Position: " << converter.convertToString(leaf->getGeometry().getPosition().value()) << std::endl;
     stream << "Height: " << leaf->getGeometry().getHeight().value() << std::endl;
     stream << "Width: "<< leaf->getGeometry().getWidth().value() << std::endl;
     stream << "---Attributes---" << std::endl;
     stream << "FillColor: " << leaf->getAttributes().getHexFillColor().value() << std::endl;
     stream << "LineColor: " << leaf->getAttributes().getHexLineColor().value() << std::endl;
     stream << "LineWidth: " << leaf->getAttributes().getLineWidth().value() << std::endl;
-    stream << "LineType: " << leaf->getAttributes().getLineType().value() << std::endl;
+    stream << "LineType: " << converter.convertToString(leaf->getAttributes().getLineType().value()) << std::endl;
 }
 
 std::shared_ptr<IShape> ShapeBase::clone(std::shared_ptr<ItemBase> item)
@@ -57,19 +59,19 @@ void ShapeBase::setItem(std::shared_ptr<ItemBase> item)
 
 
 
+// visual displayables
+
 ShapeRectangle::ShapeRectangle(std::shared_ptr<ItemBase> item) : ShapeBase(item) {}
 
-void ShapeRectangle::draw(QPainter& painter, DimentionConverter& converter) // TODO: implement
+void ShapeRectangle::draw(QPainter& painter, DimentionConverter& converter) 
 {
-    auto geometry = item->getGeometry();
-    auto attributes = item->getAttributes();
-    auto position = geometry.getPosition();
-    auto height = geometry.getHeight();
-    auto width = geometry.getWidth();
-    auto fillColor = attributes.getHexFillColor();
-    auto lineColor = attributes.getHexLineColor();
-    auto lineWidth = attributes.getLineWidth();
-    auto lineType = attributes.getLineType();
+    auto position = item->getGeometry().getPosition();
+    auto height = item->getGeometry().getHeight();
+    auto width = item->getGeometry().getWidth();
+    auto fillColor = item->getAttributes().getHexFillColor();
+    auto lineColor = item->getAttributes().getHexLineColor();
+    auto lineWidth = item->getAttributes().getLineWidth();
+    auto lineType = item->getAttributes().getLineType();
 
     QColor lineColorValue = lineColor.value();
     qreal lineWidthValue = lineWidth.value();

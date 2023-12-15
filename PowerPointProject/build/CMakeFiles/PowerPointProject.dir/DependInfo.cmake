@@ -27,6 +27,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeBase.cpp" "CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeLibrary.cpp" "CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Converter.cpp" "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/JsonConverter.cpp" "CMakeFiles/PowerPointProject.dir/Serialization/JsonConverter.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Serialization/JsonConverter.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.cpp" "CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o.d"
   )
 

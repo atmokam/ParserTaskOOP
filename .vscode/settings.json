@@ -61,7 +61,11 @@
         "semaphore": "cpp",
         "stop_token": "cpp",
         "thread": "cpp",
-        "qjsonobject": "cpp"
+        "qjsonobject": "cpp",
+        "codecvt": "cpp",
+        "source_location": "cpp",
+        "iomanip": "cpp",
+        "cinttypes": "cpp"
     },
     "cmake.configureOnOpen": true
 }

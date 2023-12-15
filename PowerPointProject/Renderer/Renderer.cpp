@@ -16,7 +16,7 @@ void Renderer::draw(QPaintDevice& device, DimentionConverter& converter, const s
     App::Application& app = App::Application::getInstance();
     ShapeLibrary shapeLibrary;   // should this be created elsewhere?
     size_t max = app.getDocument()->getMaximumID();
-    for (size_t i = 0; i <= max; ++i)
+    for (size_t i = 0; i <= max; ++i) // for sequental iteration
     {
         auto shape = shapeLibrary.getShape(slide->getItem(i));
         std::shared_ptr<IVisualDisplayable> visualShape = std::dynamic_pointer_cast<IVisualDisplayable>(shape);

@@ -12,7 +12,7 @@ CLIController::CLIController(std::istream& input, std::ostream& output) : input(
 
 void CLIController::runProgram() {
     App::Application& application = App::Application::getInstance();  
-    while (!application.isExitCalled()) 
+    while (!application.isExitCalled() || !input.eof()) 
     {
         runCommand(input);
     }

@@ -2,8 +2,8 @@
 #include <iostream>
 
 
-Attributes::Attributes(long hexFillColor, long hexLineColor, LineType lineType, double lineWidth) :
-    hexFillColor(hexFillColor), hexLineColor(hexLineColor), lineType(lineType), lineWidth(lineWidth) { }
+Attributes::Attributes(long hexFillColor, long hexLineColor, LineType lineType, double lineWidth, std::string text) :
+    hexFillColor(hexFillColor), hexLineColor(hexLineColor), lineType(lineType), lineWidth(lineWidth), text(text) { }
 
 std::optional<long> Attributes::getHexFillColor() const { return hexFillColor; }
 
@@ -30,6 +30,13 @@ void Attributes::setLineType(LineType lineType)
 void Attributes::setLineWidth(double lineWidth) 
 { 
     this->lineWidth = lineWidth; 
+}
+
+std::optional<std::string> Attributes::getText() const { return text; }
+
+void Attributes::setText(std::string text) 
+{
+     this->text = text; 
 }
 
 

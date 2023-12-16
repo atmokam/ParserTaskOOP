@@ -44,6 +44,7 @@ void ShapeBase::leafPrintHandler(std::ostream& stream, const std::shared_ptr<Ite
     stream << "LineColor: " << leaf->getAttributes().getHexLineColor().value() << std::endl;
     stream << "LineWidth: " << leaf->getAttributes().getLineWidth().value() << std::endl;
     stream << "LineType: " << converter.convertToString(leaf->getAttributes().getLineType().value()) << std::endl;
+    stream << "Text: " << leaf->getAttributes().getText().value() << std::endl;
 }
 
 std::shared_ptr<IShape> ShapeBase::clone(std::shared_ptr<ItemBase> item)

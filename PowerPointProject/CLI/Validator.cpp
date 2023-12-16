@@ -13,7 +13,7 @@
 Validator::Validator()
 {
     valids = {
-        {"add", {{"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-w", 1}, {"-h", 1}, {"-slide", 0}, {"-lwidth", 1}, {"-lstyle", 1}}},
+        {"add", {{"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-w", 1}, {"-h", 1}, {"-slide", 0}, {"-lwidth", 1}, {"-lstyle", 1}, {"-text", -1}}},
         {"remove", {{"-id", 1}, {"-slide", 0}}},
         {"change", {{"-id", 1}, {"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-w", 1}, {"-h", 1},  {"-lwidth", 1}, {"-lstyle", 1}}},
         {"display", {{"-id", 1}}},
@@ -218,6 +218,9 @@ bool Validator::isValue(const std::string& inputToBeChecked, const std::string& 
 
     } else if (operandName == "-lstyle"){
         return isStyle(inputToBeChecked);
+        
+    } else if (operandName == "-text") {
+        return true;
     }
     else {
         return false;

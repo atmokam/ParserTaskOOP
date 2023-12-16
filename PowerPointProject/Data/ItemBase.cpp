@@ -90,17 +90,6 @@ void ItemLeaf::setID(ID id)
     this->id = id;
 }
 
-void ItemLeaf::setText(std::string text) 
-{
-    this->text = text;
-}
-
-std::string ItemLeaf::getText() const 
-{
-    return text;
-}
-
-
 
 
 // Group

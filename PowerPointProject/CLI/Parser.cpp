@@ -64,7 +64,7 @@ std::shared_ptr<Command> Parser::parse()
 
     if(!validator.validateCommand(command)) 
     {
-        throw std::invalid_argument("Invalid commands: " + command->getName());
+        throw std::invalid_argument("Invalid syntax for command: " + command->getName());
     }
 
     return command;
@@ -76,25 +76,18 @@ std::shared_ptr<Command> Parser::parse()
 
 void Parser::processArgument(std::string argument, std::shared_ptr<Command>& command){
     Validator validator;
-
-    if(commandNameFlag == "" && validator.isName(argument)){
-            command = createCommand(argument); 
-            command->setName(argument);
-            commandNameFlag = argument;
-            prevToken = argument;
-        }
-        else if(commandNameFlag != "" && (prevOperand != prevToken) && validator.isOperand(argument, commandNameFlag)){
-            command->addOperandToOperands(argument);
-            prevOperand = argument;
-            prevToken = argument;
-        }
-        else if(commandNameFlag != "" && prevOperand != "" && validator.isValue(argument, prevOperand) ){
-            command->addValueToOperands(argument, prevOperand); 
-            prevToken = argument;
-        }
-        else {
-            throw std::invalid_argument("Invalid input: " + argument);
-        }
+    if(commandNameFlag != "" && (prevOperand != prevToken) && validator.isOperand(argument, commandNameFlag)){
+        command->addOperandToOperands(argument);
+        prevOperand = argument;
+        prevToken = argument;
+    }
+    else if(commandNameFlag != "" && prevOperand != "" && validator.isValue(argument, prevOperand) ){
+        command->addValueToOperands(argument, prevOperand); 
+        prevToken = argument;
+    }
+    else {
+        throw std::invalid_argument("Invalid input: " + argument);
+    }
 }
 
 

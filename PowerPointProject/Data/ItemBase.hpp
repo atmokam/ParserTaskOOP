@@ -38,7 +38,7 @@ public:
 
 
 class ItemLeaf : public ItemBase {
-    std::string text;
+    
 public:
     ItemLeaf() = default;
     ItemLeaf(Type type, Geometry& geometry, Attributes& attributes, ID id);

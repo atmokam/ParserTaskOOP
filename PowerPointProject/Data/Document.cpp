@@ -15,6 +15,7 @@ Document::Document()
     defaultAttributes.setHexFillColor(converter.convertToColor("#FFFFFF"));
     defaultAttributes.setHexLineColor(converter.convertToColor("#000000"));
     defaultAttributes.setLineType(converter.convertToLineType("solid"));
+    defaultAttributes.setText("");
 
     format = formatMap.getFormat("A4");
 

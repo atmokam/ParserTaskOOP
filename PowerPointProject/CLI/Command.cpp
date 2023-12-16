@@ -65,8 +65,11 @@ std::shared_ptr<ItemLeaf> AddCommand::createItem()
     attributes.setLineType((operands.find("-lstyle") != operands.end())? 
     converter.convertToLineType(operands["-lstyle"][0]) : defaultAttributes.getLineType().value());
 
+    attributes.setText((operands.find("-text") != operands.end()) ?
+    operands["-text"][0] : defaultAttributes.getText().value());
+
     
-    return std::make_shared<ItemLeaf>(type, geometry, attributes, document->getIDGenerator().generateID());
+    return std::make_shared<ItemLeaf>(type, geometry, attributes, document->getIDGenerator().generateID()); 
 
 }
 

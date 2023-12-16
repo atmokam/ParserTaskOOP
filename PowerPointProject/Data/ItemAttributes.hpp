@@ -33,19 +33,22 @@ class Attributes
     std::optional<long> hexLineColor = std::nullopt;
     std::optional<LineType> lineType = std::nullopt;
     std::optional<double> lineWidth = std::nullopt;
+    std::optional<std::string> text = std::nullopt;
 
 public:
     Attributes() = default;
-    Attributes(long hexFillColor, long hexLineColor, LineType lineType, double lineWidth);
+    Attributes(long hexFillColor, long hexLineColor, LineType lineType, double lineWidth, std::string text);
     std::optional<long> getHexFillColor() const;
     std::optional<long> getHexLineColor() const;
     std::optional<LineType> getLineType() const;
     std::optional<double> getLineWidth() const;
+    std::optional<std::string> getText() const;
 
     void setHexFillColor(long hexFillColor);
     void setHexLineColor(long hexLineColor);
     void setLineType(LineType lineType);
     void setLineWidth(double lineWidth);
+    void setText(std::string text);
 
 };
 
@@ -69,18 +72,6 @@ public:
 
 
 };
-
-
-class ShapeType
-{
-    Type type;
-
-public:
-    ShapeType(Type type) : type(type) { }
-    Type getType() const { return type; }
-    friend std::ostream& operator<<(std::ostream& os, const ShapeType& shape);
-};
-
 
 using ID = int;           
 

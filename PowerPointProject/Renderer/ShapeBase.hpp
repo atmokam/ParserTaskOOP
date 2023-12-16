@@ -64,12 +64,12 @@ public:
 
 };
 
-class ShapeGroup : public ShapeBase, public IVisualDisplayable { 
-public:
-    ShapeGroup(std::shared_ptr<ItemBase> item);
-    void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
+// class ShapeGroup : public ShapeBase, public IVisualDisplayable { 
+// public:
+//     ShapeGroup(std::shared_ptr<ItemBase> item);
+//     void draw(QPainter& painter, DimentionConverter& converter) override;
+//     std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
 
-};
+// };
 
 #endif

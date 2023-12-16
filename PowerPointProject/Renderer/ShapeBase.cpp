@@ -153,17 +153,19 @@ std::shared_ptr<IShape> ShapeTriangle::clone(std::shared_ptr<ItemBase> item)
 }
 
 
-ShapeGroup::ShapeGroup(std::shared_ptr<ItemBase> item) : ShapeBase(item) {}
 
-void ShapeGroup::draw(QPainter& painter, DimentionConverter& converter) 
-{
+
+// ShapeGroup::ShapeGroup(std::shared_ptr<ItemBase> item) : ShapeBase(item) {}
+
+// void ShapeGroup::draw(QPainter& painter, DimentionConverter& converter) 
+// {
     
-}
+// }
 
-std::shared_ptr<IShape> ShapeGroup::clone(std::shared_ptr<ItemBase> item)
-{
-    setItem(item);
-    return std::make_shared<ShapeGroup>(*this);
-}
+// std::shared_ptr<IShape> ShapeGroup::clone(std::shared_ptr<ItemBase> item)
+// {
+//     setItem(item);
+//     return std::make_shared<ShapeGroup>(*this);
+// }
 
 

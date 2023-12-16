@@ -237,13 +237,11 @@ void DisplayCommand::execute()
     else
     {
         std::shared_ptr<Slide> current = application.getDirector()->getCurrentSlide();
-        for(const auto& item : *current)
-        {
-            ShapeBase shape(item.second);
-            std::ostream& out = application.getController()->getOutputStream() ;
-            shape.print(out);
-            out << std::endl;
-        }
+        ShapeBase shape(current->getTopItem());
+        std::ostream& out = application.getController()->getOutputStream() ;
+        shape.print(out);
+        out << std::endl;
+
     }
 }
 
@@ -255,10 +253,13 @@ void ListCommand::execute()
     size_t currentSlideIndex  = 0;
     for (const auto& slide : *document)
     {
-        std::ostream& out = application.getController()->getOutputStream() ;
+        std::ostream& out = application.getController()->getOutputStream();
         out << "Slide: " << currentSlideIndex << std::endl;
-        for(const auto& item : *slide){
-            out << item.first << "\t";
+        auto topItem = slide->getTopItem();
+        for(const auto& item : *topItem)
+        {
+            ShapeBase shape(item.second);
+            shape.print(out);
         }
         currentSlideIndex++;
         out << std::endl;

@@ -36,23 +36,7 @@ void Slide::swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem)
     items->swapItems(idOfInitialItem, newItem);  
 }
 
-
-std::unordered_map<ID, std::shared_ptr<ItemBase>>::iterator Slide::begin() 
+std::shared_ptr<ItemGroup> Slide::getTopItem() const 
 {
-    return items->begin();
-}
-
-std::unordered_map<ID, std::shared_ptr<ItemBase>>::const_iterator Slide::cbegin() const 
-{
-    return items->cbegin();
-}
-
-std::unordered_map<ID, std::shared_ptr<ItemBase>>::iterator Slide::end() 
-{
-    return items->end();
-}
-
-std::unordered_map<ID, std::shared_ptr<ItemBase>>::const_iterator Slide::cend() const 
-{
-    return items->cend();
+    return items;
 }

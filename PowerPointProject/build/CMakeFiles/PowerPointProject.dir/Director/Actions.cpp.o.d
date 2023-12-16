@@ -186,6 +186,7 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: \
  /usr/include/c++/11/bits/node_handle.h \
  /usr/include/c++/11/bits/unordered_map.h \
  /usr/include/c++/11/bits/erase_if.h \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/IDGenerator.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Converter.hpp \
  /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
  /usr/include/c++/11/bits/algorithmfwd.h \

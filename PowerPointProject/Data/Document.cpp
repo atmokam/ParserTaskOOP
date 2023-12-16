@@ -48,19 +48,10 @@ void Document::removeSlide(size_t number)
     slides.erase(it); 
 }
 
-size_t Document::generateID() 
-{
-    return maxID++;
-}
 
-size_t Document::getMaximumID() const 
+IDGenerator& Document::getIDGenerator() 
 {
-    return maxID;
-}
-
-void Document::setMaximumID(size_t id) 
-{
-    maxID = id;
+    return generator;
 }
 
 

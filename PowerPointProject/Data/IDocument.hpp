@@ -6,8 +6,10 @@
 #include <memory>
 #include <vector>
 
+
 class Slide;
 class Attributes;
+class IDGenerator;
 
 class IDocument {
 public:
@@ -15,9 +17,9 @@ public:
     virtual void addSlide(std::shared_ptr<Slide> slide, size_t number) = 0;
     virtual void removeSlide(size_t number) = 0;
     virtual size_t size() const = 0;
-    virtual size_t generateID() = 0;
-    virtual size_t getMaximumID() const = 0;
-    virtual void setMaximumID(size_t id) = 0;
+
+    virtual IDGenerator& getIDGenerator() = 0;
+
     virtual Attributes getDefaultAttributes() const = 0;
     virtual ~IDocument() = default;
     virtual std::pair<double, double> getFormat() const = 0;

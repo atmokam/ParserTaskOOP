@@ -350,6 +350,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeLibrary.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Document.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/IDGenerator.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Actions.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/IAction.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Director.hpp \

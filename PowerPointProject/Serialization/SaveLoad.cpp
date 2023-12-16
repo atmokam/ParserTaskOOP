@@ -23,7 +23,7 @@ void SaveLoad::save(const std::shared_ptr<IDocument>& document, QJsonDocument& s
     }
     QJsonObject documentObject;
     documentObject["slides"] = documentArray;
-    documentObject["maxID"] = converter.convertToJson(document->getMaximumID());
+    documentObject["IDs"] = converter.convertToJson(document->getIDGenerator().getIDs());
     documentObject["format"] = converter.convertToJson(document->getFormat());
     stream.setObject(documentObject);
 }
@@ -63,7 +63,7 @@ void SaveLoad::load(QJsonDocument& stream, const std::shared_ptr<IDocument>& doc
     JsonConverter converter;
    
 
-    document->setMaximumID(documentObject["maxID"].toInt());
+    document->getIDGenerator().setIDs(converter.convertToIDs(documentObject["IDs"].toArray()));
     document->setFormat(converter.convertToFormat(documentObject["format"].toArray()));
     
     QJsonArray documentArray = documentObject["slides"].toArray();

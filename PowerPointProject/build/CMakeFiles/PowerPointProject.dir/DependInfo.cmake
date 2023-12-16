@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Parser.cpp" "CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Validator.cpp" "CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Document.cpp" "CMakeFiles/PowerPointProject.dir/Data/Document.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Data/Document.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/IDGenerator.cpp" "CMakeFiles/PowerPointProject.dir/Data/IDGenerator.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Data/IDGenerator.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.cpp" "CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.cpp" "CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Slide.cpp" "CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o.d"

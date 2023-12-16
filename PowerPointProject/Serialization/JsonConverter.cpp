@@ -106,6 +106,15 @@ QJsonArray JsonConverter::convertToJson(const std::pair<double, double>& format)
     return result;
 }
 
+QJsonValue JsonConverter::convertToJson(const std::vector<ID>& ids)
+{
+    QJsonArray result;
+    for (auto id : ids) {
+        result.append(id);
+    }
+    return result;
+}
+
 
 
 // convert from json
@@ -186,4 +195,14 @@ long JsonConverter::convertToColor(const QJsonValue& value)
     std::string colorString = value.toString().toStdString();
     long converted = std::stol(colorString.substr(1), nullptr, 16);    
     return converted;
+}
+
+std::vector<ID> JsonConverter::convertToIDs(const QJsonValue& value)
+{
+    std::vector<ID> result;
+    QJsonArray array = value.toArray();
+    for (auto id : array) {
+        result.push_back(id.toInt());
+    }
+    return result;
 }

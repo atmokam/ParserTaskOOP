@@ -7,6 +7,7 @@
 
 #include "Include/IDocument.hpp"
 #include "ItemAttributes.hpp"
+#include "IDGenerator.hpp"
 
 class Slide;
 
@@ -14,18 +15,18 @@ class Document : public IDocument {
     std::vector<std::shared_ptr<Slide>> slides;
     std::pair<double, double> format;
     Attributes defaultAttributes;
-
-    size_t maxID = 0;
+    
+    IDGenerator generator;
 public:
     Document();
  
-
+    
     void addSlide(std::shared_ptr<Slide> slide, size_t index = -1) override;
     void removeSlide(size_t index) override;
     size_t size() const override;
-    size_t getMaximumID() const override;
-    void setMaximumID(size_t id) override;
-    size_t generateID() override;
+
+    IDGenerator& getIDGenerator() override;
+
     Attributes getDefaultAttributes() const override;
     std::pair<double, double> getFormat() const override;
     void setFormat(const std::pair<double, double>& format) override;

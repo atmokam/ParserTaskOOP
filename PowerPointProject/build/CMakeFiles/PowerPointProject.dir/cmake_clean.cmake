@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Data/Document.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Data/Document.cpp.o.d"
+  "CMakeFiles/PowerPointProject.dir/Data/IDGenerator.cpp.o"
+  "CMakeFiles/PowerPointProject.dir/Data/IDGenerator.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o"

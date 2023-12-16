@@ -18,11 +18,12 @@ public:
     JsonConverter() = default;
     QJsonValue convertToJson(const Attributes& attribute);
     QJsonValue convertToJson(const Geometry& geometry);
-    QJsonArray convertToJson(const Position& position);
+    QJsonArray convertToJson(const Position& position); // could be done with the convertToIDs
     QJsonArray convertToJson(const std::pair<double, double>& format);
     QJsonValue convertToJson(const Type& type);
     QJsonValue convertToJson(const LineType& lineType);
     QJsonValue convertToJson(const long& color);
+    QJsonValue convertToJson(const std::vector<ID>& ids);
 
     Attributes convertToAttributes(const QJsonValue& value);
     Geometry convertToGeometry(const QJsonValue& value);
@@ -30,7 +31,8 @@ public:
     std::pair<double, double> convertToFormat(const QJsonArray& array);
     Type convertToType(const QJsonValue& value);
     LineType convertToLineType(const QJsonValue& value);
-    long convertToColor(const QJsonValue& value);    
+    long convertToColor(const QJsonValue& value);
+    std::vector<ID> convertToIDs(const QJsonValue& value);    
 };
 
 #endif

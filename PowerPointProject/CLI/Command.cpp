@@ -27,7 +27,7 @@ void AddCommand::execute()
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
         std::shared_ptr<ItemLeaf> item = createItem();
         application.getDirector()->doAction(std::make_shared<AddItem>(item, currentSlideIndex));
-        application.getDocument()->setMaximumID(item->getID());
+        application.getDocument()->getIDGenerator().addID(item->getID());
     }
     else if(operands.find("-slide") != operands.end())
     {
@@ -64,8 +64,9 @@ std::shared_ptr<ItemLeaf> AddCommand::createItem()
     
     attributes.setLineType((operands.find("-lstyle") != operands.end())? 
     converter.convertToLineType(operands["-lstyle"][0]) : defaultAttributes.getLineType().value());
+
     
-    return std::make_shared<ItemLeaf>(type, geometry, attributes, document->generateID());
+    return std::make_shared<ItemLeaf>(type, geometry, attributes, document->getIDGenerator().generateID());
 
 }
 
@@ -89,7 +90,6 @@ void RemoveCommand::execute()
         {
             std::ostream& out = application.getController()->getOutputStream() ;
             out << "Cannot remove slide, only 1 left" << std::endl;
-            
         } 
         else 
         {

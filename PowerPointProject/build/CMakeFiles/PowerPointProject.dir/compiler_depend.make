@@ -245,6 +245,7 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o: ../Application/A
   /usr/include/c++/11/bits/node_handle.h \
   /usr/include/c++/11/bits/unordered_map.h \
   /usr/include/c++/11/bits/erase_if.h \
+  ../Data/IDGenerator.hpp \
   ../CLI/CommandHistory.hpp
 
 CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: ../CLI/Command.cpp \
@@ -652,6 +653,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: ../CLI/Command.cpp \
   ../Data/ItemAttributes.hpp \
   ../Renderer/ShapeLibrary.hpp \
   ../Data/Document.hpp \
+  ../Data/IDGenerator.hpp \
   ../Director/Actions.hpp \
   ../Director/IAction.hpp \
   ../Director/Director.hpp \
@@ -1815,11 +1817,63 @@ CMakeFiles/PowerPointProject.dir/Data/Document.cpp.o: ../Data/Document.cpp \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
   ../Renderer/ShapeLibrary.hpp \
+  ../Data/IDGenerator.hpp \
   ../Data/Slide.hpp \
   ../Data/ItemBase.hpp \
   ../Serialization/Converter.hpp \
   ../Data/ItemAttributes.hpp \
   ../Renderer/Formatting/FormatLibrary.hpp
+
+CMakeFiles/PowerPointProject.dir/Data/IDGenerator.cpp.o: ../Data/IDGenerator.cpp \
+  /usr/include/stdc-predef.h \
+  ../Data/IDGenerator.hpp \
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/bits/stl_algobase.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
+  /usr/include/features.h \
+  /usr/include/features-time64.h \
+  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/timesize.h \
+  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
+  /usr/include/c++/11/pstl/pstl_config.h \
+  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/exception_defines.h \
+  /usr/include/c++/11/bits/cpp_type_traits.h \
+  /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/ext/numeric_traits.h \
+  /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/move.h \
+  /usr/include/c++/11/type_traits \
+  /usr/include/c++/11/bits/stl_iterator_base_types.h \
+  /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/11/bits/concept_check.h \
+  /usr/include/c++/11/debug/assertions.h \
+  /usr/include/c++/11/bits/stl_iterator.h \
+  /usr/include/c++/11/bits/ptr_traits.h \
+  /usr/include/c++/11/debug/debug.h \
+  /usr/include/c++/11/bits/predefined_ops.h \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/new \
+  /usr/include/c++/11/bits/exception.h \
+  /usr/include/c++/11/bits/memoryfwd.h \
+  /usr/include/c++/11/bits/stl_construct.h \
+  /usr/include/c++/11/bits/stl_uninitialized.h \
+  /usr/include/c++/11/ext/alloc_traits.h \
+  /usr/include/c++/11/bits/alloc_traits.h \
+  /usr/include/c++/11/bits/stl_vector.h \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/bits/stl_bvector.h \
+  /usr/include/c++/11/bits/functional_hash.h \
+  /usr/include/c++/11/bits/hash_bytes.h \
+  /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/bits/vector.tcc
 
 CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o: ../Data/ItemAttributes.cpp \
   /usr/include/stdc-predef.h \
@@ -2718,6 +2772,7 @@ CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o: ../Director/Actions.cpp
   /usr/include/c++/11/bits/node_handle.h \
   /usr/include/c++/11/bits/unordered_map.h \
   /usr/include/c++/11/bits/erase_if.h \
+  ../Data/IDGenerator.hpp \
   ../Serialization/Converter.hpp \
   /usr/include/c++/11/algorithm \
   /usr/include/c++/11/bits/stl_algo.h \
@@ -2972,6 +3027,7 @@ CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o: ../Director/Director.c
   /usr/include/c++/11/bits/node_handle.h \
   /usr/include/c++/11/bits/unordered_map.h \
   /usr/include/c++/11/bits/erase_if.h \
+  ../Data/IDGenerator.hpp \
   ../Director/IAction.hpp \
   ../Director/Actions.hpp
 
@@ -3918,7 +3974,8 @@ CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o: ../Renderer/Renderer.c
   ../Include/IDocument.hpp \
   ../Data/IDocument.hpp \
   ../Include/IController.hpp \
-  ../CLI/IController.hpp
+  ../CLI/IController.hpp \
+  ../Data/IDGenerator.hpp
 
 CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o: ../Renderer/ShapeBase.cpp \
   /usr/include/stdc-predef.h \
@@ -6064,6 +6121,7 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
   ../Include/IDocument.hpp \
   ../Data/IDocument.hpp \
   ../Data/ItemAttributes.hpp \
+  ../Data/IDGenerator.hpp \
   ../Data/Slide.hpp \
   ../Data/ItemBase.hpp \
   ../Serialization/JsonConverter.hpp \
@@ -6526,7 +6584,7 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qitemselectionmodel.h:
 
-/usr/include/c++/11/pstl/execution_defs.h:
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qidentityproxymodel.h:
 
 /usr/include/c++/11/bits/stl_algo.h:
 
@@ -6546,6 +6604,8 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonDocument:
 
+../Data/IDGenerator.hpp:
+
 /usr/include/c++/11/bits/erase_if.h:
 
 /usr/include/stdint.h:
@@ -6561,8 +6621,6 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 /usr/include/c++/11/bits/enable_special_members.h:
 
 /usr/include/c++/11/bits/basic_ios.tcc:
-
-/usr/include/c++/11/bits/codecvt.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qstringmatcher.h:
 
@@ -6719,6 +6777,10 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 /usr/include/c++/11/ios:
 
 /usr/include/c++/11/cstddef:
+
+/usr/include/c++/11/bits/codecvt.h:
+
+../Data/IDGenerator.cpp:
 
 /usr/include/c++/11/bits/basic_string.tcc:
 
@@ -6953,6 +7015,8 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h:
+
+/usr/include/c++/11/pstl/execution_defs.h:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
@@ -7462,6 +7526,12 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QString:
 
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qfuturewatcher.h:
+
+/usr/include/c++/11/string_view:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h:
+
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qshareddata.h:
 
 /usr/include/c++/11/type_traits:
@@ -7770,8 +7840,6 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 
 /usr/include/libintl.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qidentityproxymodel.h:
-
 /usr/include/x86_64-linux-gnu/qt6/QtGui/QWindow:
 
 /usr/include/c++/11/bits/locale_facets_nonio.tcc:
@@ -7823,9 +7891,3 @@ CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o: ../Serialization/
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qpromise.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qfuturesynchronizer.h:
-
-/usr/include/c++/11/string_view:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qfuturewatcher.h:

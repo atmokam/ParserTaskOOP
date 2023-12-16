@@ -297,6 +297,30 @@ Data/Document.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Document.cpp.s
 .PHONY : Data/Document.cpp.s
 
+Data/IDGenerator.o: Data/IDGenerator.cpp.o
+.PHONY : Data/IDGenerator.o
+
+# target to build an object file
+Data/IDGenerator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/IDGenerator.cpp.o
+.PHONY : Data/IDGenerator.cpp.o
+
+Data/IDGenerator.i: Data/IDGenerator.cpp.i
+.PHONY : Data/IDGenerator.i
+
+# target to preprocess a source file
+Data/IDGenerator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/IDGenerator.cpp.i
+.PHONY : Data/IDGenerator.cpp.i
+
+Data/IDGenerator.s: Data/IDGenerator.cpp.s
+.PHONY : Data/IDGenerator.s
+
+# target to generate assembly for a file
+Data/IDGenerator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/IDGenerator.cpp.s
+.PHONY : Data/IDGenerator.cpp.s
+
 Data/ItemAttributes.o: Data/ItemAttributes.cpp.o
 .PHONY : Data/ItemAttributes.o
 
@@ -663,6 +687,9 @@ help:
 	@echo "... Data/Document.o"
 	@echo "... Data/Document.i"
 	@echo "... Data/Document.s"
+	@echo "... Data/IDGenerator.o"
+	@echo "... Data/IDGenerator.i"
+	@echo "... Data/IDGenerator.s"
 	@echo "... Data/ItemAttributes.o"
 	@echo "... Data/ItemAttributes.i"
 	@echo "... Data/ItemAttributes.s"

@@ -8,21 +8,18 @@
 
 
 
-CLIController::CLIController(std::istream& stream) : input(stream){}
+CLIController::CLIController(std::istream& input, std::ostream& output) : input(input), output(output) {}
 
 void CLIController::runProgram() {
     App::Application& application = App::Application::getInstance();  
     while (!application.isExitCalled()) 
     {
-        // if(input.eof()) // +-
-        //     continue;
         runCommand(input);
     }
 }
 
-void CLIController::runCommand(std::istream& input)
+void CLIController::runCommand(std::istream& input) // also needed for command history
 {
-    
     Parser oParser(input);
     std::shared_ptr<Command> pCmd = oParser.parse();
     if(pCmd == nullptr)
@@ -30,8 +27,12 @@ void CLIController::runCommand(std::istream& input)
     pCmd->execute();
 }
 
+std::ostream& CLIController::getOutputStream() const
+{
+    return output;
+}
 
-
-
-// exit command should be handled like all other commands,
-// moreover it should ask user about unsaved changes & etc...
+std::istream& CLIController::getInputStream() const
+{
+    return input;
+}

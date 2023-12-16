@@ -6,6 +6,7 @@
 
 class IDirector;
 class IDocument;
+class IController;
 
 namespace App
 {
@@ -14,12 +15,11 @@ namespace App
     public:
         virtual std::shared_ptr<IDirector> getDirector() = 0;
         virtual std::shared_ptr<IDocument> getDocument() = 0;
+        virtual std::shared_ptr<IController> getController() = 0;
         virtual void run(int count, char* args[]) = 0;
         virtual void buildApplication() = 0;
         virtual void callExit() = 0;
         virtual bool isExitCalled() const = 0;
-        virtual bool isDocumentModified() const = 0;
-        virtual void setDocumentModified(bool modified) = 0;
         
     };
     

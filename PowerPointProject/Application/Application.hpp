@@ -10,11 +10,11 @@
 namespace App
 {
     class Application: public IApplication {
-        std::unique_ptr<IController> controller;
+        std::shared_ptr<IController> controller;
         std::shared_ptr<IDirector> director; 
         std::shared_ptr<IDocument> document;
 
-        bool documentModified = false;
+        
         bool exitCalled = false;
     public:
         
@@ -26,9 +26,7 @@ namespace App
         std::ifstream buildStream(int count, char* args[]);
         std::shared_ptr<IDirector> getDirector() override;
         std::shared_ptr<IDocument> getDocument() override;
-
-        bool isDocumentModified() const override;
-        void setDocumentModified(bool modified) override;
+        std::shared_ptr<IController> getController() override;
 
     private:
         Application();

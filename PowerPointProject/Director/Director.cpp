@@ -68,3 +68,12 @@ void Director::addToUndoStack(std::shared_ptr<IAction> action) {
 }
 
 
+bool Director::isDocumentModified() const 
+{
+    return documentModified;
+}
+
+void Director::setDocumentModified(bool modified) 
+{
+    documentModified = modified;
+}

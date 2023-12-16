@@ -22,6 +22,9 @@ public:
     virtual void redo() = 0;
     virtual void clearUndoRedoStack() = 0;
 
+    virtual bool isDocumentModified() const = 0;
+    virtual void setDocumentModified(bool modified) = 0;
+
 };
 
 #endif

@@ -29,7 +29,10 @@ namespace App
     
         std::ifstream stream = buildStream(count, args);
 
-        controller = std::make_unique<CLIController>(stream.is_open() ? stream : std::cin);
+        std::istream& input = stream.is_open() ? stream : std::cin;
+        std::ostream& output = std::cout;
+
+        controller = std::make_unique<CLIController>(input, output);
         controller->runProgram();
     }
 
@@ -70,14 +73,10 @@ namespace App
 
     }
 
-    bool Application::isDocumentModified() const 
+    std::shared_ptr<IController> Application::getController() 
     {
-        return documentModified;
+        return controller;
     }
-
-    void Application::setDocumentModified(bool modified) 
-    {
-        documentModified = modified;
-    }
+    
 
 }

@@ -15,6 +15,8 @@ class Director : public IDirector {
     std::stack<std::shared_ptr<IAction>> undoStack;
     std::stack<std::shared_ptr<IAction>> redoStack;
 
+    bool documentModified = false;
+
 private:
     void addToUndoStack(std::shared_ptr<IAction> action);
 
@@ -32,7 +34,9 @@ public:
 
     void undo() override;
     void redo() override;
-    // [TK] Why we need this methods?
+
+    bool isDocumentModified() const override;
+    void setDocumentModified(bool modified) override;
 
 
 };

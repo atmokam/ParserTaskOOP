@@ -36,7 +36,7 @@ void AddCommand::execute()
         application.getDirector()->doAction(std::make_shared<AddSlide>(slide, currentSlideIndex + 1));
         application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
     }
-    application.setDocumentModified(true);
+    application.getDirector()->setDocumentModified(true);
 
 }
 
@@ -74,6 +74,7 @@ void RemoveCommand::execute()
     std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
 
+
     if(operands.find("-id") != operands.end())
     {
         std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
@@ -86,7 +87,8 @@ void RemoveCommand::execute()
     {
         if(application.getDirector()->getDocument()->size() == 1)
         {
-            std::cout << "Cannot remove slide, only 1 left" << std::endl;
+            std::ostream& out = application.getController()->getOutputStream() ;
+            out << "Cannot remove slide, only 1 left" << std::endl;
             
         } 
         else 
@@ -95,7 +97,7 @@ void RemoveCommand::execute()
             application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
         }
     }
-    application.setDocumentModified(true);
+    application.getDirector()->setDocumentModified(true);
 
 }
 
@@ -105,20 +107,14 @@ void ChangeCommand::execute()
     Converter converter;
     std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
     std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
-
     Attributes attributes = item->getAttributes(); 
     Geometry geometry = item->getGeometry();
 
     std::shared_ptr<ItemBase> newItem;
 
-    if(item->getType() == Type::Group) 
-    {
-        newItem = std::make_shared<ItemGroup>(*(std::static_pointer_cast<ItemGroup>(item)));
-    }
-    else
-    {
-        newItem = std::make_shared<ItemLeaf>(*(std::static_pointer_cast<ItemLeaf>(item)));
-    }
+    (item->getType() == Type::Group) ? newItem = std::make_shared<ItemGroup>(*std::static_pointer_cast<ItemGroup>(item)) : 
+    newItem = std::make_shared<ItemLeaf>(*std::static_pointer_cast<ItemLeaf>(item));
+   
 
     if(operands.find("-pos") != operands.end())
     { 
@@ -158,11 +154,11 @@ void ChangeCommand::execute()
     size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
     application.getDirector()->doAction(std::make_shared<ChangeItem>(newItem, currentSlideIndex));
 
-    application.setDocumentModified(true);
+    application.getDirector()->setDocumentModified(true);
 }
 
 
-void SaveCommand::execute() // TODO: address the case when the filename exists, and you are saving another document
+void SaveCommand::execute() 
 { 
     std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
     SaveLoad serializer;
@@ -173,11 +169,14 @@ void SaveCommand::execute() // TODO: address the case when the filename exists, 
     std::string path = operands["-path"][0] + operands["-filename"][0] + ".json";
 
     std::ifstream file (path);
-    if(file.good()){
-        std::cout << "File already exists, do you want to overwrite it? (y/n)" << std::endl;
+    if(file.good())
+    {
+        std::ostream& out = application.getController()->getOutputStream();
+        out << "File already exists, do you want to overwrite it? (y/n)" << std::endl;
         file.close();
         char answer;
-        std::cin >> answer; // change to stream
+        std::istream& in = application.getController()->getInputStream();
+        in >> answer; 
         if(answer == 'n')
             return;
     }
@@ -193,7 +192,7 @@ void SaveCommand::execute() // TODO: address the case when the filename exists, 
         throw std::runtime_error("Could not open file");
     }
 
-    application.setDocumentModified(false);
+    application.getDirector()->setDocumentModified(false);
 
 }
 
@@ -230,7 +229,7 @@ void DisplayCommand::execute()
         }
 
         ShapeBase shape(item);
-        shape.print(std::cout);
+        shape.print(application.getController()->getOutputStream());
     }
     else
     {
@@ -238,8 +237,9 @@ void DisplayCommand::execute()
         for(const auto& item : *current)
         {
             ShapeBase shape(item.second);
-            shape.print(std::cout);
-            std::cout << std::endl;
+            std::ostream& out = application.getController()->getOutputStream() ;
+            shape.print(out);
+            out << std::endl;
         }
     }
 }
@@ -252,12 +252,13 @@ void ListCommand::execute()
     size_t currentSlideIndex  = 0;
     for (const auto& slide : *document)
     {
-        std::cout << "Slide: " << currentSlideIndex << std::endl;
+        std::ostream& out = application.getController()->getOutputStream() ;
+        out << "Slide: " << currentSlideIndex << std::endl;
         for(const auto& item : *slide){
-            std::cout << item.first << "\t";
+            out << item.first << "\t";
         }
         currentSlideIndex++;
-        std::cout << std::endl;
+        out << std::endl;
     }
     
 }
@@ -298,11 +299,13 @@ void RedoCommand::execute()
 
 void ExitCommand::execute()    
 {
-    if(application.isDocumentModified())
+    if( application.getDirector()->isDocumentModified())
     {
-        std::cout << "You have unsaved changes, are you sure you want to exit? (y/n)" << std::endl;
+        std::ostream& out = application.getController()->getOutputStream();
+        out << "You have unsaved changes, are you sure you want to exit? (y/n)" << std::endl;
         char answer;
-        std::cin >> answer;
+        std::istream& in = application.getController()->getInputStream();
+        in >> answer;
         if(answer == 'n')
             return;
     }

@@ -27,6 +27,8 @@ load -path <path>
 
 display [-id <id>]
 
+draw -path <path>
+
 list
 
 undo

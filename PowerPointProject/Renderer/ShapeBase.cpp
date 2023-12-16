@@ -1,11 +1,13 @@
 #include <vector>
 #include <QPainter>
-#include <QtGui>
+#include <QPen>
+#include <QFont>
 #include "ShapeBase.hpp"
 #include "Data/ItemBase.hpp"
 #include "Data/ItemAttributes.hpp"
 #include "Serialization/Converter.hpp"
 #include "Formatting/DimentionConverter.hpp"
+#include "Renderer/QtConverter.hpp"
 
 
 ShapeBase::ShapeBase(std::shared_ptr<ItemBase> item) : item(item) {}
@@ -66,6 +68,9 @@ ShapeRectangle::ShapeRectangle(std::shared_ptr<ItemBase> item) : ShapeBase(item)
 
 void ShapeRectangle::draw(QPainter& painter, DimentionConverter& converter) 
 {
+    QtConverter styleConverter;
+    Converter typeConverter;
+
     auto position = item->getGeometry().getPosition();
     auto height = item->getGeometry().getHeight();
     auto width = item->getGeometry().getWidth();
@@ -73,19 +78,25 @@ void ShapeRectangle::draw(QPainter& painter, DimentionConverter& converter)
     auto lineColor = item->getAttributes().getHexLineColor();
     auto lineWidth = item->getAttributes().getLineWidth();
     auto lineType = item->getAttributes().getLineType();
+    auto text = item->getAttributes().getText();
 
     QColor lineColorValue = lineColor.value();
     qreal lineWidthValue = lineWidth.value();
-    Qt::PenStyle lineTypeValue = Qt::PenStyle(Qt::PenStyle::DotLine);
-
+    Qt::PenStyle lineTypeValue = styleConverter.convertToQtPenStyle(typeConverter.convertToString(lineType.value())); // linetype could have had a tostring function so i wouldnt have to convert it all the time
+                                                                                                                      // or i could have kept it as a string all along
     auto pen = QPen(lineColorValue, lineWidthValue, lineTypeValue);
-    auto brush = QBrush(QColor(fillColor.value()));
+    auto brush = QBrush(QColor((fillColor.has_value()) ? fillColor.value() : Qt::transparent)); //TODO: make a way to remove the fill color or the line color after it has been set
     painter.setPen(pen);
     painter.setBrush(brush);
-    std::vector<double> coordinates = position.value().getCoordinates();
+    auto coordinates = position.value().getCoordinates();
+
+    auto font = item->getAttributes().getFontSize().value();
+    painter.setFont(QFont("Arial", font));    
+
 
     QRect rect(converter.toPixels(coordinates[0]), converter.toPixels(coordinates[1]), converter.toPixels(width.value()), converter.toPixels(height.value()));
     painter.drawRect(rect);
+    painter.drawText(rect, Qt::AlignCenter, QString::fromStdString(text.value()));
 }
 
 

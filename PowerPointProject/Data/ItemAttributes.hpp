@@ -23,7 +23,7 @@ public:
 
 enum class LineType 
 {
-    Solid, Dashed, Dotted
+    Solid, Dashed, Dotted, None
 };
 
 
@@ -33,7 +33,10 @@ class Attributes
     std::optional<long> hexLineColor = std::nullopt;
     std::optional<LineType> lineType = std::nullopt;
     std::optional<double> lineWidth = std::nullopt;
+
     std::optional<std::string> text = std::nullopt;
+    std::optional<long> hexTextColor = std::nullopt;
+    std::optional<int> fontSize = std::nullopt;
 
 public:
     Attributes() = default;
@@ -42,13 +45,20 @@ public:
     std::optional<long> getHexLineColor() const;
     std::optional<LineType> getLineType() const;
     std::optional<double> getLineWidth() const;
+
     std::optional<std::string> getText() const;
+    std::optional<long> getHexTextColor() const;
+    std::optional<int> getFontSize() const;
 
     void setHexFillColor(long hexFillColor);
     void setHexLineColor(long hexLineColor);
     void setLineType(LineType lineType);
     void setLineWidth(double lineWidth);
+
     void setText(std::string text);
+    void setHexTextColor(long hexTextColor);
+    void setFontSize(int fontSize);
+    
 
 };
 

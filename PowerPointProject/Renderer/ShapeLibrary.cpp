@@ -10,7 +10,7 @@ ShapeLibrary::ShapeLibrary()
     library[Type::Ellipse] = std::make_shared<ShapeEllipse>(nullptr);
     library[Type::Line] = std::make_shared<ShapeLine>(nullptr);
     library[Type::Triangle] = std::make_shared<ShapeTriangle>(nullptr);
-    library[Type::Group] = std::make_shared<ShapeGroup>(nullptr);
+  //  library[Type::Group] = std::make_shared<ShapeGroup>(nullptr);
 
     stringToType["rectangle"] = Type::Rectangle;
     stringToType["trapezoid"] = Type::Trapezoid;

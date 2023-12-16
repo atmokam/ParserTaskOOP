@@ -13,6 +13,10 @@ std::optional<LineType> Attributes::getLineType() const { return lineType; }
 
 std::optional<double> Attributes::getLineWidth() const { return lineWidth; }
 
+std::optional<long> Attributes::getHexTextColor() const { return hexTextColor; }
+
+std::optional<int> Attributes::getFontSize() const { return fontSize; }
+
 void Attributes::setHexFillColor(long hexFillColor) 
 {
      this->hexFillColor = hexFillColor; 
@@ -25,7 +29,9 @@ void Attributes::setHexLineColor(long hexLineColor)
 
 void Attributes::setLineType(LineType lineType) 
 {
-     this->lineType = lineType; }
+     this->lineType = lineType; 
+
+}
 
 void Attributes::setLineWidth(double lineWidth) 
 { 
@@ -38,6 +44,18 @@ void Attributes::setText(std::string text)
 {
      this->text = text; 
 }
+
+void Attributes::setHexTextColor(long hexTextColor) 
+{
+     this->hexTextColor = hexTextColor;
+}
+void Attributes::setFontSize(int fontSize)
+{
+     this->fontSize = fontSize;
+}
+
+
+
 
 
 
@@ -85,6 +103,7 @@ std::vector<double>::iterator Position::end()
 {
      return coordinates.end(); 
 }
+
 
 
 

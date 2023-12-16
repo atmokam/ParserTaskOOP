@@ -7,7 +7,7 @@ project(
     LANGUAGES CXX
 )
 
-find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 find_package(Qt6 COMPONENTS Gui REQUIRED)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -38,6 +38,7 @@ Renderer/ShapeLibrary.cpp
 Renderer/Formatting/DimentionConverter.cpp
 Renderer/Formatting/FormatLibrary.cpp
 Serialization/JsonConverter.cpp
-Data/IDGenerator.cpp )
+Data/IDGenerator.cpp
+Renderer/QtConverter.cpp )
 
-target_link_libraries(PowerPointProject PRIVATE Qt6::Core Qt6::Gui)
+target_link_libraries(PowerPointProject PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)

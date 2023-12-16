@@ -31,6 +31,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.o.d"
+  "CMakeFiles/PowerPointProject.dir/Renderer/QtConverter.cpp.o"
+  "CMakeFiles/PowerPointProject.dir/Renderer/QtConverter.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Renderer/Renderer.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o"

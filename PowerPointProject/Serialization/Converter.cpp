@@ -55,7 +55,9 @@ LineType Converter::convertToLineType(const std::string& lineType) {
         return LineType::Dashed;
     } else if (lineType == "dotted") {
         return LineType::Dotted;
-    } 
+    } else {
+        return LineType::None;
+    }
 }
 
 std::string Converter::convertToString(const Position& position) {
@@ -83,7 +85,7 @@ std::string Converter::convertToString(const LineType line)
         case LineType::Solid:
             return "solid";
         default:
-            return "";
+            return "none";
     }
 }
 

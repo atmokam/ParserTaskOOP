@@ -7,9 +7,11 @@
 #include "Include/IDocument.hpp"
 #include "Include/IController.hpp"
 
+// Why did I have to make this inherit from QApplication?
+
 namespace App
 {
-    class Application: public IApplication {
+    class Application: public IApplication, public QApplication {
         std::shared_ptr<IController> controller;
         std::shared_ptr<IDirector> director; 
         std::shared_ptr<IDocument> document;
@@ -21,15 +23,15 @@ namespace App
         static Application& getInstance();
         bool isExitCalled() const;
         void callExit() override;
-        void run(int count, char* args[]) override;
-        void buildApplication() override;
+        int run(int count, char* args[]) override;
+        void buildApplication(int count, char* args[]) override;
         std::ifstream buildStream(int count, char* args[]);
         std::shared_ptr<IDirector> getDirector() override;
         std::shared_ptr<IDocument> getDocument() override;
         std::shared_ptr<IController> getController() override;
 
+        Application(int count, char* args[]);
     private:
-        Application();
     };
 }
 

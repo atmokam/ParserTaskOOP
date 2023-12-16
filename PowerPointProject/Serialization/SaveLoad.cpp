@@ -15,10 +15,11 @@ void SaveLoad::save(const std::shared_ptr<IDocument>& document, QJsonDocument& s
     for (auto slide : *document)
     {
         QJsonArray slideArray;
-        for(auto& [_, subItem]: *slide)
+        auto items = slide->getTopItem();
+        for(auto& item: *items)
         {
-            recursiveSerialize(subItem, slideArray);
-        }   
+            recursiveSerialize(item.second, slideArray);
+        }
         documentArray.append(slideArray);
     }
     QJsonObject documentObject;

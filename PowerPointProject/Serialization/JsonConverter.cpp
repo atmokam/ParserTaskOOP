@@ -46,7 +46,7 @@ QJsonValue JsonConverter::convertToJson(const LineType& lineType)
         case LineType::Dotted:
             return QJsonValue("dotted");
         default:
-            return QJsonValue("");
+            return QJsonValue("none");
     }
 }
 
@@ -187,7 +187,9 @@ LineType JsonConverter::convertToLineType(const QJsonValue& value)
         return LineType::Dashed;
     } else if (value.toString() == "dotted") {
         return LineType::Dotted;
-    } 
+    } else {
+        return LineType::None;
+    }
 }
 
 long JsonConverter::convertToColor(const QJsonValue& value)

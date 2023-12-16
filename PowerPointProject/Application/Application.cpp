@@ -1,4 +1,5 @@
 #include <fstream>
+
 #include "Application.hpp"
 #include "CLI/Controller.hpp"
 #include "Director/Director.hpp" 
@@ -7,44 +8,40 @@
 #include "Data/Document.hpp"
 #include "CLI/CommandHistory.hpp"
 
-namespace App
+namespace App // application doesnt quit after exit is executed
 {
-
-    Application::Application() 
-    {
-        buildApplication();
-    }
+    Application::Application(int count, char* args[]) : QApplication(count, args) {  }
 
     Application& Application::getInstance() 
     {
-        static Application instance;
-        return instance;
+        return QApplication::instance(); //////////////////////
     }
 
-    void Application::run(int count, char* args[]) 
+    int Application::run(int count, char* args[]) 
     {
+        buildApplication(count, args);
+        controller->runProgram();
+        return QApplication::exec();
+        
+    }
 
+
+    void Application::buildApplication(int count, char* args[]) 
+    {
         director = std::make_shared<Director>();
         document = std::make_shared<Document>();
-    
         std::ifstream stream = buildStream(count, args);
 
         std::istream& input = stream.is_open() ? stream : std::cin;
         std::ostream& output = std::cout;
 
         controller = std::make_unique<CLIController>(input, output);
-        controller->runProgram();
-    }
-
-    void Application::buildApplication() 
-    {
-        
-        // setting up gui, probably
     }
 
     void Application::callExit() 
     {
         exitCalled = true;
+        
     }
 
     bool Application::isExitCalled() const 

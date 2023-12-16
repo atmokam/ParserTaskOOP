@@ -513,6 +513,30 @@ Renderer/Formatting/FormatLibrary.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.s
 .PHONY : Renderer/Formatting/FormatLibrary.cpp.s
 
+Renderer/QtConverter.o: Renderer/QtConverter.cpp.o
+.PHONY : Renderer/QtConverter.o
+
+# target to build an object file
+Renderer/QtConverter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/QtConverter.cpp.o
+.PHONY : Renderer/QtConverter.cpp.o
+
+Renderer/QtConverter.i: Renderer/QtConverter.cpp.i
+.PHONY : Renderer/QtConverter.i
+
+# target to preprocess a source file
+Renderer/QtConverter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/QtConverter.cpp.i
+.PHONY : Renderer/QtConverter.cpp.i
+
+Renderer/QtConverter.s: Renderer/QtConverter.cpp.s
+.PHONY : Renderer/QtConverter.s
+
+# target to generate assembly for a file
+Renderer/QtConverter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/QtConverter.cpp.s
+.PHONY : Renderer/QtConverter.cpp.s
+
 Renderer/Renderer.o: Renderer/Renderer.cpp.o
 .PHONY : Renderer/Renderer.o
 
@@ -714,6 +738,9 @@ help:
 	@echo "... Renderer/Formatting/FormatLibrary.o"
 	@echo "... Renderer/Formatting/FormatLibrary.i"
 	@echo "... Renderer/Formatting/FormatLibrary.s"
+	@echo "... Renderer/QtConverter.o"
+	@echo "... Renderer/QtConverter.i"
+	@echo "... Renderer/QtConverter.s"
 	@echo "... Renderer/Renderer.o"
 	@echo "... Renderer/Renderer.i"
 	@echo "... Renderer/Renderer.s"

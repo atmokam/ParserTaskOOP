@@ -65,8 +65,18 @@ std::shared_ptr<ItemLeaf> AddCommand::createItem()
     attributes.setLineType((operands.find("-lstyle") != operands.end())? 
     converter.convertToLineType(operands["-lstyle"][0]) : defaultAttributes.getLineType().value());
 
+    std::string concatenated = "";
+    std::accumulate(operands["-text"].begin(), operands["-text"].end(), concatenated, 
+    [](std::string& text, std::string& word) {return text += word + " ";});
+
     attributes.setText((operands.find("-text") != operands.end()) ?
-    operands["-text"][0] : defaultAttributes.getText().value());
+    concatenated : defaultAttributes.getText().value());
+
+    attributes.setHexTextColor((operands.find("-tcolor") != operands.end()) ?
+    converter.convertToColor(operands["-tcolor"][0]) : defaultAttributes.getHexTextColor().value());
+
+    attributes.setFontSize((operands.find("-fontsize") != operands.end()) ?
+    converter.convertToID(operands["-fontsize"][0]) : defaultAttributes.getFontSize().value());
 
     
     return std::make_shared<ItemLeaf>(type, geometry, attributes, document->getIDGenerator().generateID()); 
@@ -119,7 +129,7 @@ void ChangeCommand::execute()
     newItem = std::make_shared<ItemLeaf>(*std::static_pointer_cast<ItemLeaf>(item));
    
 
-    if(operands.find("-pos") != operands.end())
+    if(operands.find("-pos") != operands.end()) // I dont like how long this is
     { 
         geometry.setPosition(converter.convertToPosition(operands["-pos"]));
     }
@@ -149,6 +159,22 @@ void ChangeCommand::execute()
     {
         attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
     }
+
+    if(operands.find("-text") != operands.end())
+    {
+        attributes.setText(operands["-text"][0]);
+    }
+
+    if(operands.find("-tcolor") != operands.end())
+    {
+        attributes.setHexTextColor(converter.convertToColor(operands["-tcolor"][0]));
+    }
+
+    if(operands.find("-fontsize") != operands.end())
+    {
+        attributes.setFontSize(converter.convertToID(operands["-fontsize"][0]));
+    }
+
 
     newItem->setAttributes(attributes);
     newItem->setGeometry(geometry);

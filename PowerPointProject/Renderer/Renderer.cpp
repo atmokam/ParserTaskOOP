@@ -17,12 +17,11 @@ void Renderer::draw(QPaintDevice& device, DimentionConverter& converter, const s
     App::Application& app = App::Application::getInstance();
     ShapeLibrary shapeLibrary;   // should this be created elsewhere?
     auto ids = app.getDocument()->getIDGenerator().getIDs();
-    for (auto& id: ids) // for sequental iteration, change this
+    for (auto& id: ids) 
     {
         auto shape = shapeLibrary.getShape(slide->getItem(id));
         std::shared_ptr<IVisualDisplayable> visualShape = std::dynamic_pointer_cast<IVisualDisplayable>(shape);
         visualShape->draw(painter, converter);
-        
     }
 
 }

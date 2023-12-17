@@ -609,6 +609,30 @@ Renderer/ShapeLibrary.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.s
 .PHONY : Renderer/ShapeLibrary.cpp.s
 
+Renderer/TextFontAdjuster.o: Renderer/TextFontAdjuster.cpp.o
+.PHONY : Renderer/TextFontAdjuster.o
+
+# target to build an object file
+Renderer/TextFontAdjuster.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/TextFontAdjuster.cpp.o
+.PHONY : Renderer/TextFontAdjuster.cpp.o
+
+Renderer/TextFontAdjuster.i: Renderer/TextFontAdjuster.cpp.i
+.PHONY : Renderer/TextFontAdjuster.i
+
+# target to preprocess a source file
+Renderer/TextFontAdjuster.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/TextFontAdjuster.cpp.i
+.PHONY : Renderer/TextFontAdjuster.cpp.i
+
+Renderer/TextFontAdjuster.s: Renderer/TextFontAdjuster.cpp.s
+.PHONY : Renderer/TextFontAdjuster.s
+
+# target to generate assembly for a file
+Renderer/TextFontAdjuster.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/TextFontAdjuster.cpp.s
+.PHONY : Renderer/TextFontAdjuster.cpp.s
+
 Serialization/Converter.o: Serialization/Converter.cpp.o
 .PHONY : Serialization/Converter.o
 
@@ -750,6 +774,9 @@ help:
 	@echo "... Renderer/ShapeLibrary.o"
 	@echo "... Renderer/ShapeLibrary.i"
 	@echo "... Renderer/ShapeLibrary.s"
+	@echo "... Renderer/TextFontAdjuster.o"
+	@echo "... Renderer/TextFontAdjuster.i"
+	@echo "... Renderer/TextFontAdjuster.s"
 	@echo "... Serialization/Converter.o"
 	@echo "... Serialization/Converter.i"
 	@echo "... Serialization/Converter.s"

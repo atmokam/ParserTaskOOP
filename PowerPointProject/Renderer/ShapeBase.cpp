@@ -2,12 +2,14 @@
 #include <QPainter>
 #include <QPen>
 #include <QFont>
+#include <QTextOption>
 #include "ShapeBase.hpp"
 #include "Data/ItemBase.hpp"
 #include "Data/ItemAttributes.hpp"
 #include "Serialization/Converter.hpp"
 #include "Formatting/DimentionConverter.hpp"
 #include "Renderer/QtConverter.hpp"
+#include "TextFontAdjuster.hpp"
 
 namespace Renderer
 {
@@ -77,9 +79,7 @@ namespace Renderer
         auto brush = QBrush(QColor((fillColor.has_value()) ? fillColor.value() : Qt::transparent)); //TODO: make a way to remove the fill color or the line color after it has been set
         painter.setPen(pen);
         painter.setBrush(brush);
-        
-        auto font = item->getAttributes().getFontSize().value();
-        painter.setFont(QFont("Arial", font));    
+           
     }
 
     QRect ShapeBase::getRect(Formatting::DimentionConverter& converter)
@@ -108,8 +108,19 @@ namespace Renderer
         QRect rect = getRect(converter);
 
         auto text = item->getAttributes().getText();
+        QString qText(QString::fromStdString(text.value()));
+
+        auto fontSize = item->getAttributes().getFontSize().value();
+        TextFontAdjuster fontAdjuster; // adjusts according to wordwrap
+        QFont font("Arial", fontSize);
+        fontAdjuster.adjustFont(font, rect, qText);
+        painter.setFont(font); 
+
+        QTextOption option(Qt::AlignCenter);
+        option.setWrapMode(QTextOption::WordWrap);
+
         painter.drawRect(rect);
-        painter.drawText(rect, Qt::AlignCenter, QString::fromStdString(text.value()));
+        painter.drawText(rect, QString::fromStdString(text.value()), option);
     }
 
     std::shared_ptr<IShape> ShapeRectangle::clone(std::shared_ptr<Data::ItemBase> item)
@@ -131,8 +142,21 @@ namespace Renderer
         QRect rect = getRect(converter);
 
         auto text = item->getAttributes().getText();
+        QString qText(QString::fromStdString(text.value()));
+
+        auto fontSize = item->getAttributes().getFontSize().value();
+        TextFontAdjuster fontAdjuster; // adjusts according to wordwrap
+        QFont font("Arial", fontSize);
+        fontAdjuster.adjustFont(font, rect, qText);
+        painter.setFont(font); 
+
+        QTextOption option(Qt::AlignCenter);
+        option.setWrapMode(QTextOption::WordWrap);
+
+        
+
         painter.drawEllipse(rect);
-        painter.drawText(rect, Qt::AlignCenter, QString::fromStdString(text.value()));
+        painter.drawText(rect, QString::fromStdString(text.value()), option);
     }
 
     std::shared_ptr<IShape> ShapeEllipse::clone(std::shared_ptr<Data::ItemBase> item)

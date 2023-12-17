@@ -39,6 +39,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Renderer/ShapeLibrary.cpp.o.d"
+  "CMakeFiles/PowerPointProject.dir/Renderer/TextFontAdjuster.cpp.o"
+  "CMakeFiles/PowerPointProject.dir/Renderer/TextFontAdjuster.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Serialization/JsonConverter.cpp.o"

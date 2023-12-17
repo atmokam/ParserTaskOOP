@@ -1,0 +1,8 @@
+add -name rectangle -pos 0.8 0.8 -w 7 -h 3 -text Lorem ipsum dolor sit amet, etc.
+
+add -name rectangle -pos 4, 4 -w 3 -h 2 -text text font is resized
+
+draw -path /home/atmokam/Desktop/OOP/ParserTaskOOP/ -filename textPrinted
+
+exit
+y

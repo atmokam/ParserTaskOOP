@@ -11,7 +11,8 @@ namespace CLI {
     Controller::Controller(std::istream& input, std::ostream& output) : input(input), output(output) {}
 
     void Controller::runProgram() {
-        App::Application& application = App::Application::getInstance();  
+        App::Application& application = App::Application::getInstance(); 
+      
         while (!application.isExitCalled()) 
         {
             runCommand(input);
@@ -21,6 +22,7 @@ namespace CLI {
     void Controller::runCommand(std::istream& input) // also needed for command history
     {
         Parser oParser(input);
+       
         std::shared_ptr<Command> pCmd = oParser.parse();
         if(pCmd == nullptr)
             return;

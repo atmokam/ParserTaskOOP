@@ -121,10 +121,14 @@ namespace CLI {
     void ChangeCommand::execute() 
     {
         Serialization::Converter converter;
+        
         std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
+       
         std::shared_ptr<Data::ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
+        
         Data::Attributes attributes = item->getAttributes(); 
         Data::Geometry geometry = item->getGeometry();
+
 
         std::shared_ptr<Data::ItemBase> newItem;
 
@@ -284,12 +288,12 @@ namespace CLI {
         {
             std::ostream& out = application.getController()->getOutputStream();
             out << "Slide: " << currentSlideIndex << std::endl;
-            auto topItem = slide->getTopItem();
-            for(const auto& item : *topItem)
+            auto items = slide->getTopItem();
+            for(const auto& item : *items)
             {
-                Renderer::ShapeBase shape(item.second);
-                shape.print(out);
+               out << item.first << "\t";
             }
+
             currentSlideIndex++;
             out << std::endl;
         }

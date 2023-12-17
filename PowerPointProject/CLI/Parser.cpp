@@ -43,6 +43,7 @@ namespace CLI {
     {
         Validator validator;
         std::string name = getToken();
+        std::cout << name << std::endl;
         if(name.empty())
             return nullptr;
         

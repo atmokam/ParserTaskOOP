@@ -16,7 +16,7 @@ namespace CLI {
         valids = {
             {"add", {{"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-w", 1}, {"-h", 1}, {"-slide", 0}, {"-lwidth", 1}, {"-lstyle", 1}, {"-text", -1}, {"-tcolor", 1}, {"-fontsize", 1}}},
             {"remove", {{"-id", 1}, {"-slide", 0}}},
-            {"change", {{"-id", 1}, {"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-w", 1}, {"-h", 1},  {"-lwidth", 1}, {"-lstyle", 1}}},
+            {"change", {{"-id", 1}, {"-name", 1}, {"-pos", -1}, {"-lcolor", 1}, {"-fcolor", 1}, {"-w", 1}, {"-h", 1},  {"-lwidth", 1}, {"-lstyle", 1}, {"-text", -1}, {"-tcolor", 1}, {"-fontsize", 1}}},
             {"display", {{"-id", 1}}},
             {"list", {}},
             {"save", {{"-path", 1}, {"-filename", 1}}},

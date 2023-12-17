@@ -39,6 +39,7 @@ Renderer/Formatting/DimentionConverter.cpp
 Renderer/Formatting/FormatLibrary.cpp
 Serialization/JsonConverter.cpp
 Data/IDGenerator.cpp
-Renderer/QtConverter.cpp )
+Renderer/QtConverter.cpp
+Renderer/TextFontAdjuster.cpp )
 
 target_link_libraries(PowerPointProject PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)

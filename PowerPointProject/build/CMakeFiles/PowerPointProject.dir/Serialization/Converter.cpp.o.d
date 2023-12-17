@@ -352,11 +352,14 @@ CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o: \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Slide.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
+ /usr/include/c++/11/fstream /usr/include/c++/11/istream \
+ /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeLibrary.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp \
- /usr/include/c++/11/sstream /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc \
- /usr/include/c++/11/bits/sstream.tcc \
+ /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonArray \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonarray.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonvalue.h \

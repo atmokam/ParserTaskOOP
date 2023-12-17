@@ -313,6 +313,8 @@ CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QTextOption \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeBase.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/IVisualDisplayable.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ITextDisplayable.hpp \
@@ -331,4 +333,9 @@ CMakeFiles/PowerPointProject.dir/Renderer/ShapeBase.cpp.o: \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Converter.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/QtConverter.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/QtConverter.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/TextFontAdjuster.hpp \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QRect \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qrect.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h

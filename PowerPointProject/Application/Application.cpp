@@ -12,7 +12,7 @@ namespace App // application stops, but doesnt quit after exit is executed (acc.
 {
     Application* Application::instance = nullptr;
 
-    Application::Application(int count, char* args[]) : QApplication(count, args) 
+    Application::Application(int count, char* args[]) : QApplication(count, args), file(buildStream(count, args)), input(file.is_open() ? file : std::cin)
     { 
         instance = this;
     }
@@ -41,9 +41,6 @@ namespace App // application stops, but doesnt quit after exit is executed (acc.
     {
         director = std::make_shared<Director::Director>();
         document = std::make_shared<Data::Document>();
-        std::ifstream stream = buildStream(count, args);
-
-        std::istream& input = stream.is_open() ? stream : std::cin;
         std::ostream& output = std::cout;
 
         controller = std::make_unique<CLI::Controller>(input, output);
@@ -75,8 +72,9 @@ namespace App // application stops, but doesnt quit after exit is executed (acc.
         std::ifstream stream;
         if(args[1] == nullptr)
             return stream;
-        else if (std::string(args[1]) == "-filename") 
+        else if (std::string(args[1]) == "-filename") {
             stream.open(args[2]);
+        }
         return stream;
 
     }

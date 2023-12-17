@@ -8,21 +8,33 @@
 #include "Data/Document.hpp"
 #include "CLI/CommandHistory.hpp"
 
-namespace App // application doesnt quit after exit is executed
+namespace App // application stops, but doesnt quit after exit is executed (acc. to stackoverflow, there needs to be a window to quit, but there is none for now, so I guess that's why it doesn't quit)
 {
-    Application::Application(int count, char* args[]) : QApplication(count, args) {  }
+    Application* Application::instance = nullptr;
+
+    Application::Application(int count, char* args[]) : QApplication(count, args) 
+    { 
+        instance = this;
+    }
 
     Application& Application::getInstance() 
     {
-        return QApplication::instance(); //////////////////////
+        if(instance == nullptr)
+            throw std::runtime_error("Application has not been initialized");
+        return *instance;
     }
 
     int Application::run(int count, char* args[]) 
     {
         buildApplication(count, args);
         controller->runProgram();
-        return QApplication::exec();
+        return instance->exec();
         
+    }
+
+    void Application::quit() 
+    {
+        instance->quit();
     }
 
 
@@ -75,5 +87,10 @@ namespace App // application doesnt quit after exit is executed
         return controller;
     }
     
+    Application::~Application() 
+    {
+        quit();
+
+    }
 
 }

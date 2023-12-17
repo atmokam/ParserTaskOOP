@@ -24,6 +24,7 @@ namespace App
         bool isExitCalled() const;
         void callExit() override;
         int run(int count, char* args[]) override;
+        void quit() override;
         void buildApplication(int count, char* args[]) override;
         std::ifstream buildStream(int count, char* args[]);
         std::shared_ptr<IDirector> getDirector() override;
@@ -31,7 +32,9 @@ namespace App
         std::shared_ptr<IController> getController() override;
 
         Application(int count, char* args[]);
+        ~Application();
     private:
+        static Application* instance;
     };
 }
 

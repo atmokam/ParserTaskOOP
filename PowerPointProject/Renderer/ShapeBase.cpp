@@ -61,6 +61,40 @@ void ShapeBase::setItem(std::shared_ptr<ItemBase> item)
 }
 
 
+void ShapeBase::setPainterAttributes(QPainter& painter)
+{
+    QtConverter styleConverter;
+    Converter typeConverter;
+
+    QColor lineColorValue = item->getAttributes().getHexLineColor().value();
+    qreal lineWidthValue = item->getAttributes().getLineWidth().value();
+    auto lineType = item->getAttributes().getLineType();
+    Qt::PenStyle lineTypeValue = styleConverter.convertToQtPenStyle(typeConverter.convertToString(lineType.value())); // linetype could have had a tostring function so i wouldnt have to convert it all the time
+                                                                                                                      // or i could have kept it as a string all along
+    auto pen = QPen(lineColorValue, lineWidthValue, lineTypeValue);
+    auto fillColor = item->getAttributes().getHexFillColor();
+    auto brush = QBrush(QColor((fillColor.has_value()) ? fillColor.value() : Qt::transparent)); //TODO: make a way to remove the fill color or the line color after it has been set
+    painter.setPen(pen);
+    painter.setBrush(brush);
+    
+    auto font = item->getAttributes().getFontSize().value();
+    painter.setFont(QFont("Arial", font));    
+}
+
+QRect ShapeBase::getRect(DimentionConverter& converter)
+{
+    auto coordinates = item->getGeometry().getPosition().value().getCoordinates();
+    auto height = item->getGeometry().getHeight().value();
+    auto width = item->getGeometry().getWidth().value();
+    QRect rect(converter.toPixels(coordinates[0]), converter.toPixels(coordinates[1]), 
+        converter.toPixels(width), converter.toPixels(height));
+    return rect;
+}
+
+
+
+
+
 
 // visual displayables
 
@@ -68,37 +102,14 @@ ShapeRectangle::ShapeRectangle(std::shared_ptr<ItemBase> item) : ShapeBase(item)
 
 void ShapeRectangle::draw(QPainter& painter, DimentionConverter& converter) 
 {
-    QtConverter styleConverter;
-    Converter typeConverter;
+    setPainterAttributes(painter);
+    
+    QRect rect = getRect(converter);
 
-    auto position = item->getGeometry().getPosition();
-    auto height = item->getGeometry().getHeight();
-    auto width = item->getGeometry().getWidth();
-    auto fillColor = item->getAttributes().getHexFillColor();
-    auto lineColor = item->getAttributes().getHexLineColor();
-    auto lineWidth = item->getAttributes().getLineWidth();
-    auto lineType = item->getAttributes().getLineType();
     auto text = item->getAttributes().getText();
-
-    QColor lineColorValue = lineColor.value();
-    qreal lineWidthValue = lineWidth.value();
-    Qt::PenStyle lineTypeValue = styleConverter.convertToQtPenStyle(typeConverter.convertToString(lineType.value())); // linetype could have had a tostring function so i wouldnt have to convert it all the time
-                                                                                                                      // or i could have kept it as a string all along
-    auto pen = QPen(lineColorValue, lineWidthValue, lineTypeValue);
-    auto brush = QBrush(QColor((fillColor.has_value()) ? fillColor.value() : Qt::transparent)); //TODO: make a way to remove the fill color or the line color after it has been set
-    painter.setPen(pen);
-    painter.setBrush(brush);
-    auto coordinates = position.value().getCoordinates();
-
-    auto font = item->getAttributes().getFontSize().value();
-    painter.setFont(QFont("Arial", font));    
-
-
-    QRect rect(converter.toPixels(coordinates[0]), converter.toPixels(coordinates[1]), converter.toPixels(width.value()), converter.toPixels(height.value()));
     painter.drawRect(rect);
     painter.drawText(rect, Qt::AlignCenter, QString::fromStdString(text.value()));
 }
-
 
 std::shared_ptr<IShape> ShapeRectangle::clone(std::shared_ptr<ItemBase> item)
 {
@@ -107,11 +118,20 @@ std::shared_ptr<IShape> ShapeRectangle::clone(std::shared_ptr<ItemBase> item)
 }
 
 
+
+
+
 ShapeEllipse::ShapeEllipse(std::shared_ptr<ItemBase> item) : ShapeBase(item) {}
 
 void ShapeEllipse::draw(QPainter& painter, DimentionConverter& converter) 
 {
+    setPainterAttributes(painter);
     
+    QRect rect = getRect(converter);
+
+    auto text = item->getAttributes().getText();
+    painter.drawEllipse(rect);
+    painter.drawText(rect, Qt::AlignCenter, QString::fromStdString(text.value()));
 }
 
 std::shared_ptr<IShape> ShapeEllipse::clone(std::shared_ptr<ItemBase> item)
@@ -121,19 +141,29 @@ std::shared_ptr<IShape> ShapeEllipse::clone(std::shared_ptr<ItemBase> item)
 }
 
 
+
+
+
 ShapeLine::ShapeLine(std::shared_ptr<ItemBase> item) : ShapeBase(item) {}
 
 void ShapeLine::draw(QPainter& painter, DimentionConverter& converter) 
 {
-    
-}
+    setPainterAttributes(painter);
 
+    auto points = item->getGeometry().getPosition().value().getCoordinates();
+
+    painter.drawLine(converter.toPixels(points[0]), converter.toPixels(points[1]), 
+        converter.toPixels(points[2]), converter.toPixels(points[3]));
+}
 
 std::shared_ptr<IShape> ShapeLine::clone(std::shared_ptr<ItemBase> item)
 {
     setItem(item);
     return std::make_shared<ShapeLine>(*this);
 }
+
+
+
 
 
 ShapeTrapezoid::ShapeTrapezoid(std::shared_ptr<ItemBase> item) : ShapeBase(item) {}
@@ -148,6 +178,9 @@ std::shared_ptr<IShape> ShapeTrapezoid::clone(std::shared_ptr<ItemBase> item)
     setItem(item);
     return std::make_shared<ShapeTrapezoid>(*this);
 }
+
+
+
 
 
 ShapeTriangle::ShapeTriangle(std::shared_ptr<ItemBase> item) : ShapeBase(item) {}

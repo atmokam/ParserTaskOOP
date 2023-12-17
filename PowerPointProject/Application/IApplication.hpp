@@ -21,6 +21,7 @@ namespace App
         virtual void buildApplication(int count, char* args[]) = 0;
         virtual void callExit() = 0;
         virtual bool isExitCalled() const = 0;
+        virtual void quit() = 0;
         
     };
     

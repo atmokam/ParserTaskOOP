@@ -12,7 +12,7 @@ Document::Document()
     Converter converter;
     slides.push_back(std::make_shared<Slide>());
     defaultAttributes.setLineWidth(1);
-    //defaultAttributes.setHexFillColor(converter.convertToColor("#FFFFFF"));
+    defaultAttributes.setHexFillColor(converter.convertToColor("#FFFFFF"));
     defaultAttributes.setHexLineColor(converter.convertToColor("#000000"));
     defaultAttributes.setLineType(converter.convertToLineType("solid"));
     defaultAttributes.setHexTextColor(converter.convertToColor("#000000"));

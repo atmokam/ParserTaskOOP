@@ -11,6 +11,7 @@ class ItemBase;
 class QPainter;
 class DimentionConverter;
 class ItemLeaf;
+class QRect;
 
 class ShapeBase : public IShape, public ITextDisplayable    
 {   
@@ -18,6 +19,9 @@ protected:
     std::shared_ptr<ItemBase> item;
     void recursivePrintHandler(std::ostream& stream, const std::shared_ptr<ItemBase>& item);
     void leafPrintHandler(std::ostream& stream, const std::shared_ptr<ItemLeaf>& leaf);
+
+    void setPainterAttributes(QPainter& painter);
+    QRect getRect(DimentionConverter& converter);
 public:
     void print(std::ostream& stream) override;
     ShapeBase(std::shared_ptr<ItemBase> item);

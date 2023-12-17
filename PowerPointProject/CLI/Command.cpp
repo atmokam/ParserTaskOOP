@@ -46,7 +46,7 @@ std::shared_ptr<ItemLeaf> AddCommand::createItem()
     Converter converter;
     std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
     Attributes defaultAttributes = document->getDefaultAttributes();
-
+   
     Type type = Type{converter.convertToType(operands["-name"][0])};
 
     geometry.setPosition(Position{converter.convertToPosition(operands["-pos"])});
@@ -65,9 +65,11 @@ std::shared_ptr<ItemLeaf> AddCommand::createItem()
     attributes.setLineType((operands.find("-lstyle") != operands.end())? 
     converter.convertToLineType(operands["-lstyle"][0]) : defaultAttributes.getLineType().value());
 
-    std::string concatenated = "";
-    std::accumulate(operands["-text"].begin(), operands["-text"].end(), concatenated, 
-    [](std::string& text, std::string& word) {return text += word + " ";});
+    std::string concatenated;
+    for(const auto& text : operands["-text"])
+    {
+        concatenated += text + " ";
+    }
 
     attributes.setText((operands.find("-text") != operands.end()) ?
     concatenated : defaultAttributes.getText().value());
@@ -129,7 +131,7 @@ void ChangeCommand::execute()
     newItem = std::make_shared<ItemLeaf>(*std::static_pointer_cast<ItemLeaf>(item));
    
 
-    if(operands.find("-pos") != operands.end()) // I dont like how long this is
+    if(operands.find("-pos") != operands.end()) // I have an itemleaf builder in archive, but i'll finish the other tasks then come back to this
     { 
         geometry.setPosition(converter.convertToPosition(operands["-pos"]));
     }

@@ -16,355 +16,352 @@
 #include "Serialization/SaveLoad.hpp"
 #include "Serialization/Converter.hpp" 
 
+namespace CLI {
 
+    Command::Command() : application(App::Application::getInstance()) {}
 
-Command::Command() : application(App::Application::getInstance()) {}
-
-void AddCommand::execute() 
-{  
-    if(operands.find("-name") != operands.end())
-    {
-        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-        std::shared_ptr<ItemLeaf> item = createItem();
-        application.getDirector()->doAction(std::make_shared<AddItem>(item, currentSlideIndex));
-        application.getDocument()->getIDGenerator().addID(item->getID());
-    }
-    else if(operands.find("-slide") != operands.end())
-    {
-        std::shared_ptr<Slide> slide = std::make_shared<Slide>();
-        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-        application.getDirector()->doAction(std::make_shared<AddSlide>(slide, currentSlideIndex + 1));
-        application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
-    }
-    application.getDirector()->setDocumentModified(true);
-
-}
-
-std::shared_ptr<ItemLeaf> AddCommand::createItem() 
-{
-    Attributes attributes; Geometry geometry;
-    Converter converter;
-    std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
-    Attributes defaultAttributes = document->getDefaultAttributes();
-   
-    Type type = Type{converter.convertToType(operands["-name"][0])};
-
-    geometry.setPosition(Position{converter.convertToPosition(operands["-pos"])});
-    geometry.setWidth(converter.convertToDimention(operands["-w"][0]));
-    geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
-    
-    attributes.setHexLineColor((operands.find("-lcolor") != operands.end()) ? 
-    converter.convertToColor(operands["-lcolor"][0]) : defaultAttributes.getHexLineColor().value());
-   
-    attributes.setHexFillColor((operands.find("-fcolor") != operands.end()) ?
-    converter.convertToColor(operands["-fcolor"][0]) : defaultAttributes.getHexFillColor().value());
-    
-    attributes.setLineWidth((operands.find("-lwidth") != operands.end()) ? 
-    std::stod(operands["-lwidth"][0]) : defaultAttributes.getLineWidth().value());
-    
-    attributes.setLineType((operands.find("-lstyle") != operands.end())? 
-    converter.convertToLineType(operands["-lstyle"][0]) : defaultAttributes.getLineType().value());
-
-    std::string concatenated;
-    for(const auto& text : operands["-text"])
-    {
-        concatenated += text + " ";
-    }
-
-    attributes.setText((operands.find("-text") != operands.end()) ?
-    concatenated : defaultAttributes.getText().value());
-
-    attributes.setHexTextColor((operands.find("-tcolor") != operands.end()) ?
-    converter.convertToColor(operands["-tcolor"][0]) : defaultAttributes.getHexTextColor().value());
-
-    attributes.setFontSize((operands.find("-fontsize") != operands.end()) ?
-    converter.convertToID(operands["-fontsize"][0]) : defaultAttributes.getFontSize().value());
-
-    
-    return std::make_shared<ItemLeaf>(type, geometry, attributes, document->getIDGenerator().generateID()); 
-
-}
-
-void RemoveCommand::execute() 
-{
-    std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
-    size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-
-
-    if(operands.find("-id") != operands.end())
-    {
-        std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
-        if (item == nullptr){
-            return;
-        }
-        application.getDirector()->doAction(std::make_shared<RemoveItem>(item, currentSlideIndex));
-    }
-    else if(operands.find("-slide") != operands.end())
-    {
-        if(application.getDirector()->getDocument()->size() == 1)
+    void AddCommand::execute() 
+    {  
+        if(operands.find("-name") != operands.end())
         {
-            std::ostream& out = application.getController()->getOutputStream() ;
-            out << "Cannot remove slide, only 1 left" << std::endl;
-        } 
-        else 
-        {
-            application.getDirector()->doAction(std::make_shared<RemoveSlide>(slide, currentSlideIndex)); 
-            application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
+            size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+            std::shared_ptr<ItemLeaf> item = createItem();
+            application.getDirector()->doAction(std::make_shared<AddItem>(item, currentSlideIndex));
+            application.getDocument()->getIDGenerator().addID(item->getID());
         }
-    }
-    application.getDirector()->setDocumentModified(true);
+        else if(operands.find("-slide") != operands.end())
+        {
+            std::shared_ptr<Slide> slide = std::make_shared<Slide>();
+            size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+            application.getDirector()->doAction(std::make_shared<AddSlide>(slide, currentSlideIndex + 1));
+            application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
+        }
+        application.getDirector()->setDocumentModified(true);
 
-}
-
-
-void ChangeCommand::execute() 
-{
-    Converter converter;
-    std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
-    std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
-    Attributes attributes = item->getAttributes(); 
-    Geometry geometry = item->getGeometry();
-
-    std::shared_ptr<ItemBase> newItem;
-
-    (item->getType() == Type::Group) ? newItem = std::make_shared<ItemGroup>(*std::static_pointer_cast<ItemGroup>(item)) : 
-    newItem = std::make_shared<ItemLeaf>(*std::static_pointer_cast<ItemLeaf>(item));
-   
-
-    if(operands.find("-pos") != operands.end()) // I have an itemleaf builder in archive, but i'll finish the other tasks then come back to this
-    { 
-        geometry.setPosition(converter.convertToPosition(operands["-pos"]));
     }
 
-    if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end())
+    std::shared_ptr<ItemLeaf> AddCommand::createItem() 
     {
-        geometry.setWidth(converter.convertToDimention(operands["-w"][0])); 
+        Attributes attributes; Geometry geometry;
+        Converter converter;
+        std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
+        Attributes defaultAttributes = document->getDefaultAttributes();
+    
+        Type type = Type{converter.convertToType(operands["-name"][0])};
+
+        geometry.setPosition(Position{converter.convertToPosition(operands["-pos"])});
+        geometry.setWidth(converter.convertToDimention(operands["-w"][0]));
         geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
+        
+        attributes.setHexLineColor((operands.find("-lcolor") != operands.end()) ? 
+        converter.convertToColor(operands["-lcolor"][0]) : defaultAttributes.getHexLineColor().value());
+    
+        attributes.setHexFillColor((operands.find("-fcolor") != operands.end()) ?
+        converter.convertToColor(operands["-fcolor"][0]) : defaultAttributes.getHexFillColor().value());
+        
+        attributes.setLineWidth((operands.find("-lwidth") != operands.end()) ? 
+        std::stod(operands["-lwidth"][0]) : defaultAttributes.getLineWidth().value());
+        
+        attributes.setLineType((operands.find("-lstyle") != operands.end())? 
+        converter.convertToLineType(operands["-lstyle"][0]) : defaultAttributes.getLineType().value());
+
+        std::string concatenated;
+        for(const auto& text : operands["-text"])
+        {
+            concatenated += text + " ";
+        }
+
+        attributes.setText((operands.find("-text") != operands.end()) ?
+        concatenated : defaultAttributes.getText().value());
+
+        attributes.setHexTextColor((operands.find("-tcolor") != operands.end()) ?
+        converter.convertToColor(operands["-tcolor"][0]) : defaultAttributes.getHexTextColor().value());
+
+        attributes.setFontSize((operands.find("-fontsize") != operands.end()) ?
+        converter.convertToID(operands["-fontsize"][0]) : defaultAttributes.getFontSize().value());
+
+        
+        return std::make_shared<ItemLeaf>(type, geometry, attributes, document->getIDGenerator().generateID()); 
+
     }
 
-    if(operands.find("-lcolor") != operands.end())
+    void RemoveCommand::execute() 
     {
-        attributes.setHexLineColor(converter.convertToColor(operands["-lcolor"][0]));
+        std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
+        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+
+
+        if(operands.find("-id") != operands.end())
+        {
+            std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
+            if (item == nullptr){
+                return;
+            }
+            application.getDirector()->doAction(std::make_shared<RemoveItem>(item, currentSlideIndex));
+        }
+        else if(operands.find("-slide") != operands.end())
+        {
+            if(application.getDirector()->getDocument()->size() == 1)
+            {
+                std::ostream& out = application.getController()->getOutputStream() ;
+                out << "Cannot remove slide, only 1 left" << std::endl;
+            } 
+            else 
+            {
+                application.getDirector()->doAction(std::make_shared<RemoveSlide>(slide, currentSlideIndex)); 
+                application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
+            }
+        }
+        application.getDirector()->setDocumentModified(true);
+
     }
 
-    if(operands.find("-fcolor") != operands.end())
+
+    void ChangeCommand::execute() 
     {
-        attributes.setHexFillColor(converter.convertToColor(operands["-fcolor"][0]));
-    }
+        Converter converter;
+        std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
+        std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
+        Attributes attributes = item->getAttributes(); 
+        Geometry geometry = item->getGeometry();
 
-    if(operands.find("-lwidth") != operands.end())
-    {
-        attributes.setLineWidth(std::stod(operands["-lwidth"][0]));
-    }
+        std::shared_ptr<ItemBase> newItem;
 
-    if(operands.find("-lstyle") != operands.end())
-    {
-        attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
-    }
-
-    if(operands.find("-text") != operands.end())
-    {
-        attributes.setText(operands["-text"][0]);
-    }
-
-    if(operands.find("-tcolor") != operands.end())
-    {
-        attributes.setHexTextColor(converter.convertToColor(operands["-tcolor"][0]));
-    }
-
-    if(operands.find("-fontsize") != operands.end())
-    {
-        attributes.setFontSize(converter.convertToID(operands["-fontsize"][0]));
-    }
-
-
-    newItem->setAttributes(attributes);
-    newItem->setGeometry(geometry);
+        (item->getType() == Type::Group) ? newItem = std::make_shared<ItemGroup>(*std::static_pointer_cast<ItemGroup>(item)) : 
+        newItem = std::make_shared<ItemLeaf>(*std::static_pointer_cast<ItemLeaf>(item));
     
 
-    size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-    application.getDirector()->doAction(std::make_shared<ChangeItem>(newItem, currentSlideIndex));
+        if(operands.find("-pos") != operands.end()) // I have an itemleaf builder in archive, but i'll finish the other tasks then come back to this
+        { 
+            geometry.setPosition(converter.convertToPosition(operands["-pos"]));
+        }
 
-    application.getDirector()->setDocumentModified(true);
-}
+        if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end())
+        {
+            geometry.setWidth(converter.convertToDimention(operands["-w"][0])); 
+            geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
+        }
+
+        if(operands.find("-lcolor") != operands.end())
+        {
+            attributes.setHexLineColor(converter.convertToColor(operands["-lcolor"][0]));
+        }
+
+        if(operands.find("-fcolor") != operands.end())
+        {
+            attributes.setHexFillColor(converter.convertToColor(operands["-fcolor"][0]));
+        }
+
+        if(operands.find("-lwidth") != operands.end())
+        {
+            attributes.setLineWidth(std::stod(operands["-lwidth"][0]));
+        }
+
+        if(operands.find("-lstyle") != operands.end())
+        {
+            attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
+        }
+
+        if(operands.find("-text") != operands.end())
+        {
+            attributes.setText(operands["-text"][0]);
+        }
+
+        if(operands.find("-tcolor") != operands.end())
+        {
+            attributes.setHexTextColor(converter.convertToColor(operands["-tcolor"][0]));
+        }
+
+        if(operands.find("-fontsize") != operands.end())
+        {
+            attributes.setFontSize(converter.convertToID(operands["-fontsize"][0]));
+        }
 
 
-void SaveCommand::execute() 
-{ 
-    std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
-    SaveLoad serializer;
-    QJsonDocument documentJson;
-    serializer.save(document, documentJson);
-    QByteArray byteArray = documentJson.toJson();
+        newItem->setAttributes(attributes);
+        newItem->setGeometry(geometry);
+        
 
-    std::string path = operands["-path"][0] + operands["-filename"][0] + ".json";
+        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+        application.getDirector()->doAction(std::make_shared<ChangeItem>(newItem, currentSlideIndex));
 
-    std::ifstream file (path);
-    if(file.good())
-    {
-        std::ostream& out = application.getController()->getOutputStream();
-        out << "File already exists, do you want to overwrite it? (y/n)" << std::endl;
+        application.getDirector()->setDocumentModified(true);
+    }
+
+
+    void SaveCommand::execute() 
+    { 
+        std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
+        SaveLoad serializer;
+        QJsonDocument documentJson;
+        serializer.save(document, documentJson);
+        QByteArray byteArray = documentJson.toJson();
+
+        std::string path = operands["-path"][0] + operands["-filename"][0] + ".json";
+
+        std::ifstream file (path);
+        if(file.good())
+        {
+            std::ostream& out = application.getController()->getOutputStream();
+            out << "File already exists, do you want to overwrite it? (y/n)" << std::endl;
+            file.close();
+            char answer;
+            std::istream& in = application.getController()->getInputStream();
+            in >> answer; 
+            if(answer == 'n')
+                return;
+        }
+    
+        std::ofstream output (path);
+        if(output.is_open())
+        {
+            output << byteArray.toStdString();
+            output.close();
+        }
+        else
+        {
+            throw std::runtime_error("Could not open file");
+        }
+
+        application.getDirector()->setDocumentModified(false);
+
+    }
+
+    void LoadCommand::execute() 
+    { 
+        std::ifstream file;
+        file.open(operands["-path"][0]);
+        if(!file.is_open())
+        {
+            throw std::runtime_error("Could not open file");
+        }
+        std::string contents{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
+        QJsonDocument content = QJsonDocument::fromJson(contents.c_str());
         file.close();
-        char answer;
-        std::istream& in = application.getController()->getInputStream();
-        in >> answer; 
-        if(answer == 'n')
-            return;
-    }
-   
-    std::ofstream output (path);
-    if(output.is_open())
-    {
-        output << byteArray.toStdString();
-        output.close();
-    }
-    else
-    {
-        throw std::runtime_error("Could not open file");
+        SaveLoad deserializer;
+        std::shared_ptr<IDocument> newDoc = std::make_shared<Document>();
+        deserializer.load(content, newDoc);
+        application.getDirector()->setDocument(newDoc);
+        application.getDirector()->setCurrentSlideIndex(0);
+        application.getDirector()->clearUndoRedoStack();
     }
 
-    application.getDirector()->setDocumentModified(false);
 
-}
 
-void LoadCommand::execute() 
-{ 
-    std::ifstream file;
-    file.open(operands["-path"][0]);
-    if(!file.is_open())
+    void DisplayCommand::execute() 
     {
-        throw std::runtime_error("Could not open file");
-    }
-    std::string contents{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
-    QJsonDocument content = QJsonDocument::fromJson(contents.c_str());
-    file.close();
-    SaveLoad deserializer;
-    std::shared_ptr<IDocument> newDoc = std::make_shared<Document>();
-    deserializer.load(content, newDoc);
-    application.getDirector()->setDocument(newDoc);
-    application.getDirector()->setCurrentSlideIndex(0);
-    application.getDirector()->clearUndoRedoStack();
-}
-
-
-
-void DisplayCommand::execute() 
-{
-    if(operands.find("-id") != operands.end())
-    {
-        std::shared_ptr<Slide> current = application.getDirector()->getCurrentSlide();
-        std::shared_ptr<ItemBase> item = current->getItem(std::stoi(operands["-id"][0]));
-        if (item == nullptr)
+        if(operands.find("-id") != operands.end())
         {
-            return;
+            std::shared_ptr<Slide> current = application.getDirector()->getCurrentSlide();
+            std::shared_ptr<ItemBase> item = current->getItem(std::stoi(operands["-id"][0]));
+            if (item == nullptr)
+            {
+                return;
+            }
+
+            ShapeBase shape(item);
+            shape.print(application.getController()->getOutputStream());
         }
-
-        ShapeBase shape(item);
-        shape.print(application.getController()->getOutputStream());
-    }
-    else
-    {
-        std::shared_ptr<Slide> current = application.getDirector()->getCurrentSlide();
-        ShapeBase shape(current->getTopItem());
-        std::ostream& out = application.getController()->getOutputStream() ;
-        shape.print(out);
-        out << std::endl;
-
-    }
-}
-
-
-void ListCommand::execute() 
-{
-    auto document = application.getDirector()->getDocument();
-
-    size_t currentSlideIndex  = 0;
-    for (const auto& slide : *document)
-    {
-        std::ostream& out = application.getController()->getOutputStream();
-        out << "Slide: " << currentSlideIndex << std::endl;
-        auto topItem = slide->getTopItem();
-        for(const auto& item : *topItem)
+        else
         {
-            ShapeBase shape(item.second);
+            std::shared_ptr<Slide> current = application.getDirector()->getCurrentSlide();
+            ShapeBase shape(current->getTopItem());
+            std::ostream& out = application.getController()->getOutputStream() ;
             shape.print(out);
+            out << std::endl;
+
         }
-        currentSlideIndex++;
-        out << std::endl;
     }
-    
-}
 
 
-
-void NextCommand::execute() 
-{
-    size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-    if(currentSlideIndex < application.getDirector()->getDocument()->size() - 1)
-        application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
-}
-
-
-
-void PrevCommand::execute() 
-{
-    size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-    if(currentSlideIndex > 0)
-        application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
-}
-
-
-
-void UndoCommand::execute() 
-{
-    application.getDirector()->undo();
-}
-
-
-
-void RedoCommand::execute() 
-{
-    application.getDirector()->redo();
-}
-
-
-
-void ExitCommand::execute()    
-{
-    if( application.getDirector()->isDocumentModified())
+    void ListCommand::execute() 
     {
-        std::ostream& out = application.getController()->getOutputStream();
-        out << "You have unsaved changes, are you sure you want to exit? (y/n)" << std::endl;
-        char answer;
-        std::istream& in = application.getController()->getInputStream();
-        in >> answer;
-        if(answer == 'n')
-            return;
+        auto document = application.getDirector()->getDocument();
+
+        size_t currentSlideIndex  = 0;
+        for (const auto& slide : *document)
+        {
+            std::ostream& out = application.getController()->getOutputStream();
+            out << "Slide: " << currentSlideIndex << std::endl;
+            auto topItem = slide->getTopItem();
+            for(const auto& item : *topItem)
+            {
+                ShapeBase shape(item.second);
+                shape.print(out);
+            }
+            currentSlideIndex++;
+            out << std::endl;
+        }
+        
     }
 
-    application.callExit();
-    
-}
 
 
-void DrawCommand::execute() 
-{
-    DimentionConverter converter;
-    std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
-    std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
-    auto format = document->getFormat();
-    auto width = converter.toPixels(format.first); // only A4 format for now
-    auto height = converter.toPixels(format.second);
-    QImage image(width, height, QImage::Format_ARGB32_Premultiplied);
-    Renderer renderer;
-    renderer.draw(image, converter, slide);
-    QString path = QString::fromStdString(operands["-path"][0] + operands["-filename"][0] + ".png");
-    image.save(path);
-
-}
+    void NextCommand::execute() 
+    {
+        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+        if(currentSlideIndex < application.getDirector()->getDocument()->size() - 1)
+            application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
+    }
 
 
 
+    void PrevCommand::execute() 
+    {
+        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+        if(currentSlideIndex > 0)
+            application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
+    }
+
+
+
+    void UndoCommand::execute() 
+    {
+        application.getDirector()->undo();
+    }
+
+
+
+    void RedoCommand::execute() 
+    {
+        application.getDirector()->redo();
+    }
+
+
+
+    void ExitCommand::execute()    
+    {
+        if( application.getDirector()->isDocumentModified())
+        {
+            std::ostream& out = application.getController()->getOutputStream();
+            out << "You have unsaved changes, are you sure you want to exit? (y/n)" << std::endl;
+            char answer;
+            std::istream& in = application.getController()->getInputStream();
+            in >> answer;
+            if(answer == 'n')
+                return;
+        }
+
+        application.callExit();
+        
+    }
+
+
+    void DrawCommand::execute() 
+    {
+        DimentionConverter converter;
+        std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
+        std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
+        auto format = document->getFormat();
+        auto width = converter.toPixels(format.first); // only A4 format for now
+        auto height = converter.toPixels(format.second);
+        QImage image(width, height, QImage::Format_ARGB32_Premultiplied);
+        Renderer renderer;
+        renderer.draw(image, converter, slide);
+        QString path = QString::fromStdString(operands["-path"][0] + operands["-filename"][0] + ".png");
+        image.save(path);
+
+    }
 
 
 
@@ -372,28 +369,33 @@ void DrawCommand::execute()
 
 
 
-void Command::addOperandToOperands(std::string operand) 
-{
-    operands[operand];                           // in case of no value
-}
-
-void Command::addValueToOperands(std::string value, std::string operand) 
-{
-    operands[operand].push_back(value);
-}
 
 
-std::string Command::getName() const 
-{
-    return name;
-}
 
-void Command::setName(std::string name) 
-{
-    this->name = name;
-}
+    void Command::addOperandToOperands(std::string operand) 
+    {
+        operands[operand];                           // in case of no value
+    }
 
-OperandsContainer Command::getOperands() const 
-{
-    return operands;
+    void Command::addValueToOperands(std::string value, std::string operand) 
+    {
+        operands[operand].push_back(value);
+    }
+
+
+    std::string Command::getName() const 
+    {
+        return name;
+    }
+
+    void Command::setName(std::string name) 
+    {
+        this->name = name;
+    }
+
+    OperandsContainer Command::getOperands() const 
+    {
+        return operands;
+    }
+
 }

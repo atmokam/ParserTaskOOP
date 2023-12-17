@@ -28,8 +28,7 @@ namespace App // application stops, but doesnt quit after exit is executed (acc.
     {
         buildApplication(count, args);
         controller->runProgram();
-        return instance->exec();
-        
+        return instance->exec(); 
     }
 
     void Application::quit() 
@@ -47,7 +46,7 @@ namespace App // application stops, but doesnt quit after exit is executed (acc.
         std::istream& input = stream.is_open() ? stream : std::cin;
         std::ostream& output = std::cout;
 
-        controller = std::make_unique<CLIController>(input, output);
+        controller = std::make_unique<CLI::Controller>(input, output);
     }
 
     void Application::callExit() 
@@ -82,7 +81,7 @@ namespace App // application stops, but doesnt quit after exit is executed (acc.
 
     }
 
-    std::shared_ptr<IController> Application::getController() 
+    std::shared_ptr<CLI::IController> Application::getController() 
     {
         return controller;
     }

@@ -12,7 +12,7 @@
 namespace App
 {
     class Application: public IApplication, public QApplication {
-        std::shared_ptr<IController> controller;
+        std::shared_ptr<CLI::IController> controller;
         std::shared_ptr<IDirector> director; 
         std::shared_ptr<IDocument> document;
 
@@ -29,7 +29,7 @@ namespace App
         std::ifstream buildStream(int count, char* args[]);
         std::shared_ptr<IDirector> getDirector() override;
         std::shared_ptr<IDocument> getDocument() override;
-        std::shared_ptr<IController> getController() override;
+        std::shared_ptr<CLI::IController> getController() override;
 
         Application(int count, char* args[]);
         ~Application();

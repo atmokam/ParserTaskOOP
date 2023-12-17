@@ -6,33 +6,34 @@
 
 #include <iostream>
 
+namespace CLI {
 
+    Controller::Controller(std::istream& input, std::ostream& output) : input(input), output(output) {}
 
-CLIController::CLIController(std::istream& input, std::ostream& output) : input(input), output(output) {}
-
-void CLIController::runProgram() {
-    App::Application& application = App::Application::getInstance();  
-    while (!application.isExitCalled()) 
-    {
-        runCommand(input);
+    void Controller::runProgram() {
+        App::Application& application = App::Application::getInstance();  
+        while (!application.isExitCalled()) 
+        {
+            runCommand(input);
+        }
     }
-}
 
-void CLIController::runCommand(std::istream& input) // also needed for command history
-{
-    Parser oParser(input);
-    std::shared_ptr<Command> pCmd = oParser.parse();
-    if(pCmd == nullptr)
-        return;
-    pCmd->execute();
-}
+    void Controller::runCommand(std::istream& input) // also needed for command history
+    {
+        Parser oParser(input);
+        std::shared_ptr<Command> pCmd = oParser.parse();
+        if(pCmd == nullptr)
+            return;
+        pCmd->execute();
+    }
 
-std::ostream& CLIController::getOutputStream() const
-{
-    return output;
-}
+    std::ostream& Controller::getOutputStream() const
+    {
+        return output;
+    }
 
-std::istream& CLIController::getInputStream() const
-{
-    return input;
+    std::istream& Controller::getInputStream() const
+    {
+        return input;
+    }
 }

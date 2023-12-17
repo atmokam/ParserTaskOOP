@@ -6,18 +6,21 @@
 #include <iostream>
 #include <memory>
 
-class Command;
+namespace CLI {
 
-class CommandHistory 
-{
-    std::vector<std::shared_ptr<Command>> history;
-    int index;
-public:
-    CommandHistory();
-    void add(std::shared_ptr<Command>& command);
-    void up();
-    void down();
-    std::shared_ptr<Command>& getCurrent();
-};
+    class Command;
+
+    class CommandHistory 
+    {
+        std::vector<std::shared_ptr<Command>> history;
+        int index;
+    public:
+        CommandHistory();
+        void add(std::shared_ptr<Command>& command);
+        void up();
+        void down();
+        std::shared_ptr<Command>& getCurrent();
+    };
+}
 
 #endif

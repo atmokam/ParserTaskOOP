@@ -3,11 +3,14 @@
 
 #include <memory>
 
-class IDocument;
+#include "Include/IDocument.hpp"
 
-class IAction {
-public:
-    virtual std::shared_ptr<IAction> execute(std::shared_ptr<IDocument>& document) = 0;
-};
+namespace Director
+{
+    class IAction {
+    public:
+        virtual std::shared_ptr<IAction> execute(std::shared_ptr<Data::IDocument>& document) = 0;
+    };
+}
 
 #endif

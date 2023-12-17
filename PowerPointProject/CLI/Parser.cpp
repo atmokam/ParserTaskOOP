@@ -55,7 +55,8 @@ namespace CLI {
         prevToken = name;
     
         std::string argument;
-        do{  
+        do
+        {  
             argument = getToken();
             if(argument.empty())
                 break;
@@ -75,18 +76,22 @@ namespace CLI {
 
 
 
-    void Parser::processArgument(std::string argument, std::shared_ptr<Command>& command){
+    void Parser::processArgument(std::string argument, std::shared_ptr<Command>& command)
+    {
         Validator validator;
-        if(commandNameFlag != "" && (prevOperand != prevToken) && validator.isOperand(argument, commandNameFlag)){
+        if(commandNameFlag != "" && (prevOperand != prevToken) && validator.isOperand(argument, commandNameFlag))
+        {
             command->addOperandToOperands(argument);
             prevOperand = argument;
             prevToken = argument;
         }
-        else if(commandNameFlag != "" && prevOperand != "" && validator.isValue(argument, prevOperand) ){
+        else if(commandNameFlag != "" && prevOperand != "" && validator.isValue(argument, prevOperand))
+        {
             command->addValueToOperands(argument, prevOperand); 
             prevToken = argument;
         }
-        else {
+        else 
+        {
             throw std::invalid_argument("Invalid input: " + argument);
         }
     }
@@ -94,48 +99,63 @@ namespace CLI {
 
 
 
-    std::shared_ptr<Command> Parser::createCommand(std::string input){
+    std::shared_ptr<Command> Parser::createCommand(std::string input)
+    {
         
-        if(input == "add"){
+        if(input == "add")
+        {
             return std::make_shared<AddCommand>();
         }
-        else if(input == "remove"){
+        else if(input == "remove")
+        {
             return std::make_shared<RemoveCommand>();
         }
-        else if(input == "save"){
+        else if(input == "save")
+        {
             return std::make_shared<SaveCommand>();
         }
-        else if(input == "change"){
+        else if(input == "change")
+        {
             return std::make_shared<ChangeCommand>();
         }
-        else if(input == "load"){
+        else if(input == "load")
+        {
             return std::make_shared<LoadCommand>();
         }
-        else if(input == "display"){
+        else if(input == "display")
+        {
             return std::make_shared<DisplayCommand>();
         }
-        else if(input == "list"){
+        else if(input == "list")
+        {
             return std::make_shared<ListCommand>();
         }
-        else if(input == "next"){
+        else if(input == "next")
+        {
             return std::make_shared<NextCommand>();
         }
-        else if(input == "prev"){
+        else if(input == "prev")
+        {
             return std::make_shared<PrevCommand>();
         }
-        else if(input == "undo"){
+        else if(input == "undo")
+        {
             return std::make_shared<UndoCommand>();
         }
-        else if(input == "redo"){
+        else if(input == "redo")
+        {
             return std::make_shared<RedoCommand>();
         }
-        else if (input == "exit"){
+        else if (input == "exit")
+        {
             return std::make_shared<ExitCommand>();
         }
-        else if(input == "draw"){
+        else if(input == "draw")
+        {
             return std::make_shared<DrawCommand>();
         }
-        else {
+        else 
+        {
             return nullptr;
         }
     }

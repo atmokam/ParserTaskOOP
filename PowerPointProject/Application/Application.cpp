@@ -39,8 +39,8 @@ namespace App // application stops, but doesnt quit after exit is executed (acc.
 
     void Application::buildApplication(int count, char* args[]) 
     {
-        director = std::make_shared<Director>();
-        document = std::make_shared<Document>();
+        director = std::make_shared<Director::Director>();
+        document = std::make_shared<Data::Document>();
         std::ifstream stream = buildStream(count, args);
 
         std::istream& input = stream.is_open() ? stream : std::cin;
@@ -60,12 +60,12 @@ namespace App // application stops, but doesnt quit after exit is executed (acc.
         return exitCalled;
     }
 
-    std::shared_ptr<IDirector> Application::getDirector() 
+    std::shared_ptr<Director::Director::IDirector> Application::getDirector() 
     {
         return director;
     }
 
-    std::shared_ptr<IDocument> Application::getDocument() 
+    std::shared_ptr<Data::IDocument> Application::getDocument() 
     {
         return document;
     }

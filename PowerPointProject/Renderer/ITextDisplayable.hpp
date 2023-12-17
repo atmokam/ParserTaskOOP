@@ -3,9 +3,11 @@
 
 #include <ostream>
 
-class ITextDisplayable {
-public:
-    virtual void print(std::ostream& stream) = 0;
-};
-
+namespace Renderer
+{
+    class ITextDisplayable {
+    public:
+        virtual void print(std::ostream& stream) = 0;
+    };
+}
 #endif

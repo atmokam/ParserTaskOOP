@@ -9,8 +9,9 @@
 #include "Data/Slide.hpp"
 #include "Data/Document.hpp"
 #include "Director/Actions.hpp"
-#include "Director/Director.hpp"
+#include "Director/IDirector.hpp"
 #include "Renderer/ShapeBase.hpp"
+#include "Renderer/ShapeLibrary.hpp"
 #include "Renderer/Renderer.hpp"
 #include "Renderer/Formatting/DimentionConverter.hpp"
 #include "Serialization/SaveLoad.hpp"
@@ -25,31 +26,31 @@ namespace CLI {
         if(operands.find("-name") != operands.end())
         {
             size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-            std::shared_ptr<ItemLeaf> item = createItem();
-            application.getDirector()->doAction(std::make_shared<AddItem>(item, currentSlideIndex));
+            std::shared_ptr<Data::ItemLeaf> item = createItem();
+            application.getDirector()->doAction(std::make_shared<Director::AddItem>(item, currentSlideIndex));
             application.getDocument()->getIDGenerator().addID(item->getID());
         }
         else if(operands.find("-slide") != operands.end())
         {
-            std::shared_ptr<Slide> slide = std::make_shared<Slide>();
+            std::shared_ptr<Data::Slide> slide = std::make_shared<Data::Slide>();
             size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-            application.getDirector()->doAction(std::make_shared<AddSlide>(slide, currentSlideIndex + 1));
+            application.getDirector()->doAction(std::make_shared<Director::AddSlide>(slide, currentSlideIndex + 1));
             application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
         }
         application.getDirector()->setDocumentModified(true);
 
     }
 
-    std::shared_ptr<ItemLeaf> AddCommand::createItem() 
+    std::shared_ptr<Data::ItemLeaf> AddCommand::createItem() 
     {
-        Attributes attributes; Geometry geometry;
-        Converter converter;
-        std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
-        Attributes defaultAttributes = document->getDefaultAttributes();
+        Data::Attributes attributes; Data::Geometry geometry;
+        Serialization::Converter converter;
+        std::shared_ptr<Data::IDocument> document = application.getDirector()->getDocument();
+        Data::Attributes defaultAttributes = document->getDefaultAttributes();
     
-        Type type = Type{converter.convertToType(operands["-name"][0])};
+        Renderer::Type type = Renderer::Type{converter.convertToType(operands["-name"][0])};
 
-        geometry.setPosition(Position{converter.convertToPosition(operands["-pos"])});
+        geometry.setPosition(Data::Position{converter.convertToPosition(operands["-pos"])});
         geometry.setWidth(converter.convertToDimention(operands["-w"][0]));
         geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
         
@@ -81,23 +82,23 @@ namespace CLI {
         converter.convertToID(operands["-fontsize"][0]) : defaultAttributes.getFontSize().value());
 
         
-        return std::make_shared<ItemLeaf>(type, geometry, attributes, document->getIDGenerator().generateID()); 
+        return std::make_shared<Data::ItemLeaf>(type, geometry, attributes, document->getIDGenerator().generateID()); 
 
     }
 
     void RemoveCommand::execute() 
     {
-        std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
+        std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
 
 
         if(operands.find("-id") != operands.end())
         {
-            std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
+            std::shared_ptr<Data::ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
             if (item == nullptr){
                 return;
             }
-            application.getDirector()->doAction(std::make_shared<RemoveItem>(item, currentSlideIndex));
+            application.getDirector()->doAction(std::make_shared<Director::RemoveItem>(item, currentSlideIndex));
         }
         else if(operands.find("-slide") != operands.end())
         {
@@ -108,7 +109,7 @@ namespace CLI {
             } 
             else 
             {
-                application.getDirector()->doAction(std::make_shared<RemoveSlide>(slide, currentSlideIndex)); 
+                application.getDirector()->doAction(std::make_shared<Director::RemoveSlide>(slide, currentSlideIndex)); 
                 application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
             }
         }
@@ -119,16 +120,16 @@ namespace CLI {
 
     void ChangeCommand::execute() 
     {
-        Converter converter;
-        std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
-        std::shared_ptr<ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
-        Attributes attributes = item->getAttributes(); 
-        Geometry geometry = item->getGeometry();
+        Serialization::Converter converter;
+        std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
+        std::shared_ptr<Data::ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
+        Data::Attributes attributes = item->getAttributes(); 
+        Data::Geometry geometry = item->getGeometry();
 
-        std::shared_ptr<ItemBase> newItem;
+        std::shared_ptr<Data::ItemBase> newItem;
 
-        (item->getType() == Type::Group) ? newItem = std::make_shared<ItemGroup>(*std::static_pointer_cast<ItemGroup>(item)) : 
-        newItem = std::make_shared<ItemLeaf>(*std::static_pointer_cast<ItemLeaf>(item));
+        (item->getType() == Renderer::Type::Group) ? newItem = std::make_shared<Data::ItemGroup>(*std::static_pointer_cast<Data::ItemGroup>(item)) : 
+        newItem = std::make_shared<Data::ItemLeaf>(*std::static_pointer_cast<Data::ItemLeaf>(item));
     
 
         if(operands.find("-pos") != operands.end()) // I have an itemleaf builder in archive, but i'll finish the other tasks then come back to this
@@ -183,7 +184,7 @@ namespace CLI {
         
 
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-        application.getDirector()->doAction(std::make_shared<ChangeItem>(newItem, currentSlideIndex));
+        application.getDirector()->doAction(std::make_shared<Director::ChangeItem>(newItem, currentSlideIndex));
 
         application.getDirector()->setDocumentModified(true);
     }
@@ -191,8 +192,8 @@ namespace CLI {
 
     void SaveCommand::execute() 
     { 
-        std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
-        SaveLoad serializer;
+        std::shared_ptr<Data::IDocument> document = application.getDirector()->getDocument();
+        Serialization::SaveLoad serializer;
         QJsonDocument documentJson;
         serializer.save(document, documentJson);
         QByteArray byteArray = documentJson.toJson();
@@ -238,8 +239,8 @@ namespace CLI {
         std::string contents{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
         QJsonDocument content = QJsonDocument::fromJson(contents.c_str());
         file.close();
-        SaveLoad deserializer;
-        std::shared_ptr<IDocument> newDoc = std::make_shared<Document>();
+        Serialization::SaveLoad deserializer;
+        std::shared_ptr<Data::IDocument> newDoc = std::make_shared<Data::Document>();
         deserializer.load(content, newDoc);
         application.getDirector()->setDocument(newDoc);
         application.getDirector()->setCurrentSlideIndex(0);
@@ -252,20 +253,20 @@ namespace CLI {
     {
         if(operands.find("-id") != operands.end())
         {
-            std::shared_ptr<Slide> current = application.getDirector()->getCurrentSlide();
-            std::shared_ptr<ItemBase> item = current->getItem(std::stoi(operands["-id"][0]));
+            std::shared_ptr<Data::Slide> current = application.getDirector()->getCurrentSlide();
+            std::shared_ptr<Data::ItemBase> item = current->getItem(std::stoi(operands["-id"][0]));
             if (item == nullptr)
             {
                 return;
             }
 
-            ShapeBase shape(item);
+            Renderer::ShapeBase shape(item);
             shape.print(application.getController()->getOutputStream());
         }
         else
         {
-            std::shared_ptr<Slide> current = application.getDirector()->getCurrentSlide();
-            ShapeBase shape(current->getTopItem());
+            std::shared_ptr<Data::Slide> current = application.getDirector()->getCurrentSlide();
+            Renderer::ShapeBase shape(current->getTopItem());
             std::ostream& out = application.getController()->getOutputStream() ;
             shape.print(out);
             out << std::endl;
@@ -286,7 +287,7 @@ namespace CLI {
             auto topItem = slide->getTopItem();
             for(const auto& item : *topItem)
             {
-                ShapeBase shape(item.second);
+                Renderer::ShapeBase shape(item.second);
                 shape.print(out);
             }
             currentSlideIndex++;
@@ -349,14 +350,14 @@ namespace CLI {
 
     void DrawCommand::execute() 
     {
-        DimentionConverter converter;
-        std::shared_ptr<Slide> slide = application.getDirector()->getCurrentSlide();
-        std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
+        Renderer::Formatting::DimentionConverter converter;
+        std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
+        std::shared_ptr<Data::IDocument> document = application.getDirector()->getDocument();
         auto format = document->getFormat();
         auto width = converter.toPixels(format.first); // only A4 format for now
         auto height = converter.toPixels(format.second);
         QImage image(width, height, QImage::Format_ARGB32_Premultiplied);
-        Renderer renderer;
+        Renderer::Renderer renderer;
         renderer.draw(image, converter, slide);
         QString path = QString::fromStdString(operands["-path"][0] + operands["-filename"][0] + ".png");
         image.save(path);

@@ -5,11 +5,12 @@
 #include <memory>
 #include <istream>
 
-namespace CLI {    
+namespace CLI 
+{    
     class Command;
 
-    class Parser {
-
+    class Parser 
+    {
         std::istream& inputStream;
         std::shared_ptr<Command> createCommand(std::string input);
         std::string commandNameFlag, prevOperand, prevToken; 

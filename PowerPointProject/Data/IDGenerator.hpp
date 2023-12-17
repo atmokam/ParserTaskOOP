@@ -3,17 +3,21 @@
 
 #include <vector>
 
-using ID = int;
 
-class IDGenerator {
-    std::vector<int> ids;
-public:
-    IDGenerator();
-    ID generateID();
-    void addID(ID id);
-    std::vector<ID> getIDs() const;
-    void setIDs(const std::vector<ID> ids);
-    ID getMaximumID() const;
-};
+namespace Data
+{
+    using ID = int;
+
+    class IDGenerator {
+        std::vector<int> ids;
+    public:
+        IDGenerator();
+        ID generateID();
+        void addID(ID id);
+        std::vector<ID> getIDs() const;
+        void setIDs(const std::vector<ID> ids);
+        ID getMaximumID() const;
+    };
+}
 
 #endif

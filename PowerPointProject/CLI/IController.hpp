@@ -1,8 +1,11 @@
 #ifndef ICONTROLLER_HPP
 #define ICONTROLLER_HPP
 
-namespace CLI {   
-     class IController {
+namespace CLI 
+{   
+    class IController 
+    {
+
     public:
         virtual void runProgram() = 0;
         virtual ~IController() = default;

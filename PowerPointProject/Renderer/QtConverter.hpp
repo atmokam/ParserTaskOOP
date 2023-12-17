@@ -3,9 +3,12 @@
 
 #include <QPen>
 
-class QtConverter {
-public:
-    Qt::PenStyle convertToQtPenStyle(const std::string& style);
-};
-
+namespace Renderer
+{
+    class QtConverter 
+    {
+    public:
+        Qt::PenStyle convertToQtPenStyle(const std::string& style);
+    };
+}
 #endif

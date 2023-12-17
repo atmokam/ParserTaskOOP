@@ -9,19 +9,21 @@
 #include "Application/Application.hpp"
 #include "Data/IDGenerator.hpp"
 
-
-
-void Renderer::draw(QPaintDevice& device, DimentionConverter& converter, const std::shared_ptr<Slide>& slide)
+namespace Renderer
 {
-    QPainter painter(&device);
-    App::Application& app = App::Application::getInstance();
-    ShapeLibrary shapeLibrary;   // should this be created elsewhere?
-    auto ids = app.getDocument()->getIDGenerator().getIDs();
-    for (auto& id: ids) 
-    {
-        auto shape = shapeLibrary.getShape(slide->getItem(id));
-        std::shared_ptr<IVisualDisplayable> visualShape = std::dynamic_pointer_cast<IVisualDisplayable>(shape);
-        visualShape->draw(painter, converter);
-    }
 
+    void Renderer::draw(QPaintDevice& device, Formatting::DimentionConverter& converter, const std::shared_ptr<Data::Slide>& slide)
+    {
+        QPainter painter(&device);
+        App::Application& app = App::Application::getInstance();
+        ShapeLibrary shapeLibrary;   // should this be created elsewhere?
+        auto ids = app.getDocument()->getIDGenerator().getIDs();
+        for (auto& id: ids) 
+        {
+            auto shape = shapeLibrary.getShape(slide->getItem(id));
+            std::shared_ptr<IVisualDisplayable> visualShape = std::dynamic_pointer_cast<IVisualDisplayable>(shape);
+            visualShape->draw(painter, converter);
+        }
+
+    }
 }

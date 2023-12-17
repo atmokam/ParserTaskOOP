@@ -6,74 +6,74 @@
 #include "IVisualDisplayable.hpp"
 #include "ITextDisplayable.hpp"
 #include "IShape.hpp"
+#include "Data/ItemBase.hpp"
 
-class ItemBase;
+
 class QPainter;
-class DimentionConverter;
-class ItemLeaf;
 class QRect;
 
-class ShapeBase : public IShape, public ITextDisplayable    
-{   
-protected:                                                        
-    std::shared_ptr<ItemBase> item;
-    void recursivePrintHandler(std::ostream& stream, const std::shared_ptr<ItemBase>& item);
-    void leafPrintHandler(std::ostream& stream, const std::shared_ptr<ItemLeaf>& leaf);
+namespace Renderer
+{
+    namespace Formatting
+    {
+        class DimentionConverter;
+    }
 
-    void setPainterAttributes(QPainter& painter);
-    QRect getRect(DimentionConverter& converter);
-public:
-    void print(std::ostream& stream) override;
-    ShapeBase(std::shared_ptr<ItemBase> item);
-    void setItem(std::shared_ptr<ItemBase> item);
-    virtual std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
-};
+    class ShapeBase : public IShape, public ITextDisplayable    
+    {   
+    protected:                                                        
+        std::shared_ptr<Data::ItemBase> item;
+        void recursivePrintHandler(std::ostream& stream, const std::shared_ptr<Data::ItemBase>& item);
+        void leafPrintHandler(std::ostream& stream, const std::shared_ptr<Data::ItemLeaf>& leaf);
 
-class ShapeRectangle : public ShapeBase, public IVisualDisplayable {  
-public:
-    ShapeRectangle(std::shared_ptr<ItemBase> item);
-    void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
-};
+        void setPainterAttributes(QPainter& painter);
+        QRect getRect(Formatting::DimentionConverter& converter);
+    public:
+        void print(std::ostream& stream) override;
+        ShapeBase(std::shared_ptr<Data::ItemBase> item);
+        void setItem(std::shared_ptr<Data::ItemBase> item);
+        virtual std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
+    };
 
-class ShapeEllipse : public ShapeBase, public IVisualDisplayable {
-public:
-    ShapeEllipse(std::shared_ptr<ItemBase> item);
-    void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
+    class ShapeRectangle : public ShapeBase, public IVisualDisplayable {  
+    public:
+        ShapeRectangle(std::shared_ptr<Data::ItemBase> item);
+        void draw(QPainter& painter, Formatting::DimentionConverter& converter) override;
+        std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
+    };
 
-};
+    class ShapeEllipse : public ShapeBase, public IVisualDisplayable {
+    public:
+        ShapeEllipse(std::shared_ptr<Data::ItemBase> item);
+        void draw(QPainter& painter, Formatting::DimentionConverter& converter) override;
+        std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
 
-class ShapeLine : public ShapeBase, public IVisualDisplayable {
-public:
-    ShapeLine(std::shared_ptr<ItemBase> item);
-    void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
+    };
 
-};
+    class ShapeLine : public ShapeBase, public IVisualDisplayable {
+    public:
+        ShapeLine(std::shared_ptr<Data::ItemBase> item);
+        void draw(QPainter& painter, Formatting::DimentionConverter& converter) override;
+        std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
 
-class ShapeTrapezoid : public ShapeBase, public IVisualDisplayable {
-public:
-    ShapeTrapezoid(std::shared_ptr<ItemBase> item);
-    void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
+    };
 
-};
+    class ShapeTrapezoid : public ShapeBase, public IVisualDisplayable {
+    public:
+        ShapeTrapezoid(std::shared_ptr<Data::ItemBase> item);
+        void draw(QPainter& painter, Formatting::DimentionConverter& converter) override;
+        std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
 
-class ShapeTriangle : public ShapeBase, public IVisualDisplayable {
-public:
-    ShapeTriangle(std::shared_ptr<ItemBase> item);
-    void draw(QPainter& painter, DimentionConverter& converter) override;
-    std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
+    };
 
-};
+    class ShapeTriangle : public ShapeBase, public IVisualDisplayable {
+    public:
+        ShapeTriangle(std::shared_ptr<Data::ItemBase> item);
+        void draw(QPainter& painter, Formatting::DimentionConverter& converter) override;
+        std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
 
-// class ShapeGroup : public ShapeBase, public IVisualDisplayable { 
-// public:
-//     ShapeGroup(std::shared_ptr<ItemBase> item);
-//     void draw(QPainter& painter, DimentionConverter& converter) override;
-//     std::shared_ptr<IShape> clone(std::shared_ptr<ItemBase> item) override;
+    };
+}
 
-// };
 
 #endif

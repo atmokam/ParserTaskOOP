@@ -12,28 +12,29 @@
 
 
 #include "Data/ItemAttributes.hpp"
+#include "Data/ItemBase.hpp"
+#include "Data/Slide.hpp"
+#include "Include/IDocument.hpp"
 
-class IDocument;
-class Slide;
 class QJsonDocument;
 class QJsonArray;
 class QJsonObject;
 class QJsonValueRef;
-class ItemBase;
-class ItemLeaf;
 
-class SaveLoad {
-    QJsonObject serializeLeaf(const std::shared_ptr<ItemLeaf>& item);
-    std::shared_ptr<ItemLeaf> deserializeLeaf(const QJsonObject& object);
-    void recursiveSerialize(const std::shared_ptr<ItemBase>& item, QJsonArray& slideArray);
-    void recursiveDeserialize(QJsonValueRef& item, const std::shared_ptr<Slide>& slide);
-public:
-    void save(const std::shared_ptr<IDocument>& document, QJsonDocument& stream);
-    void load(QJsonDocument& stream, const std::shared_ptr<IDocument>& document);
-};
+namespace Serialization
+{
+    class SaveLoad {
+        QJsonObject serializeLeaf(const std::shared_ptr<Data::ItemLeaf>& item);
+        std::shared_ptr<Data::ItemLeaf> deserializeLeaf(const QJsonObject& object);
+        void recursiveSerialize(const std::shared_ptr<Data::ItemBase>& item, QJsonArray& slideArray);
+        void recursiveDeserialize(QJsonValueRef& item, const std::shared_ptr<Data::Slide>& slide);
+    public:
+        void save(const std::shared_ptr<Data::IDocument>& document, QJsonDocument& stream);
+        void load(QJsonDocument& stream, const std::shared_ptr<Data::IDocument>& document);
+    };
 
 
-
+}
 
 
 #endif

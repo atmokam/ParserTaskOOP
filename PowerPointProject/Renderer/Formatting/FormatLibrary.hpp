@@ -4,13 +4,15 @@
 #include <unordered_map>
 #include <string>
 
-class FormatLibrary
+namespace Renderer::Formatting
 {
-    std::unordered_map<std::string, std::pair<double, double>> formatMap;
-public:
-    FormatLibrary();
-    std::pair<double, double> getFormat(const std::string& format); 
-};
-
+    class FormatLibrary
+    {
+        std::unordered_map<std::string, std::pair<double, double>> formatMap;
+    public:
+        FormatLibrary();
+        std::pair<double, double> getFormat(const std::string& format); 
+    };
+}
 
 #endif

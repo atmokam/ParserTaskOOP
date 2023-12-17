@@ -3,16 +3,18 @@
 
 #include <string>
 
-class DimentionConverter {
-private:
-    double dpi;
+namespace Renderer::Formatting
+{
+    class DimentionConverter {
+    private:
+        double dpi;
 
-public:
-    DimentionConverter( double dpi = 96);
+    public:
+        DimentionConverter( double dpi = 96);
 
-    int toPixels(double inches) const;
+        int toPixels(double inches) const;
 
-    double toInches(int pixels) const;
-};
-
+        double toInches(int pixels) const;
+    };
+}
 #endif

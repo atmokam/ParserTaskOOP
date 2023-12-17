@@ -187,7 +187,7 @@ namespace CLI {
     bool Validator::isValue(const std::string& inputToBeChecked, const std::string& operandName) 
     {
         if (operandName == "-name") {
-            ShapeLibrary shapeLibrary;
+            Renderer::ShapeLibrary shapeLibrary;
             return shapeLibrary.getType(inputToBeChecked) != std::nullopt;
 
         } else if (operandName == "-id") {

@@ -185,5 +185,4 @@ CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o: \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
- /usr/include/c++/11/optional \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ShapeLibrary.hpp
+ /usr/include/c++/11/optional

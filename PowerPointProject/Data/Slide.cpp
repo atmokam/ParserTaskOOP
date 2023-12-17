@@ -3,40 +3,42 @@
 #include <iostream>
 #include "Slide.hpp"
 
-
-Slide::Slide() : items(std::make_shared<ItemGroup>()) {}
-
-void Slide::addItem(std::shared_ptr<ItemBase> item) 
+namespace Data
 {
-    items->addItem(item);
-}
+    Slide::Slide() : items(std::make_shared<ItemGroup>()) {}
 
-std::shared_ptr<ItemBase> Slide::getItem(int id) const  // only leaf for now
-{  
-    auto item = items->getItem(id);
-    if(item == nullptr){
-        std::cout << "Item with id " + std::to_string(id) + " does not exist" << std::endl;
-        return nullptr;
+    void Slide::addItem(std::shared_ptr<ItemBase> item) 
+    {
+        items->addItem(item);
     }
-    return item;
-}
 
-Slide::Slide(std::shared_ptr<Slide> slide) 
-{ 
-    items = slide->items;
-} 
+    std::shared_ptr<ItemBase> Slide::getItem(int id) const  // only leaf for now
+    {  
+        auto item = items->getItem(id);
+        if(item == nullptr){
+            std::cout << "Item with id " + std::to_string(id) + " does not exist" << std::endl;
+            return nullptr;
+        }
+        return item;
+    }
 
-void Slide::removeItem(int id) 
-{
-    items->removeItem(id);
-}
+    Slide::Slide(std::shared_ptr<Slide> slide) 
+    { 
+        items = slide->items;
+    } 
 
-void Slide::swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem) 
-{
-    items->swapItems(idOfInitialItem, newItem);  
-}
+    void Slide::removeItem(int id) 
+    {
+        items->removeItem(id);
+    }
 
-std::shared_ptr<ItemGroup> Slide::getTopItem() const 
-{
-    return items;
+    void Slide::swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem) 
+    {
+        items->swapItems(idOfInitialItem, newItem);  
+    }
+
+    std::shared_ptr<ItemGroup> Slide::getTopItem() const 
+    {
+        return items;
+    }
 }

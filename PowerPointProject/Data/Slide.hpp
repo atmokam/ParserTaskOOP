@@ -7,23 +7,25 @@
 
 #include "ItemBase.hpp"
 
-class Slide {
-    std::shared_ptr<ItemGroup> items;
+namespace Data
+{
+    class Slide {
+        std::shared_ptr<ItemGroup> items;
 
 
-public:
-    Slide();
+    public:
+        Slide();
 
-    std::shared_ptr<ItemBase> getItem(int id) const;
+        std::shared_ptr<ItemBase> getItem(int id) const;
 
-    void addItem(std::shared_ptr<ItemBase> item);
-    void removeItem(int id);
-    void swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem);
+        void addItem(std::shared_ptr<ItemBase> item);
+        void removeItem(int id);
+        void swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem);
 
-    std::shared_ptr<ItemGroup> getTopItem() const;
+        std::shared_ptr<ItemGroup> getTopItem() const;
 
-    Slide(std::shared_ptr<Slide> slide);
-};
-
+        Slide(std::shared_ptr<Slide> slide);
+    };
+}
 
 #endif

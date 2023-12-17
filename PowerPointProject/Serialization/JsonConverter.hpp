@@ -4,35 +4,37 @@
 #include <utility>
 #include "Data/ItemAttributes.hpp"
 
-class Attributes;
-class Geometry;
-class Position;
-
-
 
 class QJsonValue;
 class QJsonArray;
 
-class JsonConverter {
-public:
-    JsonConverter() = default;
-    QJsonValue convertToJson(const Attributes& attribute);
-    QJsonValue convertToJson(const Geometry& geometry);
-    QJsonArray convertToJson(const Position& position); // could be done with the convertToIDs
-    QJsonArray convertToJson(const std::pair<double, double>& format);
-    QJsonValue convertToJson(const Type& type);
-    QJsonValue convertToJson(const LineType& lineType);
-    QJsonValue convertToJson(const long& color);
-    QJsonValue convertToJson(const std::vector<ID>& ids);
+namespace Renderer
+{
+    enum class Type;
+}
 
-    Attributes convertToAttributes(const QJsonValue& value);
-    Geometry convertToGeometry(const QJsonValue& value);
-    Position convertToPosition(const QJsonArray& array);
-    std::pair<double, double> convertToFormat(const QJsonArray& array);
-    Type convertToType(const QJsonValue& value);
-    LineType convertToLineType(const QJsonValue& value);
-    long convertToColor(const QJsonValue& value);
-    std::vector<ID> convertToIDs(const QJsonValue& value);    
-};
+namespace Serialization
+{
+    class JsonConverter {
+    public:
+        JsonConverter() = default;
+        QJsonValue convertToJson(const Data::Attributes& attribute);
+        QJsonValue convertToJson(const Data::Geometry& geometry);
+        QJsonArray convertToJson(const Data::Position& position); // could be done with the convertToIDs
+        QJsonArray convertToJson(const std::pair<double, double>& format);
+        QJsonValue convertToJson(const Renderer::Type& type);
+        QJsonValue convertToJson(const Data::LineType& lineType);
+        QJsonValue convertToJson(const long& color);
+        QJsonValue convertToJson(const std::vector<Data::ID>& ids);
 
+        Data::Attributes convertToAttributes(const QJsonValue& value);
+        Data::Geometry convertToGeometry(const QJsonValue& value);
+        Data::Position convertToPosition(const QJsonArray& array);
+        std::pair<double, double> convertToFormat(const QJsonArray& array);
+        Renderer::Type convertToType(const QJsonValue& value);
+        Data::LineType convertToLineType(const QJsonValue& value);
+        long convertToColor(const QJsonValue& value);
+        std::vector<Data::ID> convertToIDs(const QJsonValue& value);    
+    };
+}
 #endif

@@ -2,11 +2,20 @@
 #define IVISUALDISPLAYABLE_HPP
 
 class QPainter;
-class DimentionConverter;
 
-class IVisualDisplayable {
-public:
-    virtual void draw(QPainter& painter, DimentionConverter& converter) = 0;
-};
 
+
+namespace Renderer
+{
+    
+    namespace Formatting
+    {
+        class DimentionConverter;
+    }
+
+    class IVisualDisplayable {
+    public:
+        virtual void draw(QPainter& painter, Formatting::DimentionConverter& converter) = 0;
+    };
+}
 #endif

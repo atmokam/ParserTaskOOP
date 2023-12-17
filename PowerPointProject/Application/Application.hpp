@@ -13,8 +13,8 @@ namespace App
 {
     class Application: public IApplication, public QApplication {
         std::shared_ptr<CLI::IController> controller;
-        std::shared_ptr<IDirector> director; 
-        std::shared_ptr<IDocument> document;
+        std::shared_ptr<Director::IDirector> director; 
+        std::shared_ptr<Data::IDocument> document;
 
         
         bool exitCalled = false;
@@ -27,8 +27,8 @@ namespace App
         void quit() override;
         void buildApplication(int count, char* args[]) override;
         std::ifstream buildStream(int count, char* args[]);
-        std::shared_ptr<IDirector> getDirector() override;
-        std::shared_ptr<IDocument> getDocument() override;
+        std::shared_ptr<Director::IDirector> getDirector() override;
+        std::shared_ptr<Data::IDocument> getDocument() override;
         std::shared_ptr<CLI::IController> getController() override;
 
         Application(int count, char* args[]);

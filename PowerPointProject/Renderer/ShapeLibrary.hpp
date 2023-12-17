@@ -6,27 +6,28 @@
 #include <memory>
 #include <optional>
 
-class IShape;
-class ShapeBase;
-class ItemBase;
+#include "Data/ItemBase.hpp"
 
-enum class Type 
+namespace Renderer
 {
-    Rectangle, Trapezoid, Ellipse, Line, Triangle, Group
-};
+    class IShape;
+
+    enum class Type 
+    {
+        Rectangle, Trapezoid, Ellipse, Line, Triangle, Group
+    };
 
 
+    class ShapeLibrary {
+        std::unordered_map<Type, std::shared_ptr<IShape>> library;
+        std::unordered_map<std::string, Type> stringToType;
+    public:
+        ShapeLibrary();
+        std::shared_ptr<IShape> getShape(std::shared_ptr<Data::ItemBase> item);
+        
+        std::optional<Type> getType(const std::string& type);
+        std::string getString(const Type type);
 
-class ShapeLibrary {
-    std::unordered_map<Type, std::shared_ptr<IShape>> library;
-    std::unordered_map<std::string, Type> stringToType;
-public:
-    ShapeLibrary();
-    std::shared_ptr<IShape> getShape(std::shared_ptr<ItemBase> item);
-    
-    std::optional<Type> getType(const std::string& type);
-    std::string getString(const Type type);
-
-};
-
+    };
+}
 #endif

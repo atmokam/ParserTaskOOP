@@ -8,10 +8,9 @@
 #include <memory>
 #include <vector>
 
-#include "Application/IApplication.hpp"
-class Slide;
-class Item;
-class ItemLeaf;
+#include "Include/IApplication.hpp"
+#include "Data/ItemBase.hpp"
+
 
 namespace CLI {
 
@@ -39,7 +38,7 @@ namespace CLI {
     };
 
     class AddCommand : public Command {
-        std::shared_ptr<ItemLeaf> createItem();
+        std::shared_ptr<Data::ItemLeaf> createItem();
     public:
         
         void execute() override;

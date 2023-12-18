@@ -54,7 +54,6 @@ namespace CLI {
     { 
         if (!checkOperandQuantity(commandToBeChecked) || !checkMandatoryOperands(commandToBeChecked)) 
         {
-            std:: cout << "Invalid command: " << commandToBeChecked->getName() << std::endl;
             return false;
         }
         return true;

@@ -18,6 +18,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/IDGenerator.cpp" "CMakeFiles/PowerPointProject.dir/Data/IDGenerator.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Data/IDGenerator.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.cpp" "CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.cpp" "CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBuilder.cpp" "CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Slide.cpp" "CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Actions.cpp" "CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Director.cpp" "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o.d"

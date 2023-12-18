@@ -15,7 +15,9 @@
 #include "Renderer/Renderer.hpp"
 #include "Renderer/Formatting/DimentionConverter.hpp"
 #include "Serialization/SaveLoad.hpp"
-#include "Serialization/Converter.hpp" 
+#include "Serialization/Converter.hpp"
+
+#include "Data/ItemBuilder.hpp"
 
 namespace CLI {
 
@@ -43,46 +45,9 @@ namespace CLI {
 
     std::shared_ptr<Data::ItemLeaf> AddCommand::createItem() 
     {
-        Data::Attributes attributes; Data::Geometry geometry;
-        Serialization::Converter converter;
-        std::shared_ptr<Data::IDocument> document = application.getDirector()->getDocument();
-        Data::Attributes defaultAttributes = document->getDefaultAttributes();
-    
-        Renderer::Type type = Renderer::Type{converter.convertToType(operands["-name"][0])};
-
-        geometry.setPosition(Data::Position{converter.convertToPosition(operands["-pos"])});
-        geometry.setWidth(converter.convertToDimention(operands["-w"][0]));
-        geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
-        
-        attributes.setHexLineColor((operands.find("-lcolor") != operands.end()) ? 
-        converter.convertToColor(operands["-lcolor"][0]) : defaultAttributes.getHexLineColor().value());
-    
-        attributes.setHexFillColor((operands.find("-fcolor") != operands.end()) ?
-        converter.convertToColor(operands["-fcolor"][0]) : defaultAttributes.getHexFillColor().value());
-        
-        attributes.setLineWidth((operands.find("-lwidth") != operands.end()) ? 
-        std::stod(operands["-lwidth"][0]) : defaultAttributes.getLineWidth().value());
-        
-        attributes.setLineType((operands.find("-lstyle") != operands.end())? 
-        converter.convertToLineType(operands["-lstyle"][0]) : defaultAttributes.getLineType().value());
-
-        std::string concatenated;
-        for(const auto& text : operands["-text"])
-        {
-            concatenated += text + " ";
-        }
-
-        attributes.setText((operands.find("-text") != operands.end()) ?
-        concatenated : defaultAttributes.getText().value());
-
-        attributes.setHexTextColor((operands.find("-tcolor") != operands.end()) ?
-        converter.convertToColor(operands["-tcolor"][0]) : defaultAttributes.getHexTextColor().value());
-
-        attributes.setFontSize((operands.find("-fontsize") != operands.end()) ?
-        converter.convertToID(operands["-fontsize"][0]) : defaultAttributes.getFontSize().value());
-
-        
-        return std::make_shared<Data::ItemLeaf>(type, geometry, attributes, document->getIDGenerator().generateID()); 
+        Data::ItemBuilder builder;
+        builder.buildItem(operands);
+        return std::dynamic_pointer_cast<Data::ItemLeaf>(builder.getItem());
 
     }
 
@@ -125,67 +90,19 @@ namespace CLI {
         std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
        
         std::shared_ptr<Data::ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
-        
-        Data::Attributes attributes = item->getAttributes(); 
-        Data::Geometry geometry = item->getGeometry();
-
-
         std::shared_ptr<Data::ItemBase> newItem;
-
-        (item->getType() == Renderer::Type::Group) ? newItem = std::make_shared<Data::ItemGroup>(*std::static_pointer_cast<Data::ItemGroup>(item)) : 
-        newItem = std::make_shared<Data::ItemLeaf>(*std::static_pointer_cast<Data::ItemLeaf>(item));
-    
-
-        if(operands.find("-pos") != operands.end()) // I have an itemleaf builder in archive, but i'll finish the other tasks then come back to this
-        { 
-            geometry.setPosition(converter.convertToPosition(operands["-pos"]));
-        }
-
-        if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end())
+        if(item->getType() == Renderer::Type::Group)
         {
-            geometry.setWidth(converter.convertToDimention(operands["-w"][0])); 
-            geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
-        }
-
-        if(operands.find("-lcolor") != operands.end())
+            newItem = std::make_shared<Data::ItemGroup>(*std::static_pointer_cast<Data::ItemGroup>(item));
+        } 
+        else
         {
-            attributes.setHexLineColor(converter.convertToColor(operands["-lcolor"][0]));
+            newItem = std::make_shared<Data::ItemLeaf>(*std::static_pointer_cast<Data::ItemLeaf>(item));
         }
-
-        if(operands.find("-fcolor") != operands.end())
-        {
-            attributes.setHexFillColor(converter.convertToColor(operands["-fcolor"][0]));
-        }
-
-        if(operands.find("-lwidth") != operands.end())
-        {
-            attributes.setLineWidth(std::stod(operands["-lwidth"][0]));
-        }
-
-        if(operands.find("-lstyle") != operands.end())
-        {
-            attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
-        }
-
-        if(operands.find("-text") != operands.end())
-        {
-            attributes.setText(operands["-text"][0]);
-        }
-
-        if(operands.find("-tcolor") != operands.end())
-        {
-            attributes.setHexTextColor(converter.convertToColor(operands["-tcolor"][0]));
-        }
-
-        if(operands.find("-fontsize") != operands.end())
-        {
-            attributes.setFontSize(converter.convertToID(operands["-fontsize"][0]));
-        }
-
-
-        newItem->setAttributes(attributes);
-        newItem->setGeometry(geometry);
         
+        Data::ItemBuilder builder(newItem);
+        builder.buildItem(operands);
+        newItem = builder.getItem();
 
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
         application.getDirector()->doAction(std::make_shared<Director::ChangeItem>(newItem, currentSlideIndex));

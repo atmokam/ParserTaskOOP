@@ -369,6 +369,30 @@ Data/ItemBase.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.s
 .PHONY : Data/ItemBase.cpp.s
 
+Data/ItemBuilder.o: Data/ItemBuilder.cpp.o
+.PHONY : Data/ItemBuilder.o
+
+# target to build an object file
+Data/ItemBuilder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o
+.PHONY : Data/ItemBuilder.cpp.o
+
+Data/ItemBuilder.i: Data/ItemBuilder.cpp.i
+.PHONY : Data/ItemBuilder.i
+
+# target to preprocess a source file
+Data/ItemBuilder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.i
+.PHONY : Data/ItemBuilder.cpp.i
+
+Data/ItemBuilder.s: Data/ItemBuilder.cpp.s
+.PHONY : Data/ItemBuilder.s
+
+# target to generate assembly for a file
+Data/ItemBuilder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.s
+.PHONY : Data/ItemBuilder.cpp.s
+
 Data/Slide.o: Data/Slide.cpp.o
 .PHONY : Data/Slide.o
 
@@ -744,6 +768,9 @@ help:
 	@echo "... Data/ItemBase.o"
 	@echo "... Data/ItemBase.i"
 	@echo "... Data/ItemBase.s"
+	@echo "... Data/ItemBuilder.o"
+	@echo "... Data/ItemBuilder.i"
+	@echo "... Data/ItemBuilder.s"
 	@echo "... Data/Slide.o"
 	@echo "... Data/Slide.i"
 	@echo "... Data/Slide.s"

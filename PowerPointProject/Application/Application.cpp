@@ -8,7 +8,7 @@
 #include "Data/Document.hpp"
 #include "CLI/CommandHistory.hpp"
 
-namespace App // application stops, but doesnt quit after exit is executed (acc. to stackoverflow, there needs to be a window to quit, but there is none for now, so I guess that's why it doesn't quit)
+namespace App 
 {
     Application* Application::instance = nullptr;
 
@@ -33,7 +33,7 @@ namespace App // application stops, but doesnt quit after exit is executed (acc.
 
     void Application::quit() 
     {
-        instance->quit();
+        QMetaObject::invokeMethod(this, "quit", Qt::QueuedConnection); // finally found a solution 
     }
 
 

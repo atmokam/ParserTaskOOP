@@ -43,13 +43,13 @@ namespace CLI {
     {
         Validator validator;
         std::string name = getToken();
-        std::cout << name << std::endl;
+
         if(name.empty())
             return nullptr;
         
         std::shared_ptr<Command> command = createCommand(name); 
         if(!command)
-            throw std::invalid_argument("Invalid command: " + name);
+            throw std::invalid_argument("Invalid command name: " + name);
 
         command->setName(name);
         commandNameFlag = name;

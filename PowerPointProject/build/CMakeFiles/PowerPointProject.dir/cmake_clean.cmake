@@ -19,6 +19,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o.d"
+  "CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o"
+  "CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o"

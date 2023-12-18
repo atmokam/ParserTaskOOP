@@ -26,6 +26,7 @@ namespace Renderer
         void recursivePrintHandler(std::ostream& stream, const std::shared_ptr<Data::ItemBase>& item);
         void leafPrintHandler(std::ostream& stream, const std::shared_ptr<Data::ItemLeaf>& leaf);
 
+        
         void setPainterAttributes(QPainter& painter);
         QRect getRect(Formatting::DimentionConverter& converter);
     public:

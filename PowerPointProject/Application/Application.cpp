@@ -33,7 +33,7 @@ namespace App
 
     void Application::quit() 
     {
-        QMetaObject::invokeMethod(this, "quit", Qt::QueuedConnection); // finally found a solution 
+        QMetaObject::invokeMethod(this, "quit", Qt::QueuedConnection); // finally found a solution, instance->quit() was not working
     }
 
 

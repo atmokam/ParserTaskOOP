@@ -88,7 +88,6 @@ namespace CLI {
         Serialization::Converter converter;
         
         std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
-       
         std::shared_ptr<Data::ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
         std::shared_ptr<Data::ItemBase> newItem;
         if(item->getType() == Renderer::Type::Group)

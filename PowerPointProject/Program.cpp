@@ -6,13 +6,13 @@
 
 int main(int count, char* args[])
 {
-    App::Application application(count, args);
     try {
+        App::Application application(count, args);
        
         return application.run(count, args);
     }
     catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
     }
-    application.quit();
+
 }

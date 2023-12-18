@@ -16,20 +16,23 @@ namespace Data
         Attributes defaultAttributes;
         Renderer::Type type;
         Serialization::Converter converter;
+        Geometry newGeometry;
         if(!item)
         {
             item = std::make_shared<ItemLeaf>();
             defaultAttributes  = document->getDefaultAttributes();
             type = Renderer::Type{converter.convertToType(operands["-name"][0])};
+            item->setType(type);
+            item->setID(document->getIDGenerator().generateID());
         } 
         else
         {
-            defaultAttributes  = item->getAttributes();
+            defaultAttributes = item->getAttributes();
             type = item->getType();
+            newGeometry = item->getGeometry();
         }          
 
         Attributes newAttributes; 
-        Geometry newGeometry;
         
 
         if(operands.find("-pos") != operands.end())
@@ -70,8 +73,7 @@ namespace Data
 
         item->setAttributes(newAttributes);
         item->setGeometry(newGeometry);
-        item->setType(type);
-        item->setID(document->getIDGenerator().generateID());
+        
     }
 
     std::shared_ptr<ItemBase> ItemBuilder::getItem() const

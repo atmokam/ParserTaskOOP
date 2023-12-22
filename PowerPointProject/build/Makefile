@@ -129,6 +129,19 @@ PowerPointProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/build
 .PHONY : PowerPointProject/fast
 
+#=============================================================================
+# Target rules for targets named PowerPointProject_autogen
+
+# Build rule for target.
+PowerPointProject_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PowerPointProject_autogen
+.PHONY : PowerPointProject_autogen
+
+# fast build rule for target.
+PowerPointProject_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject_autogen.dir/build.make CMakeFiles/PowerPointProject_autogen.dir/build
+.PHONY : PowerPointProject_autogen/fast
+
 Application/Application.o: Application/Application.cpp.o
 .PHONY : Application/Application.o
 
@@ -465,6 +478,30 @@ Director/Director.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Director/Director.cpp.s
 .PHONY : Director/Director.cpp.s
 
+PowerPointProject_autogen/mocs_compilation.o: PowerPointProject_autogen/mocs_compilation.cpp.o
+.PHONY : PowerPointProject_autogen/mocs_compilation.o
+
+# target to build an object file
+PowerPointProject_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/PowerPointProject_autogen/mocs_compilation.cpp.o
+.PHONY : PowerPointProject_autogen/mocs_compilation.cpp.o
+
+PowerPointProject_autogen/mocs_compilation.i: PowerPointProject_autogen/mocs_compilation.cpp.i
+.PHONY : PowerPointProject_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+PowerPointProject_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/PowerPointProject_autogen/mocs_compilation.cpp.i
+.PHONY : PowerPointProject_autogen/mocs_compilation.cpp.i
+
+PowerPointProject_autogen/mocs_compilation.s: PowerPointProject_autogen/mocs_compilation.cpp.s
+.PHONY : PowerPointProject_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+PowerPointProject_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/PowerPointProject_autogen/mocs_compilation.cpp.s
+.PHONY : PowerPointProject_autogen/mocs_compilation.cpp.s
+
 Program.o: Program.cpp.o
 .PHONY : Program.o
 
@@ -729,6 +766,78 @@ Serialization/SaveLoad.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.s
 .PHONY : Serialization/SaveLoad.cpp.s
 
+UI/CommandPane.o: UI/CommandPane.cpp.o
+.PHONY : UI/CommandPane.o
+
+# target to build an object file
+UI/CommandPane.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.o
+.PHONY : UI/CommandPane.cpp.o
+
+UI/CommandPane.i: UI/CommandPane.cpp.i
+.PHONY : UI/CommandPane.i
+
+# target to preprocess a source file
+UI/CommandPane.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.i
+.PHONY : UI/CommandPane.cpp.i
+
+UI/CommandPane.s: UI/CommandPane.cpp.s
+.PHONY : UI/CommandPane.s
+
+# target to generate assembly for a file
+UI/CommandPane.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.s
+.PHONY : UI/CommandPane.cpp.s
+
+UI/Controller.o: UI/Controller.cpp.o
+.PHONY : UI/Controller.o
+
+# target to build an object file
+UI/Controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o
+.PHONY : UI/Controller.cpp.o
+
+UI/Controller.i: UI/Controller.cpp.i
+.PHONY : UI/Controller.i
+
+# target to preprocess a source file
+UI/Controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.i
+.PHONY : UI/Controller.cpp.i
+
+UI/Controller.s: UI/Controller.cpp.s
+.PHONY : UI/Controller.s
+
+# target to generate assembly for a file
+UI/Controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.s
+.PHONY : UI/Controller.cpp.s
+
+UI/MainWindow.o: UI/MainWindow.cpp.o
+.PHONY : UI/MainWindow.o
+
+# target to build an object file
+UI/MainWindow.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o
+.PHONY : UI/MainWindow.cpp.o
+
+UI/MainWindow.i: UI/MainWindow.cpp.i
+.PHONY : UI/MainWindow.i
+
+# target to preprocess a source file
+UI/MainWindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.i
+.PHONY : UI/MainWindow.cpp.i
+
+UI/MainWindow.s: UI/MainWindow.cpp.s
+.PHONY : UI/MainWindow.s
+
+# target to generate assembly for a file
+UI/MainWindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.s
+.PHONY : UI/MainWindow.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -737,6 +846,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... PowerPointProject_autogen"
 	@echo "... PowerPointProject"
 	@echo "... Application/Application.o"
 	@echo "... Application/Application.i"
@@ -780,6 +890,9 @@ help:
 	@echo "... Director/Director.o"
 	@echo "... Director/Director.i"
 	@echo "... Director/Director.s"
+	@echo "... PowerPointProject_autogen/mocs_compilation.o"
+	@echo "... PowerPointProject_autogen/mocs_compilation.i"
+	@echo "... PowerPointProject_autogen/mocs_compilation.s"
 	@echo "... Program.o"
 	@echo "... Program.i"
 	@echo "... Program.s"
@@ -813,6 +926,15 @@ help:
 	@echo "... Serialization/SaveLoad.o"
 	@echo "... Serialization/SaveLoad.i"
 	@echo "... Serialization/SaveLoad.s"
+	@echo "... UI/CommandPane.o"
+	@echo "... UI/CommandPane.i"
+	@echo "... UI/CommandPane.s"
+	@echo "... UI/Controller.o"
+	@echo "... UI/Controller.i"
+	@echo "... UI/Controller.s"
+	@echo "... UI/MainWindow.o"
+	@echo "... UI/MainWindow.i"
+	@echo "... UI/MainWindow.s"
 .PHONY : help
 
 

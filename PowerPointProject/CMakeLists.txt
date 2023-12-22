@@ -11,6 +11,8 @@ find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 find_package(Qt6 COMPONENTS Gui REQUIRED)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
 
 add_compile_options(-I.  -g)
 
@@ -20,7 +22,6 @@ add_executable(PowerPointProject
 CLI/Controller.cpp 
 CLI/Validator.cpp  
 Data/Slide.cpp 
-Program.cpp 
 CLI/Parser.cpp 
 Data/Document.cpp 
 Serialization/Converter.cpp 
@@ -41,6 +42,11 @@ Serialization/JsonConverter.cpp
 Data/IDGenerator.cpp
 Renderer/QtConverter.cpp
 Renderer/TextFontAdjuster.cpp
-Data/ItemBuilder.cpp )
+Data/ItemBuilder.cpp
+UI/Controller.cpp
+UI/CommandPane.cpp
+UI/MainWindow.cpp
+Program.cpp 
+ )
 
 target_link_libraries(PowerPointProject PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)

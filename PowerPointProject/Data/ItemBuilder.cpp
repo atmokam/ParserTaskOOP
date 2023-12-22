@@ -11,7 +11,7 @@ namespace Data
 
     void ItemBuilder::buildItem(std::unordered_map<std::string, std::vector<std::string>>& operands)
     {
-        App::Application& application = App::Application::getInstance();
+        App::Application& application = *App::Application::getInstance();
         std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
         Attributes defaultAttributes;
         Renderer::Type type;

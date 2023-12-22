@@ -11,7 +11,7 @@ namespace Renderer
     {
     public:
         TextFontAdjuster() = default;
-        int adjustFont(QFont& font, QRect& boundingRectangle,  const QString& text);
+        void adjustFont(QFont& font, QRect& boundingRectangle,  const QString& text);
     };
 }
 #endif

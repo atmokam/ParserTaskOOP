@@ -22,6 +22,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Slide.cpp" "CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Actions.cpp" "CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Director.cpp" "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/PowerPointProject_autogen/mocs_compilation.cpp" "CMakeFiles/PowerPointProject.dir/PowerPointProject_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/PowerPointProject_autogen/mocs_compilation.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Program.cpp" "CMakeFiles/PowerPointProject.dir/Program.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Program.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.cpp" "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/FormatLibrary.cpp" "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.o.d"
@@ -33,6 +34,9 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Converter.cpp" "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/JsonConverter.cpp" "CMakeFiles/PowerPointProject.dir/Serialization/JsonConverter.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Serialization/JsonConverter.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.cpp" "CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/UI/CommandPane.cpp" "CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/UI/Controller.cpp" "CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/UI/MainWindow.cpp" "CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o.d"
   )
 
 # Targets to which this target links.

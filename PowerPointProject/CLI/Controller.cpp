@@ -8,16 +8,15 @@
 
 namespace CLI {
 
-    Controller::Controller(std::istream& input, std::ostream& output) : input(input), output(output) {}
-
-    void Controller::runProgram() {
-        App::Application& application = App::Application::getInstance(); 
+    
+    // void Controller::runProgram() {
+    //     App::Application& application = *App::Application::getInstance(); 
       
-        while (!application.isExitCalled()) 
-        {
-            runCommand(input);
-        }
-    }
+    //     while (!application.isExitCalled()) 
+    //     {
+    //         runCommand(input);
+    //     }
+    // }
 
     void Controller::runCommand(std::istream& input) // also needed for command history
     {
@@ -29,13 +28,13 @@ namespace CLI {
         pCmd->execute();
     }
 
-    std::ostream& Controller::getOutputStream() const
+    std::stringstream& Controller::getOutputStream()
     {
         return output;
     }
 
-    std::istream& Controller::getInputStream() const
-    {
-        return input;
-    }
+    // std::istream& Controller::getInputStream() const
+    // {
+    //     return input;
+    // }
 }

@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <iostream>
 #include "Slide.hpp"
+#include "Application/Application.hpp"
 
 namespace Data
 {
@@ -15,8 +16,9 @@ namespace Data
     std::shared_ptr<ItemBase> Slide::getItem(int id) const  // only leaf for now
     {  
         auto item = items->getItem(id);
+        auto controller = App::Application::getInstance()->getController();
         if(item == nullptr){
-            std::cout << "Item with id " + std::to_string(id) + " does not exist" << std::endl;
+            controller->getOutputStream() << "Item with id " + std::to_string(id) + " does not exist" << std::endl;
             return nullptr;
         }
         return item;

@@ -1,5 +1,5 @@
 #include <fstream>
-
+#include <iostream>
 #include "Application.hpp"
 #include "CLI/Controller.hpp"
 #include "Director/Director.hpp" 
@@ -10,40 +10,39 @@
 
 namespace App 
 {
-    Application* Application::instance = nullptr;
-
-    Application::Application(int count, char* args[]) : QApplication(count, args), file(buildStream(count, args)), input(file.is_open() ? file : std::cin)
-    { 
-        instance = this;
+    Application::Application(int &argc, char **argv) : QApplication(argc, argv) // This was the culprit, I had not noticed that there needed to be a & before int, that was the segfault reason
+    {                                                                           // the GUI window now opens without problem
+        director = std::make_shared<Director::Director>();
+        document = std::make_shared<Data::Document>();
+        std::ifstream input = buildStream(argc, argv);
+        controller = std::make_unique<Controller>(input);
     }
 
-    Application& Application::getInstance() 
+    Application* Application::getInstance() 
     {
-        if(instance == nullptr)
-            throw std::runtime_error("Application has not been initialized");
-        return *instance;
+        return dynamic_cast<Application*>(QApplication::instance());
     }
 
     int Application::run(int count, char* args[]) 
     {
         buildApplication(count, args);
-        controller->runProgram();
-        return instance->exec(); 
+       // controller->runProgram();
+        
     }
 
     void Application::quit() 
     {
-        QMetaObject::invokeMethod(this, "quit", Qt::QueuedConnection); // finally found a solution, instance->quit() was not working
+       QApplication::quit();
     }
 
 
-    void Application::buildApplication(int count, char* args[]) 
+    void Application::buildApplication(int count, char* args[]) // remove this
     {
         director = std::make_shared<Director::Director>();
         document = std::make_shared<Data::Document>();
         std::ostream& output = std::cout;
 
-        controller = std::make_unique<CLI::Controller>(input, output);
+     
     }
 
     void Application::callExit() 
@@ -67,27 +66,29 @@ namespace App
         return document;
     }
 
-    std::ifstream Application::buildStream(int count, char* args[]) 
+    std::ifstream Application::buildStream(int& count, char* args[]) 
     {
         std::ifstream stream;
+        
         if(args[1] == nullptr)
             return stream;
-        else if (std::string(args[1]) == "-filename") {
+
+        else if (std::string(args[1]) == "-filename") 
+        {
             stream.open(args[2]);
         }
         return stream;
 
     }
 
-    std::shared_ptr<CLI::IController> Application::getController() 
+    std::shared_ptr<Controller> Application::getController() 
     {
         return controller;
     }
     
     Application::~Application() 
     {
-        quit();
-
+       
     }
 
 }

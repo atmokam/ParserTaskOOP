@@ -16,12 +16,11 @@
 #include "Renderer/Formatting/DimentionConverter.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Serialization/Converter.hpp"
-
 #include "Data/ItemBuilder.hpp"
 
 namespace CLI {
 
-    Command::Command() : application(App::Application::getInstance()) {}
+    Command::Command() : application(*App::Application::getInstance()) {}
 
     void AddCommand::execute() 
     {  
@@ -64,13 +63,13 @@ namespace CLI {
                 return;
             }
             application.getDirector()->doAction(std::make_shared<Director::RemoveItem>(item, currentSlideIndex));
+            application.getDocument()->getIDGenerator().removeID(item->getID());
         }
         else if(operands.find("-slide") != operands.end())
         {
             if(application.getDirector()->getDocument()->size() == 1)
             {
-                std::ostream& out = application.getController()->getOutputStream() ;
-                out << "Cannot remove slide, only 1 left" << std::endl;
+                application.getController()->getOutputStream() << "Cannot remove slide, only 1 left" << std::endl;
             } 
             else 
             {
@@ -88,20 +87,76 @@ namespace CLI {
         Serialization::Converter converter;
         
         std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
+       
         std::shared_ptr<Data::ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
-        std::shared_ptr<Data::ItemBase> newItem;
-        if(item->getType() == Renderer::Type::Group)
-        {
-            newItem = std::make_shared<Data::ItemGroup>(*std::static_pointer_cast<Data::ItemGroup>(item));
-        } 
-        else
-        {
-            newItem = std::make_shared<Data::ItemLeaf>(*std::static_pointer_cast<Data::ItemLeaf>(item));
-        }
         
-        Data::ItemBuilder builder(newItem);
-        builder.buildItem(operands);
-        newItem = builder.getItem();
+        Data::Attributes attributes = item->getAttributes(); 
+        Data::Geometry geometry = item->getGeometry();
+
+
+        std::shared_ptr<Data::ItemBase> newItem;
+
+        (item->getType() == Renderer::Type::Group) ? newItem = std::make_shared<Data::ItemGroup>(*std::static_pointer_cast<Data::ItemGroup>(item)) : 
+        newItem = std::make_shared<Data::ItemLeaf>(*std::static_pointer_cast<Data::ItemLeaf>(item));
+    
+
+        if(operands.find("-pos") != operands.end()) 
+        { 
+            geometry.setPosition(converter.convertToPosition(operands["-pos"]));
+        }
+
+        if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end())
+        {
+            geometry.setWidth(converter.convertToDimention(operands["-w"][0])); 
+            geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
+        }
+
+        if(operands.find("-lcolor") != operands.end())
+        {
+            attributes.setHexLineColor(converter.convertToColor(operands["-lcolor"][0]));
+        }
+
+        if(operands.find("-fcolor") != operands.end())
+        {
+            attributes.setHexFillColor(converter.convertToColor(operands["-fcolor"][0]));
+        }
+
+        if(operands.find("-lwidth") != operands.end())
+        {
+            attributes.setLineWidth(std::stod(operands["-lwidth"][0]));
+        }
+
+        if(operands.find("-lstyle") != operands.end())
+        {
+            attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
+        }
+
+        
+
+        if(operands.find("-text") != operands.end())
+        {
+            std::string concatenated;
+            for(const auto& text : operands["-text"])
+            {
+                concatenated += text + " ";
+            }
+            attributes.setText(concatenated);
+        }
+
+        if(operands.find("-tcolor") != operands.end())
+        {
+            attributes.setHexTextColor(converter.convertToColor(operands["-tcolor"][0]));
+        }
+
+        if(operands.find("-fontsize") != operands.end())
+        {
+            attributes.setFontSize(converter.convertToID(operands["-fontsize"][0]));
+        }
+
+
+        newItem->setAttributes(attributes);
+        newItem->setGeometry(geometry);
+        
 
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
         application.getDirector()->doAction(std::make_shared<Director::ChangeItem>(newItem, currentSlideIndex));
@@ -121,18 +176,7 @@ namespace CLI {
         std::string path = operands["-path"][0] + operands["-filename"][0] + ".json";
 
         std::ifstream file (path);
-        if(file.good())
-        {
-            std::ostream& out = application.getController()->getOutputStream();
-            out << "File already exists, do you want to overwrite it? (y/n)" << std::endl;
-            file.close();
-            char answer;
-            std::istream& in = application.getController()->getInputStream();
-            in >> answer; 
-            if(answer == 'n')
-                return;
-        }
-    
+        
         std::ofstream output (path);
         if(output.is_open())
         {
@@ -187,9 +231,8 @@ namespace CLI {
         {
             std::shared_ptr<Data::Slide> current = application.getDirector()->getCurrentSlide();
             Renderer::ShapeBase shape(current->getTopItem());
-            std::ostream& out = application.getController()->getOutputStream() ;
-            shape.print(out);
-            out << std::endl;
+            shape.print(application.getController()->getOutputStream());
+            application.getController()->getOutputStream() << std::endl;
 
         }
     }
@@ -202,16 +245,16 @@ namespace CLI {
         size_t currentSlideIndex  = 0;
         for (const auto& slide : *document)
         {
-            std::ostream& out = application.getController()->getOutputStream();
-            out << "Slide: " << currentSlideIndex << std::endl;
+            
+            application.getController()->getOutputStream() << "Slide: " << currentSlideIndex << std::endl;
             auto items = slide->getTopItem();
             for(const auto& item : *items)
             {
-               out << item.first << "\t";
+               application.getController()->getOutputStream() << item.first << "\t";
             }
 
             currentSlideIndex++;
-            out << std::endl;
+            application.getController()->getOutputStream() << std::endl;
         }
         
     }
@@ -252,15 +295,17 @@ namespace CLI {
 
     void ExitCommand::execute()    
     {
+        if( operands.find("-force") != operands.end())
+        {
+            application.callExit();
+            application.quit();
+            return;
+        }
+
         if( application.getDirector()->isDocumentModified())
         {
-            std::ostream& out = application.getController()->getOutputStream();
-            out << "You have unsaved changes, are you sure you want to exit? (y/n)" << std::endl;
-            char answer;
-            std::istream& in = application.getController()->getInputStream();
-            in >> answer;
-            if(answer == 'n')
-                return;
+            application.getController()->getOutputStream() << "You have unsaved changes, please save them before exit." << std::endl;
+            return;
         }
 
         application.callExit();
@@ -281,6 +326,7 @@ namespace CLI {
         renderer.draw(image, converter, slide);
         QString path = QString::fromStdString(operands["-path"][0] + operands["-filename"][0] + ".png");
         image.save(path);
+        
 
     }
 

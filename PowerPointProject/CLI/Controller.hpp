@@ -1,24 +1,23 @@
 #ifndef CLICONTROLLER_HPP
 #define CLICONTROLLER_HPP
 
-#include <istream>
+#include <iostream>
 #include <string>
+#include <sstream>
 
 
 #include "IController.hpp"
-#include "CommandHistory.hpp"
+#include "CommandHistory.hpp"//parsed cmd and string
 namespace CLI {
 
     class Controller : public IController {
-        std::istream& input;
-        std::ostream& output;
+        std::stringstream output;
     public:
         Controller() = default;
-        Controller(std::istream& input, std::ostream& output); 
         void runCommand(std::istream& input);
-        std::ostream& getOutputStream() const override;
-        std::istream& getInputStream() const override;
-        void runProgram() override;
+        std::stringstream& getOutputStream() override;
+        //std::istream& getInputStream() const override;
+        //void runProgram() override;
         
     };
 }

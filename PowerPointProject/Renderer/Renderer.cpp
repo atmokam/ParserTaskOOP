@@ -15,7 +15,7 @@ namespace Renderer
     void Renderer::draw(QPaintDevice& device, Formatting::DimentionConverter& converter, const std::shared_ptr<Data::Slide>& slide)
     {
         QPainter painter(&device);
-        App::Application& app = App::Application::getInstance();
+        App::Application& app = *App::Application::getInstance();
         ShapeLibrary shapeLibrary;   // should this be created elsewhere?
         auto ids = app.getDocument()->getIDGenerator().getIDs();
         for (auto& id: ids) 

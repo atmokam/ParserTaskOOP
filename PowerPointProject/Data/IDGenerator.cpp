@@ -1,4 +1,5 @@
 #include "IDGenerator.hpp"
+#include <algorithm>
 namespace Data 
 {
     IDGenerator::IDGenerator()
@@ -16,6 +17,13 @@ namespace Data
     void IDGenerator::addID(ID id)
     {
         ids.push_back(id);
+    }
+
+    void IDGenerator::removeID(ID id)
+    {
+        auto it = std::find(ids.begin(), ids.end(), id);
+        if(it != ids.end())
+            ids.erase(it);
     }
 
     std::vector<ID> IDGenerator::getIDs() const

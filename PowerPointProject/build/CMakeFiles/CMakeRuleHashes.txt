@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+c8e89235a38c8e5f5dc3390f1bfa5f58 CMakeFiles/PowerPointProject_autogen

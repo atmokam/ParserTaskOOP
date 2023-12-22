@@ -25,7 +25,7 @@ namespace CLI {
             {"prev", {}},
             {"undo", {}},
             {"redo", {}},
-            {"exit", {}},
+            {"exit", {{"-force", 0}}},
             {"draw", {{"-path", 1}, {"-filename", 1}}}
         };
 

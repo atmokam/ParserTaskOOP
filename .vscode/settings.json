@@ -67,5 +67,6 @@
         "iomanip": "cpp",
         "cinttypes": "cpp"
     },
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "cmake.sourceDirectory": "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject"
 }

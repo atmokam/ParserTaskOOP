@@ -22,7 +22,7 @@ namespace CLI {
     protected:
         OperandsContainer operands;
         std::string name;
-        App::IApplication& application;
+        App::IApplication& application; // this should probably be removed
 
     public:
         Command();

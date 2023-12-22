@@ -14,6 +14,7 @@ namespace Data
         IDGenerator();
         ID generateID();
         void addID(ID id);
+        void removeID(ID id);
         std::vector<ID> getIDs() const;
         void setIDs(const std::vector<ID> ids);
         ID getMaximumID() const;

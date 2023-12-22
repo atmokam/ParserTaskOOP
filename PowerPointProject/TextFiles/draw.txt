@@ -4,5 +4,4 @@ add -name rectangle -pos 4, 4 -w 3 -h 2 -text text font is resized
 
 draw -path /home/atmokam/Desktop/OOP/ParserTaskOOP/ -filename textPrinted
 
-exit
-y
+exit -force

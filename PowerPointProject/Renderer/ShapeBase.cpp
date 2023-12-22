@@ -144,11 +144,13 @@ namespace Renderer
         auto text = item->getAttributes().getText();
         QString qText(QString::fromStdString(text.value()));
 
+        // create a rect that should set the margins for the text
+
         auto fontSize = item->getAttributes().getFontSize().value();
         TextFontAdjuster fontAdjuster; // adjusts according to wordwrap
         QFont font("Arial", fontSize);
         fontAdjuster.adjustFont(font, rect, qText);
-        painter.setFont(font); 
+        painter.setFont(font);
 
         QTextOption option(Qt::AlignCenter);
         option.setWrapMode(QTextOption::WordWrap);

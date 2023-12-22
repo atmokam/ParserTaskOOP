@@ -19,6 +19,9 @@ namespace Data
         defaultAttributes.setHexTextColor(converter.convertToColor("#000000"));
         defaultAttributes.setFontSize(12);
         defaultAttributes.setText("");
+        defaultAttributes.setHexTextColor(converter.convertToColor("#000000"));
+        
+        
 
         format = formatMap.getFormat("A4");
 

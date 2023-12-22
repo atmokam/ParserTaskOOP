@@ -1,3 +1,4 @@
 /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles/PowerPointProject.dir
 /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles/edit_cache.dir
 /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles/rebuild_cache.dir
+/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles/PowerPointProject_autogen.dir

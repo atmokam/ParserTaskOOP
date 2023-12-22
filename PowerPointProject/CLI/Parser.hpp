@@ -17,13 +17,13 @@ namespace CLI
 
         bool IsNewLine(char c) const;
         void processArgument(std::string argument, std::shared_ptr<Command>& command);
+        void skipSpaces();
+        std::string getToken();
         
     public:
         Parser(std::istream& input);
         std::shared_ptr<Command> parse();
-        void skipSpaces();
-        std::string getToken();
-        void reset();
+        
     };
 }
 

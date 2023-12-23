@@ -18,7 +18,8 @@
 #include "Serialization/Converter.hpp"
 #include "Data/ItemBuilder.hpp"
 
-namespace CLI {
+namespace CLI 
+{
 
     Command::Command() : application(*App::Application::getInstance()) {}
 
@@ -45,7 +46,7 @@ namespace CLI {
     std::shared_ptr<Data::ItemLeaf> AddCommand::createItem() 
     {
         Data::ItemBuilder builder;
-        builder.buildItem(operands);
+        builder.buildItemLeaf(operands);
         return std::dynamic_pointer_cast<Data::ItemLeaf>(builder.getItem());
 
     }
@@ -84,80 +85,17 @@ namespace CLI {
 
     void ChangeCommand::execute() 
     {
-        Serialization::Converter converter;
-        
         std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
-       
         std::shared_ptr<Data::ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
         
-        Data::Attributes attributes = item->getAttributes(); 
-        Data::Geometry geometry = item->getGeometry();
-
-
         std::shared_ptr<Data::ItemBase> newItem;
 
         (item->getType() == Renderer::Type::Group) ? newItem = std::make_shared<Data::ItemGroup>(*std::static_pointer_cast<Data::ItemGroup>(item)) : 
         newItem = std::make_shared<Data::ItemLeaf>(*std::static_pointer_cast<Data::ItemLeaf>(item));
-    
 
-        if(operands.find("-pos") != operands.end()) 
-        { 
-            geometry.setPosition(converter.convertToPosition(operands["-pos"]));
-        }
-
-        if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end())
-        {
-            geometry.setWidth(converter.convertToDimention(operands["-w"][0])); 
-            geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
-        }
-
-        if(operands.find("-lcolor") != operands.end())
-        {
-            attributes.setHexLineColor(converter.convertToColor(operands["-lcolor"][0]));
-        }
-
-        if(operands.find("-fcolor") != operands.end())
-        {
-            attributes.setHexFillColor(converter.convertToColor(operands["-fcolor"][0]));
-        }
-
-        if(operands.find("-lwidth") != operands.end())
-        {
-            attributes.setLineWidth(std::stod(operands["-lwidth"][0]));
-        }
-
-        if(operands.find("-lstyle") != operands.end())
-        {
-            attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
-        }
-
-        
-
-        if(operands.find("-text") != operands.end())
-        {
-            std::string concatenated;
-            for(const auto& text : operands["-text"])
-            {
-                concatenated += text + " ";
-            }
-            attributes.setText(concatenated);
-        }
-
-        if(operands.find("-tcolor") != operands.end())
-        {
-            attributes.setHexTextColor(converter.convertToColor(operands["-tcolor"][0]));
-        }
-
-        if(operands.find("-fontsize") != operands.end())
-        {
-            attributes.setFontSize(converter.convertToID(operands["-fontsize"][0]));
-        }
-
-
-        newItem->setAttributes(attributes);
-        newItem->setGeometry(geometry);
-        
-
+        Data::ItemBuilder builder(newItem);
+        builder.changeExistingItem(operands);
+        // TODO: chnage to Atribs and Geometry
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
         application.getDirector()->doAction(std::make_shared<Director::ChangeItem>(newItem, currentSlideIndex));
 

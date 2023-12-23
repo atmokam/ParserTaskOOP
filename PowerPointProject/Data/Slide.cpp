@@ -15,14 +15,7 @@ namespace Data
 
     std::shared_ptr<ItemBase> Slide::getItem(int id) const  // only leaf for now
     {  
-        auto item = items->getItem(id);
-        auto controller = App::Application::getInstance()->getController();
-        if(item == nullptr)
-        {
-            controller->getOutputStream() << "Item with id " + std::to_string(id) + " does not exist" << std::endl;
-            return nullptr;
-        }
-        return item;
+        return items->getItem(id);
     }
 
     Slide::Slide(std::shared_ptr<Slide> slide) 

@@ -20,9 +20,13 @@ namespace Renderer
         auto ids = app.getDocument()->getIDGenerator().getIDs();
         for (auto& id: ids) 
         {
-            auto shape = shapeLibrary.getShape(slide->getItem(id));
-            std::shared_ptr<IVisualDisplayable> visualShape = std::dynamic_pointer_cast<IVisualDisplayable>(shape);
-            visualShape->draw(painter, converter);
+            auto item = slide->getItem(id);
+            if(item)
+            {
+                auto shape = shapeLibrary.getShape(item);
+                std::shared_ptr<IVisualDisplayable> visualShape = std::dynamic_pointer_cast<IVisualDisplayable>(shape);
+                visualShape->draw(painter, converter);
+            }
         }
 
     }

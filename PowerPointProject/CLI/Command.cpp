@@ -95,7 +95,7 @@ namespace CLI
 
         Data::ItemBuilder builder(newItem);
         builder.changeExistingItem(operands);
-        // TODO: chnage to Atribs and Geometry
+        // TODO: change to Attribs and Geometry
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
         application.getDirector()->doAction(std::make_shared<Director::ChangeItem>(newItem, currentSlideIndex));
 
@@ -123,7 +123,7 @@ namespace CLI
         }
         else
         {
-            throw std::runtime_error("Could not open file");
+            application.getController()->getOutputStream() << "Could not open file" << std::endl;
         }
 
         application.getDirector()->setDocumentModified(false);
@@ -136,7 +136,7 @@ namespace CLI
         file.open(operands["-path"][0]);
         if(!file.is_open())
         {
-            throw std::runtime_error("Could not open file");
+           application.getController()->getOutputStream() << "Could not open file" << std::endl;
         }
         std::string contents{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
         QJsonDocument content = QJsonDocument::fromJson(contents.c_str());
@@ -235,14 +235,14 @@ namespace CLI
     {
         if( operands.find("-force") != operands.end())
         {
-            application.callExit();
             application.quit();
             return;
         }
 
         if( application.getDirector()->isDocumentModified())
         {
-            application.getController()->getOutputStream() << "You have unsaved changes, please save them before exit." << std::endl;
+            application.getController()->getOutputStream() << 
+                "You have unsaved changes, please save them before exit." << std::endl;
             return;
         }
 

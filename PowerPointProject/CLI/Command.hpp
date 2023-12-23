@@ -59,6 +59,8 @@ namespace CLI {
     };
 
     class ChangeCommand : public Command {
+        bool trySetAttributes(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Attributes& attributes);
+        bool trySetGeometry(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Geometry& geometry);
     public:
         
         void execute() override;

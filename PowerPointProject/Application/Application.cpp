@@ -20,7 +20,7 @@ namespace App
 
     Application* Application::getInstance() 
     {
-        return dynamic_cast<Application*>(QApplication::instance());
+        return static_cast<Application*>(QApplication::instance());
     }
 
     int Application::run(int count, char* args[]) 

@@ -85,22 +85,114 @@ namespace CLI
 
     void ChangeCommand::execute() 
     {
+        bool isChanged = false;
         std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
         std::shared_ptr<Data::ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
-        
-        std::shared_ptr<Data::ItemBase> newItem;
-
-        (item->getType() == Renderer::Type::Group) ? newItem = std::make_shared<Data::ItemGroup>(*std::static_pointer_cast<Data::ItemGroup>(item)) : 
-        newItem = std::make_shared<Data::ItemLeaf>(*std::static_pointer_cast<Data::ItemLeaf>(item));
-
-        Data::ItemBuilder builder(newItem);
-        builder.changeExistingItem(operands);
-        // TODO: change to Attribs and Geometry
         size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-        application.getDirector()->doAction(std::make_shared<Director::ChangeItem>(newItem, currentSlideIndex));
 
-        application.getDirector()->setDocumentModified(true);
+        Data::Attributes tempAttributes = item->getAttributes();
+        Data::Geometry tempGeometry = item->getGeometry();
+
+        if(item)            // I want to be able to set attribs and geom by checking their appropriate operands, if they exist, attribs or geometry will be changed
+        {
+            Data::ID id = item->getID();
+            if(trySetAttributes(operands, tempAttributes))
+            {
+                application.getDirector()->doAction(std::make_shared<Director::ChangeAttributes>(tempAttributes, id, currentSlideIndex));
+                isChanged = true;
+            }
+            if(trySetGeometry(operands, tempGeometry))
+            {
+                application.getDirector()->doAction(std::make_shared<Director::ChangeGeometry>(tempGeometry, id, currentSlideIndex));
+                isChanged = true;
+            }
+        }
+
+        application.getDirector()->setDocumentModified(isChanged);
     }
+
+    // I think the trySet methods could be in a separate class
+
+    
+    bool ChangeCommand::trySetGeometry(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Geometry& geometry)
+    {
+        bool success = false;
+
+        Serialization::Converter converter;
+        if(operands.find("-pos") != operands.end()) 
+        { 
+            geometry.setPosition(converter.convertToPosition(operands["-pos"]));
+            success = true;
+        }
+
+        if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end())
+        {
+            geometry.setWidth(converter.convertToDimention(operands["-w"][0])); 
+            geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
+            success = true;
+        }
+
+        return success;
+    }
+
+
+    bool ChangeCommand::trySetAttributes(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Attributes& attributes)
+    {
+        bool success = false;
+
+        Serialization::Converter converter;
+        if(operands.find("-lcolor") != operands.end())
+        {
+            attributes.setHexLineColor(converter.convertToColor(operands["-lcolor"][0]));
+            success = true;
+        }
+
+        if(operands.find("-fcolor") != operands.end())
+        {
+            attributes.setHexFillColor(converter.convertToColor(operands["-fcolor"][0]));
+            success = true;
+        }
+
+        if(operands.find("-lwidth") != operands.end())
+        {
+            attributes.setLineWidth(std::stod(operands["-lwidth"][0]));
+            success = true;
+        }
+
+        if(operands.find("-lstyle") != operands.end())
+        {
+            attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
+            success = true;
+        }
+
+        if(operands.find("-text") != operands.end())
+        {
+            std::string concatenated;
+            for(const auto& text : operands["-text"])
+            {
+                concatenated += text + " ";
+            }
+            attributes.setText(concatenated);
+            success = true;
+        }
+
+        if(operands.find("-tcolor") != operands.end())
+        {
+            attributes.setHexTextColor(converter.convertToColor(operands["-tcolor"][0]));
+            success = true;
+        }
+
+        if(operands.find("-fontsize") != operands.end())
+        {
+            attributes.setFontSize(converter.convertToID(operands["-fontsize"][0]));
+            success = true;
+        }
+
+        return success;
+
+    }
+
+
 
 
     void SaveCommand::execute() 

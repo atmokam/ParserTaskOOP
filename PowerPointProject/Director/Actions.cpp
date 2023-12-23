@@ -41,12 +41,33 @@ namespace Director
         return std::make_shared<AddSlide>(slide, slideNumber);
     }
 
-    ChangeItem::ChangeItem(const std::shared_ptr<Data::ItemBase>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}   
-
-    std::shared_ptr<IAction> ChangeItem::execute(std::shared_ptr<Data::IDocument>& document) {
-        std::shared_ptr<Data::ItemBase> oldItem = document->getSlide(slideNumber)->getItem(item->getID()); // item has the same id number
-        document->getSlide(slideNumber)->swapItems(item->getID(), item);
-        return std::make_shared<ChangeItem>(oldItem, slideNumber);
+    ChangeAttributes::ChangeAttributes(Data::Attributes& newAttributes, Data::ID itemId, size_t slideNumber) : newAttributes(newAttributes), itemId(itemId), slideNumber(slideNumber) {}
+   
+    
+    std::shared_ptr<IAction> ChangeAttributes::execute(std::shared_ptr<Data::IDocument>& document)
+    {
+        std::shared_ptr<Data::ItemBase> item = document->getSlide(slideNumber)->getItem(itemId);
+        Data::Attributes oldAttributes = item->getAttributes();
+        item->setAttributes(newAttributes);
+        return std::make_shared<ChangeAttributes>(oldAttributes, itemId, slideNumber);
     }
+
+
+    ChangeGeometry::ChangeGeometry(Data::Geometry& newGeometry, Data::ID itemId, size_t slideNumber) : newGeometry(newGeometry), itemId(itemId), slideNumber(slideNumber) {}
+    std::shared_ptr<IAction> ChangeGeometry::execute(std::shared_ptr<Data::IDocument>& document) 
+    {
+        std::shared_ptr<Data::ItemBase> item = document->getSlide(slideNumber)->getItem(itemId);
+        Data::Geometry oldGeometry = item->getGeometry();
+        item->setGeometry(newGeometry);
+        return std::make_shared<ChangeGeometry>(oldGeometry, itemId, slideNumber);
+    }
+
+    // ChangeItem::ChangeItem(const std::shared_ptr<Data::ItemBase>& item, size_t slideNumber) : item(item), slideNumber(slideNumber) {}   
+
+    // std::shared_ptr<IAction> ChangeItem::execute(std::shared_ptr<Data::IDocument>& document) {
+    //     std::shared_ptr<Data::ItemBase> oldItem = document->getSlide(slideNumber)->getItem(item->getID()); // item has the same id number
+    //     document->getSlide(slideNumber)->swapItems(item->getID(), item);
+    //     return std::make_shared<ChangeItem>(oldItem, slideNumber);
+    // }
 
 }

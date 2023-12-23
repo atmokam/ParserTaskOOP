@@ -49,11 +49,21 @@ namespace Director
         std::shared_ptr<IAction> execute(std::shared_ptr<Data::IDocument>& document) override; 
     };
 
-    class ChangeItem : public IAction {
-        std::shared_ptr<Data::ItemBase> item;
+    class ChangeAttributes : public IAction {
+        Data::Attributes newAttributes;
+        Data::ID itemId;
         size_t slideNumber;
     public:
-        ChangeItem(const std::shared_ptr<Data::ItemBase>& item, size_t slideNumber);
+        ChangeAttributes(Data::Attributes& newAttributes, Data::ID itemId, size_t slideNumber);
+        std::shared_ptr<IAction> execute(std::shared_ptr<Data::IDocument>& document) override; 
+    };
+
+    class ChangeGeometry : public IAction {
+        Data::Geometry newGeometry;
+        Data::ID itemId;
+        size_t slideNumber;
+    public:
+        ChangeGeometry(Data::Geometry& newGeometry, Data::ID itemId, size_t slideNumber);
         std::shared_ptr<IAction> execute(std::shared_ptr<Data::IDocument>& document) override; 
     };
 }

@@ -1,6 +1,8 @@
 #include "ItemBase.hpp"
 #include "Renderer/ShapeLibrary.hpp"
 #include <algorithm>
+#include <functional>
+#include "Data/IVisitor.hpp"
 
 
 
@@ -19,6 +21,11 @@ namespace Data
 
     ItemLeaf::ItemLeaf(std::shared_ptr<ItemLeaf> item)
     : ItemBase(item->type, item->geometry, item->attributes, item->id) {}
+
+    void ItemLeaf::accept(std::weak_ptr<IVisitor> visitor) 
+    {
+        visitor.lock()->visit(*this);
+    }
 
 
     Renderer::Type ItemLeaf::getType() const 
@@ -96,6 +103,10 @@ namespace Data
     Attributes& attributes, ID id)
     : items(items), ItemBase(Renderer::Type::Group, geometry, attributes, id) {}
 
+    void ItemGroup::accept(std::weak_ptr<IVisitor> visitor) 
+    {
+        visitor.lock()->visit(*this);
+    }
 
     Renderer::Type ItemGroup::getType() const 
     {
@@ -163,9 +174,12 @@ namespace Data
 
     void ItemGroup::setDifferenceGeometry(Geometry& difference) 
     {
-        if(difference.getPosition().has_value()){
-            std::transform(this->geometry.getPosition().value().begin(), this->geometry.getPosition().value().end(),
-            difference.getPosition().value().begin(), this->geometry.getPosition().value().begin(), std::plus<double>());
+        if(difference.getPosition().has_value())
+        {
+            std::transform(this->geometry.getPosition().value().begin(),
+            this->geometry.getPosition().value().end(),
+            difference.getPosition().value().begin(),
+            this->geometry.getPosition().value().begin(), std::plus<double>());
         }
         
         if(difference.getWidth().has_value())

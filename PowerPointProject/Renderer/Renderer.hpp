@@ -4,20 +4,22 @@
 #include <memory>
 
 #include "Data/Slide.hpp"
-class QPaintDevice;
+#include "Shape/ShapeLibrary.hpp"
+#include "Formatting/DimentionConverter.hpp"
+#include <QPaintDevice>
+
 
 
 namespace Renderer // is it a good practice to name the class and the namespace the same way?
 {
-    namespace Formatting
-    {
-        class DimentionConverter;
-    }
-    
     class Renderer
     {
+        std::shared_ptr<ShapeLibrary> shapeLibrary;    
+        std::unique_ptr<QPaintDevice> device;
+        std::unique_ptr<Formatting::DimentionConverter> converter;
     public:
-        void draw(QPaintDevice& device, Formatting::DimentionConverter& converter, const std::shared_ptr<Data::Slide>& slide);
+        void draw(const std::shared_ptr<Data::Slide>& slide);
+        void draw(const std::shared_ptr<Data::ItemBase>& item);
     };
 }
 #endif

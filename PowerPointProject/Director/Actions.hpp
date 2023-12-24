@@ -6,6 +6,7 @@
 
 #include "Include/IDocument.hpp"
 #include "IAction.hpp"
+#include "Data/ItemAttributes.hpp"
 
 namespace Data
 {

@@ -18,7 +18,6 @@ namespace Data
         ItemBuilder() =default;
 
         void buildItemLeaf(std::unordered_map<std::string, std::vector<std::string>>& operands);
-        void changeExistingItem(std::unordered_map<std::string, std::vector<std::string>>& operands);
         std::shared_ptr<Data::ItemBase> getItem() const;
     };
 }

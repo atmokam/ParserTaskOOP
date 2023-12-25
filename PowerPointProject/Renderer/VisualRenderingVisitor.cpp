@@ -27,7 +27,7 @@ namespace Renderer
 
     void VisualRenderingVisitor::visit(Data::ItemGroup& items) // group accept
     {
-        auto doc = App::Application::getInstance()->getDocument(); //
+        auto doc = App::Application::getInstance().getDocument(); //
         auto ids = doc->getIDGenerator().getIDs(); // TODO: add to itemgroup: sequence of added shapes
         for(const auto& id: ids)
         {

@@ -7,29 +7,31 @@
 #include <QKeyEvent>
 #include <QEvent>
 
-
-class CommandPane : public QWidget
+namespace UI
 {
-    Q_OBJECT
 
-public:
-    
-    CommandPane(QWidget* parent = nullptr);
-    virtual ~CommandPane();
-    
-    QLineEdit* getLineEdit() const;
-    QTextEdit* getTextEdit() const;
+    class CommandPane : public QWidget
+    {
+        Q_OBJECT
 
-    bool eventFilter(QObject* obj, QEvent* event) override;
+    public:
+        
+        CommandPane(QWidget* parent = nullptr);
+        virtual ~CommandPane();
+        
+        QLineEdit* getLineEdit() const;
+        QTextEdit* getTextEdit() const;
 
-public slots:
+        bool eventFilter(QObject* obj, QEvent* event) override;
 
-    void onCommandEntered();
+    public slots:
 
-private:
+        void onCommandEntered();
 
-    QLineEdit* lineEdit;
-    QTextEdit* textEdit;
-};
+    private:
 
+        QLineEdit* lineEdit;
+        QTextEdit* textEdit;
+    };
+}
 #endif

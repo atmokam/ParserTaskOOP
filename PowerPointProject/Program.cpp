@@ -9,7 +9,7 @@ int main(int count, char* args[])
 {
     try {
         App::Application application(count, args);
-        MainWindow* window = new MainWindow();
+        UI::MainWindow* window = new UI::MainWindow();
         window->show();
         
         return application.exec();

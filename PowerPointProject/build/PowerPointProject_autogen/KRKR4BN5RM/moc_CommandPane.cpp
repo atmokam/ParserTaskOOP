@@ -22,24 +22,24 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_CommandPane_t {
+struct qt_meta_stringdata_UI__CommandPane_t {
     const uint offsetsAndSize[6];
-    char stringdata0[30];
+    char stringdata0[34];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_CommandPane_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_CommandPane_t qt_meta_stringdata_CommandPane = {
+    uint(offsetof(qt_meta_stringdata_UI__CommandPane_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_UI__CommandPane_t qt_meta_stringdata_UI__CommandPane = {
     {
-QT_MOC_LITERAL(0, 11), // "CommandPane"
-QT_MOC_LITERAL(12, 16), // "onCommandEntered"
-QT_MOC_LITERAL(29, 0) // ""
+QT_MOC_LITERAL(0, 15), // "UI::CommandPane"
+QT_MOC_LITERAL(16, 16), // "onCommandEntered"
+QT_MOC_LITERAL(33, 0) // ""
 
     },
-    "CommandPane\0onCommandEntered\0"
+    "UI::CommandPane\0onCommandEntered\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_CommandPane[] = {
+static const uint qt_meta_data_UI__CommandPane[] = {
 
  // content:
       10,       // revision
@@ -61,7 +61,7 @@ static const uint qt_meta_data_CommandPane[] = {
        0        // eod
 };
 
-void CommandPane::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void UI::CommandPane::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         auto *_t = static_cast<CommandPane *>(_o);
@@ -74,13 +74,13 @@ void CommandPane::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     (void)_a;
 }
 
-const QMetaObject CommandPane::staticMetaObject = { {
+const QMetaObject UI::CommandPane::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_CommandPane.offsetsAndSize,
-    qt_meta_data_CommandPane,
+    qt_meta_stringdata_UI__CommandPane.offsetsAndSize,
+    qt_meta_data_UI__CommandPane,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_CommandPane_t
+qt_incomplete_metaTypeArray<qt_meta_stringdata_UI__CommandPane_t
 , QtPrivate::TypeAndForceComplete<CommandPane, std::true_type>
 , QtPrivate::TypeAndForceComplete<void, std::false_type>
 
@@ -90,20 +90,20 @@ qt_incomplete_metaTypeArray<qt_meta_stringdata_CommandPane_t
 } };
 
 
-const QMetaObject *CommandPane::metaObject() const
+const QMetaObject *UI::CommandPane::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *CommandPane::qt_metacast(const char *_clname)
+void *UI::CommandPane::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_CommandPane.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_UI__CommandPane.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int CommandPane::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int UI::CommandPane::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)

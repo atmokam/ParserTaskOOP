@@ -65,7 +65,7 @@ namespace Serialization
 
     QJsonValue JsonConverter::convertToJson(const Data::Attributes& attribute) 
     {
-        App::Application& app = *App::Application::getInstance();
+        App::Application& app = App::Application::getInstance();
         Data::Attributes defaultAttributes = app.getDocument()->getDefaultAttributes();
         QJsonObject result;
 

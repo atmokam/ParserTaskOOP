@@ -21,25 +21,27 @@
 namespace CLI 
 {
 
-    Command::Command() : application(*App::Application::getInstance()), out(application.getController()->getOutputStream()){}
+    Command::Command() : application(App::Application::getInstance()), out(application.get().getController()->getOutputStream()), 
+    director(application.get().getDirector()){}
+
 
     void AddCommand::execute() 
     {  
         if(operands.find("-name") != operands.end())
         {
-            size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+            size_t currentSlideIndex = director.lock()->getCurrentSlideIndex();
             std::shared_ptr<Data::ItemLeaf> item = createItem();
-            application.getDirector()->doAction(std::make_shared<Director::AddItem>(item, currentSlideIndex));
-            application.getDocument()->getIDGenerator().addID(item->getID());
+            director.lock()->doAction(std::make_shared<Director::AddItem>(item, currentSlideIndex));
+            application.get().getDocument()->getIDGenerator().addID(item->getID());
         }
         else if(operands.find("-slide") != operands.end())
         {
             std::shared_ptr<Data::Slide> slide = std::make_shared<Data::Slide>();
-            size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-            application.getDirector()->doAction(std::make_shared<Director::AddSlide>(slide, currentSlideIndex + 1));
-            application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
+            size_t currentSlideIndex = director.lock()->getCurrentSlideIndex();
+            director.lock()->doAction(std::make_shared<Director::AddSlide>(slide, currentSlideIndex + 1));
+            director.lock()->setCurrentSlideIndex(currentSlideIndex + 1);
         }
-        application.getDirector()->setDocumentModified(true);
+        director.lock()->setDocumentModified(true);
 
     }
 
@@ -53,8 +55,8 @@ namespace CLI
 
     void RemoveCommand::execute() 
     {
-        std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
-        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+        std::shared_ptr<Data::Slide> slide = director.lock()->getCurrentSlide();
+        size_t currentSlideIndex = director.lock()->getCurrentSlideIndex();
 
 
         if(operands.find("-id") != operands.end())
@@ -63,22 +65,22 @@ namespace CLI
             if (item == nullptr){
                 return;
             }
-            application.getDirector()->doAction(std::make_shared<Director::RemoveItem>(item, currentSlideIndex));
-            application.getDocument()->getIDGenerator().removeID(item->getID());
+            director.lock()->doAction(std::make_shared<Director::RemoveItem>(item, currentSlideIndex));
+            application.get().getDocument()->getIDGenerator().removeID(item->getID());
         }
         else if(operands.find("-slide") != operands.end())
         {
-            if(application.getDirector()->getDocument()->size() == 1)
+            if(director.lock()->getDocument()->size() == 1)
             {
-                out << "Cannot remove slide, only 1 left" << std::endl;
+                out.get() << "Cannot remove slide, only 1 left" << std::endl;
             } 
             else 
             {
-                application.getDirector()->doAction(std::make_shared<Director::RemoveSlide>(slide, currentSlideIndex)); 
-                application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
+                director.lock()->doAction(std::make_shared<Director::RemoveSlide>(slide, currentSlideIndex)); 
+                director.lock()->setCurrentSlideIndex(currentSlideIndex - 1);
             }
         }
-        application.getDirector()->setDocumentModified(true);
+        director.lock()->setDocumentModified(true);
 
     }
 
@@ -86,9 +88,9 @@ namespace CLI
     void ChangeCommand::execute() 
     {
         bool isChanged = false;
-        std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
+        std::shared_ptr<Data::Slide> slide = director.lock()->getCurrentSlide();
         std::shared_ptr<Data::ItemBase> item = slide->getItem(std::stoi(operands["-id"][0]));
-        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+        size_t currentSlideIndex = director.lock()->getCurrentSlideIndex();
 
         Data::Attributes tempAttributes = item->getAttributes();
         Data::Geometry tempGeometry = item->getGeometry();
@@ -99,17 +101,17 @@ namespace CLI
             Data::ItemBuilder builder;
             if(builder.trySetAttributes(operands, tempAttributes))
             {
-                application.getDirector()->doAction(std::make_shared<Director::ChangeAttributes>(tempAttributes, id, currentSlideIndex));
+                director.lock()->doAction(std::make_shared<Director::ChangeAttributes>(tempAttributes, id, currentSlideIndex));
                 isChanged = true;
             }
             if(builder.trySetGeometry(operands, tempGeometry))
             {
-                application.getDirector()->doAction(std::make_shared<Director::ChangeGeometry>(tempGeometry, id, currentSlideIndex));
+                director.lock()->doAction(std::make_shared<Director::ChangeGeometry>(tempGeometry, id, currentSlideIndex));
                 isChanged = true;
             }
         }
 
-        application.getDirector()->setDocumentModified(isChanged);
+        director.lock()->setDocumentModified(isChanged);
     }
 
    
@@ -119,7 +121,7 @@ namespace CLI
 
     void SaveCommand::execute() 
     { 
-        std::shared_ptr<Data::IDocument> document = application.getDirector()->getDocument();
+        std::shared_ptr<Data::IDocument> document = director.lock()->getDocument();
         Serialization::SaveLoad serializer;
         QJsonDocument documentJson;
         serializer.save(document, documentJson);
@@ -137,10 +139,10 @@ namespace CLI
         }
         else
         {
-            out << "Could not open file" << std::endl;
+            out.get() << "Could not open file" << std::endl;
         }
 
-        application.getDirector()->setDocumentModified(false);
+        director.lock()->setDocumentModified(false);
 
     }
 
@@ -150,7 +152,7 @@ namespace CLI
         file.open(operands["-path"][0]);
         if(!file.is_open())
         {
-           out << "Could not open file" << std::endl;
+           out.get() << "Could not open file" << std::endl;
         }
         std::string contents{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
         QJsonDocument content = QJsonDocument::fromJson(contents.c_str());
@@ -158,9 +160,9 @@ namespace CLI
         Serialization::SaveLoad deserializer;
         std::shared_ptr<Data::IDocument> newDoc = std::make_shared<Data::Document>();
         deserializer.load(content, newDoc);
-        application.getDirector()->setDocument(newDoc);
-        application.getDirector()->setCurrentSlideIndex(0);
-        application.getDirector()->clearUndoRedoStack();
+        director.lock()->setDocument(newDoc);
+        director.lock()->setCurrentSlideIndex(0);
+        director.lock()->clearUndoRedoStack();
     }
 
 
@@ -169,7 +171,7 @@ namespace CLI
     {
         if(operands.find("-id") != operands.end())
         {
-            std::shared_ptr<Data::Slide> current = application.getDirector()->getCurrentSlide();
+            std::shared_ptr<Data::Slide> current = director.lock()->getCurrentSlide();
             std::shared_ptr<Data::ItemBase> item = current->getItem(std::stoi(operands["-id"][0]));
             if (item == nullptr)
             {
@@ -177,14 +179,14 @@ namespace CLI
             }
 
             Renderer::ShapeBase shape(item);
-            shape.print(out);
+            shape.print(out.get());
         }
         else
         {
-            std::shared_ptr<Data::Slide> current = application.getDirector()->getCurrentSlide();
+            std::shared_ptr<Data::Slide> current = director.lock()->getCurrentSlide();
             Renderer::ShapeBase shape(current->getTopItem());
-            shape.print(out);
-            out << std::endl;
+            shape.print(out.get());
+            out.get() << std::endl;
 
         }
     }
@@ -192,21 +194,21 @@ namespace CLI
 
     void ListCommand::execute() 
     {
-        auto document = application.getDirector()->getDocument();
+        auto document = director.lock()->getDocument();
 
         size_t currentSlideIndex  = 0;
         for (const auto& slide : *document)
         {
             
-            out << "Slide: " << currentSlideIndex << std::endl;
+            out.get() << "Slide: " << currentSlideIndex << std::endl;
             auto items = slide->getTopItem();
             for(const auto& item : *items)
             {
-               out << item.first << "\t";
+               out.get() << item.first << "\t";
             }
 
             currentSlideIndex++;
-            out << std::endl;
+            out.get() << std::endl;
         }
         
     }
@@ -215,32 +217,32 @@ namespace CLI
 
     void NextCommand::execute() 
     {
-        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
-        if(currentSlideIndex < application.getDirector()->getDocument()->size() - 1)
-            application.getDirector()->setCurrentSlideIndex(currentSlideIndex + 1);
+        size_t currentSlideIndex = director.lock()->getCurrentSlideIndex();
+        if(currentSlideIndex < director.lock()->getDocument()->size() - 1)
+            director.lock()->setCurrentSlideIndex(currentSlideIndex + 1);
     }
 
 
 
     void PrevCommand::execute() 
     {
-        size_t currentSlideIndex = application.getDirector()->getCurrentSlideIndex();
+        size_t currentSlideIndex = director.lock()->getCurrentSlideIndex();
         if(currentSlideIndex > 0)
-            application.getDirector()->setCurrentSlideIndex(currentSlideIndex - 1);
+            director.lock()->setCurrentSlideIndex(currentSlideIndex - 1);
     }
 
 
 
     void UndoCommand::execute() 
     {
-        application.getDirector()->undo();
+        director.lock()->undo();
     }
 
 
 
     void RedoCommand::execute() 
     {
-        application.getDirector()->redo();
+        director.lock()->redo();
     }
 
 
@@ -249,17 +251,17 @@ namespace CLI
     {
         if( operands.find("-force") != operands.end())
         {
-            application.quit();
+            application.get().quit();
             return;
         }
 
-        if( application.getDirector()->isDocumentModified())
+        if( director.lock()->isDocumentModified())
         {
-            out << "You have unsaved changes, please save them before exit." << std::endl;
+            out.get() << "You have unsaved changes, please save them before exit." << std::endl;
             return;
         }
 
-        application.callExit();
+        application.get().quit();
         
     }
 
@@ -267,8 +269,8 @@ namespace CLI
     void DrawCommand::execute() 
     {
         Renderer::Formatting::DimentionConverter converter;
-        std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
-        std::shared_ptr<Data::IDocument> document = application.getDirector()->getDocument();
+        std::shared_ptr<Data::Slide> slide = director.lock()->getCurrentSlide();
+        std::shared_ptr<Data::IDocument> document = director.lock()->getDocument();
         auto format = document->getFormat();
         auto width = converter.toPixels(format.first); // default A4 format for now
         auto height = converter.toPixels(format.second);

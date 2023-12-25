@@ -22,8 +22,10 @@ namespace CLI {
     protected:
         OperandsContainer operands;
         std::string name;
-        App::IApplication& application; // this should probably be removed
-        std::ostream& out;
+
+        std::reference_wrapper<App::IApplication> application; 
+        std::weak_ptr<Director::IDirector> director;
+        std::reference_wrapper<std::ostream> out;
 
     public:
         Command();

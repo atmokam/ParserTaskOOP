@@ -15,19 +15,12 @@ namespace App
         director = std::make_shared<Director::Director>();
         document = std::make_shared<Data::Document>();
         std::ifstream input = buildStream(argc, argv);
-        controller = std::make_unique<Controller>(input);
+        controller = std::make_unique<UI::Controller>(input);
     }
 
-    Application* Application::getInstance() 
+    Application& Application::getInstance() 
     {
-        return static_cast<Application*>(QApplication::instance());
-    }
-
-    int Application::run(int count, char* args[]) 
-    {
-        buildApplication(count, args);
-       // controller->runProgram();
-        
+        return *static_cast<Application*>(QApplication::instance());
     }
 
     void Application::quit() 
@@ -35,26 +28,6 @@ namespace App
        QApplication::quit();
     }
 
-
-    void Application::buildApplication(int count, char* args[]) // remove this
-    {
-        director = std::make_shared<Director::Director>();
-        document = std::make_shared<Data::Document>();
-        std::ostream& output = std::cout;
-
-     
-    }
-
-    void Application::callExit() 
-    {
-        exitCalled = true;
-        
-    }
-
-    bool Application::isExitCalled() const 
-    {
-        return exitCalled;
-    }
 
     std::shared_ptr<Director::Director::IDirector> Application::getDirector() 
     {
@@ -81,7 +54,7 @@ namespace App
 
     }
 
-    std::shared_ptr<Controller> Application::getController() 
+    std::shared_ptr<UI::Controller> Application::getController() 
     {
         return controller;
     }

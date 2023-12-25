@@ -5,19 +5,22 @@
 #include "UI/CommandPane.hpp"
 #include "UI/Controller.hpp"
 
-class MainWindow : public QMainWindow
+namespace UI
 {
-    Q_OBJECT
 
-public:
+    class MainWindow : public QMainWindow
+    {
+        Q_OBJECT
 
-    MainWindow(QWidget* parent = nullptr);
-    ~MainWindow();
+    public:
 
-private:
-    
-    CommandPane* commandPane;
+        MainWindow(QWidget* parent = nullptr);
+        ~MainWindow();
 
-};
+    private:
+        
+        CommandPane* commandPane;
 
+    };
+}
 #endif

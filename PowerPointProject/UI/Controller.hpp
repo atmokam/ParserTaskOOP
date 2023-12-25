@@ -10,21 +10,23 @@
 #include "CLI/Controller.hpp"
 #include <QWidget>
 
-class Controller : public QWidget
+namespace UI
 {
-    Q_OBJECT
+    class Controller : public QWidget
+    {
+        Q_OBJECT
 
-public:
-    Controller(std::ifstream& input, QWidget* parent = nullptr);
-    virtual ~Controller();
+    public:
+        Controller(std::ifstream& input, QWidget* parent = nullptr);
+        virtual ~Controller();
 
-    void runCommand(std::istream& input);
-    std::stringstream& getOutputStream();
-    
-private:
-    std::unique_ptr<CLI::Controller> controller;
-    std::stringstream input;//fstream
-    std::stringstream output;
-};
-
+        void runCommand(std::istream& input);
+        std::stringstream& getOutputStream();
+        
+    private:
+        std::unique_ptr<CLI::Controller> controller;
+        std::stringstream input;//fstream
+        std::stringstream output;
+    };
+}
 #endif

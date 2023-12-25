@@ -21,22 +21,22 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_Controller_t {
+struct qt_meta_stringdata_UI__Controller_t {
     const uint offsetsAndSize[2];
-    char stringdata0[11];
+    char stringdata0[15];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_Controller_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_Controller_t qt_meta_stringdata_Controller = {
+    uint(offsetof(qt_meta_stringdata_UI__Controller_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_UI__Controller_t qt_meta_stringdata_UI__Controller = {
     {
-QT_MOC_LITERAL(0, 10) // "Controller"
+QT_MOC_LITERAL(0, 14) // "UI::Controller"
 
     },
-    "Controller"
+    "UI::Controller"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_Controller[] = {
+static const uint qt_meta_data_UI__Controller[] = {
 
  // content:
       10,       // revision
@@ -52,7 +52,7 @@ static const uint qt_meta_data_Controller[] = {
        0        // eod
 };
 
-void Controller::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void UI::Controller::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     (void)_o;
     (void)_id;
@@ -60,13 +60,13 @@ void Controller::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     (void)_a;
 }
 
-const QMetaObject Controller::staticMetaObject = { {
+const QMetaObject UI::Controller::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_Controller.offsetsAndSize,
-    qt_meta_data_Controller,
+    qt_meta_stringdata_UI__Controller.offsetsAndSize,
+    qt_meta_data_UI__Controller,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_Controller_t
+qt_incomplete_metaTypeArray<qt_meta_stringdata_UI__Controller_t
 , QtPrivate::TypeAndForceComplete<Controller, std::true_type>
 
 
@@ -76,20 +76,20 @@ qt_incomplete_metaTypeArray<qt_meta_stringdata_Controller_t
 } };
 
 
-const QMetaObject *Controller::metaObject() const
+const QMetaObject *UI::Controller::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Controller::qt_metacast(const char *_clname)
+void *UI::Controller::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_Controller.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_UI__Controller.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int Controller::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int UI::Controller::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     return _id;

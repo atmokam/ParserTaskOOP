@@ -12,25 +12,21 @@
 namespace App
 {
     class Application: public IApplication, public QApplication {
-        protected:
-        std::shared_ptr<Controller> controller;
+    protected:
+        std::shared_ptr<UI::Controller> controller;
         std::shared_ptr<Director::IDirector> director; 
         std::shared_ptr<Data::IDocument> document;
         
-        bool exitCalled = false;
     public:
         
-        static Application* getInstance();
-        bool isExitCalled() const;
-        void callExit() override;
-        int run(int count, char* args[]) override;
+        static Application& getInstance();
+        
         void quit() override;
-        void buildApplication(int count, char* args[]);
         static std::ifstream buildStream(int& count, char* args[]);
 
         std::shared_ptr<Director::IDirector> getDirector() override;
         std::shared_ptr<Data::IDocument> getDocument() override;
-        std::shared_ptr<Controller> getController() override;
+        std::shared_ptr<UI::Controller> getController() override;
 
         Application(int &argc, char **argv);
         ~Application();

@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
-add_compile_options(-I.  -g)
+add_compile_options(-I. )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -31,17 +31,17 @@ Director/Actions.cpp
 Director/Director.cpp 
 Application/Application.cpp
 Data/ItemBase.cpp
-Renderer/ShapeBase.cpp
+Renderer/Shape/ShapeBase.cpp
 CLI/CommandHistory.cpp
 Data/ItemAttributes.cpp
-Renderer/Renderer.cpp
-Renderer/ShapeLibrary.cpp
+Renderer/Shape/ShapeLibrary.cpp
 Renderer/Formatting/DimentionConverter.cpp
 Renderer/Formatting/FormatLibrary.cpp
 Serialization/JsonConverter.cpp
 Data/IDGenerator.cpp
-Renderer/QtConverter.cpp
-Renderer/TextFontAdjuster.cpp
+Renderer/VisualConversion/QtConverter.cpp
+Renderer/VisualConversion/TextFontAdjuster.cpp
+Renderer/VisualRenderingVisitor.cpp
 Data/ItemBuilder.cpp
 UI/Controller.cpp
 UI/CommandPane.cpp

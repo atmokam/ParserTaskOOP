@@ -10,9 +10,10 @@
 #include "Data/Document.hpp"
 #include "Director/Actions.hpp"
 #include "Director/IDirector.hpp"
-#include "Renderer/ShapeBase.hpp"
-#include "Renderer/ShapeLibrary.hpp"
-#include "Renderer/Renderer.hpp"
+#include "Renderer/Shape/ShapeBase.hpp"
+#include "Renderer/Shape/ShapeLibrary.hpp"
+//#include "Renderer/Renderer.hpp"
+#include "Renderer/VisualRenderingVisitor.hpp"
 #include "Renderer/Formatting/DimentionConverter.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Serialization/Converter.hpp"
@@ -93,15 +94,16 @@ namespace CLI
         Data::Attributes tempAttributes = item->getAttributes();
         Data::Geometry tempGeometry = item->getGeometry();
 
-        if(item)            // I want to be able to set attribs and geom by checking their appropriate operands, if they exist, attribs or geometry will be changed
+        if(item)            
         {
             Data::ID id = item->getID();
-            if(trySetAttributes(operands, tempAttributes))
+            Data::ItemBuilder builder;
+            if(builder.trySetAttributes(operands, tempAttributes))
             {
                 application.getDirector()->doAction(std::make_shared<Director::ChangeAttributes>(tempAttributes, id, currentSlideIndex));
                 isChanged = true;
             }
-            if(trySetGeometry(operands, tempGeometry))
+            if(builder.trySetGeometry(operands, tempGeometry))
             {
                 application.getDirector()->doAction(std::make_shared<Director::ChangeGeometry>(tempGeometry, id, currentSlideIndex));
                 isChanged = true;
@@ -111,87 +113,8 @@ namespace CLI
         application.getDirector()->setDocumentModified(isChanged);
     }
 
-    // I think the trySet methods could be in a separate class
-
-    
-    bool ChangeCommand::trySetGeometry(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Geometry& geometry)
-    {
-        bool success = false;
-
-        Serialization::Converter converter;
-        if(operands.find("-pos") != operands.end()) 
-        { 
-            geometry.setPosition(converter.convertToPosition(operands["-pos"]));
-            success = true;
-        }
-
-        if(operands.find("-w") != operands.end() && operands.find("-h") != operands.end())
-        {
-            geometry.setWidth(converter.convertToDimention(operands["-w"][0])); 
-            geometry.setHeight(converter.convertToDimention(operands["-h"][0]));
-            success = true;
-        }
-
-        return success;
-    }
-
-
-    bool ChangeCommand::trySetAttributes(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Attributes& attributes)
-    {
-        bool success = false;
-
-        Serialization::Converter converter;
-        if(operands.find("-lcolor") != operands.end())
-        {
-            attributes.setHexLineColor(converter.convertToColor(operands["-lcolor"][0]));
-            success = true;
-        }
-
-        if(operands.find("-fcolor") != operands.end())
-        {
-            attributes.setHexFillColor(converter.convertToColor(operands["-fcolor"][0]));
-            success = true;
-        }
-
-        if(operands.find("-lwidth") != operands.end())
-        {
-            attributes.setLineWidth(std::stod(operands["-lwidth"][0]));
-            success = true;
-        }
-
-        if(operands.find("-lstyle") != operands.end())
-        {
-            attributes.setLineType(converter.convertToLineType(operands["-lstyle"][0]));
-            success = true;
-        }
-
-        if(operands.find("-text") != operands.end())
-        {
-            std::string concatenated;
-            for(const auto& text : operands["-text"])
-            {
-                concatenated += text + " ";
-            }
-            attributes.setText(concatenated);
-            success = true;
-        }
-
-        if(operands.find("-tcolor") != operands.end())
-        {
-            attributes.setHexTextColor(converter.convertToColor(operands["-tcolor"][0]));
-            success = true;
-        }
-
-        if(operands.find("-fontsize") != operands.end())
-        {
-            attributes.setFontSize(converter.convertToID(operands["-fontsize"][0]));
-            success = true;
-        }
-
-        return success;
-
-    }
-
+   
+   
 
 
 
@@ -352,12 +275,11 @@ namespace CLI
         auto width = converter.toPixels(format.first); // only A4 format for now
         auto height = converter.toPixels(format.second);
         QImage image(width, height, QImage::Format_ARGB32_Premultiplied);
-        Renderer::Renderer renderer;
-        renderer.draw(image, converter, slide);
+        image.fill(Qt::white);
+        Renderer::VisualRenderingVisitor visitor(image, converter);
+        visitor.draw(slide->getTopItem());
         QString path = QString::fromStdString(operands["-path"][0] + operands["-filename"][0] + ".png");
         image.save(path);
-        
-
     }
 
 

@@ -2,7 +2,7 @@
 #include <fstream>
 #include "CLI/Validator.hpp"
 #include "Command.hpp"
-#include "Renderer/ShapeLibrary.hpp"
+#include "Renderer/Shape/ShapeLibrary.hpp"
 
 #include <iostream>
 

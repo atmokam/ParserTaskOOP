@@ -1,5 +1,5 @@
 #include "ItemBase.hpp"
-#include "Renderer/ShapeLibrary.hpp"
+#include "Renderer/Shape/ShapeLibrary.hpp"
 #include <algorithm>
 #include <functional>
 #include "Data/IVisitor.hpp"

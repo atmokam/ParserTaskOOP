@@ -7,9 +7,9 @@
 #include "Data/ItemBase.hpp"
 #include "Data/ItemAttributes.hpp"
 #include "Serialization/Converter.hpp"
-#include "Formatting/DimentionConverter.hpp"
-#include "Renderer/QtConverter.hpp"
-#include "TextFontAdjuster.hpp"
+#include "../Formatting/DimentionConverter.hpp"
+#include "Renderer/VisualConversion/QtConverter.hpp"
+#include "../VisualConversion/TextFontAdjuster.hpp"
 
 namespace Renderer
 {

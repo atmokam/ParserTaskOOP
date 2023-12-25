@@ -3,7 +3,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QJsonValue>
-#include "Renderer/ShapeLibrary.hpp"
+#include "Renderer/Shape/ShapeLibrary.hpp"
 #include "Application/Application.hpp"
 
 

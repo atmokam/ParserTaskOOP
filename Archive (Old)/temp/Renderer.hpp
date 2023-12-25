@@ -10,7 +10,7 @@
 
 
 
-namespace Renderer // is it a good practice to name the class and the namespace the same way?
+namespace Renderer 
 {
     class Renderer
     {
@@ -18,7 +18,8 @@ namespace Renderer // is it a good practice to name the class and the namespace 
         std::unique_ptr<QPaintDevice> device;
         std::unique_ptr<Formatting::DimentionConverter> converter;
     public:
-        void draw(const std::shared_ptr<Data::Slide>& slide);
+        Renderer(std::unique_ptr<QPaintDevice> device, std::unique_ptr<Formatting::DimentionConverter> converter);
+        //void draw(const std::shared_ptr<Data::Slide>& slide);
         void draw(const std::shared_ptr<Data::ItemBase>& item);
     };
 }

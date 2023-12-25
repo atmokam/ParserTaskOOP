@@ -3377,7 +3377,7 @@ CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o: ../Data/ItemBuilder.cpp
   /usr/include/c++/11/functional \
   /usr/include/c++/11/bits/std_function.h \
   ../Data/ItemAttributes.hpp \
-  ../Renderer/ShapeLibrary.hpp \
+  ../Renderer/Shape/ShapeLibrary.hpp \
   ../Data/ItemBase.hpp \
   ../Include/IDocument.hpp \
   ../Data/IDocument.hpp \
@@ -10049,8 +10049,6 @@ CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o: ../UI/MainWindow.cpp \
 
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h:
-
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h:
@@ -10090,6 +10088,8 @@ CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o: ../UI/MainWindow.cpp \
 /usr/include/c++/11/bits/stl_heap.h:
 
 /usr/include/c++/11/bits/std_abs.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h:
 
 /usr/include/c++/11/pstl/execution_defs.h:
 
@@ -10750,8 +10750,6 @@ PowerPointProject_autogen/mocs_compilation.cpp:
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h:
-
-../Renderer/ShapeLibrary.hpp:
 
 /usr/include/c++/11/array:
 

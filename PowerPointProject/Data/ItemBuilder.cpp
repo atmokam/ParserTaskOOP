@@ -26,13 +26,7 @@ namespace Data
         Geometry newGeometry;
         Attributes newAttributes; 
 
-        newGeometry.setPosition(Position{converter.convertToPosition(operands["-pos"])});
-
-        if(operands.find("-w") != operands.end())
-            newGeometry.setWidth(converter.convertToDimention(operands["-w"][0]));
-
-        if(operands.find("-h") != operands.end())
-            newGeometry.setHeight(converter.convertToDimention(operands["-h"][0]));
+        trySetGeometry(operands, newGeometry);
         
         newAttributes.setHexLineColor((operands.find("-lcolor") != operands.end()) ? 
         converter.convertToColor(operands["-lcolor"][0]) : defaultAttributes.getHexLineColor().value());

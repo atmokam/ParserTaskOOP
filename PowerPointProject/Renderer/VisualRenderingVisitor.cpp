@@ -2,7 +2,6 @@
 #include <QPainter>
 #include <QPaintDevice>
 #include <memory>
-//#include "Data/Slide.hpp"
 #include "Shape/ShapeLibrary.hpp"
 #include "Application/Application.hpp"
 #include "Data/IDGenerator.hpp"
@@ -39,8 +38,8 @@ namespace Renderer
         }
     }
 
-    // void VisualRenderingVisitor::draw(const std::shared_ptr<Data::Slide>& slide) // is this breaking the primitiveness of the visitor?
-    // {
+    // void VisualRenderingVisitor::draw(const std::shared_ptr<Data::Slide>& slide) // I think this is breaking the primitiveness principle
+    // {                                                                            // so I removed it
     //     QPainter painter(&device);
     //     auto items = slide->getTopItem();
     //     items->accept(std::make_shared<VisualRenderingVisitor>());

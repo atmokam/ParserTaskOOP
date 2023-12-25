@@ -9,7 +9,8 @@
 
 namespace Serialization
 {
-    Data::Position Converter::convertToPosition(const std::vector<std::string>& values) {
+    Data::Position Converter::convertToPosition(const std::vector<std::string>& values) 
+    {
         std::vector<double> result;
         for (auto value : values) {
             result.push_back(std::stod(value));
@@ -17,7 +18,8 @@ namespace Serialization
         return Data::Position{result};
     }
 
-    Data::Position Converter::convertToPosition(const std::string& str, const char delimiter) {
+    Data::Position Converter::convertToPosition(const std::string& str, const char delimiter) 
+    {
         std::vector<double> result;
         auto it = std::find(str.begin(), str.end(), delimiter);
         decltype(it) prev = str.begin();     
@@ -31,25 +33,30 @@ namespace Serialization
         return Data::Position{result};
     }
 
-    Renderer::Type Converter::convertToType(const std::string& value) {
+    Renderer::Type Converter::convertToType(const std::string& value) 
+    {
         Renderer::ShapeLibrary shapeLibrary;
         return shapeLibrary.getType(value).value(); 
     }
 
-    Data::ID Converter::convertToID(const std::string& value) {
+    Data::ID Converter::convertToID(const std::string& value) 
+    {
         return Data::ID{std::stoi(value)};
     }
 
-    double Converter::convertToDimention(const std::string& value) {
+    double Converter::convertToDimention(const std::string& value) 
+    {
         return std::stod(value);
     }
 
-    long Converter::convertToColor(const std::string& color) {
+    long Converter::convertToColor(const std::string& color) 
+    {
         long converted = std::stol(color.substr(1), nullptr, 16);    
         return converted;
     }
 
-    Data::LineType Converter::convertToLineType(const std::string& lineType) {
+    Data::LineType Converter::convertToLineType(const std::string& lineType) 
+    {
         if (lineType == "solid") {
             return Data::LineType::Solid;
         } else if (lineType == "dashed") {
@@ -61,7 +68,8 @@ namespace Serialization
         }
     }
 
-    std::string Converter::convertToString(const Data::Position& position) {
+    std::string Converter::convertToString(const Data::Position& position) 
+    {
         std::stringstream result;
         for (auto value : position.getCoordinates()) {
             result << value << " ";

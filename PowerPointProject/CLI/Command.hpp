@@ -23,6 +23,7 @@ namespace CLI {
         OperandsContainer operands;
         std::string name;
         App::IApplication& application; // this should probably be removed
+        std::ostream& out;
 
     public:
         Command();

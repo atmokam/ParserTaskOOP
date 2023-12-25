@@ -27,33 +27,28 @@ namespace Data
         Attributes newAttributes; 
 
         trySetGeometry(operands, newGeometry);
+        trySetAttributes(operands, newAttributes); // attributes are optional
         
-        newAttributes.setHexLineColor((operands.find("-lcolor") != operands.end()) ? 
-        converter.convertToColor(operands["-lcolor"][0]) : defaultAttributes.getHexLineColor().value());
+        if(!newAttributes.getHexLineColor().has_value())
+            newAttributes.setHexLineColor(defaultAttributes.getHexLineColor().value());
 
-        newAttributes.setHexFillColor((operands.find("-fcolor") != operands.end()) ?
-        converter.convertToColor(operands["-fcolor"][0]) : defaultAttributes.getHexFillColor().value());
+        if(!newAttributes.getHexFillColor().has_value())
+            newAttributes.setHexFillColor(defaultAttributes.getHexFillColor().value());
         
-        newAttributes.setLineWidth((operands.find("-lwidth") != operands.end()) ? 
-        std::stod(operands["-lwidth"][0]) : defaultAttributes.getLineWidth().value());
+        if(!newAttributes.getLineWidth().has_value())
+            newAttributes.setLineWidth(defaultAttributes.getLineWidth().value());
         
-        newAttributes.setLineType((operands.find("-lstyle") != operands.end())? 
-        converter.convertToLineType(operands["-lstyle"][0]) : defaultAttributes.getLineType().value());
+        if(!newAttributes.getLineType().has_value())
+            newAttributes.setLineType(defaultAttributes.getLineType().value());
 
-        std::string concatenated;
-        for(const auto& text : operands["-text"])
-        {
-            concatenated += text + " ";
-        }
+        if(!newAttributes.getText().has_value())
+            newAttributes.setText(defaultAttributes.getText().value());
 
-        newAttributes.setText((operands.find("-text") != operands.end()) ?
-        concatenated : defaultAttributes.getText().value());
+        if(!newAttributes.getHexTextColor().has_value())
+            newAttributes.setHexTextColor(defaultAttributes.getHexTextColor().value());
 
-        newAttributes.setHexTextColor((operands.find("-tcolor") != operands.end()) ?
-        converter.convertToColor(operands["-tcolor"][0]) : defaultAttributes.getHexTextColor().value());
-
-        newAttributes.setFontSize((operands.find("-fontsize") != operands.end()) ?
-        converter.convertToID(operands["-fontsize"][0]) : defaultAttributes.getFontSize().value());
+        if(!newAttributes.getFontSize().has_value())
+            newAttributes.setFontSize(defaultAttributes.getFontSize().value());
 
         item->setAttributes(newAttributes);
         item->setGeometry(newGeometry);

@@ -12,7 +12,6 @@
 #include "Director/IDirector.hpp"
 #include "Renderer/Shape/ShapeBase.hpp"
 #include "Renderer/Shape/ShapeLibrary.hpp"
-//#include "Renderer/Renderer.hpp"
 #include "Renderer/VisualRenderingVisitor.hpp"
 #include "Renderer/Formatting/DimentionConverter.hpp"
 #include "Serialization/SaveLoad.hpp"
@@ -22,7 +21,7 @@
 namespace CLI 
 {
 
-    Command::Command() : application(*App::Application::getInstance()) {}
+    Command::Command() : application(*App::Application::getInstance()), out(application.getController()->getOutputStream()){}
 
     void AddCommand::execute() 
     {  
@@ -71,7 +70,7 @@ namespace CLI
         {
             if(application.getDirector()->getDocument()->size() == 1)
             {
-                application.getController()->getOutputStream() << "Cannot remove slide, only 1 left" << std::endl;
+                out << "Cannot remove slide, only 1 left" << std::endl;
             } 
             else 
             {
@@ -138,7 +137,7 @@ namespace CLI
         }
         else
         {
-            application.getController()->getOutputStream() << "Could not open file" << std::endl;
+            out << "Could not open file" << std::endl;
         }
 
         application.getDirector()->setDocumentModified(false);
@@ -151,7 +150,7 @@ namespace CLI
         file.open(operands["-path"][0]);
         if(!file.is_open())
         {
-           application.getController()->getOutputStream() << "Could not open file" << std::endl;
+           out << "Could not open file" << std::endl;
         }
         std::string contents{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
         QJsonDocument content = QJsonDocument::fromJson(contents.c_str());
@@ -178,14 +177,14 @@ namespace CLI
             }
 
             Renderer::ShapeBase shape(item);
-            shape.print(application.getController()->getOutputStream());
+            shape.print(out);
         }
         else
         {
             std::shared_ptr<Data::Slide> current = application.getDirector()->getCurrentSlide();
             Renderer::ShapeBase shape(current->getTopItem());
-            shape.print(application.getController()->getOutputStream());
-            application.getController()->getOutputStream() << std::endl;
+            shape.print(out);
+            out << std::endl;
 
         }
     }
@@ -199,15 +198,15 @@ namespace CLI
         for (const auto& slide : *document)
         {
             
-            application.getController()->getOutputStream() << "Slide: " << currentSlideIndex << std::endl;
+            out << "Slide: " << currentSlideIndex << std::endl;
             auto items = slide->getTopItem();
             for(const auto& item : *items)
             {
-               application.getController()->getOutputStream() << item.first << "\t";
+               out << item.first << "\t";
             }
 
             currentSlideIndex++;
-            application.getController()->getOutputStream() << std::endl;
+            out << std::endl;
         }
         
     }
@@ -256,8 +255,7 @@ namespace CLI
 
         if( application.getDirector()->isDocumentModified())
         {
-            application.getController()->getOutputStream() << 
-                "You have unsaved changes, please save them before exit." << std::endl;
+            out << "You have unsaved changes, please save them before exit." << std::endl;
             return;
         }
 
@@ -272,10 +270,11 @@ namespace CLI
         std::shared_ptr<Data::Slide> slide = application.getDirector()->getCurrentSlide();
         std::shared_ptr<Data::IDocument> document = application.getDirector()->getDocument();
         auto format = document->getFormat();
-        auto width = converter.toPixels(format.first); // only A4 format for now
+        auto width = converter.toPixels(format.first); // default A4 format for now
         auto height = converter.toPixels(format.second);
         QImage image(width, height, QImage::Format_ARGB32_Premultiplied);
         image.fill(Qt::white);
+
         Renderer::VisualRenderingVisitor visitor(image, converter);
         visitor.draw(slide->getTopItem());
         QString path = QString::fromStdString(operands["-path"][0] + operands["-filename"][0] + ".png");

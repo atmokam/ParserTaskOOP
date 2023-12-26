@@ -8,6 +8,27 @@
 
 namespace CLI {
 
+    void Controller::runCommand(std::istream& input) 
+    {
+        Parser oParser(input);
+       
+        std::shared_ptr<Command> pCmd = oParser.parse();
+
+        if(pCmd == nullptr)
+        {
+            output << oParser.getErrorLog().str();
+            return;
+        }
+        pCmd->execute();
+    }
+
+    std::stringstream& Controller::getOutputStream()
+    {
+        return output;
+    }
+
+}
+
     
     // void Controller::runProgram() {
     //     App::Application& application = *App::Application::getInstance(); 
@@ -17,24 +38,3 @@ namespace CLI {
     //         runCommand(input);
     //     }
     // }
-
-    void Controller::runCommand(std::istream& input) // also needed for command history
-    {
-        Parser oParser(input);
-       
-        std::shared_ptr<Command> pCmd = oParser.parse();
-        if(pCmd == nullptr)
-            return;
-        pCmd->execute();
-    }
-
-    std::stringstream& Controller::getOutputStream()
-    {
-        return output;
-    }
-
-    // std::istream& Controller::getInputStream() const
-    // {
-    //     return input;
-    // }
-}

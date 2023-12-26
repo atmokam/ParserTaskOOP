@@ -7,10 +7,8 @@ namespace CLI
     {
 
     public:
-        //virtual void runProgram() = 0;
         virtual ~IController() = default;
         virtual std::stringstream& getOutputStream() = 0;
-        //virtual std::istream& getInputStream() const = 0;
     };
 }
 

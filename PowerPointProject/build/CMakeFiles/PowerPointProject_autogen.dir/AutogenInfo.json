@@ -430,6 +430,12 @@
 			null
 		],
 		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ConsoleRenderingVisitor.hpp",
+			"MU",
+			"XJ3PD3KCDO/moc_ConsoleRenderingVisitor.cpp",
+			null
+		],
+		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.hpp",
 			"MU",
 			"I37YJ5OIMJ/moc_DimentionConverter.cpp",
@@ -631,6 +637,11 @@
 		],
 		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Program.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ConsoleRenderingVisitor.cpp",
 			"MU",
 			null
 		],

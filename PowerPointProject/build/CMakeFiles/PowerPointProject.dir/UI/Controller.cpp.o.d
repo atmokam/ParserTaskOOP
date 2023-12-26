@@ -151,11 +151,7 @@ CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o: \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp \
- /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
- /usr/include/c++/11/bits/stl_vector.h \
- /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/memory \
+ /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
@@ -197,7 +193,10 @@ CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o: \
  /usr/include/c++/11/bits/enable_special_members.h \
  /usr/include/c++/11/bits/node_handle.h \
  /usr/include/c++/11/bits/unordered_map.h \
- /usr/include/c++/11/bits/erase_if.h \
+ /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/vector \
+ /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerfwd.h \
  /usr/include/c++/11/variant /usr/include/c++/11/bits/parse_numbers.h \

@@ -48,8 +48,12 @@ namespace CLI {
             return nullptr;
         
         std::shared_ptr<Command> command = createCommand(name); 
+       
         if(!command)
-            throw std::invalid_argument("Invalid command name: " + name);
+        {
+            errorLog << "Invalid command name: " + name << std::endl;
+            return nullptr;
+        }
 
         command->setName(name);
         commandNameFlag = name;
@@ -67,7 +71,8 @@ namespace CLI {
 
         if(!validator.validateCommand(command)) 
         {
-            throw std::invalid_argument("Invalid syntax for command: " + command->getName());
+            errorLog << "Invalid syntax for command: " + command->getName() << std::endl;
+            return nullptr;
         }
 
         return command;
@@ -77,7 +82,7 @@ namespace CLI {
 
 
 
-    void Parser::processArgument(std::string argument, std::shared_ptr<Command>& command)
+    void Parser::processArgument(std::string& argument, std::shared_ptr<Command>& command)
     {
         Validator validator;
         if(commandNameFlag != "" && (prevOperand != prevToken) && validator.isOperand(argument, commandNameFlag))
@@ -93,10 +98,16 @@ namespace CLI {
         }
         else 
         {
-            throw std::invalid_argument("Invalid input: " + argument);
+            errorLog << "Invalid argument: " + argument << std::endl;
+            argument = "";
         }
+        
     }
 
+    std::stringstream& Parser::getErrorLog()
+    {
+        return errorLog;
+    }
 
 
 

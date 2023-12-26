@@ -357,7 +357,6 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Controller.hpp \
  /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
@@ -387,18 +386,19 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Actions.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/IAction.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/IDirector.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeBase.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/IVisualDisplayable.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ITextDisplayable.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/IShape.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeLibrary.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRenderingVisitor.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/IVisitor.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IVisitor.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Data/IVisitor.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeLibrary.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QPaintDevice \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpaintdevice.h \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ConsoleRenderingVisitor.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Converter.hpp \

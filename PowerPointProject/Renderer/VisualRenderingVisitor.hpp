@@ -1,7 +1,7 @@
 #ifndef VISUALRENDERINGVISITOR_HPP
 #define VISUALRENDERINGVISITOR_HPP
 
-#include "Data/IVisitor.hpp"
+#include "Include/IVisitor.hpp"
 #include <memory>
 #include "Data/Slide.hpp"
 #include "Shape/ShapeLibrary.hpp"
@@ -17,11 +17,10 @@ namespace Renderer
         Formatting::DimentionConverter& converter;
     public:
         VisualRenderingVisitor(QPaintDevice& device, Formatting::DimentionConverter& converter);
-        VisualRenderingVisitor() =default;
-        //void draw(const std::shared_ptr<Data::Slide>& slide);
-        void draw(const std::shared_ptr<Data::ItemBase>& item);
         virtual void visit(Data::ItemLeaf& item) override;
         virtual void visit(Data::ItemGroup& items) override;
+
+        void draw(const std::shared_ptr<Data::ItemBase>& item);
     };
 }
 

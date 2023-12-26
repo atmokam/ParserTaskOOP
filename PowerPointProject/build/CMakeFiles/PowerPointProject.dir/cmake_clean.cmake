@@ -34,6 +34,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PowerPointProject.dir/PowerPointProject_autogen/mocs_compilation.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Program.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Program.cpp.o.d"
+  "CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.o"
+  "CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.o"

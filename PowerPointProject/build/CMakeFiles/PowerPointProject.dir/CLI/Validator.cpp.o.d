@@ -348,7 +348,6 @@ CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o: \
  /usr/include/c++/11/iostream /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \

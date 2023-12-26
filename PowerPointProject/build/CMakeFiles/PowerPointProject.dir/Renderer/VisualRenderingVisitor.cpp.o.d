@@ -2,7 +2,8 @@ CMakeFiles/PowerPointProject.dir/Renderer/VisualRenderingVisitor.cpp.o: \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRenderingVisitor.cpp \
  /usr/include/stdc-predef.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRenderingVisitor.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/IVisitor.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IVisitor.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Data/IVisitor.hpp \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -359,7 +360,6 @@ CMakeFiles/PowerPointProject.dir/Renderer/VisualRenderingVisitor.cpp.o: \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \

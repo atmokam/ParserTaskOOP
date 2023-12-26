@@ -1,6 +1,8 @@
 #ifndef SHAPEBASE_HPP
 #define SHAPEBASE_HPP
 
+// intent: rendered entity
+
 #include <memory>
 
 #include "IVisualDisplayable.hpp"
@@ -19,22 +21,21 @@ namespace Renderer
         class DimentionConverter;
     }
 
-    class ShapeBase : public IShape, public ITextDisplayable    
+    class ShapeBase : public IShape, public ITextDisplayable
     {   
     protected:                                                        
         std::shared_ptr<Data::ItemBase> item;
-        void recursivePrintHandler(std::ostream& stream, const std::shared_ptr<Data::ItemBase>& item);
-        void leafPrintHandler(std::ostream& stream, const std::shared_ptr<Data::ItemLeaf>& leaf);
 
-        
         void setPainterAttributes(QPainter& painter);
-        QRect getRect(Formatting::DimentionConverter& converter);
+        QRect getRect(Formatting::DimentionConverter& converter);//
     public:
         void print(std::ostream& stream) override;
         ShapeBase(std::shared_ptr<Data::ItemBase> item);
         void setItem(std::shared_ptr<Data::ItemBase> item);
         virtual std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
     };
+
+
 
     class ShapeRectangle : public ShapeBase, public IVisualDisplayable {  
     public:

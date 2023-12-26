@@ -42,6 +42,7 @@ Data/IDGenerator.cpp
 Renderer/VisualConversion/QtConverter.cpp
 Renderer/VisualConversion/TextFontAdjuster.cpp
 Renderer/VisualRenderingVisitor.cpp
+Renderer/ConsoleRenderingVisitor.cpp
 Data/ItemBuilder.cpp
 UI/Controller.cpp
 UI/CommandPane.cpp

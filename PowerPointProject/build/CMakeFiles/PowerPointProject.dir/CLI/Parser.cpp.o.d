@@ -170,7 +170,8 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o: \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /usr/include/c++/11/pstl/execution_defs.h \
+ /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/sstream \
+ /usr/include/c++/11/bits/sstream.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Command.hpp \
  /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
  /usr/include/c++/11/bits/hashtable_policy.h \
@@ -344,9 +345,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication_platform.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/UI/Controller.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Controller.hpp \
- /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \

@@ -384,7 +384,6 @@ CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.o: \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDocument.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Data/IDocument.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDirector.hpp \

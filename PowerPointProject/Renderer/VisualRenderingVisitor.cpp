@@ -26,7 +26,7 @@ namespace Renderer
 
     void VisualRenderingVisitor::visit(Data::ItemGroup& items) // group accept
     {
-        auto doc = App::Application::getInstance().getDocument(); //
+        auto doc = App::Application::getInstance().getDocument(); 
         auto ids = doc->getIDGenerator().getIDs(); // TODO: add to itemgroup: sequence of added shapes
         for(const auto& id: ids)
         {
@@ -38,14 +38,7 @@ namespace Renderer
         }
     }
 
-    // void VisualRenderingVisitor::draw(const std::shared_ptr<Data::Slide>& slide) // I think this is breaking the primitiveness principle
-    // {                                                                            // so I removed it
-    //     QPainter painter(&device);
-    //     auto items = slide->getTopItem();
-    //     items->accept(std::make_shared<VisualRenderingVisitor>());
-    // }
-
-    void VisualRenderingVisitor::draw(const std::shared_ptr<Data::ItemBase>& item)
+    void VisualRenderingVisitor::draw(const std::shared_ptr<Data::ItemBase>& item) // visit invoker
     {
         item->accept(std::make_shared<VisualRenderingVisitor>(*this));
     }

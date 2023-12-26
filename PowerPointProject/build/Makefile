@@ -526,6 +526,30 @@ Program.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Program.cpp.s
 .PHONY : Program.cpp.s
 
+Renderer/ConsoleRenderingVisitor.o: Renderer/ConsoleRenderingVisitor.cpp.o
+.PHONY : Renderer/ConsoleRenderingVisitor.o
+
+# target to build an object file
+Renderer/ConsoleRenderingVisitor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.o
+.PHONY : Renderer/ConsoleRenderingVisitor.cpp.o
+
+Renderer/ConsoleRenderingVisitor.i: Renderer/ConsoleRenderingVisitor.cpp.i
+.PHONY : Renderer/ConsoleRenderingVisitor.i
+
+# target to preprocess a source file
+Renderer/ConsoleRenderingVisitor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.i
+.PHONY : Renderer/ConsoleRenderingVisitor.cpp.i
+
+Renderer/ConsoleRenderingVisitor.s: Renderer/ConsoleRenderingVisitor.cpp.s
+.PHONY : Renderer/ConsoleRenderingVisitor.s
+
+# target to generate assembly for a file
+Renderer/ConsoleRenderingVisitor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.s
+.PHONY : Renderer/ConsoleRenderingVisitor.cpp.s
+
 Renderer/Formatting/DimentionConverter.o: Renderer/Formatting/DimentionConverter.cpp.o
 .PHONY : Renderer/Formatting/DimentionConverter.o
 
@@ -896,6 +920,9 @@ help:
 	@echo "... Program.o"
 	@echo "... Program.i"
 	@echo "... Program.s"
+	@echo "... Renderer/ConsoleRenderingVisitor.o"
+	@echo "... Renderer/ConsoleRenderingVisitor.i"
+	@echo "... Renderer/ConsoleRenderingVisitor.s"
 	@echo "... Renderer/Formatting/DimentionConverter.o"
 	@echo "... Renderer/Formatting/DimentionConverter.i"
 	@echo "... Renderer/Formatting/DimentionConverter.s"

@@ -17,7 +17,6 @@ namespace CLI {
     class Validator {
 
         std::unordered_map<std::string, std::unordered_map<std::string, int>> valids;
-        std::unordered_set<std::string> shapes;
         std::unordered_set<std::string> styles;
 
         bool checkOperandQuantity(const std::shared_ptr<Command>& commandToBeChecked);

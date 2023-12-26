@@ -360,7 +360,6 @@ CMakeFiles/PowerPointProject.dir/Serialization/JsonConverter.cpp.o: \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Controller.hpp \
  /usr/include/c++/11/iostream \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \

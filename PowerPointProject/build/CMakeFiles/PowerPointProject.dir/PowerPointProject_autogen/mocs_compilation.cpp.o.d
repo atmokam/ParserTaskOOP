@@ -377,7 +377,6 @@ CMakeFiles/PowerPointProject.dir/PowerPointProject_autogen/mocs_compilation.cpp.
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/PowerPointProject_autogen/KRKR4BN5RM/moc_MainWindow.cpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/PowerPointProject_autogen/KRKR4BN5RM/../../../UI/MainWindow.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \

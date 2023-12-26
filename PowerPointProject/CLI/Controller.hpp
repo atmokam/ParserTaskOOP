@@ -7,7 +7,7 @@
 
 
 #include "IController.hpp"
-#include "CommandHistory.hpp"//parsed cmd and string
+
 namespace CLI {
 
     class Controller : public IController {
@@ -16,8 +16,7 @@ namespace CLI {
         Controller() = default;
         void runCommand(std::istream& input);
         std::stringstream& getOutputStream() override;
-        //std::istream& getInputStream() const override;
-        //void runProgram() override;
+        
         
     };
 }

@@ -1,11 +1,5 @@
 # Note:
 
-After doing some thinking I decided to store items in an itemgroup, this way:
-unordered_map<ID, ItemBase*> items;
-
-the only question I have is regarding the bounding box, how would we make it not draw a bounding box? It's a groupitem
-after all, and if we call the group renderer it's going to draw it, when we don't need it.
-
 
 Valgrind checking command:
 valgrind --leak-check=full   --show-leak-kinds=all  --track-origins=yes  --verbose  --log-file=valgrind-out.txt   ./PowerPointProject -filename ../TextFiles/text.txt

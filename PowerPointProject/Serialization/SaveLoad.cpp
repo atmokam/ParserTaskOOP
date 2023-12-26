@@ -35,6 +35,7 @@ namespace Serialization
     {
         if(auto group = std::dynamic_pointer_cast<Data::ItemGroup>(item))
         {
+            
             for(auto& [_, subItem]: *group)
             {
                 recursiveSerialize(subItem, slideArray);

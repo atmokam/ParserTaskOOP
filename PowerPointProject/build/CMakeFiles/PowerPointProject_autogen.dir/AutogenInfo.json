@@ -358,6 +358,12 @@
 			null
 		],
 		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp",
+			"MU",
+			"4M2WTFDV5W/moc_CommandFactory.cpp",
+			null
+		],
+		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.hpp",
 			"MU",
 			"4M2WTFDV5W/moc_CommandHistory.cpp",
@@ -572,6 +578,11 @@
 		],
 		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Command.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.cpp",
 			"MU",
 			null
 		],

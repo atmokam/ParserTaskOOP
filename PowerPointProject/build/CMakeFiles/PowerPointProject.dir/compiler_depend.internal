@@ -877,13 +877,13 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Actions.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/IAction.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/IDirector.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeBase.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/IVisualDisplayable.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ITextDisplayable.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/IShape.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeLibrary.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRenderingVisitor.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IVisitor.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/IVisitor.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeLibrary.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.hpp
@@ -1956,6 +1956,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Validator.hpp
  /usr/include/c++/11/unordered_set
  /usr/include/c++/11/bits/unordered_set.h
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
 
 CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Validator.cpp
@@ -5580,6 +5581,7 @@ CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.o
  /usr/include/c++/11/bits/ostream.tcc
  /usr/include/c++/11/bits/istream.tcc
  /usr/include/c++/11/bits/sstream.tcc
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IVisitor.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/IVisitor.hpp
  /usr/include/c++/11/memory
  /usr/include/c++/11/bits/stl_uninitialized.h
@@ -7290,6 +7292,7 @@ CMakeFiles/PowerPointProject.dir/Renderer/VisualRenderingVisitor.cpp.o
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRenderingVisitor.cpp
  /usr/include/stdc-predef.h
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRenderingVisitor.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IVisitor.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/IVisitor.hpp
  /usr/include/c++/11/memory
  /usr/include/c++/11/bits/stl_algobase.h

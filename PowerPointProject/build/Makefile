@@ -190,6 +190,30 @@ CLI/Command.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.s
 .PHONY : CLI/Command.cpp.s
 
+CLI/CommandFactory.o: CLI/CommandFactory.cpp.o
+.PHONY : CLI/CommandFactory.o
+
+# target to build an object file
+CLI/CommandFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.o
+.PHONY : CLI/CommandFactory.cpp.o
+
+CLI/CommandFactory.i: CLI/CommandFactory.cpp.i
+.PHONY : CLI/CommandFactory.i
+
+# target to preprocess a source file
+CLI/CommandFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.i
+.PHONY : CLI/CommandFactory.cpp.i
+
+CLI/CommandFactory.s: CLI/CommandFactory.cpp.s
+.PHONY : CLI/CommandFactory.s
+
+# target to generate assembly for a file
+CLI/CommandFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.s
+.PHONY : CLI/CommandFactory.cpp.s
+
 CLI/CommandHistory.o: CLI/CommandHistory.cpp.o
 .PHONY : CLI/CommandHistory.o
 
@@ -878,6 +902,9 @@ help:
 	@echo "... CLI/Command.o"
 	@echo "... CLI/Command.i"
 	@echo "... CLI/Command.s"
+	@echo "... CLI/CommandFactory.o"
+	@echo "... CLI/CommandFactory.i"
+	@echo "... CLI/CommandFactory.s"
 	@echo "... CLI/CommandHistory.o"
 	@echo "... CLI/CommandHistory.i"
 	@echo "... CLI/CommandHistory.s"

@@ -13,7 +13,6 @@ namespace CLI
     class Parser 
     {
         std::istream& inputStream;
-        std::shared_ptr<Command> createCommand(std::string input);
         std::string commandNameFlag, prevOperand, prevToken; 
         std::stringstream errorLog;
 

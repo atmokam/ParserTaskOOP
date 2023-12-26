@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o"
   "CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o.d"
+  "CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.o"
+  "CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/CLI/CommandHistory.cpp.o"
   "CMakeFiles/PowerPointProject.dir/CLI/CommandHistory.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o"

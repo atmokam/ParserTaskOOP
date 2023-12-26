@@ -17,7 +17,7 @@ namespace Renderer
 
     void ShapeBase::print(std::ostream& stream) 
     {
-       Serialization::Converter converter;
+        Serialization::Converter converter;
         stream << "Shape: " << converter.convertToString(item->getType()) << std::endl;
         stream << "---Geometry---" << std::endl;
         stream << "Position: " << converter.convertToString(item->getGeometry().getPosition().value()) << std::endl;
@@ -31,38 +31,7 @@ namespace Renderer
         stream << "Text: " << item->getAttributes().getText().value() << std::endl;
     }
 
-    // void ShapeBase::recursivePrintHandler(std::ostream& stream, const std::shared_ptr<Data::ItemBase>& item) 
-    // {
-    //     if(auto leaf = std::dynamic_pointer_cast<Data::ItemLeaf>(item))  
-    //     {
-    //         leafPrintHandler(stream, leaf);
-    //     }
-    //     else if(auto group = std::dynamic_pointer_cast<Data::ItemGroup>(item))
-    //     {
-    //         for(auto& [_, subItem]: *group)
-    //         {
-    //             recursivePrintHandler(stream, subItem);
-    //         }
-    //     }
-
-    // } 
-
-    // void ShapeBase::leafPrintHandler(std::ostream& stream, const std::shared_ptr<Data::ItemLeaf>& leaf) 
-    // {
-    //     Serialization::Converter converter;
-    //     stream << "Shape: " << converter.convertToString(leaf->getType()) << std::endl;
-    //     stream << "---Geometry---" << std::endl;
-    //     stream << "Position: " << converter.convertToString(leaf->getGeometry().getPosition().value()) << std::endl;
-    //     stream << "Height: " << leaf->getGeometry().getHeight().value() << std::endl;
-    //     stream << "Width: "<< leaf->getGeometry().getWidth().value() << std::endl;
-    //     stream << "---Attributes---" << std::endl;
-    //     stream << "FillColor: " << leaf->getAttributes().getHexFillColor().value() << std::endl;
-    //     stream << "LineColor: " << leaf->getAttributes().getHexLineColor().value() << std::endl;
-    //     stream << "LineWidth: " << leaf->getAttributes().getLineWidth().value() << std::endl;
-    //     stream << "LineType: " << converter.convertToString(leaf->getAttributes().getLineType().value()) << std::endl;
-    //     stream << "Text: " << leaf->getAttributes().getText().value() << std::endl;
-    // }
-
+ 
     std::shared_ptr<IShape> ShapeBase::clone(std::shared_ptr<Data::ItemBase> item)
     {
         setItem(item);
@@ -93,7 +62,7 @@ namespace Renderer
            
     }
 
-    QRect ShapeBase::getRect(Formatting::DimentionConverter& converter)
+    QRect ShapeBase::getRect(Formatting::DimentionConverter& converter) //
     {
         auto coordinates = item->getGeometry().getPosition().value().getCoordinates();
         auto height = item->getGeometry().getHeight().value();

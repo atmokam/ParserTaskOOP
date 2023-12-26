@@ -875,13 +875,13 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: ../CLI/Command.cpp \
   ../Director/Actions.hpp \
   ../Director/IAction.hpp \
   ../Data/ItemAttributes.hpp \
-  ../Director/IDirector.hpp \
   ../Renderer/Shape/ShapeBase.hpp \
   ../Renderer/Shape/IVisualDisplayable.hpp \
   ../Renderer/Shape/ITextDisplayable.hpp \
   ../Renderer/Shape/IShape.hpp \
   ../Renderer/Shape/ShapeLibrary.hpp \
   ../Renderer/VisualRenderingVisitor.hpp \
+  ../Include/IVisitor.hpp \
   ../Data/IVisitor.hpp \
   ../Renderer/Shape/ShapeLibrary.hpp \
   ../Renderer/Formatting/DimentionConverter.hpp \
@@ -1950,7 +1950,8 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o: ../CLI/Parser.cpp \
   ../Data/ItemBase.hpp \
   ../CLI/Validator.hpp \
   /usr/include/c++/11/unordered_set \
-  /usr/include/c++/11/bits/unordered_set.h
+  /usr/include/c++/11/bits/unordered_set.h \
+  ../CLI/CommandFactory.hpp
 
 CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o: ../CLI/Validator.cpp \
   /usr/include/stdc-predef.h \
@@ -5563,6 +5564,7 @@ CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.o: ../Rend
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/bits/sstream.tcc \
+  ../Include/IVisitor.hpp \
   ../Data/IVisitor.hpp \
   /usr/include/c++/11/memory \
   /usr/include/c++/11/bits/stl_uninitialized.h \
@@ -7266,6 +7268,7 @@ CMakeFiles/PowerPointProject.dir/Renderer/VisualConversion/TextFontAdjuster.cpp.
 CMakeFiles/PowerPointProject.dir/Renderer/VisualRenderingVisitor.cpp.o: ../Renderer/VisualRenderingVisitor.cpp \
   /usr/include/stdc-predef.h \
   ../Renderer/VisualRenderingVisitor.hpp \
+  ../Include/IVisitor.hpp \
   ../Data/IVisitor.hpp \
   /usr/include/c++/11/memory \
   /usr/include/c++/11/bits/stl_algobase.h \
@@ -10276,6 +10279,10 @@ CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o: ../UI/MainWindow.cpp \
 
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qboxlayout.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QVBoxLayout:
+
+../UI/CommandPane.cpp:
+
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h:
@@ -10323,8 +10330,6 @@ CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o: ../UI/MainWindow.cpp \
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h:
 
 ../CLI/Parser.cpp:
-
-../UI/CommandPane.cpp:
 
 /usr/include/c++/11/bits/stl_bvector.h:
 
@@ -10468,8 +10473,6 @@ CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o: ../UI/MainWindow.cpp \
 
 /usr/include/alloca.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QVBoxLayout:
-
 /usr/include/c++/11/bits/shared_ptr.h:
 
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
@@ -10589,6 +10592,8 @@ CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o: ../UI/MainWindow.cpp \
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
+
+../Include/IVisitor.hpp:
 
 /usr/include/c++/11/cwchar:
 
@@ -10832,10 +10837,6 @@ CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o: ../UI/MainWindow.cpp \
 
 /usr/include/c++/11/pstl/glue_numeric_defs.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h:
-
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
-
 /usr/include/c++/11/bits/ios_base.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:
@@ -11073,6 +11074,12 @@ PowerPointProject_autogen/mocs_compilation.cpp:
 /usr/include/x86_64-linux-gnu/qt6/QtGui/QTransform:
 
 /usr/include/c++/11/ctime:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h:
+
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
+
+../CLI/CommandFactory.hpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qshareddata.h:
 

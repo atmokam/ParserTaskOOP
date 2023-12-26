@@ -69,17 +69,15 @@ namespace Serialization
         Data::Attributes defaultAttributes = app.getDocument()->getDefaultAttributes();
         QJsonObject result;
 
-        result["lineWidth"] = attribute.getLineWidth().has_value() ? 
-        attribute.getLineWidth().value() : defaultAttributes.getLineWidth().value();   
+        result["lineWidth"] = attribute.getLineWidth().value(); 
 
-        result["lineType"] = convertToJson(attribute.getLineType().has_value() ? 
-        attribute.getLineType().value() : defaultAttributes.getLineType().value());
+        result["lineType"] = convertToJson(attribute.getLineType().value());
 
-        result["lineColorHex"] = convertToJson(attribute.getHexLineColor().has_value() ?
-        attribute.getHexLineColor().value() : defaultAttributes.getHexLineColor().value());
+        result["lineColorHex"] = convertToJson(attribute.getHexLineColor().value());
 
-        result["fillColorHex"] = convertToJson(attribute.getHexFillColor().has_value() ? 
-        attribute.getHexFillColor().value() : defaultAttributes.getHexFillColor().value());
+        result["fillColorHex"] = convertToJson(attribute.getHexFillColor().value());
+
+        result["text"] = QString::fromStdString(attribute.getText().value());
 
         return result;
     }
@@ -89,14 +87,11 @@ namespace Serialization
     {
         QJsonObject result;
 
-        result["position"] = convertToJson(geometry.getPosition().has_value() ?
-        geometry.getPosition().value() : Data::Position{});
+        result["position"] = convertToJson(geometry.getPosition().value());
 
-        result["width"] = geometry.getWidth().has_value() ?
-        geometry.getWidth().value() : 0;
+        result["width"] = geometry.getWidth().value();
 
-        result["height"] = geometry.getHeight().has_value() ?
-        geometry.getHeight().value() : 0;
+        result["height"] = geometry.getHeight().value();
 
 
         return result;
@@ -127,18 +122,16 @@ namespace Serialization
     {
         Data::Attributes result;
         QJsonObject object = value.toObject();
-        if (object.contains("lineWidth")) {
-            result.setLineWidth(object["lineWidth"].toDouble());
-        }
-        if (object.contains("lineType")) {
-            result.setLineType(convertToLineType(object["lineType"]));
-        }
-        if (object.contains("lineColorHex")) {
-            result.setHexLineColor(convertToColor(object["lineColorHex"]));
-        }
-        if (object.contains("fillColorHex")) {
-            result.setHexFillColor(convertToColor(object["fillColorHex"]));
-        }
+        result.setLineWidth(object["lineWidth"].toDouble());
+        
+        result.setLineType(convertToLineType(object["lineType"]));
+       
+        result.setHexLineColor(convertToColor(object["lineColorHex"]));
+
+        result.setHexFillColor(convertToColor(object["fillColorHex"]));
+
+        result.setText(object["text"].toString().toStdString());
+        
         return result;
     }
 
@@ -156,17 +149,14 @@ namespace Serialization
     {
         Data::Geometry result;
         QJsonObject object = value.toObject();
-        if (object.contains("position")) {
-            result.setPosition(convertToPosition(object["position"].toArray()));
         
-        }
-        if (object.contains("width")) {
-            result.setWidth(object["width"].toDouble());
+        result.setPosition(convertToPosition(object["position"].toArray()));
         
-        }
-        if (object.contains("height")) {
-            result.setHeight(object["height"].toDouble());
-        }
+       
+        result.setWidth(object["width"].toDouble());
+       
+        result.setHeight(object["height"].toDouble());
+        
         return result;
     }
 

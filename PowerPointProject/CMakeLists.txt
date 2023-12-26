@@ -33,6 +33,7 @@ Application/Application.cpp
 Data/ItemBase.cpp
 Renderer/Shape/ShapeBase.cpp
 CLI/CommandHistory.cpp
+CLI/CommandFactory.cpp
 Data/ItemAttributes.cpp
 Renderer/Shape/ShapeLibrary.cpp
 Renderer/Formatting/DimentionConverter.cpp

@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Application/Application.cpp" "CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Command.cpp" "CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o.d"
+  "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.cpp" "CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandHistory.cpp" "CMakeFiles/PowerPointProject.dir/CLI/CommandHistory.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/CLI/CommandHistory.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Controller.cpp" "CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o.d"
   "/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Parser.cpp" "CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o" "gcc" "CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o.d"

@@ -44,6 +44,8 @@ Renderer/VisualConversion/QtConverter.cpp
 Renderer/VisualConversion/TextFontAdjuster.cpp
 Renderer/VisualRenderingVisitor.cpp
 Renderer/ConsoleRenderingVisitor.cpp
+Renderer/Shape/ShapeTextVisitor.cpp
+Renderer/Shape/TextMargins.cpp
 Data/ItemBuilder.cpp
 UI/Controller.cpp
 UI/CommandPane.cpp

@@ -466,6 +466,18 @@
 			null
 		],
 		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeTextVisitor.hpp",
+			"MU",
+			"D4UI2YJJKW/moc_ShapeTextVisitor.cpp",
+			null
+		],
+		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/TextMargins.hpp",
+			"MU",
+			"D4UI2YJJKW/moc_TextMargins.cpp",
+			null
+		],
+		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualConversion/QtConverter.hpp",
 			"MU",
 			"UKFRJUGCCR/moc_QtConverter.cpp",
@@ -673,6 +685,16 @@
 		],
 		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeLibrary.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeTextVisitor.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/TextMargins.cpp",
 			"MU",
 			null
 		],

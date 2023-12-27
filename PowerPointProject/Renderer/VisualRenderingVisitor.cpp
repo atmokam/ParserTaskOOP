@@ -7,6 +7,7 @@
 #include "Data/IDGenerator.hpp"
 #include "Shape/IShape.hpp"
 #include "Shape/IVisualDisplayable.hpp"
+#include "Shape/ShapeTextVisitor.hpp"
 
 namespace Renderer
 {
@@ -22,6 +23,9 @@ namespace Renderer
         auto shape = shapeLibrary->getShape(std::make_shared<Data::ItemLeaf>(item));
         std::shared_ptr<IVisualDisplayable> visualShape = std::dynamic_pointer_cast<IVisualDisplayable>(shape);
         visualShape->draw(painter, converter);
+        
+        ShapeTextVisitor textVisitor (painter, converter);
+        shape->accept(textVisitor);
     }
 
     void VisualRenderingVisitor::visit(Data::ItemGroup& items) // group accept

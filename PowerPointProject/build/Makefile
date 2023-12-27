@@ -670,6 +670,54 @@ Renderer/Shape/ShapeLibrary.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeLibrary.cpp.s
 .PHONY : Renderer/Shape/ShapeLibrary.cpp.s
 
+Renderer/Shape/ShapeTextVisitor.o: Renderer/Shape/ShapeTextVisitor.cpp.o
+.PHONY : Renderer/Shape/ShapeTextVisitor.o
+
+# target to build an object file
+Renderer/Shape/ShapeTextVisitor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeTextVisitor.cpp.o
+.PHONY : Renderer/Shape/ShapeTextVisitor.cpp.o
+
+Renderer/Shape/ShapeTextVisitor.i: Renderer/Shape/ShapeTextVisitor.cpp.i
+.PHONY : Renderer/Shape/ShapeTextVisitor.i
+
+# target to preprocess a source file
+Renderer/Shape/ShapeTextVisitor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeTextVisitor.cpp.i
+.PHONY : Renderer/Shape/ShapeTextVisitor.cpp.i
+
+Renderer/Shape/ShapeTextVisitor.s: Renderer/Shape/ShapeTextVisitor.cpp.s
+.PHONY : Renderer/Shape/ShapeTextVisitor.s
+
+# target to generate assembly for a file
+Renderer/Shape/ShapeTextVisitor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeTextVisitor.cpp.s
+.PHONY : Renderer/Shape/ShapeTextVisitor.cpp.s
+
+Renderer/Shape/TextMargins.o: Renderer/Shape/TextMargins.cpp.o
+.PHONY : Renderer/Shape/TextMargins.o
+
+# target to build an object file
+Renderer/Shape/TextMargins.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/TextMargins.cpp.o
+.PHONY : Renderer/Shape/TextMargins.cpp.o
+
+Renderer/Shape/TextMargins.i: Renderer/Shape/TextMargins.cpp.i
+.PHONY : Renderer/Shape/TextMargins.i
+
+# target to preprocess a source file
+Renderer/Shape/TextMargins.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/TextMargins.cpp.i
+.PHONY : Renderer/Shape/TextMargins.cpp.i
+
+Renderer/Shape/TextMargins.s: Renderer/Shape/TextMargins.cpp.s
+.PHONY : Renderer/Shape/TextMargins.s
+
+# target to generate assembly for a file
+Renderer/Shape/TextMargins.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/TextMargins.cpp.s
+.PHONY : Renderer/Shape/TextMargins.cpp.s
+
 Renderer/VisualConversion/QtConverter.o: Renderer/VisualConversion/QtConverter.cpp.o
 .PHONY : Renderer/VisualConversion/QtConverter.o
 
@@ -962,6 +1010,12 @@ help:
 	@echo "... Renderer/Shape/ShapeLibrary.o"
 	@echo "... Renderer/Shape/ShapeLibrary.i"
 	@echo "... Renderer/Shape/ShapeLibrary.s"
+	@echo "... Renderer/Shape/ShapeTextVisitor.o"
+	@echo "... Renderer/Shape/ShapeTextVisitor.i"
+	@echo "... Renderer/Shape/ShapeTextVisitor.s"
+	@echo "... Renderer/Shape/TextMargins.o"
+	@echo "... Renderer/Shape/TextMargins.i"
+	@echo "... Renderer/Shape/TextMargins.s"
 	@echo "... Renderer/VisualConversion/QtConverter.o"
 	@echo "... Renderer/VisualConversion/QtConverter.i"
 	@echo "... Renderer/VisualConversion/QtConverter.s"

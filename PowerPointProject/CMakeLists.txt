@@ -30,11 +30,11 @@ Serialization/SaveLoad.cpp
 Director/Actions.cpp  
 Director/Director.cpp 
 Application/Application.cpp
-Data/ItemBase.cpp
+Data/Item/ItemBase.cpp
 Renderer/Shape/ShapeBase.cpp
 CLI/CommandHistory.cpp
 CLI/CommandFactory.cpp
-Data/ItemAttributes.cpp
+Data/Item/ItemAttributes.cpp
 Renderer/Shape/ShapeLibrary.cpp
 Renderer/Formatting/DimentionConverter.cpp
 Renderer/Formatting/FormatLibrary.cpp
@@ -46,8 +46,8 @@ Renderer/VisualRenderingVisitor.cpp
 Renderer/ConsoleRenderingVisitor.cpp
 Renderer/Shape/ShapeTextVisitor.cpp
 Renderer/Shape/InnerMarginConstant.cpp
-Renderer/Shape/InnerRectangleCalcualtor.cpp
-Data/ItemBuilder.cpp
+Renderer/Shape/InscribedRectangleCalculator.cpp
+Data/Item/ItemBuilder.cpp
 UI/Controller.cpp
 UI/CommandPane.cpp
 UI/MainWindow.cpp

@@ -1,7 +1,7 @@
 #include "ShapeTextVisitor.hpp"
 #include "InnerMarginConstant.hpp"
 #include "../VisualConversion/TextFontAdjuster.hpp"
-#include "InnerRectangleCalcualtor.hpp"
+#include "InscribedRectangleCalculator.hpp"
 
 namespace Renderer
 {
@@ -57,8 +57,8 @@ namespace Renderer
     
     QRect ShapeTextVisitor::getInnerRect(std::shared_ptr<ShapeBase> shape) const
     {
-        InnerRectangleCalcualtor calculator;
-        return calculator.calculateInnerRectangle(shape, converter);
+        InscribedRectangleCalculator calculator;
+        return calculator.calculateRectangle(shape, converter);
     }
 
     void ShapeTextVisitor::setupTextAttributes(std::shared_ptr<ShapeBase> shape, QRect& rect)

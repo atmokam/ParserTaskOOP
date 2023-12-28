@@ -4,8 +4,9 @@
 #include <QFont>
 #include <QTextOption>
 #include "ShapeBase.hpp"
-#include "Data/ItemBase.hpp"
-#include "Data/ItemAttributes.hpp"
+#include "IShapeVisitor.hpp"
+#include "Data/Item/ItemBase.hpp"
+#include "Data/Item/ItemAttributes.hpp"
 #include "Serialization/Converter.hpp"
 #include "../Formatting/DimentionConverter.hpp"
 #include "Renderer/VisualConversion/QtConverter.hpp"
@@ -177,19 +178,20 @@ namespace Renderer
         QtConverter styleConverter;
         Serialization::Converter typeConverter;
 
-        QColor lineColorValue = item->getAttributes().getHexLineColor().value();
-        qreal lineWidthValue = item->getAttributes().getLineWidth().value();
         auto lineType = item->getAttributes().getLineType();
-        Qt::PenStyle lineTypeValue = styleConverter.convertToQtPenStyle(
+
+        QColor qlineColor = item->getAttributes().getHexLineColor().value();
+        qreal qlineWidth = item->getAttributes().getLineWidth().value();
+        Qt::PenStyle qlineType = styleConverter.convertToQtPenStyle(
             typeConverter.convertToString(lineType.value())); 
                                                                                                             
-        auto pen = QPen(lineColorValue, lineWidthValue, lineTypeValue);
+        auto pen = QPen(qlineColor, qlineWidth, qlineType);
         auto fillColor = item->getAttributes().getHexFillColor();
-        auto brush = QBrush(QColor((fillColor.has_value()) ? fillColor.value() : Qt::transparent)); 
+        auto color = QColor((fillColor.has_value()) ? fillColor.value() : Qt::transparent);
+        auto brush = QBrush(color); 
         //TODO: make a way to remove the fill color or the line color after it has been set
         painter.setPen(pen);
         painter.setBrush(brush);
-           
     }
 
     QRect ShapeBase::getRect(Formatting::DimentionConverter& converter) 

@@ -6,7 +6,7 @@
 #include "IVisualDisplayable.hpp"
 #include "ITextDisplayable.hpp"
 #include "IShape.hpp"
-#include "Data/ItemBase.hpp"
+#include "Data/Item/ItemBase.hpp"
 
 
 class QPainter;

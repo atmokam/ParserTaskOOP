@@ -1,6 +1,5 @@
 #ifndef SAVELOADSERIALIZER_HPP
 #define SAVELOADSERIALIZER_HPP
-// this class is responsible for saving the Document to device and loading from device
 
 #include <string>
 #include <unordered_map>
@@ -11,8 +10,8 @@
 #include <vector>
 
 
-#include "Data/ItemAttributes.hpp"
-#include "Data/ItemBase.hpp"
+#include "Data/Item/ItemAttributes.hpp"
+#include "Data/Item/ItemBase.hpp"
 #include "Data/Slide.hpp"
 #include "Include/IDocument.hpp"
 

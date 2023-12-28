@@ -2,7 +2,7 @@
 #include "Data/Document.hpp"
 #include "Data/Slide.hpp"
 #include "JsonConverter.hpp"
-#include "Data/ItemBase.hpp"
+#include "Data/Item/ItemBase.hpp"
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>

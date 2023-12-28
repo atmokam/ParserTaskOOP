@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "Include/IApplication.hpp"
-#include "Data/ItemBase.hpp"
+#include "Data/Item/ItemBase.hpp"
 
 
 namespace CLI {

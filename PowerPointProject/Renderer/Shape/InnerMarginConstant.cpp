@@ -11,7 +11,7 @@ namespace Renderer
         margin[Renderer::Type::Line] = {};
     }
 
-    double InnerMarginConstant::getMargins(Renderer::Type type) const
+    double InnerMarginConstant::getMargin(Renderer::Type type) const
     {
         return margin.at(type);
     }

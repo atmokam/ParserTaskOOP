@@ -1,7 +1,7 @@
 #include "ShapeLibrary.hpp"
 #include "IShape.hpp"
 #include "ShapeBase.hpp"
-#include "Data/ItemBase.hpp"
+#include "Data/Item/ItemBase.hpp"
 
 namespace Renderer
 {

@@ -237,19 +237,19 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Application/Application.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Application/Application.cpp -o CMakeFiles/PowerPointProject.dir/Application/Application.cpp.s
 
-CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
-CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o: ../Data/ItemBase.cpp
-CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o -MF CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.cpp
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.o: ../Data/Item/ItemBase.cpp
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.o -MF CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemBase.cpp
 
-CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.cpp > CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.i
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemBase.cpp > CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.i
 
-CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.cpp -o CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.s
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemBase.cpp -o CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.s
 
 CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeBase.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
 CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeBase.cpp.o: ../Renderer/Shape/ShapeBase.cpp
@@ -293,19 +293,19 @@ CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.cpp -o CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.s
 
-CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
-CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o: ../Data/ItemAttributes.cpp
-CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o -MF CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.cpp
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.o: ../Data/Item/ItemAttributes.cpp
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.o -MF CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemAttributes.cpp
 
-CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.cpp > CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.i
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemAttributes.cpp > CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.i
 
-CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.cpp -o CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.s
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemAttributes.cpp -o CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.s
 
 CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeLibrary.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
 CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeLibrary.cpp.o: ../Renderer/Shape/ShapeLibrary.cpp
@@ -461,33 +461,33 @@ CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.s: cmake
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerMarginConstant.cpp -o CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.s
 
-CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
-CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.o: ../Renderer/Shape/InnerRectangleCalcualtor.cpp
-CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.o -MF CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerRectangleCalcualtor.cpp
+CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
+CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.o: ../Renderer/Shape/InscribedRectangleCalculator.cpp
+CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.o -MF CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InscribedRectangleCalculator.cpp
 
-CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerRectangleCalcualtor.cpp > CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.i
+CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InscribedRectangleCalculator.cpp > CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.i
 
-CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerRectangleCalcualtor.cpp -o CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.s
+CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InscribedRectangleCalculator.cpp -o CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.s
 
-CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
-CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o: ../Data/ItemBuilder.cpp
-CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o -MF CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBuilder.cpp
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o: ../Data/Item/ItemBuilder.cpp
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o: CMakeFiles/PowerPointProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o -MF CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o.d -o CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o -c /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemBuilder.cpp
 
-CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBuilder.cpp > CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.i
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemBuilder.cpp > CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.i
 
-CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBuilder.cpp -o CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.s
+CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemBuilder.cpp -o CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.s
 
 CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o: CMakeFiles/PowerPointProject.dir/flags.make
 CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o: ../UI/Controller.cpp
@@ -559,11 +559,11 @@ PowerPointProject_OBJECTS = \
 "CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o" \
-"CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o" \
+"CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeBase.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/CLI/CommandHistory.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.o" \
-"CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o" \
+"CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeLibrary.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.o" \
@@ -575,8 +575,8 @@ PowerPointProject_OBJECTS = \
 "CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeTextVisitor.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.o" \
-"CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.o" \
-"CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o" \
+"CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.o" \
+"CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.o" \
 "CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o" \
@@ -597,11 +597,11 @@ PowerPointProject: CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Director/Actions.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Director/Director.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o
-PowerPointProject: CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o
+PowerPointProject: CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeBase.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/CLI/CommandHistory.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/CLI/CommandFactory.cpp.o
-PowerPointProject: CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o
+PowerPointProject: CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeLibrary.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/Formatting/DimentionConverter.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.o
@@ -613,8 +613,8 @@ PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/VisualRenderingVisi
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeTextVisitor.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.o
-PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.o
-PowerPointProject: CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o
+PowerPointProject: CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.o
+PowerPointProject: CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.o
 PowerPointProject: CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o

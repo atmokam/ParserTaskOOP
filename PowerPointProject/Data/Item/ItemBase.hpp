@@ -14,7 +14,7 @@ namespace Renderer
 
 namespace Data
 {
-    class IVisitor;
+    class IItemVisitor;
 
     class ItemBase {  
     protected:
@@ -39,7 +39,7 @@ namespace Data
         virtual void setGeometry(Geometry& geometry) = 0;
         virtual ~ItemBase() = default;
 
-        virtual void accept(std::weak_ptr<IVisitor> visitor) = 0;
+        virtual void accept(std::weak_ptr<IItemVisitor> visitor) = 0;
     }; 
 
 
@@ -66,7 +66,7 @@ namespace Data
         ID getID() const override;
         void setID(ID id) override;
 
-        void accept(std::weak_ptr<IVisitor> visitor) override;
+        void accept(std::weak_ptr<IItemVisitor> visitor) override;
 
 
     };
@@ -100,7 +100,7 @@ namespace Data
         Renderer::Type getType() const override;
         void setType(Renderer::Type type) override;
 
-        void accept(std::weak_ptr<IVisitor> visitor) override;
+        void accept(std::weak_ptr<IItemVisitor> visitor) override;
 
     };
 }

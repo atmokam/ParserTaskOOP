@@ -1,7 +1,7 @@
 #ifndef VISUALRENDERINGVISITOR_HPP
 #define VISUALRENDERINGVISITOR_HPP
 
-#include "Include/IVisitor.hpp"
+#include "Include/IItemVisitor.hpp"
 #include <memory>
 #include "Data/Slide.hpp"
 #include "Shape/ShapeLibrary.hpp"
@@ -10,7 +10,7 @@
 
 namespace Renderer
 {
-    class VisualRenderingVisitor: public Data::IVisitor
+    class VisualRenderingVisitor: public Data::IItemVisitor
     {
         std::shared_ptr<ShapeLibrary> shapeLibrary;    
         QPaintDevice& device;

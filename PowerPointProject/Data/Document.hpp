@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "Include/IDocument.hpp"
-#include "ItemAttributes.hpp"
+#include "Item/ItemAttributes.hpp"
 #include "IDGenerator.hpp"
 
 

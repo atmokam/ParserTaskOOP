@@ -6,7 +6,7 @@
 #include <memory>
 #include <optional>
 
-#include "Data/ItemBase.hpp"
+#include "Data/Item/ItemBase.hpp"
 
 namespace Renderer
 {

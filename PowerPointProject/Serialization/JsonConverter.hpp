@@ -2,7 +2,7 @@
 #define JSONCONVERTER_HPP
 
 #include <utility>
-#include "Data/ItemAttributes.hpp"
+#include "Data/Item/ItemAttributes.hpp"
 
 
 class QJsonValue;
@@ -20,7 +20,7 @@ namespace Serialization
         JsonConverter() = default;
         QJsonValue convertToJson(const Data::Attributes& attribute);
         QJsonValue convertToJson(const Data::Geometry& geometry);
-        QJsonArray convertToJson(const Data::Position& position); // could be done with the convertToIDs
+        QJsonArray convertToJson(const Data::Position& position); 
         QJsonArray convertToJson(const std::pair<double, double>& format);
         QJsonValue convertToJson(const Renderer::Type& type);
         QJsonValue convertToJson(const Data::LineType& lineType);

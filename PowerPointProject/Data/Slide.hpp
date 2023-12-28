@@ -5,7 +5,7 @@
 #include <memory>
 
 
-#include "ItemBase.hpp"
+#include "Item/ItemBase.hpp"
 
 namespace Data
 {

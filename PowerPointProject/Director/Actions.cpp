@@ -4,7 +4,7 @@
 #include "Serialization/Converter.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Data/Slide.hpp"
-#include "Data/ItemBase.hpp"
+#include "Data/Item/ItemBase.hpp"
 
 
 namespace Director

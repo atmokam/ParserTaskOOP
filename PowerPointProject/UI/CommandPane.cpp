@@ -1,12 +1,14 @@
 #include "CommandPane.hpp"
 #include "Application/Application.hpp"
+#include "Controller.hpp"
 #include <QVBoxLayout>
 #include <QKeyEvent>
 
 namespace UI
 {
     CommandPane::CommandPane(QWidget* parent)
-        : QWidget(parent), lineEdit(new QLineEdit(this)), textEdit(new QTextEdit(this))
+        : QWidget(parent), lineEdit(new QLineEdit(this)), textEdit(new QTextEdit(this)), 
+        controller(App::Application::getInstance().getController())
     {
         textEdit->setReadOnly(true);
         textEdit->setMinimumSize(400, 400);
@@ -38,15 +40,15 @@ namespace UI
     {
         QString command = lineEdit->text();
         lineEdit->clear(); 
-        auto controller = App::Application::getInstance().getController();
+        
         std::stringstream input = std::stringstream(command.toStdString());
 
-        controller->runCommand(input);
+        controller.lock()->runCommand(input);
         
-        if(controller->getOutputStream().str() != "")
+        if(controller.lock()->getOutputStream().str() != "")
         {
-            textEdit->append(controller->getOutputStream().str().c_str());
-            controller->getOutputStream().str(std::string{});
+            textEdit->append(controller.lock()->getOutputStream().str().c_str());
+            controller.lock()->getOutputStream().str({});
         }
 
     }

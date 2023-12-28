@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <algorithm>
 
-#include "Data/ItemAttributes.hpp"
+#include "Data/Item/ItemAttributes.hpp"
 
 namespace Renderer 
 {

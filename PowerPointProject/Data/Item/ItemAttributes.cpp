@@ -5,7 +5,11 @@
 namespace Data
 {
      Attributes::Attributes(long hexFillColor, long hexLineColor, LineType lineType, double lineWidth, std::string text) :
-     hexFillColor(hexFillColor), hexLineColor(hexLineColor), lineType(lineType), lineWidth(lineWidth), text(text) { }
+     hexFillColor(hexFillColor), 
+     hexLineColor(hexLineColor), 
+     lineType(lineType), 
+     lineWidth(lineWidth), 
+     text(text) { }
 
      std::optional<long> Attributes::getHexFillColor() const { return hexFillColor; }
 
@@ -37,7 +41,7 @@ namespace Data
 
      void Attributes::setLineWidth(double lineWidth) 
      { 
-     this->lineWidth = lineWidth; 
+          this->lineWidth = lineWidth; 
      }
 
      std::optional<std::string> Attributes::getText() const { return text; }

@@ -400,21 +400,21 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.hpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemAttributes.hpp",
 			"MU",
-			"M5WLY3B75D/moc_ItemAttributes.cpp",
+			"4EMNTR4LYD/moc_ItemAttributes.cpp",
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.hpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemBase.hpp",
 			"MU",
-			"M5WLY3B75D/moc_ItemBase.cpp",
+			"4EMNTR4LYD/moc_ItemBase.cpp",
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBuilder.hpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemBuilder.hpp",
 			"MU",
-			"M5WLY3B75D/moc_ItemBuilder.cpp",
+			"4EMNTR4LYD/moc_ItemBuilder.cpp",
 			null
 		],
 		[
@@ -460,9 +460,9 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerRectangleCalcualtor.hpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InscribedRectangleCalculator.hpp",
 			"MU",
-			"D4UI2YJJKW/moc_InnerRectangleCalcualtor.cpp",
+			"D4UI2YJJKW/moc_InscribedRectangleCalculator.cpp",
 			null
 		],
 		[
@@ -635,17 +635,17 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemAttributes.cpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemAttributes.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBase.cpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemBase.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/ItemBuilder.cpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemBuilder.cpp",
 			"MU",
 			null
 		],
@@ -690,7 +690,7 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerRectangleCalcualtor.cpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InscribedRectangleCalculator.cpp",
 			"MU",
 			null
 		],

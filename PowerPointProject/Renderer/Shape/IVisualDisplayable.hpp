@@ -3,11 +3,8 @@
 
 class QPainter;
 
-
-
 namespace Renderer
 {
-    
     namespace Formatting
     {
         class DimentionConverter;

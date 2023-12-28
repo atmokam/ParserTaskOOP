@@ -14,11 +14,11 @@ namespace Renderer
     
     class ShapeBase;
 
-    class InnerRectangleCalcualtor
+    class InscribedRectangleCalculator
     {
     public:
-        InnerRectangleCalcualtor() = default;
-        QRect calculateInnerRectangle(std::shared_ptr<ShapeBase> shape, Formatting::DimentionConverter& converter);
+        InscribedRectangleCalculator() = default;
+        QRect calculateRectangle(std::shared_ptr<ShapeBase> shape, Formatting::DimentionConverter& converter);
     };
 
 }

@@ -27,6 +27,7 @@ namespace UI
         controller->runCommand(input);
         
         output << controller->getOutputStream().str();
+        controller->getOutputStream().str({});
 
     }
 

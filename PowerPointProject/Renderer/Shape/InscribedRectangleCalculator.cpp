@@ -1,4 +1,4 @@
-#include "InnerRectangleCalcualtor.hpp"
+#include "InscribedRectangleCalculator.hpp"
 #include "InnerMarginConstant.hpp"
 #include "ShapeBase.hpp"
 #include "../Formatting/DimentionConverter.hpp"
@@ -10,12 +10,13 @@
 namespace Renderer
 {
 
-    QRect InnerRectangleCalcualtor::calculateInnerRectangle(std::shared_ptr<ShapeBase> shape, Formatting::DimentionConverter& converter)
+    QRect InscribedRectangleCalculator::calculateRectangle(std::shared_ptr<ShapeBase> shape, Formatting::DimentionConverter& converter)
     {
         InnerMarginConstant marginConstant;
         auto item = shape->getItem();
-        auto margin = marginConstant.getMargins(item->getType());
         auto geometry = item->getGeometry();
+
+        auto margin = marginConstant.getMargin(item->getType());
         auto coordinates = geometry.getPosition().value().getCoordinates();
         auto width = geometry.getWidth().value();
         auto height = geometry.getHeight().value();

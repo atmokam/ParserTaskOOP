@@ -1,5 +1,5 @@
-#ifndef IVISITOR_HPP
-#define IVISITOR_HPP
+#ifndef IITEMVISITOR_HPP
+#define IITEMVISITOR_HPP
 
 #include <memory>
 
@@ -9,7 +9,7 @@ namespace Data
     class ItemLeaf;
    
 
-    class IVisitor
+    class IItemVisitor
     {
     public:
         virtual void visit(ItemLeaf& item) = 0;

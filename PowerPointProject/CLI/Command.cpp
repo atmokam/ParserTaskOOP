@@ -17,7 +17,7 @@
 #include "Renderer/Formatting/DimentionConverter.hpp"
 #include "Serialization/SaveLoad.hpp"
 #include "Serialization/Converter.hpp"
-#include "Data/ItemBuilder.hpp"
+#include "Data/Item/ItemBuilder.hpp"
 
 namespace CLI 
 {

@@ -1,5 +1,4 @@
 #include "Converter.hpp"
-#include "Data/ItemAttributes.hpp"
 #include "Application/Application.hpp"
 #include "Renderer/Shape/ShapeLibrary.hpp"
 #include <sstream>

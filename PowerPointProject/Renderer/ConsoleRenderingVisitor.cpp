@@ -1,6 +1,6 @@
 #include "ConsoleRenderingVisitor.hpp"
 
-#include "Data/ItemBase.hpp"
+#include "Data/Item/ItemBase.hpp"
 #include "Renderer/Shape/ShapeBase.hpp"
 #include "Serialization/Converter.hpp"
 

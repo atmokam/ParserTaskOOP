@@ -4,7 +4,7 @@
 #include <string>
 #include <sstream>
 
-#include "Include/IVisitor.hpp"
+#include "Include/IItemVisitor.hpp"
 
 namespace Data
 {
@@ -15,7 +15,7 @@ namespace Data
 
 namespace Renderer
 {
-    class ConsoleRenderingVisitor : public Data::IVisitor
+    class ConsoleRenderingVisitor : public Data::IItemVisitor
     {
         std::reference_wrapper<std::ostream> output;
     public:

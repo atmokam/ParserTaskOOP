@@ -7,8 +7,11 @@
 #include <QKeyEvent>
 #include <QEvent>
 
+
 namespace UI
 {
+
+    class Controller;
 
     class CommandPane : public QWidget
     {
@@ -29,7 +32,7 @@ namespace UI
         void onCommandEntered();
 
     private:
-
+        std::weak_ptr<Controller> controller;
         QLineEdit* lineEdit;
         QTextEdit* textEdit;
     };

@@ -358,77 +358,77 @@ Data/IDGenerator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/IDGenerator.cpp.s
 .PHONY : Data/IDGenerator.cpp.s
 
-Data/ItemAttributes.o: Data/ItemAttributes.cpp.o
-.PHONY : Data/ItemAttributes.o
+Data/Item/ItemAttributes.o: Data/Item/ItemAttributes.cpp.o
+.PHONY : Data/Item/ItemAttributes.o
 
 # target to build an object file
-Data/ItemAttributes.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.o
-.PHONY : Data/ItemAttributes.cpp.o
+Data/Item/ItemAttributes.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.o
+.PHONY : Data/Item/ItemAttributes.cpp.o
 
-Data/ItemAttributes.i: Data/ItemAttributes.cpp.i
-.PHONY : Data/ItemAttributes.i
+Data/Item/ItemAttributes.i: Data/Item/ItemAttributes.cpp.i
+.PHONY : Data/Item/ItemAttributes.i
 
 # target to preprocess a source file
-Data/ItemAttributes.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.i
-.PHONY : Data/ItemAttributes.cpp.i
+Data/Item/ItemAttributes.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.i
+.PHONY : Data/Item/ItemAttributes.cpp.i
 
-Data/ItemAttributes.s: Data/ItemAttributes.cpp.s
-.PHONY : Data/ItemAttributes.s
+Data/Item/ItemAttributes.s: Data/Item/ItemAttributes.cpp.s
+.PHONY : Data/Item/ItemAttributes.s
 
 # target to generate assembly for a file
-Data/ItemAttributes.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemAttributes.cpp.s
-.PHONY : Data/ItemAttributes.cpp.s
+Data/Item/ItemAttributes.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item/ItemAttributes.cpp.s
+.PHONY : Data/Item/ItemAttributes.cpp.s
 
-Data/ItemBase.o: Data/ItemBase.cpp.o
-.PHONY : Data/ItemBase.o
+Data/Item/ItemBase.o: Data/Item/ItemBase.cpp.o
+.PHONY : Data/Item/ItemBase.o
 
 # target to build an object file
-Data/ItemBase.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.o
-.PHONY : Data/ItemBase.cpp.o
+Data/Item/ItemBase.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.o
+.PHONY : Data/Item/ItemBase.cpp.o
 
-Data/ItemBase.i: Data/ItemBase.cpp.i
-.PHONY : Data/ItemBase.i
+Data/Item/ItemBase.i: Data/Item/ItemBase.cpp.i
+.PHONY : Data/Item/ItemBase.i
 
 # target to preprocess a source file
-Data/ItemBase.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.i
-.PHONY : Data/ItemBase.cpp.i
+Data/Item/ItemBase.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.i
+.PHONY : Data/Item/ItemBase.cpp.i
 
-Data/ItemBase.s: Data/ItemBase.cpp.s
-.PHONY : Data/ItemBase.s
+Data/Item/ItemBase.s: Data/Item/ItemBase.cpp.s
+.PHONY : Data/Item/ItemBase.s
 
 # target to generate assembly for a file
-Data/ItemBase.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBase.cpp.s
-.PHONY : Data/ItemBase.cpp.s
+Data/Item/ItemBase.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item/ItemBase.cpp.s
+.PHONY : Data/Item/ItemBase.cpp.s
 
-Data/ItemBuilder.o: Data/ItemBuilder.cpp.o
-.PHONY : Data/ItemBuilder.o
+Data/Item/ItemBuilder.o: Data/Item/ItemBuilder.cpp.o
+.PHONY : Data/Item/ItemBuilder.o
 
 # target to build an object file
-Data/ItemBuilder.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.o
-.PHONY : Data/ItemBuilder.cpp.o
+Data/Item/ItemBuilder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o
+.PHONY : Data/Item/ItemBuilder.cpp.o
 
-Data/ItemBuilder.i: Data/ItemBuilder.cpp.i
-.PHONY : Data/ItemBuilder.i
+Data/Item/ItemBuilder.i: Data/Item/ItemBuilder.cpp.i
+.PHONY : Data/Item/ItemBuilder.i
 
 # target to preprocess a source file
-Data/ItemBuilder.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.i
-.PHONY : Data/ItemBuilder.cpp.i
+Data/Item/ItemBuilder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.i
+.PHONY : Data/Item/ItemBuilder.cpp.i
 
-Data/ItemBuilder.s: Data/ItemBuilder.cpp.s
-.PHONY : Data/ItemBuilder.s
+Data/Item/ItemBuilder.s: Data/Item/ItemBuilder.cpp.s
+.PHONY : Data/Item/ItemBuilder.s
 
 # target to generate assembly for a file
-Data/ItemBuilder.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/ItemBuilder.cpp.s
-.PHONY : Data/ItemBuilder.cpp.s
+Data/Item/ItemBuilder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.s
+.PHONY : Data/Item/ItemBuilder.cpp.s
 
 Data/Slide.o: Data/Slide.cpp.o
 .PHONY : Data/Slide.o
@@ -646,29 +646,29 @@ Renderer/Shape/InnerMarginConstant.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.s
 .PHONY : Renderer/Shape/InnerMarginConstant.cpp.s
 
-Renderer/Shape/InnerRectangleCalcualtor.o: Renderer/Shape/InnerRectangleCalcualtor.cpp.o
-.PHONY : Renderer/Shape/InnerRectangleCalcualtor.o
+Renderer/Shape/InscribedRectangleCalculator.o: Renderer/Shape/InscribedRectangleCalculator.cpp.o
+.PHONY : Renderer/Shape/InscribedRectangleCalculator.o
 
 # target to build an object file
-Renderer/Shape/InnerRectangleCalcualtor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.o
-.PHONY : Renderer/Shape/InnerRectangleCalcualtor.cpp.o
+Renderer/Shape/InscribedRectangleCalculator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.o
+.PHONY : Renderer/Shape/InscribedRectangleCalculator.cpp.o
 
-Renderer/Shape/InnerRectangleCalcualtor.i: Renderer/Shape/InnerRectangleCalcualtor.cpp.i
-.PHONY : Renderer/Shape/InnerRectangleCalcualtor.i
+Renderer/Shape/InscribedRectangleCalculator.i: Renderer/Shape/InscribedRectangleCalculator.cpp.i
+.PHONY : Renderer/Shape/InscribedRectangleCalculator.i
 
 # target to preprocess a source file
-Renderer/Shape/InnerRectangleCalcualtor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.i
-.PHONY : Renderer/Shape/InnerRectangleCalcualtor.cpp.i
+Renderer/Shape/InscribedRectangleCalculator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.i
+.PHONY : Renderer/Shape/InscribedRectangleCalculator.cpp.i
 
-Renderer/Shape/InnerRectangleCalcualtor.s: Renderer/Shape/InnerRectangleCalcualtor.cpp.s
-.PHONY : Renderer/Shape/InnerRectangleCalcualtor.s
+Renderer/Shape/InscribedRectangleCalculator.s: Renderer/Shape/InscribedRectangleCalculator.cpp.s
+.PHONY : Renderer/Shape/InscribedRectangleCalculator.s
 
 # target to generate assembly for a file
-Renderer/Shape/InnerRectangleCalcualtor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.s
-.PHONY : Renderer/Shape/InnerRectangleCalcualtor.cpp.s
+Renderer/Shape/InscribedRectangleCalculator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.s
+.PHONY : Renderer/Shape/InscribedRectangleCalculator.cpp.s
 
 Renderer/Shape/ShapeBase.o: Renderer/Shape/ShapeBase.cpp.o
 .PHONY : Renderer/Shape/ShapeBase.o
@@ -995,15 +995,15 @@ help:
 	@echo "... Data/IDGenerator.o"
 	@echo "... Data/IDGenerator.i"
 	@echo "... Data/IDGenerator.s"
-	@echo "... Data/ItemAttributes.o"
-	@echo "... Data/ItemAttributes.i"
-	@echo "... Data/ItemAttributes.s"
-	@echo "... Data/ItemBase.o"
-	@echo "... Data/ItemBase.i"
-	@echo "... Data/ItemBase.s"
-	@echo "... Data/ItemBuilder.o"
-	@echo "... Data/ItemBuilder.i"
-	@echo "... Data/ItemBuilder.s"
+	@echo "... Data/Item/ItemAttributes.o"
+	@echo "... Data/Item/ItemAttributes.i"
+	@echo "... Data/Item/ItemAttributes.s"
+	@echo "... Data/Item/ItemBase.o"
+	@echo "... Data/Item/ItemBase.i"
+	@echo "... Data/Item/ItemBase.s"
+	@echo "... Data/Item/ItemBuilder.o"
+	@echo "... Data/Item/ItemBuilder.i"
+	@echo "... Data/Item/ItemBuilder.s"
 	@echo "... Data/Slide.o"
 	@echo "... Data/Slide.i"
 	@echo "... Data/Slide.s"
@@ -1031,9 +1031,9 @@ help:
 	@echo "... Renderer/Shape/InnerMarginConstant.o"
 	@echo "... Renderer/Shape/InnerMarginConstant.i"
 	@echo "... Renderer/Shape/InnerMarginConstant.s"
-	@echo "... Renderer/Shape/InnerRectangleCalcualtor.o"
-	@echo "... Renderer/Shape/InnerRectangleCalcualtor.i"
-	@echo "... Renderer/Shape/InnerRectangleCalcualtor.s"
+	@echo "... Renderer/Shape/InscribedRectangleCalculator.o"
+	@echo "... Renderer/Shape/InscribedRectangleCalculator.i"
+	@echo "... Renderer/Shape/InscribedRectangleCalculator.s"
 	@echo "... Renderer/Shape/ShapeBase.o"
 	@echo "... Renderer/Shape/ShapeBase.i"
 	@echo "... Renderer/Shape/ShapeBase.s"

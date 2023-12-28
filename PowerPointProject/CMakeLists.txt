@@ -45,7 +45,8 @@ Renderer/VisualConversion/TextFontAdjuster.cpp
 Renderer/VisualRenderingVisitor.cpp
 Renderer/ConsoleRenderingVisitor.cpp
 Renderer/Shape/ShapeTextVisitor.cpp
-Renderer/Shape/TextMargins.cpp
+Renderer/Shape/InnerMarginConstant.cpp
+Renderer/Shape/InnerRectangleCalcualtor.cpp
 Data/ItemBuilder.cpp
 UI/Controller.cpp
 UI/CommandPane.cpp

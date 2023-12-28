@@ -1,8 +1,6 @@
 #ifndef SHAPEBASE_HPP
 #define SHAPEBASE_HPP
 
-// intent: rendered entity
-
 #include <memory>
 
 #include "IVisualDisplayable.hpp"
@@ -25,16 +23,16 @@ namespace Renderer
     {   
     protected:                                                        
         std::shared_ptr<Data::ItemBase> item;
-
         void setPainterAttributes(QPainter& painter);
-        QRect getRect(Formatting::DimentionConverter& converter);//
+        QRect getRect(Formatting::DimentionConverter& converter);
     public:
-        void print(std::ostream& stream) override;
         ShapeBase(std::shared_ptr<Data::ItemBase> item);
         void setItem(std::shared_ptr<Data::ItemBase> item);
         std::shared_ptr<Data::ItemBase> getItem() const;
+
+        void print(std::ostream& stream) override;
         virtual std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
-        virtual void accept(IShapeVisitor& visitor) override {}
+        virtual void accept(std::weak_ptr<IShapeVisitor> visitor) override {}
     };
 
 
@@ -44,7 +42,7 @@ namespace Renderer
         ShapeRectangle(std::shared_ptr<Data::ItemBase> item);
         void draw(QPainter& painter, Formatting::DimentionConverter& converter) override;
         std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
-        void accept(IShapeVisitor& visitor) override;
+        void accept(std::weak_ptr<IShapeVisitor> visitor) override;
     };
 
     class ShapeEllipse : public ShapeBase, public IVisualDisplayable {
@@ -52,7 +50,7 @@ namespace Renderer
         ShapeEllipse(std::shared_ptr<Data::ItemBase> item);
         void draw(QPainter& painter, Formatting::DimentionConverter& converter) override;
         std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
-        void accept(IShapeVisitor& visitor) override;
+        void accept(std::weak_ptr<IShapeVisitor> visitor) override;
 
     };
 
@@ -61,7 +59,7 @@ namespace Renderer
         ShapeLine(std::shared_ptr<Data::ItemBase> item);
         void draw(QPainter& painter, Formatting::DimentionConverter& converter) override;
         std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
-        void accept(IShapeVisitor& visitor) override;
+        void accept(std::weak_ptr<IShapeVisitor> visitor) override;
 
 
     };
@@ -71,7 +69,7 @@ namespace Renderer
         ShapeTrapezoid(std::shared_ptr<Data::ItemBase> item);
         void draw(QPainter& painter, Formatting::DimentionConverter& converter) override;
         std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
-        void accept(IShapeVisitor& visitor) override;
+        void accept(std::weak_ptr<IShapeVisitor> visitor) override;
 
     };
 
@@ -80,7 +78,7 @@ namespace Renderer
         ShapeTriangle(std::shared_ptr<Data::ItemBase> item);
         void draw(QPainter& painter, Formatting::DimentionConverter& converter) override;
         std::shared_ptr<IShape> clone(std::shared_ptr<Data::ItemBase> item) override;
-        void accept(IShapeVisitor& visitor) override;
+        void accept(std::weak_ptr<IShapeVisitor> visitor) override;
 
     };
 }

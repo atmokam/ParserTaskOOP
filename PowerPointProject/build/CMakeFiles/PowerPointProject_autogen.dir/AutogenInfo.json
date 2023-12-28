@@ -454,6 +454,18 @@
 			null
 		],
 		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerMarginConstant.hpp",
+			"MU",
+			"D4UI2YJJKW/moc_InnerMarginConstant.cpp",
+			null
+		],
+		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerRectangleCalcualtor.hpp",
+			"MU",
+			"D4UI2YJJKW/moc_InnerRectangleCalcualtor.cpp",
+			null
+		],
+		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeBase.hpp",
 			"MU",
 			"D4UI2YJJKW/moc_ShapeBase.cpp",
@@ -469,12 +481,6 @@
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeTextVisitor.hpp",
 			"MU",
 			"D4UI2YJJKW/moc_ShapeTextVisitor.cpp",
-			null
-		],
-		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/TextMargins.hpp",
-			"MU",
-			"D4UI2YJJKW/moc_TextMargins.cpp",
 			null
 		],
 		[
@@ -679,6 +685,16 @@
 			null
 		],
 		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerMarginConstant.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerRectangleCalcualtor.cpp",
+			"MU",
+			null
+		],
+		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeBase.cpp",
 			"MU",
 			null
@@ -690,11 +706,6 @@
 		],
 		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeTextVisitor.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/TextMargins.cpp",
 			"MU",
 			null
 		],

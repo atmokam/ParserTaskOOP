@@ -20,8 +20,6 @@ namespace Renderer
     {
         setPainterAttributes(painter);
         QRect rect = getRect(converter);
-       
-
         painter.drawRect(rect);
     }
 
@@ -31,9 +29,9 @@ namespace Renderer
         return std::make_shared<ShapeRectangle>(*this);
     }
 
-    void ShapeRectangle::accept(IShapeVisitor& visitor)
+    void ShapeRectangle::accept(std::weak_ptr<IShapeVisitor> visitor)
     {
-        visitor.visit(*this);
+        visitor.lock()->visit(*this);
     }
 
 
@@ -45,9 +43,7 @@ namespace Renderer
     void ShapeEllipse::draw(QPainter& painter, Formatting::DimentionConverter& converter) 
     {
         setPainterAttributes(painter);
-        QRect rect = getRect(converter);
-
-       
+        QRect rect = getRect(converter);       
         painter.drawEllipse(rect);
     }
 
@@ -57,9 +53,9 @@ namespace Renderer
         return std::make_shared<ShapeEllipse>(*this);
     }
 
-    void ShapeEllipse::accept(IShapeVisitor& visitor)
+    void ShapeEllipse::accept(std::weak_ptr<IShapeVisitor> visitor)
     {
-        visitor.visit(*this);
+        visitor.lock()->visit(*this);
     }
 
 
@@ -84,9 +80,9 @@ namespace Renderer
         return std::make_shared<ShapeLine>(*this);
     }
 
-    void ShapeLine::accept(IShapeVisitor& visitor)
+    void ShapeLine::accept(std::weak_ptr<IShapeVisitor> visitor)
     {
-        visitor.visit(*this);
+        visitor.lock()->visit(*this);
     }
 
 
@@ -106,9 +102,9 @@ namespace Renderer
         return std::make_shared<ShapeTrapezoid>(*this);
     }
 
-    void ShapeTrapezoid::accept(IShapeVisitor& visitor)
+    void ShapeTrapezoid::accept(std::weak_ptr<IShapeVisitor> visitor)
     {
-        visitor.visit(*this);
+        visitor.lock()->visit(*this);
     }
 
 
@@ -128,9 +124,9 @@ namespace Renderer
         return std::make_shared<ShapeTriangle>(*this);
     }
 
-    void ShapeTriangle::accept(IShapeVisitor& visitor)
+    void ShapeTriangle::accept(std::weak_ptr<IShapeVisitor> visitor)
     {
-        visitor.visit(*this);
+        visitor.lock()->visit(*this);
     }
 
 
@@ -189,7 +185,8 @@ namespace Renderer
                                                                                                             
         auto pen = QPen(lineColorValue, lineWidthValue, lineTypeValue);
         auto fillColor = item->getAttributes().getHexFillColor();
-        auto brush = QBrush(QColor((fillColor.has_value()) ? fillColor.value() : Qt::transparent)); //TODO: make a way to remove the fill color or the line color after it has been set
+        auto brush = QBrush(QColor((fillColor.has_value()) ? fillColor.value() : Qt::transparent)); 
+        //TODO: make a way to remove the fill color or the line color after it has been set
         painter.setPen(pen);
         painter.setBrush(brush);
            

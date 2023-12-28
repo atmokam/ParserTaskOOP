@@ -622,6 +622,54 @@ Renderer/Formatting/FormatLibrary.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.s
 .PHONY : Renderer/Formatting/FormatLibrary.cpp.s
 
+Renderer/Shape/InnerMarginConstant.o: Renderer/Shape/InnerMarginConstant.cpp.o
+.PHONY : Renderer/Shape/InnerMarginConstant.o
+
+# target to build an object file
+Renderer/Shape/InnerMarginConstant.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.o
+.PHONY : Renderer/Shape/InnerMarginConstant.cpp.o
+
+Renderer/Shape/InnerMarginConstant.i: Renderer/Shape/InnerMarginConstant.cpp.i
+.PHONY : Renderer/Shape/InnerMarginConstant.i
+
+# target to preprocess a source file
+Renderer/Shape/InnerMarginConstant.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.i
+.PHONY : Renderer/Shape/InnerMarginConstant.cpp.i
+
+Renderer/Shape/InnerMarginConstant.s: Renderer/Shape/InnerMarginConstant.cpp.s
+.PHONY : Renderer/Shape/InnerMarginConstant.s
+
+# target to generate assembly for a file
+Renderer/Shape/InnerMarginConstant.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.s
+.PHONY : Renderer/Shape/InnerMarginConstant.cpp.s
+
+Renderer/Shape/InnerRectangleCalcualtor.o: Renderer/Shape/InnerRectangleCalcualtor.cpp.o
+.PHONY : Renderer/Shape/InnerRectangleCalcualtor.o
+
+# target to build an object file
+Renderer/Shape/InnerRectangleCalcualtor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.o
+.PHONY : Renderer/Shape/InnerRectangleCalcualtor.cpp.o
+
+Renderer/Shape/InnerRectangleCalcualtor.i: Renderer/Shape/InnerRectangleCalcualtor.cpp.i
+.PHONY : Renderer/Shape/InnerRectangleCalcualtor.i
+
+# target to preprocess a source file
+Renderer/Shape/InnerRectangleCalcualtor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.i
+.PHONY : Renderer/Shape/InnerRectangleCalcualtor.cpp.i
+
+Renderer/Shape/InnerRectangleCalcualtor.s: Renderer/Shape/InnerRectangleCalcualtor.cpp.s
+.PHONY : Renderer/Shape/InnerRectangleCalcualtor.s
+
+# target to generate assembly for a file
+Renderer/Shape/InnerRectangleCalcualtor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerRectangleCalcualtor.cpp.s
+.PHONY : Renderer/Shape/InnerRectangleCalcualtor.cpp.s
+
 Renderer/Shape/ShapeBase.o: Renderer/Shape/ShapeBase.cpp.o
 .PHONY : Renderer/Shape/ShapeBase.o
 
@@ -693,30 +741,6 @@ Renderer/Shape/ShapeTextVisitor.s: Renderer/Shape/ShapeTextVisitor.cpp.s
 Renderer/Shape/ShapeTextVisitor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeTextVisitor.cpp.s
 .PHONY : Renderer/Shape/ShapeTextVisitor.cpp.s
-
-Renderer/Shape/TextMargins.o: Renderer/Shape/TextMargins.cpp.o
-.PHONY : Renderer/Shape/TextMargins.o
-
-# target to build an object file
-Renderer/Shape/TextMargins.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/TextMargins.cpp.o
-.PHONY : Renderer/Shape/TextMargins.cpp.o
-
-Renderer/Shape/TextMargins.i: Renderer/Shape/TextMargins.cpp.i
-.PHONY : Renderer/Shape/TextMargins.i
-
-# target to preprocess a source file
-Renderer/Shape/TextMargins.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/TextMargins.cpp.i
-.PHONY : Renderer/Shape/TextMargins.cpp.i
-
-Renderer/Shape/TextMargins.s: Renderer/Shape/TextMargins.cpp.s
-.PHONY : Renderer/Shape/TextMargins.s
-
-# target to generate assembly for a file
-Renderer/Shape/TextMargins.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/TextMargins.cpp.s
-.PHONY : Renderer/Shape/TextMargins.cpp.s
 
 Renderer/VisualConversion/QtConverter.o: Renderer/VisualConversion/QtConverter.cpp.o
 .PHONY : Renderer/VisualConversion/QtConverter.o
@@ -1004,6 +1028,12 @@ help:
 	@echo "... Renderer/Formatting/FormatLibrary.o"
 	@echo "... Renderer/Formatting/FormatLibrary.i"
 	@echo "... Renderer/Formatting/FormatLibrary.s"
+	@echo "... Renderer/Shape/InnerMarginConstant.o"
+	@echo "... Renderer/Shape/InnerMarginConstant.i"
+	@echo "... Renderer/Shape/InnerMarginConstant.s"
+	@echo "... Renderer/Shape/InnerRectangleCalcualtor.o"
+	@echo "... Renderer/Shape/InnerRectangleCalcualtor.i"
+	@echo "... Renderer/Shape/InnerRectangleCalcualtor.s"
 	@echo "... Renderer/Shape/ShapeBase.o"
 	@echo "... Renderer/Shape/ShapeBase.i"
 	@echo "... Renderer/Shape/ShapeBase.s"
@@ -1013,9 +1043,6 @@ help:
 	@echo "... Renderer/Shape/ShapeTextVisitor.o"
 	@echo "... Renderer/Shape/ShapeTextVisitor.i"
 	@echo "... Renderer/Shape/ShapeTextVisitor.s"
-	@echo "... Renderer/Shape/TextMargins.o"
-	@echo "... Renderer/Shape/TextMargins.i"
-	@echo "... Renderer/Shape/TextMargins.s"
 	@echo "... Renderer/VisualConversion/QtConverter.o"
 	@echo "... Renderer/VisualConversion/QtConverter.i"
 	@echo "... Renderer/VisualConversion/QtConverter.s"

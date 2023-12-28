@@ -9,6 +9,8 @@
 #include "Shape/IVisualDisplayable.hpp"
 #include "Shape/ShapeTextVisitor.hpp"
 
+
+
 namespace Renderer
 {
     VisualRenderingVisitor::VisualRenderingVisitor(QPaintDevice& device, Formatting::DimentionConverter& converter)
@@ -24,14 +26,15 @@ namespace Renderer
         std::shared_ptr<IVisualDisplayable> visualShape = std::dynamic_pointer_cast<IVisualDisplayable>(shape);
         visualShape->draw(painter, converter);
         
+        // Thank you for the hint. Hopefully I have implemented it correctly.
         ShapeTextVisitor textVisitor (painter, converter);
-        shape->accept(textVisitor);
+        textVisitor.printText(shape);   
     }
 
     void VisualRenderingVisitor::visit(Data::ItemGroup& items) // group accept
     {
         auto doc = App::Application::getInstance().getDocument(); 
-        auto ids = doc->getIDGenerator().getIDs(); // TODO: add to itemgroup: sequence of added shapes
+        auto ids = doc->getIDGenerator().getIDs(); 
         for(const auto& id: ids)
         {
             auto item = items.getItem(id);

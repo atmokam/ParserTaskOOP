@@ -11,10 +11,10 @@ namespace Renderer
 
         QRect rectToFit = fontMetrics.boundingRect(boundingRectangle, Qt::TextWordWrap, text);
 
-        if (rectToFit.height() < boundingRectangle.height() || rectToFit.width() < boundingRectangle.width())
+        if (rectToFit.height() < boundingRectangle.height())
             return;
 
-        int step = -1;
+        int step = -5;
         while (size > 1)
         {
             font.setPointSize(size + step);
@@ -23,7 +23,7 @@ namespace Renderer
             rectToFit = fm.boundingRect(boundingRectangle, Qt::TextWordWrap, text);
 
             size += step; 
-            if (rectToFit.height() < boundingRectangle.height() || rectToFit.width() < boundingRectangle.width())
+            if (rectToFit.height() < boundingRectangle.height())
                 break; 
             
         }

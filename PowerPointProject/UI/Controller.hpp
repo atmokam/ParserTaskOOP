@@ -7,8 +7,8 @@
 #include <ostream>
 #include <string>
 #include <sstream>
-#include "CLI/Controller.hpp"
 #include <QWidget>
+
 
 namespace UI
 {
@@ -17,15 +17,15 @@ namespace UI
         Q_OBJECT
 
     public:
-        Controller(std::ifstream& input, QWidget* parent = nullptr);
+        Controller(std::ifstream& input, std::shared_ptr<CLI::Controller> cliController, QWidget* parent = nullptr);
         virtual ~Controller();
 
         void runCommand(std::istream& input);
         std::stringstream& getOutputStream();
         
     private:
-        std::unique_ptr<CLI::Controller> controller;
-        std::stringstream input;//fstream
+        std::weak_ptr<CLI::Controller> controller;
+        std::stringstream input; //file
         std::stringstream output;
     };
 }

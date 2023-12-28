@@ -8,9 +8,12 @@
 
 namespace CLI {
 
+    Controller::Controller(): commandFactory(std::make_shared<CommandFactory>())
+    {}
+
     void Controller::runCommand(std::istream& input) 
     {
-        Parser oParser(input);
+        Parser oParser(input, commandFactory);
        
         std::shared_ptr<Command> pCmd = oParser.parse();
 

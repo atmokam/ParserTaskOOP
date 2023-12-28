@@ -1,18 +1,17 @@
 #include "Controller.hpp"
 #include <fstream>
 #include <QDebug>
-#include "CLI/Controller.hpp"
 
 namespace UI
 {    
-    Controller::Controller(std::ifstream& input, QWidget* parent): QWidget(parent)
+    Controller::Controller(std::ifstream& input, std::shared_ptr<CLI::Controller> cliController, QWidget* parent):
+    QWidget(parent), controller(cliController)
     {
-        controller = std::make_unique<CLI::Controller>();
         if(input.is_open())
             while(input.peek() == std::ifstream::traits_type::eof()) // for file input
             {
-                controller->runCommand(this->input);
-                output << controller->getOutputStream().str();
+                controller.lock()->runCommand(this->input);
+                output << controller.lock()->getOutputStream().str();
             }
 
     }
@@ -24,10 +23,10 @@ namespace UI
 
     void Controller::runCommand(std::istream& input)
     {
-        controller->runCommand(input);
+        controller.lock()->runCommand(input);
         
-        output << controller->getOutputStream().str();
-        controller->getOutputStream().str({});
+        output << controller.lock()->getOutputStream().str();
+        controller.lock()->getOutputStream().str({});
 
     }
 

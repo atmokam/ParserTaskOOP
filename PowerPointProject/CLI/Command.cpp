@@ -131,6 +131,13 @@ namespace CLI
 
     void SaveCommand::execute() 
     { 
+        std::string path = operands["-path"][0] + operands["-filename"][0] + ".json";        
+        std::ofstream output (path);
+        if(!output.is_open())
+        {
+            out.get() << "Could not open file" << std::endl;
+        }
+
         auto directorPtr = director.lock();
         Serialization::SaveLoad serializer;
 
@@ -138,20 +145,10 @@ namespace CLI
         QJsonDocument documentJson;
         serializer.save(document, documentJson);
 
-        std::string path = operands["-path"][0] + operands["-filename"][0] + ".json";        
-        std::ofstream output (path);
-        QByteArray byteArray = documentJson.toJson();
         
-        std::ifstream file (path);
-        if(output.is_open())
-        {
-            output << byteArray.toStdString();
-            output.close();
-        }
-        else
-        {
-            out.get() << "Could not open file" << std::endl;
-        }
+        QByteArray byteArray = documentJson.toJson();
+        output << byteArray.toStdString();
+        output.close();
 
         directorPtr->setDocumentModified(false);
 
@@ -159,7 +156,6 @@ namespace CLI
 
     void LoadCommand::execute() 
     { 
-        auto directorPtr = director.lock();
         
         std::ifstream file;
         file.open(operands["-path"][0]);
@@ -167,6 +163,8 @@ namespace CLI
         {
            out.get() << "Could not open file" << std::endl;
         }
+        
+        auto directorPtr = director.lock();
         std::string contents{std::istreambuf_iterator<char>{file}, std::istreambuf_iterator<char>{}};
         QJsonDocument content = QJsonDocument::fromJson(contents.c_str());
         file.close();

@@ -9,7 +9,8 @@
 // also checks that two operands don't follow each other, eg. add -name -w
 namespace CLI {
     
-    Parser::Parser(std::istream& inputStream) : inputStream(inputStream) {}
+    Parser::Parser(std::istream& inputStream, std::shared_ptr<CommandFactory> commandFactory) : inputStream(inputStream), 
+    commandFactory(commandFactory) {}
 
     void Parser::skipSpaces()
     {
@@ -48,8 +49,8 @@ namespace CLI {
         if(name.empty())
             return nullptr;
         
-        CommandFactory commandFactory;
-        std::shared_ptr<Command> command = commandFactory.createCommand(name); 
+        
+        std::shared_ptr<Command> command = commandFactory->createCommand(name); 
        
         if(!command)
         {

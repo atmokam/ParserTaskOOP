@@ -5,6 +5,7 @@
 #include <memory>
 #include <istream>
 #include <sstream>
+#include "CommandFactory.hpp"
 
 namespace CLI 
 {    
@@ -15,6 +16,7 @@ namespace CLI
         std::istream& inputStream;
         std::string commandNameFlag, prevOperand, prevToken; 
         std::stringstream errorLog;
+        std::shared_ptr<CommandFactory> commandFactory;
 
         bool IsNewLine(char c) const;
         void processArgument(std::string& argument, std::shared_ptr<Command>& command);
@@ -23,7 +25,7 @@ namespace CLI
         
     public:
         std::stringstream& getErrorLog();
-        Parser(std::istream& input);
+        Parser(std::istream& input, std::shared_ptr<CommandFactory> commandFactory);
         std::shared_ptr<Command> parse();
         
     };

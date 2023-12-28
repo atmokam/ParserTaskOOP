@@ -3,10 +3,11 @@
 
 #include <memory>
 #include <string>
-#include "Command.hpp"
+
 
 namespace CLI 
 {
+    class Command;
     class CommandFactory 
     {
     public:

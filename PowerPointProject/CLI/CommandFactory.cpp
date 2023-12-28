@@ -1,4 +1,5 @@
 #include "CommandFactory.hpp"
+#include "Command.hpp"
 
 namespace CLI
 {

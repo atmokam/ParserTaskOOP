@@ -1,7 +1,7 @@
 /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/PowerPointProject_autogen/KRKR4BN5RM/moc_MainWindow.cpp: /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/UI/MainWindow.hpp \
   /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/PowerPointProject_autogen/moc_predefs.h \
+  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp \
   /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Controller.hpp \
-  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp \
   /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/UI/CommandPane.hpp \
   /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/UI/Controller.hpp \
   /usr/include/alloca.h \

@@ -404,6 +404,7 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h
@@ -848,6 +849,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h
@@ -1713,8 +1715,6 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o
  /usr/include/c++/11/bits/istream.tcc
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Parser.hpp
  /usr/include/c++/11/memory
  /usr/include/c++/11/bits/stl_uninitialized.h
  /usr/include/c++/11/bits/stl_tempbuf.h
@@ -1740,6 +1740,9 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o
  /usr/include/c++/11/backward/auto_ptr.h
  /usr/include/c++/11/pstl/glue_memory_defs.h
  /usr/include/c++/11/pstl/execution_defs.h
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Parser.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Validator.hpp
  /usr/include/c++/11/vector
  /usr/include/c++/11/bits/stl_vector.h
@@ -2166,6 +2169,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o
  /usr/include/c++/11/pstl/execution_defs.h
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Command.hpp
  /usr/include/c++/11/unordered_map
  /usr/include/c++/11/bits/hashtable.h
@@ -2376,7 +2380,6 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Validator.hpp
  /usr/include/c++/11/unordered_set
  /usr/include/c++/11/bits/unordered_set.h
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
 
 CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Validator.cpp
@@ -2784,6 +2787,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h
@@ -3985,6 +3989,7 @@ CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h
@@ -4408,6 +4413,7 @@ CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h
@@ -5349,6 +5355,7 @@ CMakeFiles/PowerPointProject.dir/PowerPointProject_autogen/mocs_compilation.cpp.
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/build/PowerPointProject_autogen/KRKR4BN5RM/moc_MainWindow.cpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/UI/MainWindow.hpp
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow
@@ -5756,6 +5763,7 @@ CMakeFiles/PowerPointProject.dir/Program.cpp.o
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h
@@ -9057,6 +9065,7 @@ CMakeFiles/PowerPointProject.dir/Renderer/VisualRenderingVisitor.cpp.o
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h
@@ -9484,6 +9493,7 @@ CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h
@@ -9941,6 +9951,7 @@ CMakeFiles/PowerPointProject.dir/Serialization/JsonConverter.cpp.o
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/Controller.hpp
  /usr/include/c++/11/iostream
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h
@@ -10802,6 +10813,7 @@ CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.o
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDocument.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/IDocument.hpp
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IDirector.hpp
@@ -11009,7 +11021,6 @@ CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o
  /usr/include/c++/11/bits/istream.tcc
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
  /usr/include/c++/11/memory
  /usr/include/c++/11/bits/stl_uninitialized.h
  /usr/include/c++/11/bits/stl_tempbuf.h
@@ -11035,6 +11046,8 @@ CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o
  /usr/include/c++/11/backward/auto_ptr.h
  /usr/include/c++/11/pstl/glue_memory_defs.h
  /usr/include/c++/11/pstl/execution_defs.h
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h
@@ -11660,4 +11673,5 @@ CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o
  /usr/include/c++/11/sstream
  /usr/include/c++/11/bits/sstream.tcc
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/IController.hpp
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/CLI/CommandFactory.hpp
 

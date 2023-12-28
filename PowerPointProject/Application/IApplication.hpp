@@ -1,7 +1,6 @@
 #ifndef IAPPLICATION_HPP
 #define IAPPLICATION_HPP
 
-#include <string>
 #include <memory>
 #include <QApplication>
 

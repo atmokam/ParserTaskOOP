@@ -4,20 +4,20 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <memory>
 
 
-#include "IController.hpp"
+#include "CommandFactory.hpp"
 
 namespace CLI {
 
-    class Controller : public IController {
+    class Controller  {
         std::stringstream output;
+        std::shared_ptr<CommandFactory> commandFactory;
     public:
-        Controller() = default;
+        Controller();
         void runCommand(std::istream& input);
-        std::stringstream& getOutputStream() override;
-        
-        
+        std::stringstream& getOutputStream();
     };
 }
 

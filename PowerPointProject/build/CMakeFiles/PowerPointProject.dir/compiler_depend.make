@@ -403,6 +403,7 @@ CMakeFiles/PowerPointProject.dir/Application/Application.cpp.o: ../Application/A
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
@@ -846,6 +847,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: ../CLI/Command.cpp \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
@@ -1708,8 +1710,6 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: ../CLI/Controller.cpp \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
-  ../CLI/IController.hpp \
-  ../CLI/Parser.hpp \
   /usr/include/c++/11/memory \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_tempbuf.h \
@@ -1735,6 +1735,9 @@ CMakeFiles/PowerPointProject.dir/CLI/Controller.cpp.o: ../CLI/Controller.cpp \
   /usr/include/c++/11/backward/auto_ptr.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
+  ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
+  ../CLI/Parser.hpp \
   ../CLI/Validator.hpp \
   /usr/include/c++/11/vector \
   /usr/include/c++/11/bits/stl_vector.h \
@@ -2160,6 +2163,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o: ../CLI/Parser.cpp \
   /usr/include/c++/11/pstl/execution_defs.h \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
+  ../CLI/CommandFactory.hpp \
   ../CLI/Command.hpp \
   /usr/include/c++/11/unordered_map \
   /usr/include/c++/11/bits/hashtable.h \
@@ -2369,8 +2373,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Parser.cpp.o: ../CLI/Parser.cpp \
   ../Data/Item/ItemBase.hpp \
   ../CLI/Validator.hpp \
   /usr/include/c++/11/unordered_set \
-  /usr/include/c++/11/bits/unordered_set.h \
-  ../CLI/CommandFactory.hpp
+  /usr/include/c++/11/bits/unordered_set.h
 
 CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o: ../CLI/Validator.cpp \
   /usr/include/stdc-predef.h \
@@ -2777,6 +2780,7 @@ CMakeFiles/PowerPointProject.dir/CLI/Validator.cpp.o: ../CLI/Validator.cpp \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
@@ -3973,6 +3977,7 @@ CMakeFiles/PowerPointProject.dir/Data/Item/ItemBuilder.cpp.o: ../Data/Item/ItemB
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
@@ -4395,6 +4400,7 @@ CMakeFiles/PowerPointProject.dir/Data/Slide.cpp.o: ../Data/Slide.cpp \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
@@ -5333,6 +5339,7 @@ CMakeFiles/PowerPointProject.dir/PowerPointProject_autogen/mocs_compilation.cpp.
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   PowerPointProject_autogen/KRKR4BN5RM/moc_MainWindow.cpp \
   ../UI/MainWindow.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
@@ -5739,6 +5746,7 @@ CMakeFiles/PowerPointProject.dir/Program.cpp.o: ../Program.cpp \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
@@ -9029,6 +9037,7 @@ CMakeFiles/PowerPointProject.dir/Renderer/VisualRenderingVisitor.cpp.o: ../Rende
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
@@ -9455,6 +9464,7 @@ CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.o: ../Serialization
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
@@ -9911,6 +9921,7 @@ CMakeFiles/PowerPointProject.dir/Serialization/JsonConverter.cpp.o: ../Serializa
   ../CLI/Controller.hpp \
   /usr/include/c++/11/iostream \
   ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
@@ -10770,6 +10781,7 @@ CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.o: ../UI/CommandPane.cpp \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   ../Include/IDocument.hpp \
   ../Data/IDocument.hpp \
   ../Include/IDirector.hpp \
@@ -10976,7 +10988,6 @@ CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o: ../UI/Controller.cpp \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
-  ../CLI/IController.hpp \
   /usr/include/c++/11/memory \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_tempbuf.h \
@@ -11002,6 +11013,8 @@ CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o: ../UI/Controller.cpp \
   /usr/include/c++/11/backward/auto_ptr.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
+  ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -11625,7 +11638,8 @@ CMakeFiles/PowerPointProject.dir/UI/MainWindow.cpp.o: ../UI/MainWindow.cpp \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
-  ../CLI/IController.hpp
+  ../CLI/IController.hpp \
+  ../CLI/CommandFactory.hpp
 
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug:

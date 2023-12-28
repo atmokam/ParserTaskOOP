@@ -1,21 +1,19 @@
 #include <fstream>
 #include <iostream>
 #include "Application.hpp"
-#include "CLI/Controller.hpp"
 #include "Director/Director.hpp" 
-#include "Include/IController.hpp"
-#include "Include/IDirector.hpp"
 #include "Data/Document.hpp"
 #include "CLI/CommandHistory.hpp"
 
 namespace App 
 {
-    Application::Application(int &argc, char **argv) : QApplication(argc, argv) // This was the culprit, I had not noticed that there needed to be a & before int, that was the segfault reason
+    Application::Application(int &argc, char **argv) : QApplication(argc, argv) // This was the culprit, I hadn't noticed that there needed to be a '&' before int, that was the segfault reason
     {                                                                           // the GUI window now opens without problem
         director = std::make_shared<Director::Director>();
         document = std::make_shared<Data::Document>();
+        cliController = std::make_shared<CLI::Controller>();
         std::ifstream input = buildStream(argc, argv);
-        controller = std::make_unique<UI::Controller>(input);
+        controller = std::make_shared<UI::Controller>(input, cliController);
     }
 
     Application& Application::getInstance() 

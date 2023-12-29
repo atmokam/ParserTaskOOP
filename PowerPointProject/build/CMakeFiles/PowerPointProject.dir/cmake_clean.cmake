@@ -64,6 +64,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PowerPointProject.dir/Serialization/JsonConverter.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o"
   "CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o.d"
+  "CMakeFiles/PowerPointProject.dir/Serialization/SerializerVisitor.cpp.o"
+  "CMakeFiles/PowerPointProject.dir/Serialization/SerializerVisitor.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.o"
   "CMakeFiles/PowerPointProject.dir/UI/CommandPane.cpp.o.d"
   "CMakeFiles/PowerPointProject.dir/UI/Controller.cpp.o"

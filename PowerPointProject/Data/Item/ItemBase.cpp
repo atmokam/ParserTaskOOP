@@ -161,7 +161,8 @@ namespace Data
     std::shared_ptr<ItemBase> ItemGroup::getItem(ID id) const 
     { 
     
-        if(items.find(id) == items.end()){
+        if(items.find(id) == items.end())
+        {
             return nullptr;
         }
         return items.at(id);

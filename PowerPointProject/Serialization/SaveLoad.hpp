@@ -31,8 +31,6 @@ namespace Serialization
         void save(const std::shared_ptr<Data::IDocument>& document, QJsonDocument& stream);
         void load(QJsonDocument& stream, const std::shared_ptr<Data::IDocument>& document);
     };
-
-
 }
 
 

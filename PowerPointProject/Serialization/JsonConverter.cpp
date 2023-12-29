@@ -108,7 +108,8 @@ namespace Serialization
     QJsonValue JsonConverter::convertToJson(const std::vector<Data::ID>& ids)
     {
         QJsonArray result;
-        for (auto id : ids) {
+        for (auto id : ids) 
+        {
             result.append(id);
         }
         return result;
@@ -152,7 +153,6 @@ namespace Serialization
         
         result.setPosition(convertToPosition(object["position"].toArray()));
         
-       
         result.setWidth(object["width"].toDouble());
        
         result.setHeight(object["height"].toDouble());
@@ -175,13 +175,20 @@ namespace Serialization
 
     Data::LineType JsonConverter::convertToLineType(const QJsonValue& value) 
     {
-        if (value.toString() == "solid") {
+        if (value.toString() == "solid") 
+        {
             return Data::LineType::Solid;
-        } else if (value.toString() == "dashed") {
+        } 
+        else if (value.toString() == "dashed") 
+        {
             return Data::LineType::Dashed;
-        } else if (value.toString() == "dotted") {
+        } 
+        else if (value.toString() == "dotted") 
+        {
             return Data::LineType::Dotted;
-        } else {
+        } 
+        else 
+        {
             return Data::LineType::None;
         }
     }
@@ -197,7 +204,8 @@ namespace Serialization
     {
         std::vector<Data::ID> result;
         QJsonArray array = value.toArray();
-        for (auto id : array) {
+        for (auto id : array) 
+        {
             result.push_back(id.toInt());
         }
         return result;

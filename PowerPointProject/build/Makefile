@@ -886,6 +886,30 @@ Serialization/SaveLoad.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.s
 .PHONY : Serialization/SaveLoad.cpp.s
 
+Serialization/SerializerVisitor.o: Serialization/SerializerVisitor.cpp.o
+.PHONY : Serialization/SerializerVisitor.o
+
+# target to build an object file
+Serialization/SerializerVisitor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SerializerVisitor.cpp.o
+.PHONY : Serialization/SerializerVisitor.cpp.o
+
+Serialization/SerializerVisitor.i: Serialization/SerializerVisitor.cpp.i
+.PHONY : Serialization/SerializerVisitor.i
+
+# target to preprocess a source file
+Serialization/SerializerVisitor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SerializerVisitor.cpp.i
+.PHONY : Serialization/SerializerVisitor.cpp.i
+
+Serialization/SerializerVisitor.s: Serialization/SerializerVisitor.cpp.s
+.PHONY : Serialization/SerializerVisitor.s
+
+# target to generate assembly for a file
+Serialization/SerializerVisitor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SerializerVisitor.cpp.s
+.PHONY : Serialization/SerializerVisitor.cpp.s
+
 UI/CommandPane.o: UI/CommandPane.cpp.o
 .PHONY : UI/CommandPane.o
 
@@ -1061,6 +1085,9 @@ help:
 	@echo "... Serialization/SaveLoad.o"
 	@echo "... Serialization/SaveLoad.i"
 	@echo "... Serialization/SaveLoad.s"
+	@echo "... Serialization/SerializerVisitor.o"
+	@echo "... Serialization/SerializerVisitor.i"
+	@echo "... Serialization/SerializerVisitor.s"
 	@echo "... UI/CommandPane.o"
 	@echo "... UI/CommandPane.i"
 	@echo "... UI/CommandPane.s"

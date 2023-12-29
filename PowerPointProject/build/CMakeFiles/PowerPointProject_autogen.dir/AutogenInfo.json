@@ -520,6 +520,12 @@
 			null
 		],
 		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SerializerVisitor.hpp",
+			"MU",
+			"FVSBAVFDNL/moc_SerializerVisitor.cpp",
+			null
+		],
+		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/UI/CommandPane.hpp",
 			"MU",
 			"KRKR4BN5RM/moc_CommandPane.cpp",
@@ -736,6 +742,11 @@
 		],
 		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SerializerVisitor.cpp",
 			"MU",
 			null
 		],

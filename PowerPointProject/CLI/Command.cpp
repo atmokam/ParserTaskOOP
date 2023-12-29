@@ -16,6 +16,7 @@
 #include "Renderer/ConsoleRenderingVisitor.hpp"
 #include "Renderer/Formatting/DimentionConverter.hpp"
 #include "Serialization/SaveLoad.hpp"
+#include "Serialization/SerializerVisitor.hpp"
 #include "Serialization/Converter.hpp"
 #include "Data/Item/ItemBuilder.hpp"
 
@@ -139,11 +140,14 @@ namespace CLI
         }
 
         auto directorPtr = director.lock();
-        Serialization::SaveLoad serializer;
+       // Serialization::SaveLoad serializer;
 
         std::shared_ptr<Data::IDocument> document = directorPtr->getDocument();
         QJsonDocument documentJson;
-        serializer.save(document, documentJson);
+        //serializer.save(document, documentJson);
+        Serialization::SerializerVisitor serializer(documentJson);
+        serializer.save(document);
+
 
         
         QByteArray byteArray = documentJson.toJson();

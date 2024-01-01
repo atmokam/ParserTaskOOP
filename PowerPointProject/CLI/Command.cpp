@@ -54,7 +54,6 @@ namespace CLI
         Data::ItemBuilder builder;
         builder.buildItemLeaf(operands);
         return std::dynamic_pointer_cast<Data::ItemLeaf>(builder.getItem());
-
     }
 
 
@@ -65,7 +64,7 @@ namespace CLI
 
         std::shared_ptr<Data::Slide> slide = directorPtr->getCurrentSlide();
         size_t currentSlideIndex = directorPtr->getCurrentSlideIndex();
-
+        std::shared_ptr<Data::IDocument> document = directorPtr->getDocument();
 
         if(operands.find("-id") != operands.end())
         {
@@ -76,6 +75,7 @@ namespace CLI
             directorPtr->doAction(std::make_shared<Director::RemoveItem>(item, currentSlideIndex));
             application.get().getDocument()->getIDGenerator().removeID(item->getID());
         }
+
         else if(operands.find("-slide") != operands.end())
         {
             if(directorPtr->getDocument()->size() == 1)
@@ -140,27 +140,23 @@ namespace CLI
         }
 
         auto directorPtr = director.lock();
-       // Serialization::SaveLoad serializer;
 
         std::shared_ptr<Data::IDocument> document = directorPtr->getDocument();
         QJsonDocument documentJson;
-        //serializer.save(document, documentJson);
+       
         Serialization::SerializerVisitor serializer(documentJson);
         serializer.save(document);
-
-
         
         QByteArray byteArray = documentJson.toJson();
         output << byteArray.toStdString();
         output.close();
 
         directorPtr->setDocumentModified(false);
-
     }
+
 
     void LoadCommand::execute() 
     { 
-        
         std::ifstream file;
         file.open(operands["-path"][0]);
         if(!file.is_open())
@@ -202,9 +198,9 @@ namespace CLI
         }
         else
         {
-            Renderer::ConsoleRenderingVisitor visitor(out.get());
             std::shared_ptr<Data::Slide> currentSlide = directorPtr->getCurrentSlide();
-            visitor.print(currentSlide->getTopItem());
+            Renderer::ConsoleRenderingVisitor visitor(out.get());
+            visitor.print(currentSlide);
 
         }
     }
@@ -260,7 +256,6 @@ namespace CLI
     void UndoCommand::execute() 
     {
         auto directorPtr = director.lock();
-
         directorPtr->undo();
     }
 
@@ -269,7 +264,6 @@ namespace CLI
     void RedoCommand::execute() 
     {
         auto directorPtr = director.lock();
-
         directorPtr->redo();
     }
 
@@ -310,7 +304,7 @@ namespace CLI
         image.fill(Qt::white);
 
         Renderer::VisualRenderingVisitor visitor(image, converter);
-        visitor.draw(slide->getTopItem());
+        visitor.draw(slide);
         QString path = QString::fromStdString(operands["-path"][0] + operands["-filename"][0] + ".png");
         image.save(path);
     }

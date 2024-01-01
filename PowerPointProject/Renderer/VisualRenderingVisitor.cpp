@@ -50,5 +50,11 @@ namespace Renderer
         item->accept(std::make_shared<VisualRenderingVisitor>(*this));
     }
 
+    void VisualRenderingVisitor::draw(const std::shared_ptr<Data::Slide>& slide) // visit invoker
+    {
+        auto items = slide->getTopItem();
+        items->accept(std::make_shared<VisualRenderingVisitor>(*this));
+    }
+
 }
 

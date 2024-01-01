@@ -19,7 +19,7 @@ namespace Renderer
         VisualRenderingVisitor(QPaintDevice& device, Formatting::DimentionConverter& converter);
         virtual void visit(Data::ItemLeaf& item) override;
         virtual void visit(Data::ItemGroup& items) override;
-
+        void draw(const std::shared_ptr<Data::Slide>& slide);
         void draw(const std::shared_ptr<Data::ItemBase>& item);
     };
 }

@@ -16,7 +16,7 @@ namespace Data
     class IDocument {
     public:
 
-        virtual void addSlide(std::shared_ptr<Slide> slide, size_t number) = 0;
+        virtual void addSlide(std::shared_ptr<Slide> slide, size_t number = -1) = 0;
         virtual void removeSlide(size_t number) = 0;
         virtual size_t size() const = 0;
 

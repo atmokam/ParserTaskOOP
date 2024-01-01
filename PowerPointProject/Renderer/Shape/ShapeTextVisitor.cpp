@@ -8,6 +8,8 @@ namespace Renderer
     ShapeTextVisitor::ShapeTextVisitor(QPainter& painter, Formatting::DimentionConverter& converter) 
     : painter(painter), converter(converter){}
 
+
+
     void ShapeTextVisitor::printText(std::shared_ptr<IShape> shape)
     {
         shape->accept(std::make_shared<ShapeTextVisitor>(*this));

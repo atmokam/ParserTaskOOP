@@ -23,7 +23,6 @@ namespace Serialization
     {
         std::shared_ptr<QJsonArray> currentSlideArray;
         std::reference_wrapper<QJsonDocument> output;
-        std::unique_ptr<JsonConverter> converter;
 
     public:
         SerializerVisitor(QJsonDocument& output);

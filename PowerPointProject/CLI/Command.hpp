@@ -1,8 +1,6 @@
 #ifndef COMMAND_HPP
 #define COMMAND_HPP
 
-// I might need to add a group command for item grouping
-
 #include <string>
 #include <unordered_map>
 #include <memory>
@@ -18,11 +16,15 @@ namespace CLI {
     using OperandsContainer = std::unordered_map<std::string, std::vector<std::string>>;
 
 
-    class Command {
+    class Command 
+    {
     protected:
         OperandsContainer operands;
         std::string name;
 
+
+        // These used to be kept as locals, but I moved them here for the sake of less duplication
+        // However, I'm not sure if this is a good thing, as in my opinion they aren't representatives of state 
         std::reference_wrapper<App::IApplication> application; 
         std::weak_ptr<Director::IDirector> director;
         std::reference_wrapper<std::ostream> out;
@@ -38,46 +40,53 @@ namespace CLI {
         OperandsContainer getOperands() const;
     };
 
-    class AddCommand : public Command {
+    class AddCommand : public Command 
+    {
         std::shared_ptr<Data::ItemLeaf> createItem();
     public:
         
         void execute() override;
     };
 
-    class RemoveCommand : public Command {
+    class RemoveCommand : public Command 
+    {
 
     public:
         
         void execute() override;
     };
 
-    class DisplayCommand : public Command {
+    class DisplayCommand : public Command 
+    {
     public:
         
         void execute() override;
         
     };
 
-    class ChangeCommand : public Command {
+    class ChangeCommand : public Command 
+    {
     public:
         
         void execute() override;
     };
 
-    class SaveCommand : public Command {
+    class SaveCommand : public Command 
+    {
     public:
         
         void execute() override;
     };
 
-    class LoadCommand : public Command {
+    class LoadCommand : public Command 
+    {
     public:
         
         void execute() override;
     };
 
-    class ListCommand : public Command {
+    class ListCommand : public Command 
+    {
     public:
         
         void execute() override;
@@ -85,38 +94,44 @@ namespace CLI {
 
     };
 
-    class NextCommand : public Command {
+    class NextCommand : public Command 
+    {
     public:
         
         void execute() override;
     };
 
-    class PrevCommand : public Command {
+    class PrevCommand : public Command 
+    {
     public:
         
         void execute() override;
     };
 
-    class UndoCommand : public Command {
+    class UndoCommand : public Command 
+    {
     public:
         
         void execute() override;
     };
 
-    class RedoCommand : public Command {
+    class RedoCommand : public Command 
+    {
     public:
         
         void execute() override;
     };
 
-    class DrawCommand : public Command {
+    class DrawCommand : public Command 
+    {
     public:
         
         void execute() override;
     };
 
 
-    class ExitCommand : public Command {
+    class ExitCommand : public Command 
+    {
     public:
         
         void execute() override;

@@ -1,4 +1,4 @@
-#include "SerializerVisitor.hpp"
+#include "Serializer.hpp"
 #include "Data/IDGenerator.hpp"
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -9,11 +9,11 @@
 namespace Serialization
 {
     
-    SerializerVisitor::SerializerVisitor(QJsonDocument& output): output(output),
+    Serializer::Serializer(QJsonDocument& output): output(output),
         currentSlideArray(std::make_shared<QJsonArray>())
     {}
 
-    void SerializerVisitor::visit(Data::ItemLeaf& item)
+    void Serializer::visit(Data::ItemLeaf& item)
     {
         JsonConverter converter;
         QJsonObject itemObject;
@@ -25,22 +25,22 @@ namespace Serialization
         currentSlideArray->append(itemObject);
     }
 
-    void SerializerVisitor::visit(Data::ItemGroup& item)
+    void Serializer::visit(Data::ItemGroup& item)
     {
         for(auto& [_, subItem]: item)
         {
-            subItem->accept(std::make_shared<SerializerVisitor>(*this));
+            subItem->accept(std::make_shared<Serializer>(*this));
         } 
     }
 
-    void SerializerVisitor::save(const std::shared_ptr<Data::IDocument>& document)
+    void Serializer::save(const std::shared_ptr<Data::IDocument>& document)
     {
         JsonConverter converter;
         QJsonArray slidesArray;
         for(auto& slide: *document)
         {
             auto items = slide->getTopItem();
-            items->accept(std::make_shared<SerializerVisitor>(*this));
+            items->accept(std::make_shared<Serializer>(*this));
             slidesArray.append(*currentSlideArray);
             currentSlideArray.reset();
         }

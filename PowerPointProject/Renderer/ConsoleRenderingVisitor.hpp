@@ -11,6 +11,7 @@ namespace Data
     class ItemBase;
     class ItemLeaf;
     class ItemGroup;
+    class Slide;
 }
 
 namespace Renderer
@@ -22,7 +23,7 @@ namespace Renderer
         ConsoleRenderingVisitor(std::ostream& output);
         void visit(Data::ItemLeaf& item) override;
         void visit(Data::ItemGroup& item) override;
-        void print(const std::shared_ptr<Data::Slide>& slide );
+        void print(const std::shared_ptr<Data::Slide>& slide);
         void print(const std::shared_ptr<Data::ItemBase>& item);
     };
 

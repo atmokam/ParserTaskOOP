@@ -13,15 +13,16 @@
                     "fillColorHex": "#ffffff",
                     "lineColorHex": "#0",
                     "lineType": "solid",
-                    "lineWidth": 1
+                    "lineWidth": 1,
+                    "text": "Hello there "
                 },
                 "geometry": {
-                    "height": 0,
+                    "height": 9,
                     "position": [
-                        3,
-                        5
+                        2,
+                        3
                     ],
-                    "width": 0
+                    "width": 5
                 },
                 "id": 0,
                 "type": "rectangle"

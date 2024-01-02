@@ -14,8 +14,12 @@ namespace Serialization
     {
 
     }
+//////////   NOTE:
+//////////   I thought of a solution using visitor, but it involves an intermeditate
+//////////   step of using conditional statements to check if the item is a group or leaf.
+//////////   Because of that, I think the solution is not elegant enough to be worth implementing till the end.
+//////////   I will search for a better solution, for now this remains an open question.
 
-/////////////////////////           Not done, need to redo this class entirely
 
     void DeserializerVisitor::visit(Data::ItemLeaf& item)
     {

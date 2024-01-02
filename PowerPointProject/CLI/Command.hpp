@@ -24,7 +24,7 @@ namespace CLI {
 
 
         // These used to be kept as locals, but I moved them here for the sake of less duplication
-        // However, I'm not sure if this is a good thing, as in my opinion they aren't representatives of state 
+        // However, I'm not sure if this is a good thing, as in my opinion they aren't representatives of state
         std::reference_wrapper<App::IApplication> application; 
         std::weak_ptr<Director::IDirector> director;
         std::reference_wrapper<std::ostream> out;

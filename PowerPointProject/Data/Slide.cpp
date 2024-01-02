@@ -13,7 +13,7 @@ namespace Data
         items->addItem(item);
     }
 
-    std::shared_ptr<ItemBase> Slide::getItem(int id) const  // only leaf for now
+    std::shared_ptr<ItemBase> Slide::getItem(ID id) const  
     {  
         return items->getItem(id);
     }
@@ -23,12 +23,12 @@ namespace Data
         items = slide->items;
     } 
 
-    void Slide::removeItem(int id) 
+    void Slide::removeItem(ID id) 
     {
         items->removeItem(id);
     }
 
-    void Slide::swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem) 
+    void Slide::swapItems(ID idOfInitialItem, std::shared_ptr<ItemBase>& newItem) 
     {
         items->swapItems(idOfInitialItem, newItem);  
     }

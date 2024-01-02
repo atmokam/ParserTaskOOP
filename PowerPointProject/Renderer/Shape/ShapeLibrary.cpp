@@ -18,7 +18,6 @@ namespace Renderer
         stringToType["ellipse"] = Type::Ellipse;
         stringToType["line"] = Type::Line;
         stringToType["triangle"] = Type::Triangle;
-        stringToType["group"] = Type::Group;
     }
 
     std::shared_ptr<IShape> ShapeLibrary::getShape(std::shared_ptr<Data::ItemBase> item)

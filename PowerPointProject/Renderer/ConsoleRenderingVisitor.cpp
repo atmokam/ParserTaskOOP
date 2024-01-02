@@ -2,7 +2,6 @@
 #include "Data/Slide.hpp"
 #include "Data/Item/ItemBase.hpp"
 #include "Renderer/Shape/ShapeBase.hpp"
-#include "Serialization/Converter.hpp"
 
 namespace Renderer
 {
@@ -11,7 +10,7 @@ namespace Renderer
     void ConsoleRenderingVisitor::visit(Data::ItemLeaf& leaf)
     {
         ShapeBase shape(std::make_shared<Data::ItemLeaf>(leaf));
-        shape.print(output.get());
+        shape.print(output);
     }
 
     void ConsoleRenderingVisitor::visit(Data::ItemGroup& item)

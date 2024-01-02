@@ -838,6 +838,30 @@ Serialization/Converter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/Converter.cpp.s
 .PHONY : Serialization/Converter.cpp.s
 
+Serialization/Deserializer.o: Serialization/Deserializer.cpp.o
+.PHONY : Serialization/Deserializer.o
+
+# target to build an object file
+Serialization/Deserializer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/Deserializer.cpp.o
+.PHONY : Serialization/Deserializer.cpp.o
+
+Serialization/Deserializer.i: Serialization/Deserializer.cpp.i
+.PHONY : Serialization/Deserializer.i
+
+# target to preprocess a source file
+Serialization/Deserializer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/Deserializer.cpp.i
+.PHONY : Serialization/Deserializer.cpp.i
+
+Serialization/Deserializer.s: Serialization/Deserializer.cpp.s
+.PHONY : Serialization/Deserializer.s
+
+# target to generate assembly for a file
+Serialization/Deserializer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/Deserializer.cpp.s
+.PHONY : Serialization/Deserializer.cpp.s
+
 Serialization/JsonConverter.o: Serialization/JsonConverter.cpp.o
 .PHONY : Serialization/JsonConverter.o
 
@@ -886,29 +910,29 @@ Serialization/SaveLoad.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.s
 .PHONY : Serialization/SaveLoad.cpp.s
 
-Serialization/SerializerVisitor.o: Serialization/SerializerVisitor.cpp.o
-.PHONY : Serialization/SerializerVisitor.o
+Serialization/Serializer.o: Serialization/Serializer.cpp.o
+.PHONY : Serialization/Serializer.o
 
 # target to build an object file
-Serialization/SerializerVisitor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SerializerVisitor.cpp.o
-.PHONY : Serialization/SerializerVisitor.cpp.o
+Serialization/Serializer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/Serializer.cpp.o
+.PHONY : Serialization/Serializer.cpp.o
 
-Serialization/SerializerVisitor.i: Serialization/SerializerVisitor.cpp.i
-.PHONY : Serialization/SerializerVisitor.i
+Serialization/Serializer.i: Serialization/Serializer.cpp.i
+.PHONY : Serialization/Serializer.i
 
 # target to preprocess a source file
-Serialization/SerializerVisitor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SerializerVisitor.cpp.i
-.PHONY : Serialization/SerializerVisitor.cpp.i
+Serialization/Serializer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/Serializer.cpp.i
+.PHONY : Serialization/Serializer.cpp.i
 
-Serialization/SerializerVisitor.s: Serialization/SerializerVisitor.cpp.s
-.PHONY : Serialization/SerializerVisitor.s
+Serialization/Serializer.s: Serialization/Serializer.cpp.s
+.PHONY : Serialization/Serializer.s
 
 # target to generate assembly for a file
-Serialization/SerializerVisitor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SerializerVisitor.cpp.s
-.PHONY : Serialization/SerializerVisitor.cpp.s
+Serialization/Serializer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/Serializer.cpp.s
+.PHONY : Serialization/Serializer.cpp.s
 
 UI/CommandPane.o: UI/CommandPane.cpp.o
 .PHONY : UI/CommandPane.o
@@ -1079,15 +1103,18 @@ help:
 	@echo "... Serialization/Converter.o"
 	@echo "... Serialization/Converter.i"
 	@echo "... Serialization/Converter.s"
+	@echo "... Serialization/Deserializer.o"
+	@echo "... Serialization/Deserializer.i"
+	@echo "... Serialization/Deserializer.s"
 	@echo "... Serialization/JsonConverter.o"
 	@echo "... Serialization/JsonConverter.i"
 	@echo "... Serialization/JsonConverter.s"
 	@echo "... Serialization/SaveLoad.o"
 	@echo "... Serialization/SaveLoad.i"
 	@echo "... Serialization/SaveLoad.s"
-	@echo "... Serialization/SerializerVisitor.o"
-	@echo "... Serialization/SerializerVisitor.i"
-	@echo "... Serialization/SerializerVisitor.s"
+	@echo "... Serialization/Serializer.o"
+	@echo "... Serialization/Serializer.i"
+	@echo "... Serialization/Serializer.s"
 	@echo "... UI/CommandPane.o"
 	@echo "... UI/CommandPane.i"
 	@echo "... UI/CommandPane.s"

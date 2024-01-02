@@ -1,5 +1,3 @@
-#include <iostream>
-#include <stdexcept>
 #include <QJsonDocument>
 #include <QByteArray>
 #include <QImage>
@@ -8,17 +6,15 @@
 #include "Command.hpp"
 #include "Data/Slide.hpp"
 #include "Data/Document.hpp"
+#include "Data/Item/ItemBuilder.hpp"
 #include "Director/Actions.hpp"
-#include "Include/IDirector.hpp"
-#include "Renderer/Shape/ShapeBase.hpp"
-#include "Renderer/Shape/ShapeLibrary.hpp"
 #include "Renderer/VisualRenderingVisitor.hpp"
 #include "Renderer/ConsoleRenderingVisitor.hpp"
 #include "Renderer/Formatting/DimentionConverter.hpp"
 #include "Serialization/SaveLoad.hpp"
-#include "Serialization/SerializerVisitor.hpp"
+#include "Serialization/Serializer.hpp"
+#include "Serialization/Deserializer.hpp"
 #include "Serialization/Converter.hpp"
-#include "Data/Item/ItemBuilder.hpp"
 
 namespace CLI 
 {
@@ -144,7 +140,7 @@ namespace CLI
         std::shared_ptr<Data::IDocument> document = directorPtr->getDocument();
         QJsonDocument documentJson;
        
-        Serialization::SerializerVisitor serializer(documentJson);
+        Serialization::Serializer serializer(documentJson);
         serializer.save(document);
         
         QByteArray byteArray = documentJson.toJson();
@@ -169,9 +165,9 @@ namespace CLI
         QJsonDocument content = QJsonDocument::fromJson(contents.c_str());
         file.close();
 
-        Serialization::SaveLoad deserializer;
         std::shared_ptr<Data::IDocument> newDoc = std::make_shared<Data::Document>();
-        deserializer.load(content, newDoc);
+        Serialization::Deserializer deserializer(newDoc);
+        deserializer.load(content);
 
         directorPtr->setDocument(newDoc);
         directorPtr->setCurrentSlideIndex(0);

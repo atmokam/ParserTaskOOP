@@ -508,6 +508,12 @@
 			null
 		],
 		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Deserializer.hpp",
+			"MU",
+			"FVSBAVFDNL/moc_Deserializer.cpp",
+			null
+		],
+		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/JsonConverter.hpp",
 			"MU",
 			"FVSBAVFDNL/moc_JsonConverter.cpp",
@@ -520,9 +526,9 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SerializerVisitor.hpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Serializer.hpp",
 			"MU",
-			"FVSBAVFDNL/moc_SerializerVisitor.cpp",
+			"FVSBAVFDNL/moc_Serializer.cpp",
 			null
 		],
 		[
@@ -736,6 +742,11 @@
 			null
 		],
 		[
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Deserializer.cpp",
+			"MU",
+			null
+		],
+		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/JsonConverter.cpp",
 			"MU",
 			null
@@ -746,7 +757,7 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SerializerVisitor.cpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Serializer.cpp",
 			"MU",
 			null
 		],

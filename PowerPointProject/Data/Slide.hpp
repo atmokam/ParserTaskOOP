@@ -16,11 +16,11 @@ namespace Data
     public:
         Slide();
 
-        std::shared_ptr<ItemBase> getItem(int id) const;
+        std::shared_ptr<ItemBase> getItem(ID id) const;
 
         void addItem(std::shared_ptr<ItemBase> item);
-        void removeItem(int id);
-        void swapItems(int idOfInitialItem, std::shared_ptr<ItemBase>& newItem);
+        void removeItem(ID id);
+        void swapItems(ID idOfInitialItem, std::shared_ptr<ItemBase>& newItem);
 
         std::shared_ptr<ItemGroup> getTopItem() const;
 

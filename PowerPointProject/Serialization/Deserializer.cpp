@@ -14,8 +14,7 @@
 namespace Serialization
 {
     Deserializer::Deserializer(std::shared_ptr<Data::IDocument>& output): docOutput(output)
-    {
-    }
+    {}
 
     void Deserializer::load(QJsonDocument& document)
     {

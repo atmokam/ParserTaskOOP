@@ -7,6 +7,7 @@
 #include "Include/IDocument.hpp"
 #include "Data/Item/IItemVisitor.hpp"
 
+///////////////   Inclomplete vestion, please see note in DeserializerVisitor.cpp, thank you.
 class QJsonDocument;
 
 namespace Serialization 

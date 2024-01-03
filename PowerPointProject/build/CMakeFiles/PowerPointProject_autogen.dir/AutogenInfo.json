@@ -520,12 +520,6 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.hpp",
-			"MU",
-			"FVSBAVFDNL/moc_SaveLoad.cpp",
-			null
-		],
-		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Serializer.hpp",
 			"MU",
 			"FVSBAVFDNL/moc_Serializer.cpp",
@@ -748,11 +742,6 @@
 		],
 		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/JsonConverter.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.cpp",
 			"MU",
 			null
 		],

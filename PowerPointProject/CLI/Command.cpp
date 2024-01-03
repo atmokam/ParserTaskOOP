@@ -11,7 +11,6 @@
 #include "Renderer/VisualRenderingVisitor.hpp"
 #include "Renderer/ConsoleRenderingVisitor.hpp"
 #include "Renderer/Formatting/DimentionConverter.hpp"
-#include "Serialization/SaveLoad.hpp"
 #include "Serialization/Serializer.hpp"
 #include "Serialization/Deserializer.hpp"
 #include "Serialization/Converter.hpp"
@@ -32,7 +31,7 @@ namespace CLI
             size_t currentSlideIndex = directorPtr->getCurrentSlideIndex();
             std::shared_ptr<Data::ItemLeaf> item = createItem();
             directorPtr->doAction(std::make_shared<Director::AddItem>(item, currentSlideIndex));
-            application.get().getDocument()->getIDGenerator().addID(item->getID());
+            application.get().getDocument()->getIDGenerator()->addID(item->getID());
         }
         else if(operands.find("-slide") != operands.end())
         {
@@ -69,7 +68,7 @@ namespace CLI
                 return;
             }
             directorPtr->doAction(std::make_shared<Director::RemoveItem>(item, currentSlideIndex));
-            application.get().getDocument()->getIDGenerator().removeID(item->getID());
+            application.get().getDocument()->getIDGenerator()->removeID(item->getID());
         }
 
         else if(operands.find("-slide") != operands.end())

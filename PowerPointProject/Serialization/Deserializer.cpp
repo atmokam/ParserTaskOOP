@@ -28,7 +28,7 @@ namespace Serialization
             docOutput->addSlide(std::make_shared<Data::Slide>());
         }
 
-        docOutput->getIDGenerator().setIDs(converter.convertToIDs(documentObject["IDs"].toArray()));
+        docOutput->getIDGenerator()->setIDs(converter.convertToIDs(documentObject["IDs"].toArray()));
         docOutput->setFormat(converter.convertToFormat(documentObject["format"].toArray()));
     }
 

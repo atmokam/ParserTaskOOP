@@ -18,16 +18,16 @@ namespace Data
         Serialization::Converter converter;
 
         item = std::make_shared<ItemLeaf>();
-        defaultAttributes  = document->getDefaultAttributes();
+        defaultAttributes  = *document->getDefaultAttributes();
         type = Renderer::Type{converter.convertToType(operands["-name"][0])};
         item->setType(type);
-        item->setID(document->getIDGenerator().generateID());
+        item->setID(document->getIDGenerator()->generateID());
             
         Geometry newGeometry;
         Attributes newAttributes; 
 
         trySetGeometry(operands, newGeometry);
-        trySetAttributes(operands, newAttributes); // attributes are optional
+        trySetAttributes(operands, newAttributes); 
         
         if(!newAttributes.getHexLineColor().has_value())
             newAttributes.setHexLineColor(defaultAttributes.getHexLineColor().value());

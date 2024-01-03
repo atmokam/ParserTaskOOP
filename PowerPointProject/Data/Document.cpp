@@ -12,18 +12,20 @@ namespace Data
         Renderer::Formatting::FormatLibrary formatMap;
         Serialization::Converter converter;
         slides.push_back(std::make_shared<Slide>());
-        defaultAttributes.setLineWidth(1);
-        defaultAttributes.setHexFillColor(converter.convertToColor("#FFFFFF"));
-        defaultAttributes.setHexLineColor(converter.convertToColor("#000000"));
-        defaultAttributes.setLineType(converter.convertToLineType("solid"));
-        defaultAttributes.setHexTextColor(converter.convertToColor("#000000"));
-        defaultAttributes.setFontSize(12);
-        defaultAttributes.setText("");
-        defaultAttributes.setHexTextColor(converter.convertToColor("#000000"));
-        
-        
 
+        defaultAttributes = std::make_shared<Attributes>();
+        defaultAttributes->setLineWidth(1);
+        defaultAttributes->setHexFillColor(converter.convertToColor("#FFFFFF"));
+        defaultAttributes->setHexLineColor(converter.convertToColor("#000000"));
+        defaultAttributes->setLineType(converter.convertToLineType("solid"));
+        defaultAttributes->setHexTextColor(converter.convertToColor("#000000"));
+        defaultAttributes->setFontSize(12);
+        defaultAttributes->setText("");
+        defaultAttributes->setHexTextColor(converter.convertToColor("#000000"));
+        
         format = formatMap.getFormat("A4");
+
+        generator = std::make_shared<IDGenerator>();
 
     }
 
@@ -56,7 +58,7 @@ namespace Data
     }
 
 
-    IDGenerator& Document::getIDGenerator() 
+    std::shared_ptr<IDGenerator> Document::getIDGenerator() 
     {
         return generator;
     }
@@ -73,7 +75,7 @@ namespace Data
     }
 
 
-    Attributes Document::getDefaultAttributes() const 
+    std::shared_ptr<Attributes> Document::getDefaultAttributes() const 
     {
         return defaultAttributes;
     }

@@ -34,7 +34,7 @@ namespace Renderer
     void VisualRenderingVisitor::visit(Data::ItemGroup& items) // group accept
     {
         auto doc = App::Application::getInstance().getDocument(); 
-        auto ids = doc->getIDGenerator().getIDs(); 
+        auto ids = doc->getIDGenerator()->getIDs(); 
         for(const auto& id: ids)
         {
             auto item = items.getItem(id);

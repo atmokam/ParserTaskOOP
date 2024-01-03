@@ -20,9 +20,9 @@ namespace Data
         virtual void removeSlide(size_t number) = 0;
         virtual size_t size() const = 0;
 
-        virtual IDGenerator& getIDGenerator() = 0;
+        virtual std::shared_ptr<IDGenerator> getIDGenerator() = 0;
 
-        virtual Attributes getDefaultAttributes() const = 0;
+        virtual std::shared_ptr<Attributes> getDefaultAttributes() const = 0;
         virtual ~IDocument() = default;
         virtual std::pair<double, double> getFormat() const = 0;
         virtual void setFormat(const std::pair<double, double>& format) = 0;

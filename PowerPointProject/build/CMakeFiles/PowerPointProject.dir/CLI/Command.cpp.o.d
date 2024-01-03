@@ -393,7 +393,6 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpaintdevice.h \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ConsoleRenderingVisitor.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/SaveLoad.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Serializer.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/IItemVisitor.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/JsonConverter.hpp \

@@ -886,30 +886,6 @@ Serialization/JsonConverter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/JsonConverter.cpp.s
 .PHONY : Serialization/JsonConverter.cpp.s
 
-Serialization/SaveLoad.o: Serialization/SaveLoad.cpp.o
-.PHONY : Serialization/SaveLoad.o
-
-# target to build an object file
-Serialization/SaveLoad.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.o
-.PHONY : Serialization/SaveLoad.cpp.o
-
-Serialization/SaveLoad.i: Serialization/SaveLoad.cpp.i
-.PHONY : Serialization/SaveLoad.i
-
-# target to preprocess a source file
-Serialization/SaveLoad.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.i
-.PHONY : Serialization/SaveLoad.cpp.i
-
-Serialization/SaveLoad.s: Serialization/SaveLoad.cpp.s
-.PHONY : Serialization/SaveLoad.s
-
-# target to generate assembly for a file
-Serialization/SaveLoad.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Serialization/SaveLoad.cpp.s
-.PHONY : Serialization/SaveLoad.cpp.s
-
 Serialization/Serializer.o: Serialization/Serializer.cpp.o
 .PHONY : Serialization/Serializer.o
 
@@ -1109,9 +1085,6 @@ help:
 	@echo "... Serialization/JsonConverter.o"
 	@echo "... Serialization/JsonConverter.i"
 	@echo "... Serialization/JsonConverter.s"
-	@echo "... Serialization/SaveLoad.o"
-	@echo "... Serialization/SaveLoad.i"
-	@echo "... Serialization/SaveLoad.s"
 	@echo "... Serialization/Serializer.o"
 	@echo "... Serialization/Serializer.i"
 	@echo "... Serialization/Serializer.s"

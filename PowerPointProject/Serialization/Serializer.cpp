@@ -47,7 +47,7 @@ namespace Serialization
 
         QJsonObject documentObject;
         documentObject["slides"] = slidesArray;
-        documentObject["IDs"] = converter.convertToJson(document->getIDGenerator().getIDs());
+        documentObject["IDs"] = converter.convertToJson(document->getIDGenerator()->getIDs());
         documentObject["format"] = converter.convertToJson(document->getFormat());
 
         output.get().setObject(documentObject);

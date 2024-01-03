@@ -15,6 +15,7 @@ namespace Serialization
 //////////   I thought of a solution using visitor, but it involves an intermeditate
 //////////   step of using conditional statements to check if the item is a group or leaf (namely deserializeHelper).
 //////////   Because of that, I'm not sure that the solution is elegant enough to be worth implementing till the end.
+//////////   I'm also not sure if it's a good idea to use a visitor for this at all.
 //////////   May I ask for your opinion/suggestions on this? Thank you very much.
 
 
@@ -62,7 +63,7 @@ namespace Serialization
             docOutput->addSlide(std::make_shared<Data::Slide>());
         }
 
-        docOutput->getIDGenerator().setIDs(converter.convertToIDs(documentObject["IDs"].toArray()));
+        docOutput->getIDGenerator()->setIDs(converter.convertToIDs(documentObject["IDs"].toArray()));
         docOutput->setFormat(converter.convertToFormat(documentObject["format"].toArray()));
         
     }

@@ -26,7 +26,6 @@ CLI/Parser.cpp
 Data/Document.cpp 
 Serialization/Converter.cpp 
 CLI/Command.cpp 
-Serialization/SaveLoad.cpp 
 Serialization/Serializer.cpp
 Serialization/Deserializer.cpp
 Director/Actions.cpp  

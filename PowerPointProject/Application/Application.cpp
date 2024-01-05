@@ -44,10 +44,9 @@ namespace App
         if(args[1] == nullptr)
             return stream;
 
-        else if (std::string(args[1]) == "-filename") 
+        else if (std::string(args[1]) == "-path") 
         {
             stream.open(args[2]);
-            std::cout << "filed"<< std::endl;
         }
         return stream;
 

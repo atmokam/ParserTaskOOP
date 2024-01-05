@@ -5,8 +5,7 @@
 
 // A constant that gets multipled by initial width and height to get the inscribed rectangle
 
-// I don't know if this is overengineering or not, for the reason of possible change to constants 
-// I decided to make it a separate class.
+// I don't know if this is overengineering or not, for the reason of possible change to constants I decided to make it a separate class.
 
 namespace Renderer
 {

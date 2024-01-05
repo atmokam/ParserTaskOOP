@@ -94,7 +94,22 @@ namespace Renderer
 
     void ShapeTrapezoid::draw(QPainter& painter, Formatting::DimentionConverter& converter) 
     {
+        QPolygon trapezoid;
+        auto points = item->getGeometry().getPosition().value().getCoordinates();
+        auto x = converter.toPixels(points[0]);
+        auto y = converter.toPixels(points[1]);
         
+        auto width = converter.toPixels(item->getGeometry().getWidth().value());      
+        auto height = converter.toPixels(item->getGeometry().getHeight().value());
+
+        
+       
+        trapezoid << QPoint(x, y + height) 
+         << QPoint(x + width, y + height)
+         << QPoint(x + (width-(width/3.0)), y) 
+         << QPoint(x + (width/3.0), y);
+
+        painter.drawPolygon(trapezoid);
     }
 
     std::shared_ptr<IShape> ShapeTrapezoid::clone(std::shared_ptr<Data::ItemBase> item)

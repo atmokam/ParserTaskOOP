@@ -8,11 +8,15 @@ namespace UI
     QWidget(parent), controller(cliController)
     {
         if(input.is_open())
-            while(input.peek() == std::ifstream::traits_type::eof()) // for file input
+        {
+            std::string line;
+            while(std::getline(input, line)) // for file input
             {
-                controller.lock()->runCommand(this->input);
+                std::istringstream ss(line);
+                controller.lock()->runCommand(ss);
                 output << controller.lock()->getOutputStream().str();
             }
+        }
 
     }
 
@@ -26,7 +30,7 @@ namespace UI
         controller.lock()->runCommand(input);
         
         output << controller.lock()->getOutputStream().str();
-        controller.lock()->getOutputStream().str({});
+        controller.lock()->getOutputStream().str({}); // empties cli::controller out stream
 
     }
 

@@ -7,7 +7,7 @@
 
 namespace App 
 {
-    Application::Application(int &argc, char **argv) : QApplication(argc, argv) // This was the culprit, I hadn't noticed that there needed to be a '&' before int, that was the segfault reason
+    Application::Application(int &argc, char **argv) : QApplication(argc, argv) // This was the cause, int needed to be a reference, but it wasn't and that was the segfault reason
     {                                                                           // the GUI window now opens without problem
         director = std::make_shared<Director::Director>();
         document = std::make_shared<Data::Document>();
@@ -47,6 +47,7 @@ namespace App
         else if (std::string(args[1]) == "-filename") 
         {
             stream.open(args[2]);
+            std::cout << "filed"<< std::endl;
         }
         return stream;
 

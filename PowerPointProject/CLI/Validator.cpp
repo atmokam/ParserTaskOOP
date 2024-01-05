@@ -31,7 +31,8 @@ namespace CLI {
 
         mandatoryOperands = {
             {"addSlide", {"-slide"}},
-            {"addItem", {"-name", "-pos", "-w", "-h", "-lwidth", "-lstyle"}},
+            {"addItem", {"-name", "-pos", "-w", "-h"}},
+            {"addLine", {"-name", "-pos"}},
             {"removeSlide", {"-slide"}},
             {"removeItem", {"-id"}},
             {"change", {"-id"}},
@@ -99,9 +100,12 @@ namespace CLI {
         {
             mandatory = mandatoryOperands.at("addSlide");
         } 
-        else if (commandName == "add" && commandOperands.find("-name") == commandOperands.end()) 
+        else if (commandName == "add" && commandOperands.find("-name") != commandOperands.end()) 
         {
-            mandatory = mandatoryOperands.at("addItem");
+            if(commandOperands.at("-name")[0] == "line")
+                mandatory = mandatoryOperands.at("addLine");
+            else
+                mandatory = mandatoryOperands.at("addItem");
         } 
         else if (commandName == "remove" && commandOperands.find("-slide") != commandOperands.end()) 
         {
@@ -111,11 +115,11 @@ namespace CLI {
         {
             mandatory = mandatoryOperands.at("removeItem");
         } 
-        
-        if (mandatoryOperands.find(commandName) != mandatoryOperands.end()) 
+        else if (mandatoryOperands.find(commandName) != mandatoryOperands.end()) 
         {
             mandatory = mandatoryOperands.at(commandName);
         }
+
 
         for (const auto& operand : mandatory) 
         {

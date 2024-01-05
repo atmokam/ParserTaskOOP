@@ -21,6 +21,9 @@ namespace Data
 
         bool trySetAttributes(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Attributes& attributes);
         bool trySetGeometry(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Geometry& geometry);
+
+        void setDefaultAttributes(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Attributes& attributes);
+        void setDefaultGeometry(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Geometry& geometry);
         std::shared_ptr<Data::ItemBase> getItem() const;
     };
 }

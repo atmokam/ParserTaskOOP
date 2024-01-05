@@ -28,31 +28,75 @@ namespace Data
 
         trySetGeometry(operands, newGeometry);
         trySetAttributes(operands, newAttributes); 
-        
-        if(!newAttributes.getHexLineColor().has_value())
-            newAttributes.setHexLineColor(defaultAttributes.getHexLineColor().value());
 
-        if(!newAttributes.getHexFillColor().has_value())
-            newAttributes.setHexFillColor(defaultAttributes.getHexFillColor().value());
-        
-        if(!newAttributes.getLineWidth().has_value())
-            newAttributes.setLineWidth(defaultAttributes.getLineWidth().value());
-        
-        if(!newAttributes.getLineType().has_value())
-            newAttributes.setLineType(defaultAttributes.getLineType().value());
-
-        if(!newAttributes.getText().has_value())
-            newAttributes.setText(defaultAttributes.getText().value());
-
-        if(!newAttributes.getHexTextColor().has_value())
-            newAttributes.setHexTextColor(defaultAttributes.getHexTextColor().value());
-
-        if(!newAttributes.getFontSize().has_value())
-            newAttributes.setFontSize(defaultAttributes.getFontSize().value());
+        setDefaultGeometry(operands, newGeometry);
+        setDefaultAttributes(operands, newAttributes);
 
         item->setAttributes(newAttributes);
         item->setGeometry(newGeometry);
         
+    }
+
+    void ItemBuilder::setDefaultGeometry(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Geometry& geometry)
+    {
+        App::Application& application = App::Application::getInstance();
+        std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
+        
+        Serialization::Converter converter;
+        // item always has a position
+        
+        if(operands.at("-name")[0] == "line")
+        {
+            while(operands["-pos"].size() < 4)
+            {
+                operands["-pos"].push_back("0");
+            }
+            geometry.setPosition(converter.convertToPosition(operands["-pos"]));
+        }
+        else
+        {
+            while(operands["-pos"].size() < 2)
+            {
+                operands["-pos"].push_back("0");
+            }
+            geometry.setPosition(converter.convertToPosition(operands["-pos"]));
+        }
+       
+
+        if(!geometry.getWidth().has_value())
+            geometry.setWidth(0);
+
+        if(!geometry.getHeight().has_value())
+            geometry.setHeight(0);
+    }
+
+    void ItemBuilder::setDefaultAttributes(std::unordered_map<std::string, std::vector<std::string>> operands, Data::Attributes& attributes)
+    {
+        App::Application& application = App::Application::getInstance();
+        std::shared_ptr<IDocument> document = application.getDirector()->getDocument();
+        Attributes defaultAttributes = *document->getDefaultAttributes();
+        Serialization::Converter converter;
+
+        if(!attributes.getHexLineColor().has_value())
+            attributes.setHexLineColor(defaultAttributes.getHexLineColor().value());
+
+        if(!attributes.getHexFillColor().has_value())
+            attributes.setHexFillColor(defaultAttributes.getHexFillColor().value());
+        
+        if(!attributes.getLineWidth().has_value())
+            attributes.setLineWidth(defaultAttributes.getLineWidth().value());
+        
+        if(!attributes.getLineType().has_value())
+            attributes.setLineType(defaultAttributes.getLineType().value());
+
+        if(!attributes.getText().has_value())
+            attributes.setText(defaultAttributes.getText().value());
+
+        if(!attributes.getHexTextColor().has_value())
+            attributes.setHexTextColor(defaultAttributes.getHexTextColor().value());
+
+        if(!attributes.getFontSize().has_value())
+            attributes.setFontSize(defaultAttributes.getFontSize().value());
     }
 
     

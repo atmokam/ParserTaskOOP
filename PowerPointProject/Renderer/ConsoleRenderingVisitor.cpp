@@ -9,7 +9,7 @@ namespace Renderer
 
     void ConsoleRenderingVisitor::visit(Data::ItemLeaf& leaf)
     {
-        ShapeBase shape(std::make_shared<Data::ItemLeaf>(leaf));
+        ShapeBase shape(std::make_shared<Data::ItemLeaf>(leaf)); // is cloning better than this?
         shape.print(output);
     }
 

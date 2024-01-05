@@ -150,6 +150,7 @@ namespace Renderer
         stream << "LineWidth: " << item->getAttributes().getLineWidth().value() << std::endl;
         stream << "LineType: " << converter.convertToString(item->getAttributes().getLineType().value()) << std::endl;
         stream << "Text: " << item->getAttributes().getText().value() << std::endl;
+        stream << std::endl;
     }
 
  

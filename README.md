@@ -7,13 +7,17 @@ To run:
 [  ] - optionals indicated
 
 ## Add
-#### Shape:
+#### Shape
+
+Available shapes : trapezoid, line, rectangle, ellipse, triangle
+
 ```
-add -name <shape> -pos <position> -w <width> -h <height> [-text <text> -lcolor <hex color> -fcolor <hex color> -lstyle <style> -lwidth <width>]
+add -name <shape> -pos <(x, y)> -w <width> -h <height> 
+[-text <text> -lcolor <hex color> -fcolor <hex color> -lstyle <style> -lwidth <width>]
 ```
-Line is an exception: 
+**Line's signature is an exception:*
 ```
- add -name line -pos <x, y>
+ add -name line -pos <(x, y) (x, y)> [...]
 ```
 #### Slide:
 ```

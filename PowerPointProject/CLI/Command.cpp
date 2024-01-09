@@ -31,7 +31,7 @@ namespace CLI
             size_t currentSlideIndex = directorPtr->getCurrentSlideIndex();
             std::shared_ptr<Data::ItemLeaf> item = createItem();
             directorPtr->doAction(std::make_shared<Director::AddItem>(item, currentSlideIndex));
-            auto document = directorPtr->getDocument();
+            auto document = application.get().getDocument();
             auto idGen = document->getIDGenerator();
             idGen->addID(item->getID());
         }
@@ -70,7 +70,7 @@ namespace CLI
                 return;
             }
             directorPtr->doAction(std::make_shared<Director::RemoveItem>(item, currentSlideIndex));
-            auto document = directorPtr->getDocument();
+            auto document = application.get().getDocument();
             auto idGen = document->getIDGenerator();
             idGen->removeID(item->getID());
         }

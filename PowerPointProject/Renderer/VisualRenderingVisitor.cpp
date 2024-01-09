@@ -25,7 +25,8 @@ namespace Renderer
         auto shape = shapeLibrary->getShape(std::make_shared<Data::ItemLeaf>(item));
         std::shared_ptr<IVisualDisplayable> visualShape = std::dynamic_pointer_cast<IVisualDisplayable>(shape);
         visualShape->draw(painter, converter);
-        
+
+
         // Thank you for the hint. Hopefully I have implemented it correctly.
         ShapeTextVisitor textVisitor (painter, converter);
         textVisitor.printText(shape);   
@@ -39,9 +40,8 @@ namespace Renderer
         {
             auto item = items.getItem(id);
             if(item)
-            {
                 item->accept(std::make_shared<VisualRenderingVisitor>(*this));
-            }
+            
         }
     }
 

@@ -27,7 +27,7 @@ namespace Director
         // [TK] Good!
         void doAction(std::shared_ptr<IAction> action) override;
         void clearUndoRedoStack() override;
-        std::shared_ptr<Data::IDocument>& getDocument() override;
+        std::shared_ptr<Data::IDocument> getDocument() override;
         void setDocument(std::shared_ptr<Data::IDocument>& document) override;
         std::shared_ptr<Data::Slide> getCurrentSlide() override;
         void setCurrentSlideIndex(size_t currentSlideIndex) override;

@@ -454,15 +454,9 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerMarginConstant.hpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InscribedRectangleCalc.hpp",
 			"MU",
-			"D4UI2YJJKW/moc_InnerMarginConstant.cpp",
-			null
-		],
-		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InscribedRectangleCalculator.hpp",
-			"MU",
-			"D4UI2YJJKW/moc_InscribedRectangleCalculator.cpp",
+			"D4UI2YJJKW/moc_InscribedRectangleCalc.cpp",
 			null
 		],
 		[
@@ -691,12 +685,7 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InnerMarginConstant.cpp",
-			"MU",
-			null
-		],
-		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InscribedRectangleCalculator.cpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InscribedRectangleCalc.cpp",
 			"MU",
 			null
 		],

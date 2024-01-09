@@ -9,7 +9,7 @@ namespace Director
 
     Director::Director() : document(std::make_shared<Data::Document>()) {}
                                                                 
-    std::shared_ptr<Data::IDocument>& Director::getDocument() {
+    std::shared_ptr<Data::IDocument> Director::getDocument() {
         return document;
     }
 

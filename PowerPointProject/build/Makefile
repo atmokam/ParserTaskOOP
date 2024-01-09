@@ -622,53 +622,29 @@ Renderer/Formatting/FormatLibrary.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.s
 .PHONY : Renderer/Formatting/FormatLibrary.cpp.s
 
-Renderer/Shape/InnerMarginConstant.o: Renderer/Shape/InnerMarginConstant.cpp.o
-.PHONY : Renderer/Shape/InnerMarginConstant.o
+Renderer/Shape/InscribedRectangleCalc.o: Renderer/Shape/InscribedRectangleCalc.cpp.o
+.PHONY : Renderer/Shape/InscribedRectangleCalc.o
 
 # target to build an object file
-Renderer/Shape/InnerMarginConstant.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.o
-.PHONY : Renderer/Shape/InnerMarginConstant.cpp.o
+Renderer/Shape/InscribedRectangleCalc.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalc.cpp.o
+.PHONY : Renderer/Shape/InscribedRectangleCalc.cpp.o
 
-Renderer/Shape/InnerMarginConstant.i: Renderer/Shape/InnerMarginConstant.cpp.i
-.PHONY : Renderer/Shape/InnerMarginConstant.i
-
-# target to preprocess a source file
-Renderer/Shape/InnerMarginConstant.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.i
-.PHONY : Renderer/Shape/InnerMarginConstant.cpp.i
-
-Renderer/Shape/InnerMarginConstant.s: Renderer/Shape/InnerMarginConstant.cpp.s
-.PHONY : Renderer/Shape/InnerMarginConstant.s
-
-# target to generate assembly for a file
-Renderer/Shape/InnerMarginConstant.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InnerMarginConstant.cpp.s
-.PHONY : Renderer/Shape/InnerMarginConstant.cpp.s
-
-Renderer/Shape/InscribedRectangleCalculator.o: Renderer/Shape/InscribedRectangleCalculator.cpp.o
-.PHONY : Renderer/Shape/InscribedRectangleCalculator.o
-
-# target to build an object file
-Renderer/Shape/InscribedRectangleCalculator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.o
-.PHONY : Renderer/Shape/InscribedRectangleCalculator.cpp.o
-
-Renderer/Shape/InscribedRectangleCalculator.i: Renderer/Shape/InscribedRectangleCalculator.cpp.i
-.PHONY : Renderer/Shape/InscribedRectangleCalculator.i
+Renderer/Shape/InscribedRectangleCalc.i: Renderer/Shape/InscribedRectangleCalc.cpp.i
+.PHONY : Renderer/Shape/InscribedRectangleCalc.i
 
 # target to preprocess a source file
-Renderer/Shape/InscribedRectangleCalculator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.i
-.PHONY : Renderer/Shape/InscribedRectangleCalculator.cpp.i
+Renderer/Shape/InscribedRectangleCalc.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalc.cpp.i
+.PHONY : Renderer/Shape/InscribedRectangleCalc.cpp.i
 
-Renderer/Shape/InscribedRectangleCalculator.s: Renderer/Shape/InscribedRectangleCalculator.cpp.s
-.PHONY : Renderer/Shape/InscribedRectangleCalculator.s
+Renderer/Shape/InscribedRectangleCalc.s: Renderer/Shape/InscribedRectangleCalc.cpp.s
+.PHONY : Renderer/Shape/InscribedRectangleCalc.s
 
 # target to generate assembly for a file
-Renderer/Shape/InscribedRectangleCalculator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalculator.cpp.s
-.PHONY : Renderer/Shape/InscribedRectangleCalculator.cpp.s
+Renderer/Shape/InscribedRectangleCalc.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalc.cpp.s
+.PHONY : Renderer/Shape/InscribedRectangleCalc.cpp.s
 
 Renderer/Shape/ShapeBase.o: Renderer/Shape/ShapeBase.cpp.o
 .PHONY : Renderer/Shape/ShapeBase.o
@@ -1052,12 +1028,9 @@ help:
 	@echo "... Renderer/Formatting/FormatLibrary.o"
 	@echo "... Renderer/Formatting/FormatLibrary.i"
 	@echo "... Renderer/Formatting/FormatLibrary.s"
-	@echo "... Renderer/Shape/InnerMarginConstant.o"
-	@echo "... Renderer/Shape/InnerMarginConstant.i"
-	@echo "... Renderer/Shape/InnerMarginConstant.s"
-	@echo "... Renderer/Shape/InscribedRectangleCalculator.o"
-	@echo "... Renderer/Shape/InscribedRectangleCalculator.i"
-	@echo "... Renderer/Shape/InscribedRectangleCalculator.s"
+	@echo "... Renderer/Shape/InscribedRectangleCalc.o"
+	@echo "... Renderer/Shape/InscribedRectangleCalc.i"
+	@echo "... Renderer/Shape/InscribedRectangleCalc.s"
 	@echo "... Renderer/Shape/ShapeBase.o"
 	@echo "... Renderer/Shape/ShapeBase.i"
 	@echo "... Renderer/Shape/ShapeBase.s"

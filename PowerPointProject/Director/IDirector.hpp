@@ -15,7 +15,7 @@ namespace Director
     class IDirector {
     public:
         
-        virtual std::shared_ptr<Data::IDocument>& getDocument() = 0;
+        virtual std::shared_ptr<Data::IDocument> getDocument() = 0;
         virtual void setDocument(std::shared_ptr<Data::IDocument>& document) = 0;
         virtual std::shared_ptr<Data::Slide> getCurrentSlide() = 0;
         virtual size_t getCurrentSlideIndex() = 0;

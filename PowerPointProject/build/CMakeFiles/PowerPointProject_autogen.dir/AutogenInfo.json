@@ -436,9 +436,9 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ConsoleRenderingVisitor.hpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ConsoleRendering.hpp",
 			"MU",
-			"XJ3PD3KCDO/moc_ConsoleRenderingVisitor.cpp",
+			"XJ3PD3KCDO/moc_ConsoleRendering.cpp",
 			null
 		],
 		[
@@ -454,12 +454,6 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InscribedRectangleCalc.hpp",
-			"MU",
-			"D4UI2YJJKW/moc_InscribedRectangleCalc.cpp",
-			null
-		],
-		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeBase.hpp",
 			"MU",
 			"D4UI2YJJKW/moc_ShapeBase.cpp",
@@ -472,9 +466,9 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeTextVisitor.hpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeText.hpp",
 			"MU",
-			"D4UI2YJJKW/moc_ShapeTextVisitor.cpp",
+			"D4UI2YJJKW/moc_ShapeText.cpp",
 			null
 		],
 		[
@@ -490,9 +484,9 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRenderingVisitor.hpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRendering.hpp",
 			"MU",
-			"XJ3PD3KCDO/moc_VisualRenderingVisitor.cpp",
+			"XJ3PD3KCDO/moc_VisualRendering.cpp",
 			null
 		],
 		[
@@ -670,7 +664,7 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ConsoleRenderingVisitor.cpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ConsoleRendering.cpp",
 			"MU",
 			null
 		],
@@ -685,11 +679,6 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/InscribedRectangleCalc.cpp",
-			"MU",
-			null
-		],
-		[
 			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeBase.cpp",
 			"MU",
 			null
@@ -700,7 +689,7 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeTextVisitor.cpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeText.cpp",
 			"MU",
 			null
 		],
@@ -715,7 +704,7 @@
 			null
 		],
 		[
-			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRenderingVisitor.cpp",
+			"/home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRendering.cpp",
 			"MU",
 			null
 		],

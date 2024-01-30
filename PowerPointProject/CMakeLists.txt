@@ -43,10 +43,9 @@ Serialization/JsonConverter.cpp
 Data/IDGenerator.cpp
 Renderer/VisualConversion/QtConverter.cpp
 Renderer/VisualConversion/TextFontAdjuster.cpp
-Renderer/VisualRenderingVisitor.cpp
-Renderer/ConsoleRenderingVisitor.cpp
-Renderer/Shape/ShapeTextVisitor.cpp
-Renderer/Shape/InscribedRectangleCalc.cpp
+Renderer/VisualRendering.cpp
+Renderer/ConsoleRendering.cpp
+Renderer/Shape/ShapeText.cpp
 Data/Item/ItemBuilder.cpp
 UI/Controller.cpp
 UI/CommandPane.cpp

@@ -29,7 +29,7 @@ namespace Serialization
     {
         for(auto& [_, subItem]: item)
         {
-            subItem->accept(std::make_shared<Serializer>(*this));
+            subItem->accept(*this);
         } 
     }
 
@@ -40,7 +40,7 @@ namespace Serialization
         for(auto& slide: *document)
         {
             auto items = slide->getTopItem();
-            items->accept(std::make_shared<Serializer>(*this));
+            items->accept(*this);
             slidesArray.append(*currentSlideArray);
             currentSlideArray.reset();
         }

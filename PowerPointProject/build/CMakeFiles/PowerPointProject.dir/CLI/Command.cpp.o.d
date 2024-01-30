@@ -384,14 +384,14 @@ CMakeFiles/PowerPointProject.dir/CLI/Command.cpp.o: \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/Actions.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Director/IAction.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/ItemAttributes.hpp \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRenderingVisitor.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/VisualRendering.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/IItemVisitor.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Include/../Data/Item/IItemVisitor.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Shape/ShapeLibrary.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QPaintDevice \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpaintdevice.h \
- /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ConsoleRenderingVisitor.hpp \
+ /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/ConsoleRendering.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Renderer/Formatting/DimentionConverter.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Serialization/Serializer.hpp \
  /home/atmokam/Desktop/OOP/ParserTaskOOP/PowerPointProject/Data/Item/IItemVisitor.hpp \

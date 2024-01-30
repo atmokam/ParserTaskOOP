@@ -22,9 +22,9 @@ namespace Data
     ItemLeaf::ItemLeaf(std::shared_ptr<ItemLeaf> item)
     : ItemBase(item->type, item->geometry, item->attributes, item->id) {}
 
-    void ItemLeaf::accept(std::weak_ptr<IItemVisitor> visitor) 
+    void ItemLeaf::accept(IItemVisitor& visitor) 
     {
-        visitor.lock()->visit(*this);
+        visitor.visit(*this);
     }
 
 
@@ -103,9 +103,9 @@ namespace Data
     Attributes& attributes, ID id)
     : items(items), ItemBase(Renderer::Type::Group, geometry, attributes, id) {}
 
-    void ItemGroup::accept(std::weak_ptr<IItemVisitor> visitor) 
+    void ItemGroup::accept(IItemVisitor& visitor) 
     {
-        visitor.lock()->visit(*this);
+        visitor.visit(*this);
     }
 
     Renderer::Type ItemGroup::getType() const 

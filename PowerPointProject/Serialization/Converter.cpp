@@ -35,7 +35,7 @@ namespace Serialization
     Renderer::Type Converter::convertToType(const std::string& value) 
     {
         Renderer::ShapeLibrary shapeLibrary;
-        return shapeLibrary.getType(value).value(); 
+        return shapeLibrary.getType(value); 
     }
 
     Data::ID Converter::convertToID(const std::string& value) 

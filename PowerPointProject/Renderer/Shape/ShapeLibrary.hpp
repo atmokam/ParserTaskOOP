@@ -4,28 +4,31 @@
 #include <string>
 #include <unordered_map>
 #include <memory>
-#include <optional>
 
 #include "Data/Item/ItemBase.hpp"
 
+
+//                                      Intent: prototype library for shapes
+
+
 namespace Renderer
 {
-    class IShape;
+    class ICloneable;
 
     enum class Type 
     {
-        Rectangle, Trapezoid, Ellipse, Line, Triangle, Group
+        Rectangle, Trapezoid, Ellipse, Line, Triangle, Group, None
     };
 
 
     class ShapeLibrary {
-        std::unordered_map<Type, std::shared_ptr<IShape>> library;
+        std::unordered_map<Type, std::shared_ptr<ICloneable>> library;
         std::unordered_map<std::string, Type> stringToType;
     public:
         ShapeLibrary();
-        std::shared_ptr<IShape> getShape(std::shared_ptr<Data::ItemBase> item);
+        std::shared_ptr<ICloneable> getShape(std::shared_ptr<Data::ItemBase> item);
         
-        std::optional<Type> getType(const std::string& type);
+        Type getType(const std::string& type);
         std::string getString(const Type type);
 
     };

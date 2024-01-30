@@ -191,7 +191,7 @@ namespace CLI {
     {
         if (operandName == "-name") {
             Renderer::ShapeLibrary shapeLibrary;
-            return shapeLibrary.getType(inputToBeChecked) != std::nullopt;
+            return shapeLibrary.getType(inputToBeChecked) != Renderer::Type::None;
 
         } else if (operandName == "-id") {
             return isInteger(inputToBeChecked);

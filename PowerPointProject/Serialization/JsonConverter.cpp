@@ -170,7 +170,7 @@ namespace Serialization
     Renderer::Type JsonConverter::convertToType(const QJsonValue& value) 
     {
         Renderer::ShapeLibrary shapeLibrary;
-        return shapeLibrary.getType(value.toString().toStdString()).value(); 
+        return shapeLibrary.getType(value.toString().toStdString()); 
     }
 
     Data::LineType JsonConverter::convertToLineType(const QJsonValue& value) 

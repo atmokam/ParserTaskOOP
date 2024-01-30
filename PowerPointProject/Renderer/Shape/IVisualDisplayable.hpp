@@ -10,7 +10,8 @@ namespace Renderer
         class DimentionConverter;
     }
 
-    class IVisualDisplayable {
+    class IVisualDisplayable 
+    {
     public:
         virtual void draw(QPainter& painter, Formatting::DimentionConverter& converter) = 0;
     };

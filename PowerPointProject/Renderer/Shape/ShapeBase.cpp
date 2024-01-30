@@ -4,7 +4,6 @@
 #include <QFont>
 #include <QTextOption>
 #include "ShapeBase.hpp"
-#include "IShapeVisitor.hpp"
 #include "Data/Item/ItemBase.hpp"
 #include "Data/Item/ItemAttributes.hpp"
 #include "Serialization/Converter.hpp"
@@ -14,6 +13,8 @@
 
 namespace Renderer
 {
+
+
     // visual displayables
     ShapeRectangle::ShapeRectangle(std::shared_ptr<Data::ItemBase> item) : ShapeBase(item) {}
 
@@ -24,17 +25,13 @@ namespace Renderer
         painter.drawRect(rect);
     }
 
-    std::shared_ptr<IShape> ShapeRectangle::clone(std::shared_ptr<Data::ItemBase> item)
+    std::shared_ptr<ICloneable> ShapeRectangle::clone(std::shared_ptr<Data::ItemBase> item)
     {
         setItem(item);
         return std::make_shared<ShapeRectangle>(*this);
     }
 
-    void ShapeRectangle::accept(std::weak_ptr<IShapeVisitor> visitor)
-    {
-        visitor.lock()->visit(*this);
-    }
-
+   
 
 
 
@@ -48,17 +45,13 @@ namespace Renderer
         painter.drawEllipse(rect);
     }
 
-    std::shared_ptr<IShape> ShapeEllipse::clone(std::shared_ptr<Data::ItemBase> item)
+    std::shared_ptr<ICloneable> ShapeEllipse::clone(std::shared_ptr<Data::ItemBase> item)
     {
         setItem(item);
         return std::make_shared<ShapeEllipse>(*this);
     }
 
-    void ShapeEllipse::accept(std::weak_ptr<IShapeVisitor> visitor)
-    {
-        visitor.lock()->visit(*this);
-    }
-
+  
 
 
 
@@ -69,23 +62,20 @@ namespace Renderer
     {
         setPainterAttributes(painter);
 
-        auto points = item->getGeometry().getPosition().value().getCoordinates();
+        auto geometry = item->getGeometry();
+        auto points = geometry.getPosition().value().getCoordinates();
 
         painter.drawLine(converter.toPixels(points[0]), converter.toPixels(points[1]), 
             converter.toPixels(points[2]), converter.toPixels(points[3]));
     }
 
-    std::shared_ptr<IShape> ShapeLine::clone(std::shared_ptr<Data::ItemBase> item)
+    std::shared_ptr<ICloneable> ShapeLine::clone(std::shared_ptr<Data::ItemBase> item)
     {
         setItem(item);
         return std::make_shared<ShapeLine>(*this);
     }
 
-    void ShapeLine::accept(std::weak_ptr<IShapeVisitor> visitor)
-    {
-        visitor.lock()->visit(*this);
-    }
-
+   
 
 
 
@@ -95,14 +85,15 @@ namespace Renderer
     void ShapeTrapezoid::draw(QPainter& painter, Formatting::DimentionConverter& converter) 
     {
         QPolygon trapezoid;
-        auto points = item->getGeometry().getPosition().value().getCoordinates();
+        auto geometry = item->getGeometry();
+
+        auto points = geometry.getPosition().value().getCoordinates();
         auto x = converter.toPixels(points[0]);
         auto y = converter.toPixels(points[1]);
         
-        auto width = converter.toPixels(item->getGeometry().getWidth().value());      
-        auto height = converter.toPixels(item->getGeometry().getHeight().value());
+        auto width = converter.toPixels(geometry.getWidth().value());      
+        auto height = converter.toPixels(geometry.getHeight().value());
 
-        
        
         trapezoid << QPoint(x, y + height) 
          << QPoint(x + width, y + height)
@@ -112,16 +103,13 @@ namespace Renderer
         painter.drawPolygon(trapezoid);
     }
 
-    std::shared_ptr<IShape> ShapeTrapezoid::clone(std::shared_ptr<Data::ItemBase> item)
+    std::shared_ptr<ICloneable> ShapeTrapezoid::clone(std::shared_ptr<Data::ItemBase> item)
     {
         setItem(item);
         return std::make_shared<ShapeTrapezoid>(*this);
     }
 
-    void ShapeTrapezoid::accept(std::weak_ptr<IShapeVisitor> visitor)
-    {
-        visitor.lock()->visit(*this);
-    }
+    
 
 
 
@@ -134,18 +122,13 @@ namespace Renderer
         
     }
 
-    std::shared_ptr<IShape> ShapeTriangle::clone(std::shared_ptr<Data::ItemBase> item)
+    std::shared_ptr<ICloneable> ShapeTriangle::clone(std::shared_ptr<Data::ItemBase> item)
     {
         setItem(item);
         return std::make_shared<ShapeTriangle>(*this);
     }
 
-    void ShapeTriangle::accept(std::weak_ptr<IShapeVisitor> visitor)
-    {
-        visitor.lock()->visit(*this);
-    }
-
-
+    
 
 
     // text displayable
@@ -154,22 +137,25 @@ namespace Renderer
     void ShapeBase::print(std::ostream& stream) 
     {
         Serialization::Converter converter;
+        auto attributes = item->getAttributes();
+        auto geometry = item->getGeometry();
+
         stream << "Shape: " << converter.convertToString(item->getType()) << std::endl;
         stream << "---Geometry---" << std::endl;
-        stream << "Position: " << converter.convertToString(item->getGeometry().getPosition().value()) << std::endl;
-        stream << "Height: " << item->getGeometry().getHeight().value() << std::endl;
-        stream << "Width: "<< item->getGeometry().getWidth().value() << std::endl;
+        stream << "Position: " << converter.convertToString(geometry.getPosition().value()) << std::endl;
+        stream << "Height: " << geometry.getHeight().value() << std::endl;
+        stream << "Width: "<< geometry.getWidth().value() << std::endl;
         stream << "---Attributes---" << std::endl;
-        stream << "FillColor: " << item->getAttributes().getHexFillColor().value() << std::endl;
-        stream << "LineColor: " << item->getAttributes().getHexLineColor().value() << std::endl;
-        stream << "LineWidth: " << item->getAttributes().getLineWidth().value() << std::endl;
-        stream << "LineType: " << converter.convertToString(item->getAttributes().getLineType().value()) << std::endl;
-        stream << "Text: " << item->getAttributes().getText().value() << std::endl;
+        stream << "FillColor: " << attributes.getHexFillColor().value() << std::endl;
+        stream << "LineColor: " << attributes.getHexLineColor().value() << std::endl;
+        stream << "LineWidth: " << attributes.getLineWidth().value() << std::endl;
+        stream << "LineType: " << converter.convertToString(attributes.getLineType().value()) << std::endl;
+        stream << "Text: " << attributes.getText().value() << std::endl;
         stream << std::endl;
     }
 
  
-    std::shared_ptr<IShape> ShapeBase::clone(std::shared_ptr<Data::ItemBase> item)
+    std::shared_ptr<ICloneable> ShapeBase::clone(std::shared_ptr<Data::ItemBase> item)
     {
         setItem(item);
         return std::make_shared<ShapeBase>(*this);
@@ -194,15 +180,16 @@ namespace Renderer
         QtConverter styleConverter;
         Serialization::Converter typeConverter;
 
-        auto lineType = item->getAttributes().getLineType();
+        auto attributes = item->getAttributes();
 
-        QColor qlineColor = item->getAttributes().getHexLineColor().value();
-        qreal qlineWidth = item->getAttributes().getLineWidth().value();
+        auto lineType = attributes.getLineType();
+        QColor qlineColor = attributes.getHexLineColor().value();
+        qreal qlineWidth = attributes.getLineWidth().value();
         Qt::PenStyle qlineType = styleConverter.convertToQtPenStyle(
             typeConverter.convertToString(lineType.value())); 
                                                                                                             
         auto pen = QPen(qlineColor, qlineWidth, qlineType);
-        auto fillColor = item->getAttributes().getHexFillColor();
+        auto fillColor = attributes.getHexFillColor();
         auto color = QColor((fillColor.has_value()) ? fillColor.value() : Qt::transparent);
         auto brush = QBrush(color); 
         //TODO: make a way to remove the fill color or the line color after it has been set
@@ -210,11 +197,33 @@ namespace Renderer
         painter.setBrush(brush);
     }
 
+
+    QRect ShapeBase::getInnerTextRect(Formatting::DimentionConverter& converter, double margin)
+    {
+        auto geometry = item->getGeometry();
+
+        auto coordinates = geometry.getPosition().value().getCoordinates();
+        auto width = geometry.getWidth().value();
+        auto height = geometry.getHeight().value();
+
+        auto newWidth = width * margin;
+        auto newHeight = height * margin;
+
+        auto x = coordinates[0] + double(width - newWidth)/2;
+        auto y = coordinates[1] + double(height - newHeight)/2;
+
+        return QRect(converter.toPixels(x), converter.toPixels(y), 
+                    converter.toPixels(newWidth), converter.toPixels(newHeight));
+    }
+
+
     QRect ShapeBase::getRect(Formatting::DimentionConverter& converter) 
     {
-        auto coordinates = item->getGeometry().getPosition().value().getCoordinates();
-        auto height = item->getGeometry().getHeight().value();
-        auto width = item->getGeometry().getWidth().value();
+        auto geometry = item->getGeometry();
+
+        auto coordinates = geometry.getPosition().value().getCoordinates();
+        auto height = geometry.getHeight().value();
+        auto width = geometry.getWidth().value();
         QRect rect(converter.toPixels(coordinates[0]), converter.toPixels(coordinates[1]), 
             converter.toPixels(width), converter.toPixels(height));
         return rect;
@@ -223,5 +232,7 @@ namespace Renderer
 
 
 
+   
+ 
 
 }

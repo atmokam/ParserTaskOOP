@@ -5,7 +5,8 @@
 
 namespace Renderer
 {
-    class ITextDisplayable {
+    class ITextDisplayable 
+    {
     public:
         virtual void print(std::ostream& stream) = 0;
     };

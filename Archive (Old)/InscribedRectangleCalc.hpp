@@ -3,7 +3,7 @@
 
 #include "ShapeLibrary.hpp"
 #include "ShapeBase.hpp"
-#include "IShapeVisitor.hpp"
+
 #include "../Formatting/DimentionConverter.hpp"
 #include <unordered_map>
 #include <QRect>
@@ -11,7 +11,7 @@
 
 namespace Renderer
 {
-    class InscribedRectangleCalc: public IShapeVisitor
+    class InscribedRectangleCalc
     {
         std::shared_ptr<ShapeBase> shape;
         std::shared_ptr<QRect> rect;

@@ -1,4 +1,4 @@
-#include "ConsoleRenderingVisitor.hpp"
+#include "ConsoleRendering.hpp"
 #include "Data/Slide.hpp"
 #include "Data/Item/ItemBase.hpp"
 #include "Renderer/Shape/ShapeBase.hpp"
@@ -17,18 +17,18 @@ namespace Renderer
     {
         for(auto& [_, subItem]: item)
         {
-            subItem->accept(std::make_shared<ConsoleRenderingVisitor>(*this));
+            subItem->accept(*this);
         }
     }
 
     void ConsoleRenderingVisitor::print(const std::shared_ptr<Data::ItemBase>& item)
     {
-        item->accept(std::make_shared<ConsoleRenderingVisitor>(*this));
+        item->accept(*this);
     }
 
     void ConsoleRenderingVisitor::print(const std::shared_ptr<Data::Slide>& slide )
     {
         auto items = slide->getTopItem();
-        items->accept(std::make_shared<ConsoleRenderingVisitor>(*this));
+        items->accept(*this);
     }
 }

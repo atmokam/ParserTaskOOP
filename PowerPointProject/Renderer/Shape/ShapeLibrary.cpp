@@ -1,7 +1,8 @@
 #include "ShapeLibrary.hpp"
-#include "IShape.hpp"
+#include "ICloneable.hpp"
 #include "ShapeBase.hpp"
 #include "Data/Item/ItemBase.hpp"
+#include "ShapeText.hpp"
 
 namespace Renderer
 {
@@ -20,14 +21,16 @@ namespace Renderer
         stringToType["triangle"] = Type::Triangle;
     }
 
-    std::shared_ptr<IShape> ShapeLibrary::getShape(std::shared_ptr<Data::ItemBase> item)
+    std::shared_ptr<ICloneable> ShapeLibrary::getShape(std::shared_ptr<Data::ItemBase> item)
     {
-        return library[item->getType()]->clone(item);
+        auto shape = library[item->getType()]->clone(item);
+        auto textWrapped = ShapeText(std::dynamic_pointer_cast<ShapeBase>(shape));
+        return std::make_shared<ShapeText>(textWrapped);
     }
 
-    std::optional<Type> ShapeLibrary::getType(const std::string& type)
+    Type ShapeLibrary::getType(const std::string& type)
     {
-        return (stringToType.find(type) != stringToType.end()) ? std::optional<Type>(stringToType[type]) : std::nullopt;
+        return (stringToType.find(type) != stringToType.end()) ? stringToType[type] : Type::None;
     }
 
     std::string ShapeLibrary::getString(const Type type)

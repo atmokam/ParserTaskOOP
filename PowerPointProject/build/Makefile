@@ -550,29 +550,29 @@ Program.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Program.cpp.s
 .PHONY : Program.cpp.s
 
-Renderer/ConsoleRenderingVisitor.o: Renderer/ConsoleRenderingVisitor.cpp.o
-.PHONY : Renderer/ConsoleRenderingVisitor.o
+Renderer/ConsoleRendering.o: Renderer/ConsoleRendering.cpp.o
+.PHONY : Renderer/ConsoleRendering.o
 
 # target to build an object file
-Renderer/ConsoleRenderingVisitor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.o
-.PHONY : Renderer/ConsoleRenderingVisitor.cpp.o
+Renderer/ConsoleRendering.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRendering.cpp.o
+.PHONY : Renderer/ConsoleRendering.cpp.o
 
-Renderer/ConsoleRenderingVisitor.i: Renderer/ConsoleRenderingVisitor.cpp.i
-.PHONY : Renderer/ConsoleRenderingVisitor.i
+Renderer/ConsoleRendering.i: Renderer/ConsoleRendering.cpp.i
+.PHONY : Renderer/ConsoleRendering.i
 
 # target to preprocess a source file
-Renderer/ConsoleRenderingVisitor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.i
-.PHONY : Renderer/ConsoleRenderingVisitor.cpp.i
+Renderer/ConsoleRendering.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRendering.cpp.i
+.PHONY : Renderer/ConsoleRendering.cpp.i
 
-Renderer/ConsoleRenderingVisitor.s: Renderer/ConsoleRenderingVisitor.cpp.s
-.PHONY : Renderer/ConsoleRenderingVisitor.s
+Renderer/ConsoleRendering.s: Renderer/ConsoleRendering.cpp.s
+.PHONY : Renderer/ConsoleRendering.s
 
 # target to generate assembly for a file
-Renderer/ConsoleRenderingVisitor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRenderingVisitor.cpp.s
-.PHONY : Renderer/ConsoleRenderingVisitor.cpp.s
+Renderer/ConsoleRendering.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/ConsoleRendering.cpp.s
+.PHONY : Renderer/ConsoleRendering.cpp.s
 
 Renderer/Formatting/DimentionConverter.o: Renderer/Formatting/DimentionConverter.cpp.o
 .PHONY : Renderer/Formatting/DimentionConverter.o
@@ -622,30 +622,6 @@ Renderer/Formatting/FormatLibrary.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Formatting/FormatLibrary.cpp.s
 .PHONY : Renderer/Formatting/FormatLibrary.cpp.s
 
-Renderer/Shape/InscribedRectangleCalc.o: Renderer/Shape/InscribedRectangleCalc.cpp.o
-.PHONY : Renderer/Shape/InscribedRectangleCalc.o
-
-# target to build an object file
-Renderer/Shape/InscribedRectangleCalc.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalc.cpp.o
-.PHONY : Renderer/Shape/InscribedRectangleCalc.cpp.o
-
-Renderer/Shape/InscribedRectangleCalc.i: Renderer/Shape/InscribedRectangleCalc.cpp.i
-.PHONY : Renderer/Shape/InscribedRectangleCalc.i
-
-# target to preprocess a source file
-Renderer/Shape/InscribedRectangleCalc.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalc.cpp.i
-.PHONY : Renderer/Shape/InscribedRectangleCalc.cpp.i
-
-Renderer/Shape/InscribedRectangleCalc.s: Renderer/Shape/InscribedRectangleCalc.cpp.s
-.PHONY : Renderer/Shape/InscribedRectangleCalc.s
-
-# target to generate assembly for a file
-Renderer/Shape/InscribedRectangleCalc.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/InscribedRectangleCalc.cpp.s
-.PHONY : Renderer/Shape/InscribedRectangleCalc.cpp.s
-
 Renderer/Shape/ShapeBase.o: Renderer/Shape/ShapeBase.cpp.o
 .PHONY : Renderer/Shape/ShapeBase.o
 
@@ -694,29 +670,29 @@ Renderer/Shape/ShapeLibrary.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeLibrary.cpp.s
 .PHONY : Renderer/Shape/ShapeLibrary.cpp.s
 
-Renderer/Shape/ShapeTextVisitor.o: Renderer/Shape/ShapeTextVisitor.cpp.o
-.PHONY : Renderer/Shape/ShapeTextVisitor.o
+Renderer/Shape/ShapeText.o: Renderer/Shape/ShapeText.cpp.o
+.PHONY : Renderer/Shape/ShapeText.o
 
 # target to build an object file
-Renderer/Shape/ShapeTextVisitor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeTextVisitor.cpp.o
-.PHONY : Renderer/Shape/ShapeTextVisitor.cpp.o
+Renderer/Shape/ShapeText.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeText.cpp.o
+.PHONY : Renderer/Shape/ShapeText.cpp.o
 
-Renderer/Shape/ShapeTextVisitor.i: Renderer/Shape/ShapeTextVisitor.cpp.i
-.PHONY : Renderer/Shape/ShapeTextVisitor.i
+Renderer/Shape/ShapeText.i: Renderer/Shape/ShapeText.cpp.i
+.PHONY : Renderer/Shape/ShapeText.i
 
 # target to preprocess a source file
-Renderer/Shape/ShapeTextVisitor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeTextVisitor.cpp.i
-.PHONY : Renderer/Shape/ShapeTextVisitor.cpp.i
+Renderer/Shape/ShapeText.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeText.cpp.i
+.PHONY : Renderer/Shape/ShapeText.cpp.i
 
-Renderer/Shape/ShapeTextVisitor.s: Renderer/Shape/ShapeTextVisitor.cpp.s
-.PHONY : Renderer/Shape/ShapeTextVisitor.s
+Renderer/Shape/ShapeText.s: Renderer/Shape/ShapeText.cpp.s
+.PHONY : Renderer/Shape/ShapeText.s
 
 # target to generate assembly for a file
-Renderer/Shape/ShapeTextVisitor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeTextVisitor.cpp.s
-.PHONY : Renderer/Shape/ShapeTextVisitor.cpp.s
+Renderer/Shape/ShapeText.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/Shape/ShapeText.cpp.s
+.PHONY : Renderer/Shape/ShapeText.cpp.s
 
 Renderer/VisualConversion/QtConverter.o: Renderer/VisualConversion/QtConverter.cpp.o
 .PHONY : Renderer/VisualConversion/QtConverter.o
@@ -766,29 +742,29 @@ Renderer/VisualConversion/TextFontAdjuster.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/VisualConversion/TextFontAdjuster.cpp.s
 .PHONY : Renderer/VisualConversion/TextFontAdjuster.cpp.s
 
-Renderer/VisualRenderingVisitor.o: Renderer/VisualRenderingVisitor.cpp.o
-.PHONY : Renderer/VisualRenderingVisitor.o
+Renderer/VisualRendering.o: Renderer/VisualRendering.cpp.o
+.PHONY : Renderer/VisualRendering.o
 
 # target to build an object file
-Renderer/VisualRenderingVisitor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/VisualRenderingVisitor.cpp.o
-.PHONY : Renderer/VisualRenderingVisitor.cpp.o
+Renderer/VisualRendering.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/VisualRendering.cpp.o
+.PHONY : Renderer/VisualRendering.cpp.o
 
-Renderer/VisualRenderingVisitor.i: Renderer/VisualRenderingVisitor.cpp.i
-.PHONY : Renderer/VisualRenderingVisitor.i
+Renderer/VisualRendering.i: Renderer/VisualRendering.cpp.i
+.PHONY : Renderer/VisualRendering.i
 
 # target to preprocess a source file
-Renderer/VisualRenderingVisitor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/VisualRenderingVisitor.cpp.i
-.PHONY : Renderer/VisualRenderingVisitor.cpp.i
+Renderer/VisualRendering.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/VisualRendering.cpp.i
+.PHONY : Renderer/VisualRendering.cpp.i
 
-Renderer/VisualRenderingVisitor.s: Renderer/VisualRenderingVisitor.cpp.s
-.PHONY : Renderer/VisualRenderingVisitor.s
+Renderer/VisualRendering.s: Renderer/VisualRendering.cpp.s
+.PHONY : Renderer/VisualRendering.s
 
 # target to generate assembly for a file
-Renderer/VisualRenderingVisitor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/VisualRenderingVisitor.cpp.s
-.PHONY : Renderer/VisualRenderingVisitor.cpp.s
+Renderer/VisualRendering.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PowerPointProject.dir/build.make CMakeFiles/PowerPointProject.dir/Renderer/VisualRendering.cpp.s
+.PHONY : Renderer/VisualRendering.cpp.s
 
 Serialization/Converter.o: Serialization/Converter.cpp.o
 .PHONY : Serialization/Converter.o
@@ -1019,36 +995,33 @@ help:
 	@echo "... Program.o"
 	@echo "... Program.i"
 	@echo "... Program.s"
-	@echo "... Renderer/ConsoleRenderingVisitor.o"
-	@echo "... Renderer/ConsoleRenderingVisitor.i"
-	@echo "... Renderer/ConsoleRenderingVisitor.s"
+	@echo "... Renderer/ConsoleRendering.o"
+	@echo "... Renderer/ConsoleRendering.i"
+	@echo "... Renderer/ConsoleRendering.s"
 	@echo "... Renderer/Formatting/DimentionConverter.o"
 	@echo "... Renderer/Formatting/DimentionConverter.i"
 	@echo "... Renderer/Formatting/DimentionConverter.s"
 	@echo "... Renderer/Formatting/FormatLibrary.o"
 	@echo "... Renderer/Formatting/FormatLibrary.i"
 	@echo "... Renderer/Formatting/FormatLibrary.s"
-	@echo "... Renderer/Shape/InscribedRectangleCalc.o"
-	@echo "... Renderer/Shape/InscribedRectangleCalc.i"
-	@echo "... Renderer/Shape/InscribedRectangleCalc.s"
 	@echo "... Renderer/Shape/ShapeBase.o"
 	@echo "... Renderer/Shape/ShapeBase.i"
 	@echo "... Renderer/Shape/ShapeBase.s"
 	@echo "... Renderer/Shape/ShapeLibrary.o"
 	@echo "... Renderer/Shape/ShapeLibrary.i"
 	@echo "... Renderer/Shape/ShapeLibrary.s"
-	@echo "... Renderer/Shape/ShapeTextVisitor.o"
-	@echo "... Renderer/Shape/ShapeTextVisitor.i"
-	@echo "... Renderer/Shape/ShapeTextVisitor.s"
+	@echo "... Renderer/Shape/ShapeText.o"
+	@echo "... Renderer/Shape/ShapeText.i"
+	@echo "... Renderer/Shape/ShapeText.s"
 	@echo "... Renderer/VisualConversion/QtConverter.o"
 	@echo "... Renderer/VisualConversion/QtConverter.i"
 	@echo "... Renderer/VisualConversion/QtConverter.s"
 	@echo "... Renderer/VisualConversion/TextFontAdjuster.o"
 	@echo "... Renderer/VisualConversion/TextFontAdjuster.i"
 	@echo "... Renderer/VisualConversion/TextFontAdjuster.s"
-	@echo "... Renderer/VisualRenderingVisitor.o"
-	@echo "... Renderer/VisualRenderingVisitor.i"
-	@echo "... Renderer/VisualRenderingVisitor.s"
+	@echo "... Renderer/VisualRendering.o"
+	@echo "... Renderer/VisualRendering.i"
+	@echo "... Renderer/VisualRendering.s"
 	@echo "... Serialization/Converter.o"
 	@echo "... Serialization/Converter.i"
 	@echo "... Serialization/Converter.s"

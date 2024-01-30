@@ -2,7 +2,7 @@
 #define SHAPETEXTVISITOR_HPP
 
 #include "ShapeBase.hpp"
-#include "IShapeVisitor.hpp"
+
 #include "../Formatting/DimentionConverter.hpp"
 #include <QPainter>
 
